@@ -12,7 +12,7 @@ html {
 
 body {
   font-family: 'Montserrat', sans-serif;
-  background-color: ${({theme}) => theme.colors.mercury};
+  background-color: ${({ theme }) => theme.color.mercury};
   word-break: break-word;
 }
 `;
