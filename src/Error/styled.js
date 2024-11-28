@@ -17,6 +17,7 @@ export const Button = styled.button`
   background-color: ${({ theme }) => theme.color.scienceBlue};
   font-size: 14px;
   line-height: 19px;
+  border-radius: 5px;
 `;
 
 export const Header2 = styled.h2`
