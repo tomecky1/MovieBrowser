@@ -1,12 +1,7 @@
 import { Navigation } from "./common/Navigation";
 
 function App() {
-  return (
-    <>
-      <Navigation />
-      <p> sgsgsgs</p>
-    </>
-  );
+  return <Navigation />;
 }
 
 export default App;
