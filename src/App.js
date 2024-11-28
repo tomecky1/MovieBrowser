@@ -1,8 +1,11 @@
+import { Navigation } from "./common/Navigation";
 
 function App() {
   return (
-    <div className="App">
-    </div>
+    <>
+      <Navigation />
+      <p> sgsgsgs</p>
+    </>
   );
 }
 
