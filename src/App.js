@@ -1,7 +1,6 @@
 import { Container } from "./common/Container";
 import {Image } from "./common/Header/styled.js";
 import Header from "./common/Header/index.js";
-import Error from "./Error";
 import poster3 from "./image/poster3.jpg"
 
 function App() {
