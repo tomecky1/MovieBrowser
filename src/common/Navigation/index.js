@@ -1,15 +1,10 @@
-import {
-  NavigationWrapper,
-  NavigationLogo,
-  NavigationTitle,
-  NavigationItem,
-} from "./styled";
+import {NavigationItem, NavigationList, NavigationLogo, NavigationTitle, NavigationWrapper,} from "./styled";
 
 export function Navigation() {
   return (
     <>
       <NavigationWrapper>
-
+        <NavigationList>
           <li>
             <NavigationLogo src="./Video.png"></NavigationLogo>
           </li>
@@ -19,7 +14,7 @@ export function Navigation() {
           <li>
             <input type="text" placeholder="Search for movies..."></input>
           </li>
-
+        </NavigationList>
       </NavigationWrapper>
     </>
   );
