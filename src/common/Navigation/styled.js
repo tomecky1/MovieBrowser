@@ -27,6 +27,13 @@ export const NavigationItem = styled.li`
   font-weight: 600;
   text-decoration: none;
   color: #fff;
+  padding: 8px 24px;
+  background-color: #000;
+  gap: 10px;
+  &:hover {
+    border: 1px solid #fff;
+    border-radius: 24px;
+  }
 `;
 
 export const NavigationLogo = styled.img`
