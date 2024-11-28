@@ -14,7 +14,6 @@ function App() {
       >
         <Image src={poster3} alt="" />
       </Header>
-      <Error />
     </Container>
   );
 }
