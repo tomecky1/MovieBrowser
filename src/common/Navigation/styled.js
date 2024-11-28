@@ -4,16 +4,14 @@ export const NavigationWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1920px;
-  margin: 0 auto;
   height: 94px;
   background-color: #000;
 `;
 
-export const NavigationList = styled.ul`
-  display: inline-flex;
-  align-items: center;
-`;
+// export const NavigationList = styled.ul`
+//   display: inline-flex;
+//   align-items: center;
+// `;
 
 export const NavigationTitle = styled.li`
   font-size: 24px;
