@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const NavigationWrapper = styled.div`
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     height: 94px;
     background-color: #000;
