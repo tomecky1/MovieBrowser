@@ -11,6 +11,7 @@ export const NavigationWrapper = styled.div`
 export const NavigationList = styled.ul`
     display: flex;
     align-items: center;
+    list-style: none;
 `;
 
 export const NavigationTitle = styled.li`
