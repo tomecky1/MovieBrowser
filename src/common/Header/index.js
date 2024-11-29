@@ -1,13 +1,13 @@
-import { StyledHeader, AdditionalInfo, MovieName, MovieRating, MovieViews } from "./styled.js";
+import { StyledHeader, AdditionalInfo, MovieName, MovieRating, MovieVotes } from "./styled.js";
 
-const Header = ({title, rating, views, children}) => {
+const Header = ({title, rating, votes, children}) => {
 return(
 <StyledHeader>
 {children}
     <AdditionalInfo>
         <MovieName>{title}</MovieName>
         <MovieRating>{rating}</MovieRating>
-        <MovieViews>{views}</MovieViews>
+        <MovieVotes>{votes}</MovieVotes>
     </AdditionalInfo>
 </StyledHeader>
 

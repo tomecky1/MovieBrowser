@@ -9,11 +9,10 @@ function App() {
       <Header 
       title = {"Nazwa filmu"}
       rating = {"Ocena"}
-      views = {"Wyświetlenia"}
+      votes = {"Wyświetlenia"}
       >
         <Image src={poster3} alt="" />
       </Header>
-      <Error></Error>
     </Container>
   );
 }
