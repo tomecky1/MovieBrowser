@@ -2,14 +2,16 @@ export const theme = {
   color: {
     white: "#ffffff",
     whisper: "#f5f5fa",
+    mystic: "#E4E6F0",
     scienceBlue: "#0044cc",
-    mystic: "#E4E6F0", // movie kind containter
-    candleLight: "#FCD420", //star rate SVG
-    stormGray: "#74788B", // text "Production", "Release Date",
-    woodSmoke: "#18181B", // movie kind "text- Action, Drama etc"
+    candleLight: "#FCD420",
+    stormGray: "#74788B",
+    woodSmoke: "#18181B",
   },
 
-  breakpoints: {
-    mobileMax: "440px",
-  }
+  breakpoint: {
+    mobileMax: "440ox",
+    tabletVertical: "991px",
+    tabletHorizontal: "1199px",
+  },
 };
