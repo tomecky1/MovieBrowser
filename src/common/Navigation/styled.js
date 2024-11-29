@@ -37,5 +37,5 @@ export const NavigationItem = styled.li`
 
 export const NavigationLogo = styled.img`
     width: 40px;
-    height: 40px;
+    aspect-ratio: 1;
 `;
