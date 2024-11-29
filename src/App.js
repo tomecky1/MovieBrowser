@@ -1,23 +1,15 @@
 import { Container } from "./common/Container";
-import { Image } from "./common/Header/styled";
-import Header from "./common/Header";
-import poster3 from "./image/poster3.jpg";
-import Error from "./Error";
-import { Navigation } from "./common/Navigation";
-import { Container } from "./common/Container";
-import { Image } from "./common/Header/styled";
-import Header from "./common/Header";
-import poster3 from "./image/poster3.jpg";
-import Error from "./Error";
+import {Image } from "./common/Header/styled.js";
+import Header from "./common/Header/index.js";
+import poster3 from "./image/poster3.jpg"
 
 function App() {
   return (
     <Container>
-      <Navigation />
       <Header 
       title = {"Nazwa filmu"}
       rating = {"Ocena"}
-      votes = {"Głosy"}
+      views = {"Wyświetlenia"}
       >
         <Image src={poster3} alt="" />
       </Header>

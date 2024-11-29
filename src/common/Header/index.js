@@ -1,16 +1,17 @@
-import { StyledHeader, AdditionalInfo, MovieName, MovieRating, MovieVotes } from "./styled";
+import { StyledHeader, AdditionalInfo, MovieName, MovieRating, MovieViews } from "./styled.js";
 
-const Header = ({title, rating, votes, children}) => {
-  return (
-    <StyledHeader>
-      {children}
-      <AdditionalInfo>
+const Header = ({title, rating, views, children}) => {
+return(
+<StyledHeader>
+{children}
+    <AdditionalInfo>
         <MovieName>{title}</MovieName>
         <MovieRating>{rating}</MovieRating>
-        <MovieVotes>{votes}</MovieVotes>
-      </AdditionalInfo>
-    </StyledHeader>
-  );
-};
+        <MovieViews>{views}</MovieViews>
+    </AdditionalInfo>
+</StyledHeader>
+
+)
+}
 
 export default Header;

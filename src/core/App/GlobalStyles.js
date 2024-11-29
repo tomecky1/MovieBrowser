@@ -11,7 +11,7 @@ html {
 }
 
 body {
-    font-family: "Poppins", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 400;
   background-color: ${({ theme }) => theme.color.whisper};
   word-break: break-word;
