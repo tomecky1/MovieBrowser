@@ -1,4 +1,5 @@
 import { Container } from "./common/Container";
+import {Navigation} from "./common/Navigation"
 import {Image } from "./common/Header/styled.js";
 import Header from "./common/Header/index.js";
 import poster3 from "./image/poster3.jpg"
@@ -6,6 +7,7 @@ import poster3 from "./image/poster3.jpg"
 function App() {
   return (
     <Container>
+      <Navigation/>
       <Header 
       title = {"Nazwa filmu"}
       rating = {"Ocena"}
