@@ -1,13 +1,12 @@
-import {NavigationItem, NavigationList, NavigationLogo, NavigationTitle, NavigationWrapper,} from "./styled";
+import {NavigationItem, NavigationList, NavigationTitle, NavigationWrapper,} from "./styled";
+import Video from "../../image/Video.png";
 
 export function Navigation() {
   return (
     <>
       <NavigationWrapper>
         <NavigationList>
-          <li>
-            <NavigationLogo src="./Video.png"></NavigationLogo>
-          </li>
+          <img src={Video} alt="Logo"/>
           <NavigationTitle>Movies Browser</NavigationTitle>
           <NavigationItem>MOVIES</NavigationItem>
           <NavigationItem>PEOPLE</NavigationItem>
