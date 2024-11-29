@@ -65,7 +65,7 @@ export const Label = styled.span`
     font-weight: 400;
     font-size: 18px;
 
-    @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    @media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
         display: none;
     };
 `;
@@ -77,7 +77,7 @@ export const MovieDescription = styled.p`
     margin: 0;
     grid-area: description;
 
-    @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    @media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
         font-size: 14px;
         font-weight: 400;
         line-height: 22px;
