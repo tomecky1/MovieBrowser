@@ -1,4 +1,4 @@
-import {NavigationItem, NavigationList, NavigationTitle, NavigationWrapper,} from "./styled";
+import {NavigationInput, NavigationItem, NavigationList, NavigationTitle, NavigationWrapper,} from "./styled";
 import Video from "../../image/Video.png";
 
 export function Navigation() {
@@ -10,9 +10,9 @@ export function Navigation() {
           <NavigationTitle>Movies Browser</NavigationTitle>
           <NavigationItem>MOVIES</NavigationItem>
           <NavigationItem>PEOPLE</NavigationItem>
-          <li>
-            <input type="text" placeholder="Search for movies..."></input>
-          </li>
+
+          <NavigationInput type="text" placeholder={"Search for movies..."}></NavigationInput>
+
         </NavigationList>
       </NavigationWrapper>
     </>

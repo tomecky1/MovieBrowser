@@ -36,7 +36,12 @@ export const NavigationItem = styled.li`
     }
 `;
 
-export const NavigationLogo = styled.img`
-    width: 40px;
-    aspect-ratio: 1;
+export const NavigationInput = styled.input`
+    width: 432px;
+    border: 1px solid #E4E6F0;
+    border-radius: 33px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    padding: 4px 24px;
 `;
