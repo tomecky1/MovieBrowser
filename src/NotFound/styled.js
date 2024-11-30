@@ -16,7 +16,6 @@ export const Text = styled.header`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tabletVertical}) {
     text-align: center;
-    margin-left: 0;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
