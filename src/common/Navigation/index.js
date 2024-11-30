@@ -1,5 +1,6 @@
 import {NavigationInput, NavigationItem, NavigationList, NavigationTitle, NavigationWrapper,} from "./styled";
 import Video from "../../image/Video.png";
+import {ReactComponent as SearchIcon} from "../../icons/Search.svg";
 
 export function Navigation() {
   return (
@@ -11,7 +12,7 @@ export function Navigation() {
           <NavigationItem>MOVIES</NavigationItem>
           <NavigationItem>PEOPLE</NavigationItem>
 
-          <NavigationInput type="text" placeholder={"Search for movies..."}></NavigationInput>
+          <SearchIcon/><NavigationInput type="text" placeholder={"Search for movies..."}></NavigationInput>
 
         </NavigationList>
       </NavigationWrapper>

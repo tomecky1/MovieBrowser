@@ -19,6 +19,8 @@ export const NavigationTitle = styled.li`
     font-weight: 500;
     text-decoration: none;
     color: #fff;
+    margin-right: 28px;
+    margin-left: 8px
 `;
 
 export const NavigationItem = styled.li`
@@ -29,6 +31,7 @@ export const NavigationItem = styled.li`
     padding: 8px 24px;
     background-color: #000;
     gap: 10px;
+    margin-right: 28px;
 
     &:hover {
         border: 1px solid #fff;
