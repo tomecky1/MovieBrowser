@@ -7,6 +7,6 @@ export const theme = {
   },
 
   breakpoint: {
-    mobileMax: 440,
+    mobile: 560,
   }
 };
