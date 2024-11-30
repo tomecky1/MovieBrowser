@@ -5,7 +5,7 @@ const NotFound = () => {
   return (
     <>
       <Wrapper>
-        <Text>Sorry, there are no results for ""</Text>
+        <Text>Sorry, there are no results for "Muan"</Text>
         <ImageWrapper>
             <img src={Picture} alt=""/>
         </ImageWrapper>
