@@ -5,10 +5,9 @@ export const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
 
-  
-@media (max-width: ${({theme}) => theme.breakpoint.mobileMax}px) {
-  text-align: center;
-}
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobileMax}px) {
+    text-align: center;
+  }
 `;
 
 export const Button = styled.button`
@@ -21,5 +20,5 @@ export const Button = styled.button`
 `;
 
 export const Header2 = styled.h2`
-margin: 0;
-`
+  margin: 0;
+`;

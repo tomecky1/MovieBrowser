@@ -9,7 +9,6 @@ export const theme = {
     woodSmoke: "#18181B",
   },
 
-
   breakpoints: {
     mobileMax: "560px",
     tabletVertical: "991px",
