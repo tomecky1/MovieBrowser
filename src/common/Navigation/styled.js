@@ -41,10 +41,22 @@ export const NavigationItem = styled.li`
 
 export const NavigationInput = styled.input`
     width: 432px;
-    border: 1px solid #E4E6F0;
+    border: 0;
     border-radius: 33px;
     font-size: 16px;
     font-weight: 400;
     line-height: 24px;
     padding: 4px 24px;
+
+    &:active {
+        border: 0;
+    }
 `;
+
+export const SearchIconWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 33px;
+    padding-left: 18px;
+`
