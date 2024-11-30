@@ -15,12 +15,12 @@ export const Text = styled.header`
   align-self: flex-start;
   margin-left: 20px; 
   
-  @media (max-width: ${({theme}) => theme.breakpoint.tablet}) {
+  @media (max-width: ${({theme}) => theme.breakpoints.tabletVertical}) {
     text-align: center;
     margin-left: 0;
   }
 
-  @media (max-width: ${({theme}) => theme.breakpoint.mobile}) {
+  @media (max-width: ${({theme}) => theme.breakpoints.mobile}) {
     text-align: center;
     font-size: 26px;
     margin-left: 0;
