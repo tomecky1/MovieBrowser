@@ -28,15 +28,14 @@ export const IconContainer = styled.div`
   align-items: center;
   justify-content: left;
   border-radius: 5px;
-  width: 312px;
-  height: 464px;
-  padding: 40px 40px 0px;
+  padding: 40px 0px 40px 40px;
   background-color: ${({ theme }) => theme.color.white};
 `;
 
 export const Image = styled.img`
-  height: 100%;
   border-radius: 5px;
+  width: 312px;
+  height: 464px;
 `;
 
 export const Details = styled.div`
@@ -73,7 +72,7 @@ export const DetailContainer = styled.div`
   display: grid;
   grid-template-columns: auto;
   justify-content: start;
-  grid-gap: 8px;
+  grid-gap: 24px;
   margin: 0;
   font-size: 18px;
   font-weight: 400;
