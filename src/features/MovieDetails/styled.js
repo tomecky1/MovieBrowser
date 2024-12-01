@@ -1,15 +1,20 @@
 import styled from "styled-components";
 
+export const ContainerExtra = styled.main`
+  display: flex;
+  justify-content: center;
+`;
 export const StyledMovieDetailsTile = styled.div`
   max-width: 1368px;
-  margin: auto;
   box-shadow: 4px 4px 10px #bac7d580;
   background-color: ${({ theme }) => theme.color.white};
   display: grid;
   grid-gap: 40px;
   align-content: start;
   margin-top: 64px;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: auto 1fr;
+  margin-left: 40px;
+  margin-right: 40px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
     grid-template-columns: 1fr;
@@ -23,9 +28,9 @@ export const IconContainer = styled.div`
   align-items: center;
   justify-content: left;
   border-radius: 5px;
-  width: 100%;
+  width: 312px;
   height: 464px;
-  padding: 40px;
+  padding: 40px 40px 0px;
   background-color: ${({ theme }) => theme.color.white};
 `;
 
@@ -111,6 +116,7 @@ export const MovieDescription = styled.p`
   font-weight: 400;
   line-height: 32px;
   margin: 0;
+  padding-bottom: 40px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
     font-size: 16px;
