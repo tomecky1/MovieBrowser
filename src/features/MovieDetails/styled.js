@@ -1,9 +1,5 @@
 import styled from "styled-components";
 
-export const ContainerExtra = styled.main`
-  display: flex;
-  justify-content: center;
-`;
 export const StyledMovieDetailsTile = styled.div`
   max-width: 1368px;
   box-shadow: 4px 4px 10px #bac7d580;
@@ -11,15 +7,14 @@ export const StyledMovieDetailsTile = styled.div`
   display: grid;
   grid-gap: 40px;
   align-content: start;
-  margin-top: 64px;
   grid-template-columns: auto 1fr;
-  margin-left: 40px;
-  margin-right: 40px;
+  margin: 64px 56px 0 56px;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     grid-template-columns: 1fr;
     grid-gap: 24px;
     padding: 16px;
+    margin: 16px 16px 21px 16px;
   }
 `;
 
@@ -43,17 +38,19 @@ export const Details = styled.div`
   grid-gap: 24px;
   grid-template-columns: 1fr;
   grid-auto-rows: min-content;
+  padding-top: 40px;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     grid-gap: 16px;
   }
 `;
 
-export const Header = styled.h1`
+export const Header = styled.header`
   font-size: 36px;
   font-weight: 600;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
+  padding: 8px 0 0 0;
+  margin: 0;
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     font-size: 24px;
   }
 `;
@@ -62,7 +59,7 @@ export const Year = styled.p`
   font-size: 22px;
   margin: 0;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     font-size: 16px;
     color: ${({ theme }) => theme.color.stormGray};
   }
@@ -77,8 +74,9 @@ export const DetailContainer = styled.div`
   font-size: 18px;
   font-weight: 400;
   line-height: 22px;
+  //padding-top: 40px;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     font-size: 14px;
     line-height: 18px;
   }
@@ -86,7 +84,7 @@ export const DetailContainer = styled.div`
 
 export const DetailInfo = styled.div`
   display: grid;
-  grid-template-columns: auto;
+  grid-template-columns: 1fr 1fr;
   justify-content: start;
   grid-gap: 8px;
   margin: 0;
@@ -94,20 +92,65 @@ export const DetailInfo = styled.div`
   font-weight: 400;
   line-height: 21px;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     font-size: 14px;
     line-height: 18px;
   }
 `;
 
-export const Label = styled.span`
-  color: ${({ theme }) => theme.color.stormGray};
+export const Tags = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding-left: 0;
+  margin: -8px;
+`;
+
+export const Tag = styled.li`
+  color: ${({ theme }) => theme.color.black};
+  background-color: ${({ theme }) => theme.color.mystic};
   font-weight: 400;
   font-size: 18px;
+  border-radius: 5px;
+  padding: 8px 16px;
+  font-size: 10px;
+  margin: 8px;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     font-size: 14px;
   }
+`;
+
+export const Rate = styled.p`
+  display: flex;
+  flex-wrap: nowrap;
+  font-size: 22px;
+  color: black;
+  line-height: 28.6px;
+  margin: 0;
+  align-items: baseline;
+`;
+export const RateGrade = styled.p`
+  font-size: 22px;
+  padding-left: 8px;
+  line-height: 29px;
+  margin: 0;
+`;
+export const RateElement = styled.p`
+  font-size: 14px;
+  color: black;
+  line-height: 17px;
+  margin: 0;
+  justify-content: end;
+  padding-left: 8px;
+`;
+
+export const RateVotes = styled.p`
+  font-size: 14px;
+  color: black;
+  line-height: 17px;
+  margin: 0;
+  padding-left: 12px;
 `;
 
 export const MovieDescription = styled.p`
@@ -116,6 +159,7 @@ export const MovieDescription = styled.p`
   line-height: 32px;
   margin: 0;
   padding-bottom: 40px;
+  padding-right: 25px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
     font-size: 16px;
@@ -124,6 +168,7 @@ export const MovieDescription = styled.p`
 `;
 
 export const StarIcon = styled.img`
-  width: 16px;
-  vertical-align: middle;
+  width: 24px;
+  vertical-align: baseline;
+  align-self: center;
 `;
