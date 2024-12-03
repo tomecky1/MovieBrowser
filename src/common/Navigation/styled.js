@@ -56,6 +56,7 @@ export const NavigationItem = styled.li`
     &:hover {
         border: 1px solid #fff;
         border-radius: 24px;
+        cursor: pointer;
     }
 `;
 
