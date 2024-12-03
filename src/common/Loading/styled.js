@@ -10,15 +10,14 @@ export const Wrapper = styled.div`
 export const Text = styled.header`
   font-size: 36px;
   font-weight: 600;
-  margin: 56px 16px 20px 50px;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.tabletVertical}) {
-    text-align: center;
-  }
+  margin: 56px 16px 20px 276px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.smallMobile}) {
-    text-align: center;
     font-size: 26px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletHorizontal}) {
+    text-align: center;
     margin: 56px 16px 20px 20px;
   }
 `;
@@ -39,5 +38,10 @@ export const Loader = styled(Spinner)`
     to {
       transform: rotate(360deg);
     }
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.smallMobile}) {
+    height: 50px;
+    width: 50px;
   }
 `;
