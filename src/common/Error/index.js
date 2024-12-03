@@ -1,5 +1,5 @@
 import { Wrapper, Button, Header2 } from "./styled";
-import danger from "../image/danger.png";
+import danger from "../../image/danger.png"
 
 const Error = () => {
   return (

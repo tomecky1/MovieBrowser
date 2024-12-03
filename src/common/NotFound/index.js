@@ -1,5 +1,5 @@
 import { Wrapper, Text, ImageWrapper } from "./styled";
-import Picture from "../image/Picture.png";
+import Picture from "../../image/Picture.png";
 
 const NotFound = () => {
   return (
