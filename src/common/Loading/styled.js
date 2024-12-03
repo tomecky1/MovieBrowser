@@ -12,7 +12,7 @@ export const Text = styled.header`
   font-weight: 600;
   margin: 56px 16px 20px 276px;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.smallMobile}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     font-size: 26px;
   }
 
@@ -40,7 +40,7 @@ export const Loader = styled(Spinner)`
     }
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.smallMobile}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     height: 50px;
     width: 50px;
   }
