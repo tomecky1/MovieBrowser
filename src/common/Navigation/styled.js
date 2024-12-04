@@ -85,7 +85,17 @@ export const SearchIconWrapper = styled.div`
     border-radius: 33px;
     padding-left: 18px;
     @media (max-width: ${({theme}) => theme.breakpoints.mobile}) {
-        width: 288px;
+        width: 90%;
         height: 44px;
     }
 `;
+
+export const VideoIcon = styled.img`
+    height: 40px;
+    aspect-ratio: 1;
+
+    @media (max-width: ${({theme}) => theme.breakpoints.mobile}) {
+        height: 14px;
+        aspect-ratio: 1;
+    }
+`
