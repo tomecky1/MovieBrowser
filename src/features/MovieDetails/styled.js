@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { ReactComponent as StarIcon } from "../../icons/star.svg";
 
 export const StyledMovieDetailsTile = styled.div`
   max-width: 1368px;
@@ -39,6 +40,7 @@ export const Details = styled.div`
   grid-template-columns: 1fr;
   grid-auto-rows: min-content;
   padding-top: 40px;
+  margin: 0;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     grid-gap: 16px;
@@ -65,38 +67,34 @@ export const Year = styled.p`
   }
 `;
 
-export const DetailContainer = styled.div`
-  display: grid;
-  grid-template-columns: auto;
-  justify-content: start;
-  grid-gap: 24px;
-  margin: 0;
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 22px;
-  //padding-top: 40px;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    font-size: 14px;
-    line-height: 18px;
-  }
-`;
 
 export const DetailInfo = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: auto;
   justify-content: start;
   grid-gap: 8px;
   margin: 0;
-  font-size: 18px;
+  font-size:18px;
+  line-height: 22px;
   font-weight: 400;
-  line-height: 21px;
+  color: ${({ theme }) => theme.color.black};
+
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     font-size: 14px;
     line-height: 18px;
   }
 `;
+export const DetailInfoElement = styled.p`
+  margin: 0;
+  `;
+export const DetailInfoElementType = styled.span`
+  margin: 0;
+  color: ${({ theme }) => theme.color.stormGray};
+  font-size:18px;
+  line-height: 22px;
+  font-weight: 400;
+  `;
 
 export const Tags = styled.ul`
   display: flex;
@@ -130,12 +128,14 @@ export const Rate = styled.div`
   margin: 0;
   align-items: baseline;
 `;
+
 export const RateGrade = styled.p`
   font-size: 22px;
   padding-left: 8px;
   line-height: 29px;
   margin: 0;
 `;
+
 export const RateElement = styled.p`
   font-size: 14px;
   color: black;
@@ -167,7 +167,8 @@ export const MovieDescription = styled.p`
   }
 `;
 
-export const StarIcon = styled.img`
+
+export const StyledStarIcon = styled(StarIcon)`
   width: 24px;
   vertical-align: baseline;
   align-self: center;
