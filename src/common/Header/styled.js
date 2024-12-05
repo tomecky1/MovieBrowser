@@ -156,7 +156,7 @@ export const RatingOutOf = styled.p`
 
 export const MovieVotes = styled.p`
   ${sharedStyles}
-  margin: 16px 0 0px 0;
+  margin: 16px 0 56px 0;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     margin-left: 8px;
