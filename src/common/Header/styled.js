@@ -109,11 +109,11 @@ export const MovieName = styled.header`
 export const RatingContainer = styled.div`
   display: flex;
   align-items: center;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   margin-top: 24.5px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-      justify-content: flex-start;
+      flex-wrap: nowrap;
       margin-top: 4px;
   }
 `;
@@ -156,9 +156,21 @@ export const RatingOutOf = styled.p`
 
 export const MovieVotes = styled.p`
   ${sharedStyles}
-  margin: 16px 0 56px 0;
+  margin: 16px 0 0px 0;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    margin: 8px 0px 10px 8px;
+    margin-left: 8px;
+    margin-bottom: 8px;
   }
 `;
+
+export const MobileWrapper = styled.div`
+@media screen {
+  display: flex;
+  flex-direction: column;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    flex-direction: row;
+  }
+}
+`
