@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { ReactComponent as StarIcon } from "../../icons/star.svg";
 
 export const StyledMovieDetailsTile = styled.div`
   max-width: 1368px;
@@ -167,7 +168,7 @@ export const MovieDescription = styled.p`
 `;
 
 
-export const StarIcon = styled.img`
+export const StyledStarIcon = styled(StarIcon)`
   width: 24px;
   vertical-align: baseline;
   align-self: center;

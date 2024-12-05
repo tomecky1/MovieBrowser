@@ -16,6 +16,7 @@ import {
   DetailInfo,
   DetailInfoElementType,
   DetailInfoElement,
+  StyledStarIcon,
 } from "./styled";
 import movieDetailsImage from "./movieDetails.jpg";
 import starIcon from "../../icons/star.svg";
@@ -46,7 +47,7 @@ export const MovieDetails = () => {
             <Tag>Drama</Tag>
           </Tags>
           <Rate>
-            <StarIcon src={starIcon} alt="Star icon" />
+            <StyledStarIcon/>
             <RateGrade>8</RateGrade>
             <RateElement>/ 10</RateElement>
             <RateVotes>335 votes</RateVotes>
