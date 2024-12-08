@@ -13,10 +13,10 @@ export const StyledMovieDetailsTile = styled.div`
   margin: 64px 56px 56px 56px;
   row-gap: 24px;
 
-  @media(max-width: ${({ theme }) => theme.breakpoints.tabletHorizontal}) {
+  @media(max-width: 1080px) {
     grid-template-columns: auto auto;
     grid-gap: 20px;
-    padding: 20px;
+    padding: 30px;
     margin: 40px 50px 40px 50px;
   }
 
@@ -49,6 +49,7 @@ export const IconContainer = styled.div`
     padding: 0;
     height: auto;
     width: auto;
+    //padding: 30px;
   }  
 `;
 
@@ -67,9 +68,9 @@ export const Details = styled.div`
   padding-top: 40px;
   margin: 0;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.tabletHorizontal}) {
+  @media (max-width: 1080px) {
     grid-gap: 16px;
-    padding: 0px;
+    padding-top: 0px;
   }
 
   @media (max-width: 700px) {
@@ -165,7 +166,7 @@ export const Tag = styled.li`
   padding: 8px 16px;
   font-size: 10px;
   margin: 8px;
-  @media (max-width: ${({ theme }) => theme.breakpoints.tabletHorizontal}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletHorizontalS}) {
     font-size: 16px;
     line-height: 18px;
   }
