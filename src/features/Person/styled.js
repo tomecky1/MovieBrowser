@@ -13,7 +13,7 @@ export const Text = styled.header`
   }
 `;
 
-export const ContainerWrapper = styled.div`
+export const FlexContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: 276px;
@@ -23,19 +23,24 @@ export const ContainerWrapper = styled.div`
     margin-left: 16px;
     margin-right: 16px;
   }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.nextHubMax}) {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
 `;
 
-export const Wrapper = styled.div`
+export const StyledPersonWrapper = styled.div`
   max-width: 1368px;
   background-color: ${({ theme }) => theme.color.whisper};
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(208px, 1fr));
-  grid-template-rows: repeat(4, minmax(339px, 1fr));
+  grid-template-rows: repeat(auto-fill, minmax(339px, 1fr));
   gap: 24px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    grid-template-rows: repeat(3, minmax(136px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(136px, 1fr));
+    grid-template-rows: repeat(auto-fill, minmax(245px, 1fr));
     gap: 16px;
   }
 `;
@@ -51,18 +56,15 @@ export const WrapperItem = styled.div`
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     padding: 8px;
     border-radius: 5px;
+    box-shadow: 0px 4px 12px 0px ${({ theme }) => theme.color.heather};
   }
 `;
-
 
 export const ImageWrapper = styled.img`
   width: 177px;
   height: 264px;
-  /* top: -6px;
-  position: relative; */
   object-fit: cover;
   border-radius: 5px;
-  /* padding: 10px 15px 12px 16px; */
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     width: 120px;
