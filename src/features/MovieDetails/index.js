@@ -17,7 +17,7 @@ import {
   DetailInfoElement,
   StyledStarIcon,
 } from "./styled";
-import movieDetailsImage from "./movieDetails.jpg";npm
+import movieDetailsImage from "./movieDetails.jpg";
 import { ContainerExtra } from "../../common/Container";
 
 export const MovieDetails = () => {
