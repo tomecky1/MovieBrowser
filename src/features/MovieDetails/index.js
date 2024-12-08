@@ -8,7 +8,6 @@ import {
   MovieDescription,
   Tags,
   Tag,
-  StarIcon,
   Rate,
   RateElement,
   RateVotes,
@@ -18,8 +17,7 @@ import {
   DetailInfoElement,
   StyledStarIcon,
 } from "./styled";
-import movieDetailsImage from "./movieDetails.jpg";
-import starIcon from "../../icons/star.svg";
+import movieDetailsImage from "./movieDetails.jpg";npm
 import { ContainerExtra } from "../../common/Container";
 
 export const MovieDetails = () => {

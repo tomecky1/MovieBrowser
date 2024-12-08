@@ -49,7 +49,6 @@ export const IconContainer = styled.div`
     padding: 0;
     height: auto;
     width: auto;
-    //padding: 30px;
   }  
 `;
 
@@ -166,14 +165,17 @@ export const Tag = styled.li`
   padding: 8px 16px;
   font-size: 10px;
   margin: 8px;
+
   @media (max-width: ${({ theme }) => theme.breakpoints.tabletHorizontalS}) {
     font-size: 16px;
     line-height: 18px;
   }
+
   @media (max-width: 700px) {
     font-size: 14px;
     line-height: 16px;
   }
+
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     font-size: 10px;
     line-height: 11px;
@@ -262,7 +264,6 @@ export const MovieDescription = styled.div`
   }
 `;
 
-
 export const StyledStarIcon = styled(StarIcon)`
   width: 24px;
   vertical-align: baseline;
@@ -270,5 +271,4 @@ export const StyledStarIcon = styled(StarIcon)`
   @media (max-width: 560px) {
   width: 16px;
   }
-
 `;

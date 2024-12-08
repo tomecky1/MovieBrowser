@@ -13,6 +13,7 @@ export const theme = {
   breakpoints: {
     mobile: "560px",
     tabletVertical: "991px",
-    tabletHorizontal: "1080px",
+    tabletHorizontalS: "1080px",
+    tabletHorizontal: "1199px",
   },
 };
