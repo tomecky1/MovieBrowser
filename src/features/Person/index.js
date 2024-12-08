@@ -1,6 +1,6 @@
 import {
-  Wrapper,
-  ContainerWrapper,
+  StyledPersonWrapper,
+  FlexContainer,
   WrapperItem,
   ImageWrapper,
   Text,
@@ -10,9 +10,9 @@ import posterExample from "../../image/posterExample.png";
 
 export const Person = () => {
   return (
-    <ContainerWrapper>
+    <FlexContainer>
       <Text>Popular people</Text>
-      <Wrapper>
+      <StyledPersonWrapper>
         <WrapperItem>
           <ImageWrapper src={posterExample} alt="pic" />
           <WrapperText>Liu Yifei</WrapperText>
@@ -37,8 +37,79 @@ export const Person = () => {
           <ImageWrapper src={posterExample} alt="pic" />
           <WrapperText>Liu Yifei</WrapperText>
         </WrapperItem>
-        
-      </Wrapper>
-    </ContainerWrapper>
+        <WrapperItem>
+          <ImageWrapper src={posterExample} alt="pic" />
+          <WrapperText>Liu Yifei</WrapperText>
+        </WrapperItem>
+        <WrapperItem>
+          <ImageWrapper src={posterExample} alt="pic" />
+          <WrapperText>Liu Yifei</WrapperText>
+        </WrapperItem>
+        <WrapperItem>
+          <ImageWrapper src={posterExample} alt="pic" />
+          <WrapperText>Liu Yifei</WrapperText>
+        </WrapperItem>
+        <WrapperItem>
+          <ImageWrapper src={posterExample} alt="pic" />
+          <WrapperText>Liu Yifei</WrapperText>
+        </WrapperItem>
+        <WrapperItem>
+          <ImageWrapper src={posterExample} alt="pic" />
+          <WrapperText>Liu Yifei</WrapperText>
+        </WrapperItem>
+        <WrapperItem>
+          <ImageWrapper src={posterExample} alt="pic" />
+          <WrapperText>Liu Yifei</WrapperText>
+        </WrapperItem>
+        <WrapperItem>
+          <ImageWrapper src={posterExample} alt="pic" />
+          <WrapperText>Liu Yifei</WrapperText>
+        </WrapperItem>
+        <WrapperItem>
+          <ImageWrapper src={posterExample} alt="pic" />
+          <WrapperText>Liu Yifei</WrapperText>
+        </WrapperItem>
+        <WrapperItem>
+          <ImageWrapper src={posterExample} alt="pic" />
+          <WrapperText>Liu Yifei</WrapperText>
+        </WrapperItem>
+        <WrapperItem>
+          <ImageWrapper src={posterExample} alt="pic" />
+          <WrapperText>Liu Yifei</WrapperText>
+        </WrapperItem>
+        <WrapperItem>
+          <ImageWrapper src={posterExample} alt="pic" />
+          <WrapperText>Liu Yifei</WrapperText>
+        </WrapperItem>
+        <WrapperItem>
+          <ImageWrapper src={posterExample} alt="pic" />
+          <WrapperText>Liu Yifei</WrapperText>
+        </WrapperItem>
+        <WrapperItem>
+          <ImageWrapper src={posterExample} alt="pic" />
+          <WrapperText>Liu Yifei</WrapperText>
+        </WrapperItem>
+        <WrapperItem>
+          <ImageWrapper src={posterExample} alt="pic" />
+          <WrapperText>Liu Yifei</WrapperText>
+        </WrapperItem>
+        <WrapperItem>
+          <ImageWrapper src={posterExample} alt="pic" />
+          <WrapperText>Liu Yifei</WrapperText>
+        </WrapperItem>
+        <WrapperItem>
+          <ImageWrapper src={posterExample} alt="pic" />
+          <WrapperText>Liu Yifei</WrapperText>
+        </WrapperItem>
+        <WrapperItem>
+          <ImageWrapper src={posterExample} alt="pic" />
+          <WrapperText>Liu Yifei</WrapperText>
+        </WrapperItem>
+        <WrapperItem>
+          <ImageWrapper src={posterExample} alt="pic" />
+          <WrapperText>Liu Yifei</WrapperText>
+        </WrapperItem>
+      </StyledPersonWrapper>
+    </FlexContainer>
   );
 };
