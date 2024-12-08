@@ -55,6 +55,10 @@ export const NavigationItem = styled.li`
         padding: 8px 16px;
     }
 
+    @media (max-width: ${({theme}) => theme.breakpoints.mobile}) and (max-width: 1024px) {
+        padding: none;
+    }
+
     &:hover {
         border: 1px solid #fff;
         border-radius: 24px;
