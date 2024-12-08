@@ -20,7 +20,7 @@ export const StyledMovieDetailsTile = styled.div`
     margin: 40px 50px 40px 50px;
   }
 
-  @media(max-width: 700px){
+  @media(max-width: 700px) {
     grid-template-columns: auto auto;
     grid-gap: 18px;
     padding: 18px;
