@@ -55,7 +55,7 @@ export const NavigationItem = styled.li`
         padding: 8px 16px;
     }
 
-    @media (max-width: ${({theme}) => theme.breakpoints.mobile}) and (max-width: 1024px) {
+    @media (max-width: ${({theme}) => theme.breakpoints.smallMobile}) and (max-width: 1024px) {
         padding: none;
     }
 
@@ -99,9 +99,9 @@ export const SearchIconWrapper = styled.div`
 export const VideoIcon = styled.img`
     height: 40px;
     aspect-ratio: 1;
-
+    margin-right: 8px;
     @media (max-width: ${({theme}) => theme.breakpoints.mobile}) {
-        height: 14px;
+        height: 24px;
         aspect-ratio: 1;
     }
 `
