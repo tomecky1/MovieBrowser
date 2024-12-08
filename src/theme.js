@@ -6,13 +6,15 @@ export const theme = {
     scienceBlue: "#0044cc",
     candleLight: "#FCD420",
     stormGray: "#74788B",
+    heather: "#BAC7D580",
     woodSmoke: "#18181B",
   },
 
   breakpoints: {
-    smallMobile : "400px",
+    smallMobile: "400px",
     mobile: "560px",
     tabletVertical: "991px",
     tabletHorizontal: "1199px",
+    nextHubMax: "1280px"
   },
 };
