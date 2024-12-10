@@ -20,7 +20,7 @@ import {
 import movieDetailsImage from "./movieDetails.jpg";
 import { ContainerExtra } from "../../common/Container";
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
   return (
     <ContainerExtra>
       <StyledMovieDetailsTile>
@@ -61,3 +61,5 @@ export const MovieDetails = () => {
     </ContainerExtra >
   );
 };
+
+export default MovieDetails;

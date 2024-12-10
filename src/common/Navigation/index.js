@@ -10,7 +10,7 @@ import {
 import video from "../../image/Video.png";
 import {ReactComponent as SearchIcon} from "../../icons/Search.svg";
 
-export function Navigation() {
+const Navigation =() => {
   return (
     <>
       <NavigationWrapper>
@@ -31,3 +31,5 @@ export function Navigation() {
     </>
   );
 }
+
+export default Navigation;
