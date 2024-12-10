@@ -72,7 +72,7 @@ export const ImageWrapper = styled.img`
   }
 `;
 
-export const WrapperText = styled.p`
+export const WrapperActorName = styled.p`
   text-align: center;
   padding-bottom: 35px;
   margin: 0;
