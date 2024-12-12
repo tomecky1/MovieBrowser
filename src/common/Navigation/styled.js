@@ -31,6 +31,7 @@ export const NavigationTitle = styled.li`
     text-decoration: none;
     color: #fff;
     margin-right: 28px;
+    margin-left: 12px;
     @media (max-width: ${({theme}) => theme.breakpoints.mobile}) and (max-width: 1024px) {
         font-size: 13px;
         height: 17px;
@@ -107,7 +108,7 @@ export const SearchIconWrapper = styled.div`
 export const VideoIcon = styled.img`
     height: 40px;
     aspect-ratio: 1;
-    margin-right: 8px;
+    margin-right: 12px;
     @media (max-width: ${({theme}) => theme.breakpoints.mobile}) {
         height: 24px;
         aspect-ratio: 1;

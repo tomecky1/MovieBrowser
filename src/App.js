@@ -1,18 +1,18 @@
-import { Container } from "./common/Container";
+import {Container} from "./common/Container";
 import CastTile from "./features/CastTile";
 import Header from "./common/Header/index.js";
 import MovieDetails from "./features/MovieDetails/index.js";
-import Navigation from "./common/Navigation";
-import { MovieDetailsTile } from "./features/MovieListTile/index.js";
+import {Navigation} from "./common/Navigation";
+import {MovieDetailsTile} from "./features/MovieListTile";
 
 function App() {
   return (
     <Container>
-      <Navigation />
+      <Navigation/>
       <Header></Header>
-      <MovieDetails />
-      <MovieDetailsTile />
-      <CastTile />
+      <MovieDetails/>
+      <MovieDetailsTile/>
+      <CastTile/>
     </Container>
   );
 }
