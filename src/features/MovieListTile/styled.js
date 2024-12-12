@@ -128,7 +128,7 @@ export const TagList = styled.li`
   }
 `;
 
-export const RateList = styled.p`
+export const RateList = styled.div`
   display: flex;
   flex-wrap: nowrap;
   color: black;
