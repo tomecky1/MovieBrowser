@@ -182,7 +182,7 @@ export const Tag = styled.li`
   }
 `;
 
-export const Rate = styled.p`
+export const Rate = styled.div`
   display: flex;
   flex-wrap: nowrap;
   font-size: 22px;

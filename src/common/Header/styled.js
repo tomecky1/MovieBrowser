@@ -1,11 +1,23 @@
 import styled from "styled-components";
+import { css } from "styled-components";
+import { ReactComponent as StarIcon } from "../../icons/star.svg";
 
+const sharedStyles = css`
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19.2px;
+  margin: 0;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    font-size: 10px;
+    line-height: 12px;
+  }
+`;
 export const StyledHeader = styled.header`
-  position: relative;
-  height: 400px;
   display: flex;
-  justify-content: left;
   align-items: end;
+  position: relative;
+  height: 770px;
 
   &::before {
     content: "";
@@ -52,6 +64,10 @@ export const StyledHeader = styled.header`
 
     z-index: 1;
   }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    height: 148px;
+  }
 `;
 
 export const Image = styled.img`
@@ -63,21 +79,98 @@ export const Image = styled.img`
 `;
 
 export const AdditionalInfo = styled.div`
+  display: flex;
+  flex-direction: column;
   color: white;
   z-index: 2;
-  text-align: left;
-  padding-left: 150px;
+  margin-left: 276px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletHorizontal}) {
+    margin-left: 150px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    margin-left: 16px;
+  }
 `;
 
-export const MovieName = styled(AdditionalInfo)`
+export const MovieName = styled.header`
   font-size: 64px;
-  font-weight: 600px;
+  font-weight: 500;
+  line-height: 76.8px;
+  margin: 0;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    font-size: 24px;
+    line-height: 28.8px;
+  }
 `;
-export const MovieRating = styled(AdditionalInfo)`
+
+export const RatingContainer = styled.div`
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 24.5px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+      flex-wrap: nowrap;
+      margin-top: 4px;
+  }
+`;
+
+export const StyledStar = styled(StarIcon)`
+  width: 40px;
+  height: 38.12px;
+  margin-right: 8px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    width: 16px;
+    height: 15.25px;
+    margin-right: 4px;
+  }
+`;
+
+export const MovieRating = styled.p`
   font-size: 30px;
-  font-weight: 500px;
+  font-weight: 500;
+  margin: 0;
+  line-height: 39px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0;
+    line-height: 18.2px;
+  }
 `;
-export const MovieVotes = styled(AdditionalInfo)`
-  font-size: 16px;
-  font-weight: 400px;
+export const RatingOutOf = styled.p`
+  ${sharedStyles}
+  padding-top: 12px;
+  margin-left: 7px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    margin-left: 2px;
+    padding-top: 3px;
+  }
 `;
+
+export const MovieVotes = styled.p`
+  ${sharedStyles}
+  margin: 16px 0 56px 0;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    margin-left: 8px;
+    margin-bottom: 8px;
+  }
+`;
+
+export const MobileWrapper = styled.div`
+@media screen {
+  display: flex;
+  flex-direction: column;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    flex-direction: row;
+  }
+}
+`

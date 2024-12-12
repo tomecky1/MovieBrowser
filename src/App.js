@@ -1,20 +1,18 @@
 import { Container } from "./common/Container";
+import CastTile from "./features/CastTile";
 import Header from "./common/Header/index.js";
-import { MovieDetails } from "./features/MovieDetails/index.js";
-import { Navigation } from "./common/Navigation";
-import { Image } from "./common/Header/styled.js";
-import poster3 from "./image/poster3.jpg";
+import MovieDetails from "./features/MovieDetails/index.js";
+import Navigation from "./common/Navigation";
 import { MovieDetailsTile } from "./features/MovieListTile/index.js";
 
 function App() {
   return (
     <Container>
       <Navigation />
-      <Header title={"Nazwa filmu"} rating={"Ocena"} votes={"Wyświetlenia"}>
-        <Image src={poster3} alt="" />
-      </Header>
+      <Header></Header>
       <MovieDetails />
       <MovieDetailsTile />
+      <CastTile />
     </Container>
   );
 }

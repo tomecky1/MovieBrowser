@@ -6,6 +6,28 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 [SITE PREVIEW](https://krystian22frontend.github.io/movie-browser/)
 
+## DESCRIPTION
+
+This is a project from Youcode programming bootcamp, still in development.
+
+**Things to do in nearby future:**
+
+- Implementing API from movies databases
+- Adding page pagination
+- Adding People's details
+- Adding dark theme to the page (later in future)
+
+_Technology used in this project includes:_
+
+- HTML 5
+- CSS with BEM
+- JS
+- React
+- React Router
+- Redux Saga
+- Babel
+- Webpack
+
 ## Available Scripts
 
 In the project directory, you can run:
