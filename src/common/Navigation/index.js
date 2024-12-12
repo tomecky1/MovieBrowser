@@ -29,7 +29,7 @@ export function Navigation() {
             </SearchIconWrapper>
           </NavigationList>
           <Routes>
-            <Route exact path="/movie" element={<MovieList/>}/>
+            <Route exact path="/movies" element={<MovieList/>}/>
             <Route path={"/person"} element={<Person/>}/>
           </Routes>
         </NavigationWrapper>
