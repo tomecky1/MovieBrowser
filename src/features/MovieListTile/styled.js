@@ -72,9 +72,9 @@ export const DetailsList = styled.div`
 
 export const Header = styled.header`
   font-size: 22px;
-  line-height:28px;
+  line-height: 29px;
   font-weight: 500;
-  padding: 0 0 0 0;
+  padding: 0;
   margin: 0;
 
   @media (max-width: 1080px) {
@@ -90,8 +90,9 @@ export const YearList = styled.p`
   margin: 0;
 
   @media (max-width: 1080px) {
-    padding-top: 4px;
     font-size: 13px;
+    line-height: 17px;
+    margin-top: -4px;
     color: ${({ theme }) => theme.color.waterloo};
   }
 `;
@@ -111,13 +112,14 @@ export const TagList = styled.li`
   font-size: 18px;
   line-height: 20px;
   border-radius: 5px;
-  padding: 8px 16px;
-  margin: 8px;
+  padding: 8px 8px;
+  margin: 4px;
 
   @media (max-width: 1080px) {
     font-size: 10px;
     line-height: 11px;
     weight: 400;
+    padding: 4px;
   }
 `;
 
