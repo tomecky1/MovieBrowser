@@ -91,7 +91,7 @@ export const WrapperRole = styled.p`
   line-height: 27px;
   text-align: center;
   margin: 0;
-  color: ${({ theme }) => theme.color.darkerGrey};
+  color: ${({ theme }) => theme.color.waterloo};
   padding-bottom: 16px;
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     font-size: 13px;
