@@ -5,31 +5,25 @@ import {
   NavigationTitle,
   NavigationWrapper,
   SearchIconWrapper,
-  VideoIcon,
 } from "./styled";
-import video from "../../image/Video.png";
+import Video from "../../image/Video.png";
 import {ReactComponent as SearchIcon} from "../../icons/Search.svg";
 
-const Navigation =() => {
+export function Navigation() {
   return (
     <>
       <NavigationWrapper>
         <NavigationList>
-          <VideoIcon src={video} alt="Logo"></VideoIcon>
+          <img src={Video} alt="Logo"/>
           <NavigationTitle>Movies Browser</NavigationTitle>
           <NavigationItem>MOVIES</NavigationItem>
           <NavigationItem>PEOPLE</NavigationItem>
+          <SearchIconWrapper>
+            <SearchIcon/>
+            <NavigationInput type="text" placeholder={"Search for movies..."}></NavigationInput>
+          </SearchIconWrapper>
         </NavigationList>
-        <SearchIconWrapper>
-          <SearchIcon/>
-          <NavigationInput
-            type="text"
-            placeholder={"Search for movies..."}
-          ></NavigationInput>
-        </SearchIconWrapper>
       </NavigationWrapper>
     </>
   );
 }
-
-export default Navigation;
