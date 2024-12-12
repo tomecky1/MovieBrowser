@@ -4,6 +4,7 @@ import { CrewTile } from "./features/CrewTile/index.js";
 import Header from "./common/Header/index.js";
 import MovieDetails from "./features/MovieDetails/index.js";
 import Navigation from "./common/Navigation";
+import { MovieDetailsTile } from "./features/MovieListTile/index.js";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Navigation />
       <Header></Header>
       <MovieDetails />
+      <MovieDetailsTile />
       <CastTile />
       <CrewTile/>
     </Container>
