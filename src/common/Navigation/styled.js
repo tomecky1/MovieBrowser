@@ -82,6 +82,10 @@ export const NavigationInput = styled.input`
         font-size: 13px;
         width: auto;
     }
+
+    @media (max-width: ${({theme}) => theme.breakpoints.biggerMobile}) {
+        margin-right: 36px;
+    }
 `;
 
 export const SearchIconWrapper = styled.div`
@@ -93,6 +97,10 @@ export const SearchIconWrapper = styled.div`
     @media (max-width: ${({theme}) => theme.breakpoints.tabletVertical}) {
         width: 80%;
         height: 44px;
+    }
+
+    @media (max-width: ${({theme}) => theme.breakpoints.biggerMobile}) {
+        margin-right: 36px;
     }
 `;
 
