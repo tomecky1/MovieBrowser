@@ -10,7 +10,7 @@ import {
 import Video from "../../image/Video.png";
 import {ReactComponent as SearchIcon} from "../../icons/Search.svg";
 import {BrowserRouter, NavLink, Route, Routes} from "react-router-dom";
-import {MovieDetails} from "../../features/MovieDetails";
+import {MovieList} from "../../features/MovieDetails";
 import {Person} from "../../features/Person";
 
 export function Navigation() {
@@ -21,7 +21,7 @@ export function Navigation() {
           <NavigationList>
             <img src={Video} alt="Logo"/>
             <NavigationTitle>Movies Browser</NavigationTitle>
-            <NavigationItem><NavLink to={"/movie"} activeClassName={"active"}>MOVIES</NavLink></NavigationItem>
+            <NavigationItem><NavLink to={"/movies"} activeClassName={"active"}>MOVIES</NavLink></NavigationItem>
             <NavigationItem><NavLink to={"/person"} activeClassName={"active"}>PEOPLE</NavLink></NavigationItem>
             <SearchIconWrapper>
               <SearchIcon/>
@@ -29,7 +29,7 @@ export function Navigation() {
             </SearchIconWrapper>
           </NavigationList>
           <Routes>
-            <Route exact path="/movie" element={<MovieDetails/>}/>
+            <Route exact path="/movie" element={<MovieList/>}/>
             <Route path={"/person"} element={<Person/>}/>
           </Routes>
         </NavigationWrapper>
