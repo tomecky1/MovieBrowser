@@ -28,6 +28,7 @@ export const MovieDetailsTile = () => {
                     <TagsList>
                         <TagList>Action</TagList>
                         <TagList>Drama</TagList>
+                        <TagList>Adventure</TagList>
                     </TagsList>
                     <RateList>
                         <StyledStarIcon />

@@ -21,6 +21,11 @@ export const StyledMovieDetailsTileList = styled.div`
     margin: 0 16px 20px 16px;
     column-gap: 16px;
   }
+
+  @media (max-width: 560px) {
+    width: 288px;
+    height: 201px;
+  }
 `;
 
 
