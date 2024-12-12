@@ -9,14 +9,14 @@ import {
 } from "./styled";
 import Video from "../../image/Video.png";
 import {ReactComponent as SearchIcon} from "../../icons/Search.svg";
-import {BrowserRouter, NavLink, Route, Routes} from "react-router-dom";
+import {HashRouter, NavLink, Route, Routes} from "react-router-dom";
 import {MovieList} from "../../features/MovieDetails";
 import {Person} from "../../features/Person";
 
 export function Navigation() {
   return (
     <>
-      <BrowserRouter basename={process.env.PUBLIC_URL}>
+      <HashRouter basename={process.env.PUBLIC_URL}>
         <NavigationWrapper>
           <NavigationList>
             <img src={Video} alt="Logo"/>
@@ -29,11 +29,11 @@ export function Navigation() {
             </SearchIconWrapper>
           </NavigationList>
           <Routes>
-            <Route exact path="/movies" element={<MovieList/>}/>
+            <Route exact path={"/movies"} element={<MovieList/>}/>
             <Route path={"/person"} element={<Person/>}/>
           </Routes>
         </NavigationWrapper>
-      </BrowserRouter>
+      </HashRouter>
     </>
   );
 }
