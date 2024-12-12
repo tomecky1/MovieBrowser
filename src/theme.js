@@ -8,7 +8,6 @@ export const theme = {
     stormGray: "#74788B",
     heather: "#BAC7D580",
     waterloo: "#7E839A",
-    darkerGrey: "#7E839A",
     woodSmoke: "#18181B",
 
   },
