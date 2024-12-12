@@ -10,8 +10,8 @@ import {
 import Video from "../../image/Video.png";
 import {ReactComponent as SearchIcon} from "../../icons/Search.svg";
 import {HashRouter, NavLink, Route, Routes} from "react-router-dom";
-import {MovieList} from "../../features/MovieDetails";
-import {PersonDetails} from "../../features/Person";
+import {MovieList} from "../../features/MovieList";
+import {PersonDetails} from "../../features/PersonDetails";
 
 export function Navigation() {
   return (
