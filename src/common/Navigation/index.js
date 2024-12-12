@@ -11,7 +11,7 @@ import Video from "../../image/Video.png";
 import {ReactComponent as SearchIcon} from "../../icons/Search.svg";
 import {HashRouter, NavLink, Route, Routes} from "react-router-dom";
 import {MovieList} from "../../features/MovieDetails";
-import {Person} from "../../features/Person";
+import {PersonDetails} from "../../features/Person";
 
 export function Navigation() {
   return (
@@ -30,7 +30,7 @@ export function Navigation() {
           </NavigationList>
           <Routes>
             <Route exact path={"/movies"} element={<MovieList/>}/>
-            <Route path={"/person"} element={<Person/>}/>
+            <Route path={"/person"} element={<PersonDetails/>}/>
           </Routes>
         </NavigationWrapper>
       </HashRouter>
