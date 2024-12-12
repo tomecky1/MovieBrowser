@@ -1,22 +1,9 @@
 import styled from "styled-components";
 
-export const Text = styled.header`
-  font-size: 36px;
-  font-weight: 600;
-  line-height: 43.2px;
-  margin: 56px 0 24px 0;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    font-size: 20px;
-    line-height: 24px;
-    margin: 24px 0 16px 0px;
-  }
-`;
-
 export const FlexContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin-left: 276px;
+  align-items: center;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     border-radius: 5px;
@@ -30,7 +17,24 @@ export const FlexContainer = styled.div`
   }
 `;
 
+
+export const Text = styled.header`
+  max-width: 1368px;
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 43.2px;
+  margin: 64px 0 32px 0;
+  align-self: flex-start;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    font-size: 20px;
+    line-height: 24px;
+    margin: 24px 0 16px 0px;
+  }
+`;
+
 export const StyledPersonWrapper = styled.div`
+  width: 100%;
   max-width: 1368px;
   background-color: ${({ theme }) => theme.color.whisper};
   display: grid;
@@ -42,11 +46,12 @@ export const StyledPersonWrapper = styled.div`
     grid-template-columns: repeat(auto-fill, minmax(136px, 1fr));
     grid-template-rows: repeat(auto-fill, minmax(245px, 1fr));
     gap: 16px;
+    margin-bottom: 88px;
   }
 `;
 
 export const WrapperItem = styled.div`
-  padding: 16px;
+  padding: 16px 16px 0 16px;
   gap: 12px;
   display: flex;
   flex-direction: column;
@@ -54,7 +59,8 @@ export const WrapperItem = styled.div`
   background-color: ${({ theme }) => theme.color.white};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    padding: 8px;
+    padding: 8px 8px 0 8px;
+    gap: 8px;
     border-radius: 5px;
     box-shadow: 0px 4px 12px 0px ${({ theme }) => theme.color.heather};
   }
@@ -74,7 +80,6 @@ export const ImageWrapper = styled.img`
 
 export const WrapperActorName = styled.p`
   text-align: center;
-  padding-bottom: 35px;
   margin: 0;
   font-size: 22px;
   font-weight: 500;
@@ -83,6 +88,21 @@ export const WrapperActorName = styled.p`
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     font-size: 14px;
     line-height: 18.2px;
-    padding-bottom: 33px;
+  }
+`;
+
+export const WrapperRole = styled.p`
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 27px;
+  text-align: center;
+  margin: 0;
+  color: ${({ theme }) => theme.color.waterloo};
+  padding-bottom: 16px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    font-size: 13px;
+    line-height: 16.9px;
+    padding-bottom: 8px;
   }
 `;

@@ -4,7 +4,7 @@ import {
   WrapperItem,
   ImageWrapper,
   Text,
-  WrapperText,
+  WrapperActorName,
 } from "./styled";
 import posterExample from "../../image/posterExample.png";
 
@@ -15,99 +15,99 @@ export const Person = () => {
       <StyledPersonWrapper>
         <WrapperItem>
           <ImageWrapper src={posterExample} alt="pic" />
-          <WrapperText>Liu Yifei</WrapperText>
+          <WrapperActorName>Liu Yifei</WrapperActorName>
         </WrapperItem>
         <WrapperItem>
           <ImageWrapper src={posterExample} alt="pic" />
-          <WrapperText>Liu Yifei</WrapperText>
+          <WrapperActorName>Liu Yifei</WrapperActorName>
         </WrapperItem>
         <WrapperItem>
           <ImageWrapper src={posterExample} alt="pic" />
-          <WrapperText>Liu Yifei</WrapperText>
+          <WrapperActorName>Liu Yifei</WrapperActorName>
         </WrapperItem>
         <WrapperItem>
           <ImageWrapper src={posterExample} alt="pic" />
-          <WrapperText>Liu Yifei</WrapperText>
+          <WrapperActorName>Liu Yifei</WrapperActorName>
         </WrapperItem>
         <WrapperItem>
           <ImageWrapper src={posterExample} alt="pic" />
-          <WrapperText>Liu Yifei</WrapperText>
+          <WrapperActorName>Liu Yifei</WrapperActorName>
         </WrapperItem>
         <WrapperItem>
           <ImageWrapper src={posterExample} alt="pic" />
-          <WrapperText>Liu Yifei</WrapperText>
+          <WrapperActorName>Liu Yifei</WrapperActorName>
         </WrapperItem>
         <WrapperItem>
           <ImageWrapper src={posterExample} alt="pic" />
-          <WrapperText>Liu Yifei</WrapperText>
+          <WrapperActorName>Liu Yifei</WrapperActorName>
         </WrapperItem>
         <WrapperItem>
           <ImageWrapper src={posterExample} alt="pic" />
-          <WrapperText>Liu Yifei</WrapperText>
+          <WrapperActorName>Liu Yifei</WrapperActorName>
         </WrapperItem>
         <WrapperItem>
           <ImageWrapper src={posterExample} alt="pic" />
-          <WrapperText>Liu Yifei</WrapperText>
+          <WrapperActorName>Liu Yifei</WrapperActorName>
         </WrapperItem>
         <WrapperItem>
           <ImageWrapper src={posterExample} alt="pic" />
-          <WrapperText>Liu Yifei</WrapperText>
+          <WrapperActorName>Liu Yifei</WrapperActorName>
         </WrapperItem>
         <WrapperItem>
           <ImageWrapper src={posterExample} alt="pic" />
-          <WrapperText>Liu Yifei</WrapperText>
+          <WrapperActorName>Liu Yifei</WrapperActorName>
         </WrapperItem>
         <WrapperItem>
           <ImageWrapper src={posterExample} alt="pic" />
-          <WrapperText>Liu Yifei</WrapperText>
+          <WrapperActorName>Liu Yifei</WrapperActorName>
         </WrapperItem>
         <WrapperItem>
           <ImageWrapper src={posterExample} alt="pic" />
-          <WrapperText>Liu Yifei</WrapperText>
+          <WrapperActorName>Liu Yifei</WrapperActorName>
         </WrapperItem>
         <WrapperItem>
           <ImageWrapper src={posterExample} alt="pic" />
-          <WrapperText>Liu Yifei</WrapperText>
+          <WrapperActorName>Liu Yifei</WrapperActorName>
         </WrapperItem>
         <WrapperItem>
           <ImageWrapper src={posterExample} alt="pic" />
-          <WrapperText>Liu Yifei</WrapperText>
+          <WrapperActorName>Liu Yifei</WrapperActorName>
         </WrapperItem>
         <WrapperItem>
           <ImageWrapper src={posterExample} alt="pic" />
-          <WrapperText>Liu Yifei</WrapperText>
+          <WrapperActorName>Liu Yifei</WrapperActorName>
         </WrapperItem>
         <WrapperItem>
           <ImageWrapper src={posterExample} alt="pic" />
-          <WrapperText>Liu Yifei</WrapperText>
+          <WrapperActorName>Liu Yifei</WrapperActorName>
         </WrapperItem>
         <WrapperItem>
           <ImageWrapper src={posterExample} alt="pic" />
-          <WrapperText>Liu Yifei</WrapperText>
+          <WrapperActorName>Liu Yifei</WrapperActorName>
         </WrapperItem>
         <WrapperItem>
           <ImageWrapper src={posterExample} alt="pic" />
-          <WrapperText>Liu Yifei</WrapperText>
+          <WrapperActorName>Liu Yifei</WrapperActorName>
         </WrapperItem>
         <WrapperItem>
           <ImageWrapper src={posterExample} alt="pic" />
-          <WrapperText>Liu Yifei</WrapperText>
+          <WrapperActorName>Liu Yifei</WrapperActorName>
         </WrapperItem>
         <WrapperItem>
           <ImageWrapper src={posterExample} alt="pic" />
-          <WrapperText>Liu Yifei</WrapperText>
+          <WrapperActorName>Liu Yifei</WrapperActorName>
         </WrapperItem>
         <WrapperItem>
           <ImageWrapper src={posterExample} alt="pic" />
-          <WrapperText>Liu Yifei</WrapperText>
+          <WrapperActorName>Liu Yifei</WrapperActorName>
         </WrapperItem>
         <WrapperItem>
           <ImageWrapper src={posterExample} alt="pic" />
-          <WrapperText>Liu Yifei</WrapperText>
+          <WrapperActorName>Liu Yifei</WrapperActorName>
         </WrapperItem>
         <WrapperItem>
           <ImageWrapper src={posterExample} alt="pic" />
-          <WrapperText>Liu Yifei</WrapperText>
+          <WrapperActorName>Liu Yifei</WrapperActorName>
         </WrapperItem>
       </StyledPersonWrapper>
     </FlexContainer>

@@ -7,8 +7,9 @@ export const theme = {
     candleLight: "#FCD420",
     stormGray: "#74788B",
     heather: "#BAC7D580",
-    woodSmoke: "#18181B",
     waterloo: "#7E839A",
+    woodSmoke: "#18181B",
+
   },
 
   breakpoints: {
