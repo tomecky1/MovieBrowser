@@ -21,7 +21,8 @@ import movieDetailsImage from "./movieDetails.jpg";
 import {ContainerExtra} from "../../common/Container";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchMovies, selectMovies, selectStatus} from "../movieBrowserSlice";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
+import {getMovieOverview} from "../movieDetailsAPI";
 
 const MovieDetails = () => {
 
@@ -35,13 +36,32 @@ const MovieDetails = () => {
     dispatch(fetchMovies());
   }, [dispatch]);
   console.log(status);
-  if (status === 'error') {
-    return <p>Failed to load movies. Please try again later.</p>;
+  console.log(movies);
+  const [overview, setOverview] = useState(null); // dodaj stan na dane przeglądu
+  const [error, setError] = useState(false); // dodaj stan na błąd
+
+  const movieId = 550; // może być przekazany jako parametr jeśli komponent ma dynamiczne ID
+
+  useEffect(() => {
+    const fetchOverview = async () => {
+      try {
+        const fetchedOverview = await getMovieOverview(movieId);
+        if (fetchedOverview) {
+          setOverview(fetchedOverview);
+        }
+      } catch (err) {
+        console.error("Błąd podczas pobierania przeglądu filmu:", err);
+        setError(true); // ustaw stan błędu
+      }
+    };
+
+    fetchOverview();
+  }, [movieId]);
+
+  if (error) {
+    return <p>Wystąpił błąd podczas ładowania przeglądu filmu. Spróbuj ponownie później.</p>;
   }
-  if (!Array.isArray(movies)) {
-    console.error('Movies should be an array:', movies);
-    return null;
-  }
+
   return (
     <ContainerExtra>
       <StyledMovieDetailsTile>
@@ -51,12 +71,6 @@ const MovieDetails = () => {
         <Details>
           <Header>Movie Title: </Header>
 
-          <div>
-            {movies.map(movie => (
-              <div key={movie.id}>{movie.title}</div>
-            ))}
-          </div>
-          
 
           <Year></Year>
           <DetailInfo>
@@ -81,14 +95,11 @@ const MovieDetails = () => {
           </Rate>
         </Details>
         <MovieDescription>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat.
+          {overview ? overview : "Ładowanie przeglądu..."}
         </MovieDescription>
       </StyledMovieDetailsTile>
 
-      {/*<Content status={repositoriesStatus} repositories={repositories}/>*/}
+      {/*<Content status={moviesStatus} repositories={repositories}/>*/}
     </ContainerExtra>
   );
 };

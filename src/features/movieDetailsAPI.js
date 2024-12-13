@@ -11,17 +11,29 @@ const options = {
 };
 
 export const getMovieDetails = async () => {
-  try {
-    const response = await axios.request(options);
-    console.log(response.data);
-    return response.data;
+  axios
+    .request(options)
+    .then(res => console.log(res.data))
+    .catch(err => console.error(err));
+};
 
+
+export const getMovieOverview = async (movieId) => {
+  if (!movieId) {
+    console.error("movieId nie został dostarczony.");
+    return null;
+  }
+
+  try {
+    const response = await axios.request({
+      ...options,
+      url: `https://api.themoviedb.org/3/movie/${movieId}`,
+    });
+    return response.data.overview;
   } catch (err) {
-    console.error(err);
-    throw err;
+    console.error("Błąd podczas pobierania danych filmu:", err);
+    return null;
   }
 };
-// axios
-//   .request(options)
-//   .then(res => console.log(res.data))
-//   .catch(err => console.error(err));
+
+

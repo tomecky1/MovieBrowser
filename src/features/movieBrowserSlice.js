@@ -14,6 +14,7 @@ const movieBrowserSlice = createSlice({
     fetchMoviesSuccess: (state, {payload: movies}) => {
       state.status = 'success';
       state.movies = Array.isArray(movies) ? movies : [];
+
     },
     fetchMoviesError: (state) => {
       state.status = 'error';
