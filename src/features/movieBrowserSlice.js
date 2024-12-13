@@ -3,7 +3,7 @@ import {createSlice} from "@reduxjs/toolkit";
 const movieBrowserSlice = createSlice({
   name: 'movieBrowser',
   initialState: {
-    movies: [],
+    repositories: [],
     status: 'initial',
   },
   reducers: {
@@ -23,6 +23,8 @@ const movieBrowserSlice = createSlice({
 });
 export const {fetchMovies, fetchMoviesSuccess, fetchMoviesError} = movieBrowserSlice.actions;
 
-const selectMovieDetalsState = state => state.movies
+const selectMovieBrowserState = state => state.movieBrowser;
+export const selectRepositories = state => selectMovieBrowserState(state).repositories;
+export const selectStatus = state => selectMovieBrowserState(state).status;
 
 export default movieBrowserSlice.reducer;
