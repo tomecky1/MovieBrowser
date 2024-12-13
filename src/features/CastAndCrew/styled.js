@@ -1,41 +1,8 @@
 import styled from "styled-components";
 
-export const FlexContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    border-radius: 5px;
-    margin-left: 16px;
-    margin-right: 16px;
-  }
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.nextHubMax}) {
-    margin-left: 16px;
-    margin-right: 16px;
-  }
-`;
-
-
-export const Text = styled.header`
-  max-width: 1368px;
-  font-size: 36px;
-  font-weight: 600;
-  line-height: 43.2px;
-  margin: 64px 0 32px 0;
-  align-self: flex-start;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    font-size: 20px;
-    line-height: 24px;
-    margin: 24px 0 16px 0px;
-  }
-`;
-
 export const StyledPersonWrapper = styled.div`
   width: 100%;
-  max-width: 1368px;
+  /* max-width: 1368px; */
   background-color: ${({ theme }) => theme.color.whisper};
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(208px, 1fr));
@@ -47,6 +14,20 @@ export const StyledPersonWrapper = styled.div`
     grid-template-rows: repeat(auto-fill, minmax(245px, 1fr));
     gap: 16px;
     margin-bottom: 88px;
+  }
+`;
+
+export const Text = styled.div`
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 43.2px;
+  margin: 64px 0 32px 0;
+  align-self: flex-start;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    font-size: 20px;
+    line-height: 24px;
+    margin: 24px 0 16px 16px;
   }
 `;
 
