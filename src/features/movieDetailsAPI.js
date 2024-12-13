@@ -29,11 +29,15 @@ export const getMovieOverview = async (movieId) => {
       ...options,
       url: `https://api.themoviedb.org/3/movie/${movieId}`,
     });
-    return response.data.overview;
+    return {
+      overview: response.data.overview,
+      title: response.data.title
+    };
   } catch (err) {
     console.error("Błąd podczas pobierania danych filmu:", err);
     return null;
   }
+
 };
 
 

@@ -38,29 +38,27 @@ const MovieDetails = () => {
   console.log(status);
   console.log(movies);
   const [overview, setOverview] = useState(null); // dodaj stan na dane przeglądu
+  const [title, setTitle] = useState(null)
   const [error, setError] = useState(false); // dodaj stan na błąd
 
   const movieId = 550; // może być przekazany jako parametr jeśli komponent ma dynamiczne ID
 
   useEffect(() => {
-    const fetchOverview = async () => {
+    const fetchMovieDetails = async () => {
       try {
-        const fetchedOverview = await getMovieOverview(movieId);
-        if (fetchedOverview) {
-          setOverview(fetchedOverview);
+        const fetchedData = await getMovieOverview(movieId);
+        if (fetchedData) {
+          setOverview(fetchedData.overview);
+          setTitle(fetchedData.title);
         }
       } catch (err) {
-        console.error("Błąd podczas pobierania przeglądu filmu:", err);
-        setError(true); // ustaw stan błędu
+        console.error("Błąd podczas pobierania szczegółów filmu:", err);
+        setError(true);
       }
     };
 
-    fetchOverview();
+    fetchMovieDetails();
   }, [movieId]);
-
-  if (error) {
-    return <p>Wystąpił błąd podczas ładowania przeglądu filmu. Spróbuj ponownie później.</p>;
-  }
 
   return (
     <ContainerExtra>
@@ -69,7 +67,7 @@ const MovieDetails = () => {
           <Image src={movieDetailsImage} alt="Movie poster"/>
         </IconContainer>
         <Details>
-          <Header>Movie Title: </Header>
+          <Header>Movie Title: {title ? title : "Ładowanie tytułu..."}</Header>
 
 
           <Year></Year>
