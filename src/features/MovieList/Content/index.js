@@ -1,7 +1,13 @@
 import Error from "../../../common/Error/";
-import {Repositories} from "./Repositories/Repositories.jsx";
 import Loading from "../../../common/Loading";
 
+// import Repositories from "../../../common/Repositories";
+
+function Repositories(props) {
+  return null;
+}
+
+Repositories.propTypes = {};
 export const Content = ({status, repositories}) => {
   switch (status) {
     case 'initial':
