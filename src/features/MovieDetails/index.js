@@ -39,6 +39,7 @@ const MovieDetails = () => {
   console.log(movies);
   const [overview, setOverview] = useState(null); // dodaj stan na dane przeglądu
   const [title, setTitle] = useState(null)
+  const [date, setDate] = useState(null)
   const [error, setError] = useState(false); // dodaj stan na błąd
 
   const movieId = 550; // może być przekazany jako parametr jeśli komponent ma dynamiczne ID
@@ -50,6 +51,7 @@ const MovieDetails = () => {
         if (fetchedData) {
           setOverview(fetchedData.overview);
           setTitle(fetchedData.title);
+          setDate(fetchedData.date);
         }
       } catch (err) {
         console.error("Błąd podczas pobierania szczegółów filmu:", err);
@@ -78,7 +80,7 @@ const MovieDetails = () => {
             </DetailInfoElement>
             <DetailInfoElement>
               <DetailInfoElementType>Release date:&nbsp;</DetailInfoElementType>
-              14.06.2020
+              {date ? date : "release date unknown"}
             </DetailInfoElement>
           </DetailInfo>
           <Tags>

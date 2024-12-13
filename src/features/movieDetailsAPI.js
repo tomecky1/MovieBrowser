@@ -31,7 +31,8 @@ export const getMovieOverview = async (movieId) => {
     });
     return {
       overview: response.data.overview,
-      title: response.data.title
+      title: response.data.title,
+      date: response.data.release_date
     };
   } catch (err) {
     console.error("Błąd podczas pobierania danych filmu:", err);
