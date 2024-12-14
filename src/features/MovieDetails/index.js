@@ -1,11 +1,12 @@
 import {
+  FlexContainer,
   StyledMovieDetailsTile,
   IconContainer,
   Image,
   Details,
   Header,
   Year,
-  MovieDescription,
+  MovieDescriptionTile,
   Tags,
   Tag,
   Rate,
@@ -17,12 +18,12 @@ import {
   DetailInfoElement,
   StyledStarIcon,
 } from "./styled";
-import movieDetailsImage from "./movieDetails.jpg";
-import { ContainerExtra } from "../../common/Container";
+import movieDetailsImage from "./movieDetails.jpg"
+import {CastAndCrew} from "../CastAndCrew/index"
 
 const MovieDetails = () => {
   return (
-    <ContainerExtra>
+    <FlexContainer>
       <StyledMovieDetailsTile>
         <IconContainer>
           <Image src={movieDetailsImage} alt="Movie poster" />
@@ -45,21 +46,61 @@ const MovieDetails = () => {
             <Tag>Drama</Tag>
           </Tags>
           <Rate>
-            <StyledStarIcon/>
+            <StyledStarIcon />
             <RateGrade>8</RateGrade>
             <RateElement>/ 10</RateElement>
             <RateVotes>335 votes</RateVotes>
           </Rate>
-          </Details>
-          <MovieDescription>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-            minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
-          </MovieDescription>
+        </Details>
+        <MovieDescriptionTile>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat.
+        </MovieDescriptionTile>
       </StyledMovieDetailsTile>
-    </ContainerExtra >
+            <CastAndCrew />
+    </FlexContainer>
+    
   );
 };
 
 export default MovieDetails;
+
+// <>
+
+// <FlexContainer>
+//   <StyledPersonWrapper>
+//     <WrapperItem>
+//       <ImageWrapper src={Crew} alt="pic" />
+//       <WrapperActorName>Niki Caro</WrapperActorName>
+//       <WrapperRole>Director</WrapperRole>
+//     </WrapperItem>
+//     <WrapperItem>
+//       <ImageWrapper src={Crew} alt="pic" />
+//       <WrapperActorName>Niki Caro</WrapperActorName>
+//       <WrapperRole>Director</WrapperRole>
+//     </WrapperItem>
+//     <WrapperItem>
+//       <ImageWrapper src={Crew} alt="pic" />
+//       <WrapperActorName>Niki Caro</WrapperActorName>
+//       <WrapperRole>Director</WrapperRole>
+//     </WrapperItem>
+//     <WrapperItem>
+//       <ImageWrapper src={Crew} alt="pic" />
+//       <WrapperActorName>Niki Caro</WrapperActorName>
+//       <WrapperRole>Director</WrapperRole>
+//     </WrapperItem>
+//     <WrapperItem>
+//       <ImageWrapper src={Crew} alt="pic" />
+//       <WrapperActorName>Niki Caro</WrapperActorName>
+//       <WrapperRole>Director</WrapperRole>
+//     </WrapperItem>
+//     <WrapperItem>
+//       <ImageWrapper src={Crew} alt="pic" />
+//       <WrapperActorName>Niki Caro</WrapperActorName>
+//       <WrapperRole>Director</WrapperRole>
+//     </WrapperItem>
+//   </StyledPersonWrapper>
+// </FlexContainer>
+// </>
