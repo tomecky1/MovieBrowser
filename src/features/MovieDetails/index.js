@@ -40,6 +40,8 @@ const MovieDetails = () => {
   const [overview, setOverview] = useState(null); // dodaj stan na dane przeglądu
   const [title, setTitle] = useState(null)
   const [date, setDate] = useState(null)
+  const [votes, setVotes] = useState(null)
+  const [vote_average, setVote_average] = useState(null)
   const [error, setError] = useState(false); // dodaj stan na błąd
 
   const movieId = 550; // może być przekazany jako parametr jeśli komponent ma dynamiczne ID
@@ -52,6 +54,8 @@ const MovieDetails = () => {
           setOverview(fetchedData.overview);
           setTitle(fetchedData.title);
           setDate(fetchedData.date);
+          setVotes(fetchedData.votes);
+          setVote_average(fetchedData.vote_average);
         }
       } catch (err) {
         console.error("Błąd podczas pobierania szczegółów filmu:", err);
@@ -89,9 +93,9 @@ const MovieDetails = () => {
           </Tags>
           <Rate>
             <StyledStarIcon/>
-            <RateGrade>8</RateGrade>
+            <RateGrade>{vote_average ? vote_average : "Ładuję ocenę filmu"}</RateGrade>
             <RateElement>/ 10</RateElement>
-            <RateVotes>335 votes</RateVotes>
+            <RateVotes>{votes ? votes : "Liczba głosów"} votes</RateVotes>
           </Rate>
         </Details>
         <MovieDescription>
