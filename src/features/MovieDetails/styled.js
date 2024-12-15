@@ -12,6 +12,7 @@ export const FlexContainer = styled.div`
     border-radius: 5px;
     margin-left: 16px;
     margin-right: 16px;
+    margin-bottom: 88px;
   }
   @media (max-width: ${({ theme }) => theme.breakpoints.nextHubMax}) {
     margin-left: 16px;
@@ -24,7 +25,6 @@ export const StyledMovieDetailsTile = styled.div`
   background-color: ${({ theme }) => theme.color.white};
   display: grid;
   grid-gap: 40px;
-  align-content: start;
   grid-template-columns: 352px 3fr;
   grid-template-rows: auto auto;
   margin-top: 64px;
@@ -34,21 +34,21 @@ export const StyledMovieDetailsTile = styled.div`
     grid-template-columns: auto auto;
     grid-gap: 20px;
     padding: 30px;
-    margin: 40px 50px 40px 50px;
+    margin-top: 40px
   }
 
   @media (max-width: 700px) {
     grid-template-columns: auto auto;
     grid-gap: 18px;
     padding: 18px;
-    margin: 30px 30px 30px 30px;
+    margin-top: 30px
   }
 
   @media (max-width: 560px) {
     grid-template-columns: 114px;
     grid-gap: 16px;
     padding: 16px;
-    margin: 16px 16px 21px 16px;
+    margin-top: 16px
   }
 `;
 

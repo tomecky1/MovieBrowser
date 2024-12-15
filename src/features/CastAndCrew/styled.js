@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const StyledPersonWrapper = styled.div`
   width: 100%;
-  /* max-width: 1368px; */
   background-color: ${({ theme }) => theme.color.whisper};
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(208px, 1fr));
@@ -13,7 +12,6 @@ export const StyledPersonWrapper = styled.div`
     grid-template-columns: repeat(auto-fill, minmax(136px, 1fr));
     grid-template-rows: repeat(auto-fill, minmax(245px, 1fr));
     gap: 16px;
-    margin-bottom: 88px;
   }
 `;
 
@@ -27,7 +25,7 @@ export const Text = styled.div`
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     font-size: 20px;
     line-height: 24px;
-    margin: 24px 0 16px 16px;
+    margin: 24px 0 16px 0;
   }
 `;
 
