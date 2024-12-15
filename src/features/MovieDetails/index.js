@@ -7,25 +7,24 @@ import {
   IconContainer,
   Image,
   MovieDescription,
+  FlexContainer,
+  StyledMovieDetailsTile,
+  Year,
+  Tags,
+  Tag,
   Rate,
   RateElement,
   RateGrade,
   RateVotes,
-  StyledMovieDetailsTile,
   StyledStarIcon,
-  Tag,
-  Tags,
-  Year,
 } from "./styled";
-import {ContainerExtra} from "../../common/Container";
-import {useDispatch, useSelector} from "react-redux";
-import {fetchMovies, selectMovies, selectStatus} from "../movieBrowserSlice";
-import {useEffect, useState} from "react";
-import {getMovieOverview} from "../movieDetailsAPI";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchMovies, selectMovies, selectStatus } from "../movieBrowserSlice";
+import { useEffect, useState } from "react";
+import { getMovieOverview } from "../movieDetailsAPI";
+import { CastAndCrew } from "../CastAndCrew/index";
 
 const MovieDetails = () => {
-
-
   const dispatch = useDispatch();
 
   const movies = useSelector(selectMovies);
@@ -37,11 +36,11 @@ const MovieDetails = () => {
   console.log(status);
   console.log(movies);
   const [overview, setOverview] = useState(null); // dodaj stan na dane przeglądu
-  const [title, setTitle] = useState(null)
-  const [date, setDate] = useState(null)
-  const [votes, setVotes] = useState(null)
-  const [vote_average, setVote_average] = useState(null)
-  const [poster, setPoster] = useState(null)
+  const [title, setTitle] = useState(null);
+  const [date, setDate] = useState(null);
+  const [votes, setVotes] = useState(null);
+  const [vote_average, setVote_average] = useState(null);
+  const [poster, setPoster] = useState(null);
   const [error, setError] = useState(false); // dodaj stan na błąd
 
   const movieId = 550; // może być przekazany jako parametr jeśli komponent ma dynamiczne ID
@@ -68,14 +67,13 @@ const MovieDetails = () => {
   }, [movieId]);
 
   return (
-    <ContainerExtra>
+    <FlexContainer>
       <StyledMovieDetailsTile>
         <IconContainer>
-          <Image src={poster ? poster : "nie ma plakatu"} alt="Movie poster"/>
+          <Image src={poster ? poster : "nie ma plakatu"} alt="Movie poster" />
         </IconContainer>
         <Details>
           <Header>Movie Title: {title ? title : "Ładowanie tytułu..."}</Header>
-
 
           <Year></Year>
           <DetailInfo>
@@ -93,8 +91,10 @@ const MovieDetails = () => {
             <Tag>Drama</Tag>
           </Tags>
           <Rate>
-            <StyledStarIcon/>
-            <RateGrade>{vote_average ? vote_average : "Ładuję ocenę filmu"}</RateGrade>
+            <StyledStarIcon />
+            <RateGrade>
+              {vote_average ? vote_average : "Ładuję ocenę filmu"}
+            </RateGrade>
             <RateElement>/ 10</RateElement>
             <RateVotes>{votes ? votes : "Liczba głosów"} votes</RateVotes>
           </Rate>
@@ -103,10 +103,47 @@ const MovieDetails = () => {
           {overview ? overview : "Ładowanie przeglądu..."}
         </MovieDescription>
       </StyledMovieDetailsTile>
-
-      {/*<Content status={moviesStatus} repositories={repositories}/>*/}
-    </ContainerExtra>
+      <CastAndCrew />
+    </FlexContainer>
   );
 };
 
 export default MovieDetails;
+
+// <>
+
+// <FlexContainer>
+//   <StyledPersonWrapper>
+//     <WrapperItem>
+//       <ImageWrapper src={Crew} alt="pic" />
+//       <WrapperActorName>Niki Caro</WrapperActorName>
+//       <WrapperRole>Director</WrapperRole>
+//     </WrapperItem>
+//     <WrapperItem>
+//       <ImageWrapper src={Crew} alt="pic" />
+//       <WrapperActorName>Niki Caro</WrapperActorName>
+//       <WrapperRole>Director</WrapperRole>
+//     </WrapperItem>
+//     <WrapperItem>
+//       <ImageWrapper src={Crew} alt="pic" />
+//       <WrapperActorName>Niki Caro</WrapperActorName>
+//       <WrapperRole>Director</WrapperRole>
+//     </WrapperItem>
+//     <WrapperItem>
+//       <ImageWrapper src={Crew} alt="pic" />
+//       <WrapperActorName>Niki Caro</WrapperActorName>
+//       <WrapperRole>Director</WrapperRole>
+//     </WrapperItem>
+//     <WrapperItem>
+//       <ImageWrapper src={Crew} alt="pic" />
+//       <WrapperActorName>Niki Caro</WrapperActorName>
+//       <WrapperRole>Director</WrapperRole>
+//     </WrapperItem>
+//     <WrapperItem>
+//       <ImageWrapper src={Crew} alt="pic" />
+//       <WrapperActorName>Niki Caro</WrapperActorName>
+//       <WrapperRole>Director</WrapperRole>
+//     </WrapperItem>
+//   </StyledPersonWrapper>
+// </FlexContainer>
+// </>
