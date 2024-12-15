@@ -20,7 +20,6 @@ export const FlexContainer = styled.div`
 `;
 
 export const StyledMovieDetailsTile = styled.div`
-  /* max-width: 1368px; */
   box-shadow: 4px 4px 10px #bac7d580;
   background-color: ${({ theme }) => theme.color.white};
   display: grid;
@@ -28,7 +27,7 @@ export const StyledMovieDetailsTile = styled.div`
   align-content: start;
   grid-template-columns: 352px 3fr;
   grid-template-rows: auto auto;
-  margin: 64px 56px 56px 56px;
+  margin-top: 64px;
   row-gap: 24px;
 
   @media (max-width: 1080px) {
