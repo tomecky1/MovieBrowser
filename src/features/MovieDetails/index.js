@@ -70,7 +70,12 @@ const MovieDetails = () => {
     <FlexContainer>
       <StyledMovieDetailsTile>
         <IconContainer>
-          <Image src={poster ? poster : "nie ma plakatu"} alt="Movie poster" />
+          <Image
+            src={`https://image.tmdb.org/t/p/w500/${
+              poster ? poster : "nie ma plakatu"
+            }`}
+            alt="Movie poster"
+          />
         </IconContainer>
         <Details>
           <Header>Movie Title: {title ? title : "Ładowanie tytułu..."}</Header>
