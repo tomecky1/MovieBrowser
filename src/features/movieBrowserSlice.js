@@ -7,22 +7,25 @@ const movieBrowserSlice = createSlice({
     status: 'initial',
   },
   reducers: {
-    fetchMovies: () => ({
-      status: 'loading',
-      repositories: null,
-    }),
-    fetchMoviesSuccess: (_, {payload: repositories}) => ({
-      status: 'success',
-      repositories,
-    }),
-    fetchMoviesError: () => ({
-      status: 'error',
-      repositories: null,
-    }),
+    fetchMovies: (state) => {
+      state.status = 'loading';
+      state.movies = [];
+    },
+    fetchMoviesSuccess: (state, {payload: movies}) => {
+      state.status = 'success';
+      state.movies = Array.isArray(movies) ? movies : [];
+
+    },
+    fetchMoviesError: (state) => {
+      state.status = 'error';
+    },
+
   },
 });
 export const {fetchMovies, fetchMoviesSuccess, fetchMoviesError} = movieBrowserSlice.actions;
 
-const selectMovieDetalsState = state => state.movies
+const selectMovieBrowserState = state => state.movieBrowser || {movies: [], status: 'initial'};
+export const selectMovies = state => selectMovieBrowserState(state).movies;
+export const selectStatus = state => selectMovieBrowserState(state).status;
 
 export default movieBrowserSlice.reducer;

@@ -1,20 +1,19 @@
 import {getMovieDetails} from "./movieDetailsAPI";
 import {call, delay, put, takeLatest} from "redux-saga/effects";
-import {fetchMoviesError, fetchMoviesSuccess} from "./movieBrowserSlice";
+import {fetchMovies, fetchMoviesError, fetchMoviesSuccess} from "./movieBrowserSlice";
 
+const loadingDelay = 300;
 
-const loadingDelay = 2500;
-
-function* fetchMovieDetailsHandler({payload: username}) {
+function* fetchMovieDetailsHandler() {
   try {
     yield delay(loadingDelay);
-    const repositories = yield call(getMovieDetails, username);
-    yield put(fetchMoviesSuccess(repositories));
+    const movies = yield call(getMovieDetails);
+    yield put(fetchMoviesSuccess(movies));
   } catch (error) {
     yield put(fetchMoviesError(error));
   }
 }
 
 export function* movieBrowserSaga() {
-  yield takeLatest(fetchMovieDetailsHandler.type, fetchMovieDetailsHandler);
+  yield takeLatest(fetchMovies.type, fetchMovieDetailsHandler);
 }

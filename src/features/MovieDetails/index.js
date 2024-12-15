@@ -1,36 +1,81 @@
 import {
-  FlexContainer,
-  StyledMovieDetailsTile,
-  IconContainer,
-  Image,
+  DetailInfo,
+  DetailInfoElement,
+  DetailInfoElementType,
   Details,
   Header,
+  IconContainer,
+  Image,
+  MovieDescription,
+  FlexContainer,
+  StyledMovieDetailsTile,
   Year,
-  MovieDescriptionTile,
   Tags,
   Tag,
   Rate,
   RateElement,
-  RateVotes,
   RateGrade,
-  DetailInfo,
-  DetailInfoElementType,
-  DetailInfoElement,
+  RateVotes,
   StyledStarIcon,
 } from "./styled";
-import movieDetailsImage from "./movieDetails.jpg"
-import {CastAndCrew} from "../CastAndCrew/index"
+import { useDispatch, useSelector } from "react-redux";
+import { fetchMovies, selectMovies, selectStatus } from "../movieBrowserSlice";
+import { useEffect, useState } from "react";
+import { getMovieOverview } from "../movieDetailsAPI";
+import { CastAndCrew } from "../CastAndCrew/index";
 
 const MovieDetails = () => {
+  const dispatch = useDispatch();
+
+  const movies = useSelector(selectMovies);
+  const status = useSelector(selectStatus);
+
+  useEffect(() => {
+    dispatch(fetchMovies());
+  }, [dispatch]);
+  console.log(status);
+  console.log(movies);
+  const [overview, setOverview] = useState(null); // dodaj stan na dane przeglądu
+  const [title, setTitle] = useState(null);
+  const [date, setDate] = useState(null);
+  const [votes, setVotes] = useState(null);
+  const [vote_average, setVote_average] = useState(null);
+  const [poster, setPoster] = useState(null);
+  const [error, setError] = useState(false); // dodaj stan na błąd
+
+  const movieId = 550; // może być przekazany jako parametr jeśli komponent ma dynamiczne ID
+
+  useEffect(() => {
+    const fetchMovieDetails = async () => {
+      try {
+        const fetchedData = await getMovieOverview(movieId);
+        if (fetchedData) {
+          setOverview(fetchedData.overview);
+          setTitle(fetchedData.title);
+          setDate(fetchedData.date);
+          setVotes(fetchedData.votes);
+          setVote_average(fetchedData.vote_average);
+          setPoster(fetchedData.poster);
+        }
+      } catch (err) {
+        console.error("Błąd podczas pobierania szczegółów filmu:", err);
+        setError(true);
+      }
+    };
+
+    fetchMovieDetails();
+  }, [movieId]);
+
   return (
     <FlexContainer>
       <StyledMovieDetailsTile>
         <IconContainer>
-          <Image src={movieDetailsImage} alt="Movie poster" />
+          <Image src={poster ? poster : "nie ma plakatu"} alt="Movie poster" />
         </IconContainer>
         <Details>
-          <Header>Movie Title: Example</Header>
-          <Year>2024</Year>
+          <Header>Movie Title: {title ? title : "Ładowanie tytułu..."}</Header>
+
+          <Year></Year>
           <DetailInfo>
             <DetailInfoElement>
               <DetailInfoElementType>Production:&nbsp;</DetailInfoElementType>
@@ -38,7 +83,7 @@ const MovieDetails = () => {
             </DetailInfoElement>
             <DetailInfoElement>
               <DetailInfoElementType>Release date:&nbsp;</DetailInfoElementType>
-              14.06.2020
+              {date ? date : "release date unknown"}
             </DetailInfoElement>
           </DetailInfo>
           <Tags>
@@ -47,21 +92,19 @@ const MovieDetails = () => {
           </Tags>
           <Rate>
             <StyledStarIcon />
-            <RateGrade>8</RateGrade>
+            <RateGrade>
+              {vote_average ? vote_average : "Ładuję ocenę filmu"}
+            </RateGrade>
             <RateElement>/ 10</RateElement>
-            <RateVotes>335 votes</RateVotes>
+            <RateVotes>{votes ? votes : "Liczba głosów"} votes</RateVotes>
           </Rate>
         </Details>
-        <MovieDescriptionTile>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat.
-        </MovieDescriptionTile>
+        <MovieDescription>
+          {overview ? overview : "nie ma opisu filmu i uj"}
+        </MovieDescription>
       </StyledMovieDetailsTile>
-            <CastAndCrew />
+      <CastAndCrew />
     </FlexContainer>
-    
   );
 };
 

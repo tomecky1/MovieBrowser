@@ -255,7 +255,7 @@ export const RateVotes = styled.p`
   }
 `;
 
-export const MovieDescriptionTile = styled.div`
+export const MovieDescription = styled.div`
   grid-column: 2;
   font-size: 20px;
   font-weight: 400;
@@ -288,4 +288,3 @@ export const StyledStarIcon = styled(StarIcon)`
     width: 16px;
   }
 `;
-
