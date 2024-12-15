@@ -17,7 +17,6 @@ import {
   Tags,
   Year,
 } from "./styled";
-import movieDetailsImage from "./movieDetails.jpg";
 import {ContainerExtra} from "../../common/Container";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchMovies, selectMovies, selectStatus} from "../movieBrowserSlice";
@@ -42,6 +41,7 @@ const MovieDetails = () => {
   const [date, setDate] = useState(null)
   const [votes, setVotes] = useState(null)
   const [vote_average, setVote_average] = useState(null)
+  const [poster, setPoster] = useState(null)
   const [error, setError] = useState(false); // dodaj stan na błąd
 
   const movieId = 550; // może być przekazany jako parametr jeśli komponent ma dynamiczne ID
@@ -56,6 +56,7 @@ const MovieDetails = () => {
           setDate(fetchedData.date);
           setVotes(fetchedData.votes);
           setVote_average(fetchedData.vote_average);
+          setPoster(fetchedData.poster);
         }
       } catch (err) {
         console.error("Błąd podczas pobierania szczegółów filmu:", err);
@@ -70,7 +71,7 @@ const MovieDetails = () => {
     <ContainerExtra>
       <StyledMovieDetailsTile>
         <IconContainer>
-          <Image src={movieDetailsImage} alt="Movie poster"/>
+          <Image src={poster ? poster : "nie ma plakatu"} alt="Movie poster"/>
         </IconContainer>
         <Details>
           <Header>Movie Title: {title ? title : "Ładowanie tytułu..."}</Header>
