@@ -31,10 +31,11 @@ export const CastAndCrew = () => {
     const fetchMovieCredits = async () => {
       try {
         const credits = await getMovieCredits(movieId);
+        console.log("Cała odpowiedź:", credits);
+        console.log("Cast array:", credits.cast);
         console.log("Fetched credits:", credits); // Dodaj logowanie to jest okay
         if (credits && credits.cast) {
-          console.log("Cast data:", credits.cast.name); // Dodaj logowanie to nie działa, puste obiekty
-          setCast(credits.cast.name);
+          setCast(credits.cast); // Przekaż całą tablicę
         } else {
           console.log("No cast data found");
         }
