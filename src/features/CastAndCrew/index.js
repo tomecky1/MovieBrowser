@@ -30,26 +30,33 @@ export const CastAndCrew = () => {
   useEffect(() => {
     const fetchMovieCredits = async () => {
       try {
+        console.log("Fetching credits for movieId:", movieId); // Sprawdź czy movieId jest poprawne
+
         const credits = await getMovieCredits(movieId);
-        console.log("Cała odpowiedź:", credits);
-        console.log("Cast array:", credits.cast);
-        console.log("Fetched credits:", credits); // Dodaj logowanie to jest okay
+        console.log("Raw API response:", credits); // Sprawdź surową odpowiedź
+
         if (credits && credits.cast) {
-          setCast(credits.cast); // Przekaż całą tablicę
-        } else {
-          console.log("No cast data found");
+          console.log("Cast before setState:", credits.cast); // Sprawdź dane przed setState
+          setCast(credits.cast);
+          console.log("Cast after setState:", cast); // To pokaże starą wartość ze względu na asynchroniczność
         }
+
         if (credits && credits.crew) {
+          console.log("Crew before setState:", credits.crew);
           setCrew(credits.crew);
-        } else {
-          console.log("No crew data found");
         }
       } catch (error) {
-        console.error("Failed to fetch movie credits:", error);
+        console.error("Error details:", error);
       }
     };
-    fetchMovieCredits();
-  }, [movieId]);
+
+    if (movieId) {
+      // Dodaj sprawdzenie czy movieId istnieje
+      fetchMovieCredits();
+    } else {
+      console.log("No movieId provided");
+    }
+  }, [movieId, cast]);
 
   return (
     <>
