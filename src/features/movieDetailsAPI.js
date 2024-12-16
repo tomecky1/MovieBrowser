@@ -4,7 +4,6 @@ const options = {
   method: "GET",
   url: "https://api.themoviedb.org/3/movie/550",
   params: {
-    append_to_response: "images, configuration, credits",
     language: "en-US",
   },
   headers: {

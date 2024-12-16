@@ -9,8 +9,19 @@ import {
   WrapperRole,
 } from "./styled"; // Upewnij się, że import jest poprawny
 import posterExample from "../../image/posterExample.png";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchMovies, selectMovies, selectStatus } from "../movieBrowserSlice";
 
 export const CastAndCrew = () => {
+  const dispatch = useDispatch();
+
+  const movies = useSelector(selectMovies);
+  const status = useSelector(selectStatus);
+
+  useEffect(() => {
+    dispatch(fetchMovies());
+  }, [dispatch]);
+
   const [cast, setCast] = useState([]);
   const [crew, setCrew] = useState([]);
 
@@ -20,14 +31,22 @@ export const CastAndCrew = () => {
     const fetchMovieCredits = async () => {
       try {
         const credits = await getMovieCredits(movieId);
-        console.log("Fetched credits:", credits); // Dodaj logowanie
-        setCast(credits.cast || []); // Upewnij się, że credits.cast jest tablicą
-        setCrew(credits.crew || []); // Upewnij się, że credits.crew jest tablicą
+        console.log("Fetched credits:", credits); // Dodaj logowanie to jest okay
+        if (credits && credits.cast) {
+          console.log("Cast data:", credits.cast.name); // Dodaj logowanie to nie działa, puste obiekty
+          setCast(credits.cast.name);
+        } else {
+          console.log("No cast data found");
+        }
+        if (credits && credits.crew) {
+          setCrew(credits.crew);
+        } else {
+          console.log("No crew data found");
+        }
       } catch (error) {
         console.error("Failed to fetch movie credits:", error);
       }
     };
-
     fetchMovieCredits();
   }, [movieId]);
 
@@ -36,18 +55,18 @@ export const CastAndCrew = () => {
       <Text>Cast</Text>
       <StyledPersonWrapper>
         {cast.length > 0 ? (
-          cast.map((actor) => (
-            <WrapperItem key={(actor.id = 287)}>
+          cast.map((member) => (
+            <WrapperItem key={member.id}>
               <ImageWrapper
                 src={
-                  actor.profile_path
-                    ? `https://image.tmdb.org/t/p/w185${actor.profile_path}`
+                  member.profile_path
+                    ? `https://image.tmdb.org/t/p/w500${member.profile_path}`
                     : posterExample
                 }
-                alt={actor.name}
+                alt={member.name}
               />
-              <WrapperActorName>{actor.name}</WrapperActorName>
-              <WrapperRole>{actor.character}</WrapperRole>
+              <WrapperActorName>{member.name}</WrapperActorName>
+              <WrapperRole>{member.character}</WrapperRole>
             </WrapperItem>
           ))
         ) : (
@@ -57,18 +76,18 @@ export const CastAndCrew = () => {
       <Text>Crew</Text>
       <StyledPersonWrapper>
         {crew.length > 0 ? (
-          crew.map((crewMember) => (
-            <WrapperItem key={crewMember.id}>
+          crew.map((member) => (
+            <WrapperItem key={member.id}>
               <ImageWrapper
                 src={
-                  crewMember.profile_path
-                    ? `https://image.tmdb.org/t/p/w185${crewMember.profile_path}`
+                  member.profile_path
+                    ? `https://image.tmdb.org/t/p/w500${member.profile_path}`
                     : posterExample
                 }
-                alt={crewMember.name}
+                alt={member.name}
               />
-              <WrapperActorName>{crewMember.name}</WrapperActorName>
-              <WrapperRole>{crewMember.job}</WrapperRole>
+              <WrapperActorName>{member.name}</WrapperActorName>
+              <WrapperRole>{member.job}</WrapperRole>
             </WrapperItem>
           ))
         ) : (
