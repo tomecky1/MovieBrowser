@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { ReactComponent as StarIcon } from "../../icons/star.svg";
 
 export const FlexCont = styled.div`
-max-width: 1368px;
+  max-width: 1368px;
   display: flex;
   flex-direction: column;
   margin: 0 auto;
@@ -28,13 +28,12 @@ export const Text = styled.header`
 
 export const StyledMovieDetailsTileList = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(324px, 1fr));
-  grid-template-rows: repeat(2, minmax(650px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(324px, 1fr));
+  grid-template-rows: auto;
   gap: 24px;
 
   @media (max-width: 560px) {
-    grid-template-columns: repeat(auto-fill, minmax(288px, 1fr));
-    grid-template-rows: repeat(5, minmax(201px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(288px, 1fr));
     gap: 16px;
   }
 `;
@@ -65,13 +64,13 @@ export const ImageList = styled.img`
   }
 `;
 
-export const MobileDetails = styled.div`
+export const MobileDetailsList = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
 `;
 
-export const Header = styled.header`
+export const HeaderList = styled.header`
   font-size: 22px;
   line-height: 28.6px;
   font-weight: 500;
