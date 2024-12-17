@@ -5,6 +5,7 @@ import Header from "./common/Header/index.js";
 import MovieDetails from "./features/MovieDetails/index.js";
 import {Navigation} from "./common/Navigation";
 import {MovieDetailsTile} from "./features/MovieListTile";
+import { Pagination } from "./common/Pagination/index.js";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <MovieDetailsTile/>
       <CastTile/>
       <CrewTile/>
+      <Pagination/>
     </Container>
   );
 }
