@@ -18,8 +18,8 @@ export function Navigation() {
       <NavigationList>
         <MobileContainer>
           <NavigationTitleContainer>
-          <StyledVideoIcon />
-          <NavigationTitle>Movies Browser</NavigationTitle>
+            <StyledVideoIcon />
+            <NavigationTitle>Movies Browser</NavigationTitle>
           </NavigationTitleContainer>
           <NavigationItem>
             <StyledNavLink to="/movies">MOVIES</StyledNavLink>
