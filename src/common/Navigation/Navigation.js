@@ -2,33 +2,39 @@ import {
   NavigationInput,
   NavigationItem,
   NavigationList,
+  MobileContainer,
   NavigationTitle,
   NavigationWrapper,
   SearchIconWrapper,
   StyledSearchIcon,
+  StyledVideoIcon,
+  NavigationTitleContainer,
 } from "./styled";
-import Video from "../../image/Video.png";
 import { StyledNavLink } from "./StyledNavLink/styled";
 
 export function Navigation() {
   return (
     <NavigationWrapper>
       <NavigationList>
-        <img src={Video} alt="Logo" />
-        <NavigationTitle>Movies Browser</NavigationTitle>
-        <NavigationItem>
-          <StyledNavLink to="/movies">MOVIES</StyledNavLink>
-        </NavigationItem>
-        <NavigationItem>
-          <StyledNavLink to="/person">PEOPLE</StyledNavLink>
-        </NavigationItem>
-        <SearchIconWrapper>
+        <MobileContainer>
+          <NavigationTitleContainer>
+          <StyledVideoIcon />
+          <NavigationTitle>Movies Browser</NavigationTitle>
+          </NavigationTitleContainer>
+          <NavigationItem>
+            <StyledNavLink to="/movies">MOVIES</StyledNavLink>
+          </NavigationItem>
+          <NavigationItem>
+            <StyledNavLink to="/person">PEOPLE</StyledNavLink>
+          </NavigationItem>
+        </MobileContainer>
+        <NavigationInput>
           <StyledSearchIcon />
-          <NavigationInput
+          <SearchIconWrapper
             type="text"
             placeholder={"Search for movies..."}
-          ></NavigationInput>
-        </SearchIconWrapper>
+          ></SearchIconWrapper>
+        </NavigationInput>
       </NavigationList>
     </NavigationWrapper>
   );
