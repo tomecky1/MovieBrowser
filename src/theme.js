@@ -9,16 +9,17 @@ export const theme = {
     heather: "#BAC7D580",
     waterloo: "#7E839A",
     woodSmoke: "#18181B",
-
+    black: "#000000",
   },
 
   breakpoints: {
+    iPhoneSE: "375px",
     smallMobile: "400px",
     mobile: "560px",
-    biggerMobile: "780px",
+    biggerMobile: "767px",
     tabletVertical: "991px",
-    tabletHorizontalS: "1080px",
+    iPadPro: "1080px",
     tabletHorizontal: "1199px",
-    nextHubMax: "1280px"
+    nextHubMax: "1280px",
   },
 };

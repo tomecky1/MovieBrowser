@@ -2,8 +2,8 @@ import PopularMoviesPoster from "../../image/PopularMoviesPoster.png";
 import {
   StyledMovieDetailsTileList,
   IconContainerList,
-  MobileDetails,
-  Header,
+  MobileDetailsList,
+  HeaderList,
   YearList,
   TagsList,
   TagList,
@@ -23,8 +23,8 @@ export const MovieList = () => {
       <StyledMovieDetailsTileList>
         <IconContainerList>
           <ImageList src={PopularMoviesPoster} alt="Movie poster" />
-          <MobileDetails>
-          <Header>Movie Title: Example</Header>
+          <MobileDetailsList>
+          <HeaderList>Movie Title: Example</HeaderList>
           <YearList>2024</YearList>
           <TagsList>
             <TagList>Action</TagList>
@@ -36,12 +36,12 @@ export const MovieList = () => {
             <RateGradeList>8</RateGradeList>
             <RateVotesList>335 votes</RateVotesList>
           </RateList>
-          </MobileDetails>
+          </MobileDetailsList>
         </IconContainerList>
         <IconContainerList>
           <ImageList src={PopularMoviesPoster} alt="Movie poster" />
-          <MobileDetails>
-          <Header>Movie Title: Example</Header>
+          <MobileDetailsList>
+          <HeaderList>Movie Title: Example</HeaderList>
           <YearList>2024</YearList>
           <TagsList>
             <TagList>Action</TagList>
@@ -53,12 +53,12 @@ export const MovieList = () => {
             <RateGradeList>8</RateGradeList>
             <RateVotesList>335 votes</RateVotesList>
           </RateList>
-          </MobileDetails>
+          </MobileDetailsList>
         </IconContainerList>
         <IconContainerList>
           <ImageList src={PopularMoviesPoster} alt="Movie poster" />
-          <MobileDetails>
-          <Header>Movie Title: Example</Header>
+          <MobileDetailsList>
+          <HeaderList>Movie Title: Example</HeaderList>
           <YearList>2024</YearList>
           <TagsList>
             <TagList>Action</TagList>
@@ -70,12 +70,12 @@ export const MovieList = () => {
             <RateGradeList>8</RateGradeList>
             <RateVotesList>335 votes</RateVotesList>
           </RateList>
-          </MobileDetails>
+          </MobileDetailsList>
         </IconContainerList>
         <IconContainerList>
           <ImageList src={PopularMoviesPoster} alt="Movie poster" />
-          <MobileDetails>
-          <Header>Movie Title: Example</Header>
+          <MobileDetailsList>
+          <HeaderList>Movie Title: Example</HeaderList>
           <YearList>2024</YearList>
           <TagsList>
             <TagList>Action</TagList>
@@ -87,12 +87,12 @@ export const MovieList = () => {
             <RateGradeList>8</RateGradeList>
             <RateVotesList>335 votes</RateVotesList>
           </RateList>
-          </MobileDetails>
+          </MobileDetailsList>
         </IconContainerList>
         <IconContainerList>
           <ImageList src={PopularMoviesPoster} alt="Movie poster" />
-          <MobileDetails>
-          <Header>Movie Title: Example</Header>
+          <MobileDetailsList>
+          <HeaderList>Movie Title: Example</HeaderList>
           <YearList>2024</YearList>
           <TagsList>
             <TagList>Action</TagList>
@@ -104,7 +104,7 @@ export const MovieList = () => {
             <RateGradeList>8</RateGradeList>
             <RateVotesList>335 votes</RateVotesList>
           </RateList>
-          </MobileDetails>
+          </MobileDetailsList>
         </IconContainerList>
       </StyledMovieDetailsTileList>
     </FlexCont>
