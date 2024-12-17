@@ -22,7 +22,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchMovies, selectMovies, selectStatus } from "../movieBrowserSlice";
 import { useEffect, useState } from "react";
 import { getMovieOverview } from "../movieDetailsAPI";
-import { CastAndCrew } from "../CastAndCrew/index";
+import { CastAndCrew } from "../CastAndCrew";
 
 const MovieDetails = () => {
   const dispatch = useDispatch();
@@ -108,7 +108,7 @@ const MovieDetails = () => {
           {overview ? overview : "nie ma opisu filmu i uj"}
         </MovieDescription>
       </StyledMovieDetailsTile>
-      <CastAndCrew />
+      <CastAndCrew movieId={movieId} />
     </FlexContainer>
   );
 };

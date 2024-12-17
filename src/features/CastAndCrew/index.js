@@ -1,130 +1,86 @@
+import React, { useState, useEffect } from "react";
+import { getMovieCredits } from "../movieDetailsAPI";
 import {
-  StyledPersonWrapper,
   Text,
+  StyledPersonWrapper,
   WrapperItem,
   ImageWrapper,
   WrapperActorName,
   WrapperRole,
 } from "./styled";
-import posterExample from "../../image/posterExample.png";
-import Crew from "../../image/Crew.png";
-import { useEffect, useState } from "react";
-import { getMovieCredits } from "../movieDetailsAPI";
 
-export const CastAndCrew = () => {
-  const [error, setError] = useState(false);
-  const [actor, setActor] = useState(null);
-  const movieId = 550; // może być przekazany jako parametr jeśli komponent ma dynamiczne ID
+export const CastAndCrew = ({ movieId }) => {
+  // const dispatch = useDispatch();
+
+  // const movies = useSelector(selectMovies);
+  // const status = useSelector(selectStatus);
+
+  // useEffect(() => {
+  //   dispatch(fetchMovies());
+  // }, [dispatch]);
+
+  const [credits, setCredits] = useState({ cast: [], crew: [] });
 
   useEffect(() => {
     const fetchMovieCredits = async () => {
       try {
-        const fetchedData = await getMovieCredits(movieId);
-        if (fetchedData) {
-          setActor(fetchedData.actors);
+        const fetchedCredits = await getMovieCredits(movieId);
+        console.log("Raw API response:", credits);
+
+        if (fetchedCredits) {
+          console.log("Cast before setState:", credits.cast);
+          setCredits(fetchedCredits);
         }
-      } catch (err) {
-        console.error("Błąd podczas pobierania szczegółów filmu:", err);
-        setError(true);
+      } catch (error) {
+        console.error("Error details:", error);
       }
     };
-
     fetchMovieCredits();
-  }, [movieId]);
+  }, [credits, movieId]);
 
   return (
     <>
       <Text>Cast</Text>
       <StyledPersonWrapper>
-        <WrapperItem>
-          <ImageWrapper src={posterExample} alt="pic" />
-          <WrapperActorName>
-            {actor
-              ? actor.find((a) => a.name === "Edward Norton").name
-              : "Edward Norton"}
-          </WrapperActorName>
-
-          <WrapperRole></WrapperRole>
-        </WrapperItem>
-        <WrapperItem>
-          <ImageWrapper src={posterExample} alt="pic" />
-          <WrapperActorName></WrapperActorName>
-
-          <WrapperRole>Mulan</WrapperRole>
-        </WrapperItem>
-        <WrapperItem>
-          <ImageWrapper src={posterExample} alt="pic" />
-          <WrapperActorName>Liu Yifei</WrapperActorName>
-          <WrapperRole>Mulan</WrapperRole>
-        </WrapperItem>
-        <WrapperItem>
-          <ImageWrapper src={posterExample} alt="pic" />
-          <WrapperActorName>Liu Yifei</WrapperActorName>
-          <WrapperRole>Mulan</WrapperRole>
-        </WrapperItem>
-        <WrapperItem>
-          <ImageWrapper src={posterExample} alt="pic" />
-          <WrapperActorName>Liu Yifei</WrapperActorName>
-          <WrapperRole>Mulan</WrapperRole>
-        </WrapperItem>
-        <WrapperItem>
-          <ImageWrapper src={posterExample} alt="pic" />
-          <WrapperActorName>Liu Yifei</WrapperActorName>
-          <WrapperRole>Mulan</WrapperRole>
-        </WrapperItem>
-        <WrapperItem>
-          <ImageWrapper src={posterExample} alt="pic" />
-          <WrapperActorName>Liu Yifei</WrapperActorName>
-          <WrapperRole>Mulan</WrapperRole>
-        </WrapperItem>
-        <WrapperItem>
-          <ImageWrapper src={posterExample} alt="pic" />
-          <WrapperActorName>Liu Yifei</WrapperActorName>
-          <WrapperRole>Mulan</WrapperRole>
-        </WrapperItem>
-        <WrapperItem>
-          <ImageWrapper src={posterExample} alt="pic" />
-          <WrapperActorName>Liu Yifei</WrapperActorName>
-          <WrapperRole>Mulan</WrapperRole>
-        </WrapperItem>
-        <WrapperItem>
-          <ImageWrapper src={posterExample} alt="pic" />
-          <WrapperActorName>Liu Yifei</WrapperActorName>
-          <WrapperRole>Mulan</WrapperRole>
-        </WrapperItem>
+        {credits.cast.length > 0 ? (
+          credits.cast.map((member) => (
+            <WrapperItem key={member.id}>
+              <ImageWrapper
+                src={
+                  member.profile_path
+                    ? `https://image.tmdb.org/t/p/w500${member.profile_path}`
+                    : "https://via.placeholder.com/200"
+                }
+                alt={member.name}
+              />
+              <WrapperActorName>{member.name}</WrapperActorName>
+              <WrapperRole>Role: {member.character}</WrapperRole>
+            </WrapperItem>
+          ))
+        ) : (
+          <Text>No cast available</Text>
+        )}
       </StyledPersonWrapper>
       <Text>Crew</Text>
       <StyledPersonWrapper>
-        <WrapperItem>
-          <ImageWrapper src={Crew} alt="pic" />
-          <WrapperActorName>Niki Caro</WrapperActorName>
-          <WrapperRole>Director</WrapperRole>
-        </WrapperItem>
-        <WrapperItem>
-          <ImageWrapper src={Crew} alt="pic" />
-          <WrapperActorName>Niki Caro</WrapperActorName>
-          <WrapperRole>Director</WrapperRole>
-        </WrapperItem>
-        <WrapperItem>
-          <ImageWrapper src={Crew} alt="pic" />
-          <WrapperActorName>Niki Caro</WrapperActorName>
-          <WrapperRole>Director</WrapperRole>
-        </WrapperItem>
-        <WrapperItem>
-          <ImageWrapper src={Crew} alt="pic" />
-          <WrapperActorName>Niki Caro</WrapperActorName>
-          <WrapperRole>Director</WrapperRole>
-        </WrapperItem>
-        <WrapperItem>
-          <ImageWrapper src={Crew} alt="pic" />
-          <WrapperActorName>Niki Caro</WrapperActorName>
-          <WrapperRole>Director</WrapperRole>
-        </WrapperItem>
-        <WrapperItem>
-          <ImageWrapper src={Crew} alt="pic" />
-          <WrapperActorName>Niki Caro</WrapperActorName>
-          <WrapperRole>Director</WrapperRole>
-        </WrapperItem>
+        {credits.crew.length > 0 ? (
+          credits.crew.map((member) => (
+            <WrapperItem key={member.id}>
+              <ImageWrapper
+                src={
+                  member.profile_path
+                    ? `https://image.tmdb.org/t/p/w500${member.profile_path}`
+                    : "https://via.placeholder.com/200"
+                }
+                alt={member.name}
+              />
+              <WrapperActorName>{member.name}</WrapperActorName>
+              <WrapperRole>Job: {member.job}</WrapperRole>
+            </WrapperItem>
+          ))
+        ) : (
+          <Text>No crew available</Text>
+        )}
       </StyledPersonWrapper>
     </>
   );
