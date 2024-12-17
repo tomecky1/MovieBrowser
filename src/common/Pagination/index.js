@@ -1,5 +1,8 @@
+import { useNavigate } from "react-router";
 import {
     ButtonsContainer,
+    ButtonText,
+    ButtonTile,
     Counter,
     CounterNumber,
     CounterText,
@@ -7,10 +10,70 @@ import {
     PointerRight,
     Wrapper
 } from "./styled";
+import { useLocation } from "react-router";
+import { useQueryParameter } from "../components/Search/useQueryParameter";
+import { useFetchSearchResult } from "../components/Search/useFetchSearchResult";
+import { usePopularMovies } from "../../features/hooks/usePopularMovies";
+import { usePopularActors } from "../../features/hooks/usePopularActors";
 
 
-export const Pagination = () => {
+export const Pagination = (isMoviesPage) => {
+    const isMobile = useMediaQuery({ maxWidth: 560 });
+    const location = useLocation();
+    const navigate = useNavigate();
+    const query = useQueryParameter("query");
+    const { searchResults } = useFetchSearchResult();
+    const totalSearchPages = +searchResults.data.total_pages;
+    const { totalPagesMovies } = usePopularMovies();
+    const { totalPagesActor } = usePopularActors();
 
+    const generateURL = (page, query) => {
+        const queryParam = query ? `&query=${query}` : "";
+        return `${location.pathname}?page=${page}${queryParam}`;
+    };
+
+    const totalPages = query
+        ? totalSearchPages
+        : isMoviesPage
+            ? totalPagesMovies || 1
+            : totalPagesActor || 1;
+
+    const searchParams = new URLSearchParams(location.search);
+    const currentPage = parseInt(searchParams.get("page")) || 1;
+
+    const [previousQuery, setPreviousQuery] = useState(query);
+
+    useEffect(() => {
+        if (query !== previousQuery) {
+            navigate(generateURL(1, query), { replace: true });
+            setPreviousQuery(query);
+        } else if (!location.pathname.includes("search") && currentPage === 1) {
+            navigate(location.pathname, { replace: true });
+        }
+    }, [query, previousQuery, currentPage, navigate, location.pathname]);
+
+    const changePage = (newPage) => {
+        if (newPage >= 1 && newPage <= totalPages) {
+            navigate(generateURL(newPage, query));
+        }
+    };
+
+    const renderButton = (onClick, disabled, iconLeft, iconRight, text) => (
+        <ButtonTile onClick={onClick} disabled={disabled}>
+            {isMobile ? (
+                <>
+                    {iconLeft}
+                    {iconRight}
+                </>
+            ) : (
+                <>
+                    {(text === "First" || text === "Previous") && iconLeft}
+                    {(text === "Last" || text === "Next") && iconRight}
+                </>
+            )}
+            {!isMobile && <ButtonText>{text}</ButtonText>}
+        </ButtonTile>
+    );
 
     return (
         <Wrapper>
