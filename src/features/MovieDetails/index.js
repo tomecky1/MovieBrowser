@@ -108,7 +108,7 @@ const MovieDetails = () => {
           {overview ? overview : "nie ma opisu filmu i uj"}
         </MovieDescription>
       </StyledMovieDetailsTile>
-      <CastAndCrew />
+      <CastAndCrew movieId={movieId} />
     </FlexContainer>
   );
 };

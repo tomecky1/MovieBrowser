@@ -56,10 +56,7 @@ export const getMovieCredits = async (movieId) => {
       ...options,
       url: `https://api.themoviedb.org/3/movie/${movieId}/credits`,
     });
-    return response.data.cast.map((actor) => ({
-      name: actor.name,
-      character: actor.character,
-    }));
+    return response.data;
   } catch (err) {
     console.error("Błąd podczas pobierania danych obsady filmu:", err);
     return null;

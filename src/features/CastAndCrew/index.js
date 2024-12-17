@@ -12,69 +12,56 @@ import posterExample from "../../image/posterExample.png";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchMovies, selectMovies, selectStatus } from "../movieBrowserSlice";
 
-export const CastAndCrew = () => {
-  const dispatch = useDispatch();
+export const CastAndCrew = ({ movieId }) => {
+  // const dispatch = useDispatch();
 
-  const movies = useSelector(selectMovies);
-  const status = useSelector(selectStatus);
+  // const movies = useSelector(selectMovies);
+  // const status = useSelector(selectStatus);
 
-  useEffect(() => {
-    dispatch(fetchMovies());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(fetchMovies());
+  // }, [dispatch]);
 
-  const [cast, setCast] = useState([]);
-  const [crew, setCrew] = useState([]);
+  const [credits, setCredits] = useState({ cast: [], crew: [] });
+  // const [cast, setCast] = useState([]);
+  // const [crew, setCrew] = useState([]);
 
-  const movieId = 550;
+  // const movieId = 550;
 
   useEffect(() => {
     const fetchMovieCredits = async () => {
       try {
-        console.log("Fetching credits for movieId:", movieId); // Sprawdź czy movieId jest poprawne
-
-        const credits = await getMovieCredits(movieId);
+        const fetchedCredits = await getMovieCredits(movieId);
         console.log("Raw API response:", credits); // Sprawdź surową odpowiedź
 
-        if (credits && credits.cast) {
+        if (fetchedCredits) {
           console.log("Cast before setState:", credits.cast); // Sprawdź dane przed setState
-          setCast(credits.cast);
-          console.log("Cast after setState:", cast); // To pokaże starą wartość ze względu na asynchroniczność
-        }
-
-        if (credits && credits.crew) {
-          console.log("Crew before setState:", credits.crew);
-          setCrew(credits.crew);
+          setCredits(fetchedCredits);
         }
       } catch (error) {
         console.error("Error details:", error);
       }
     };
-
-    if (movieId) {
-      // Dodaj sprawdzenie czy movieId istnieje
-      fetchMovieCredits();
-    } else {
-      console.log("No movieId provided");
-    }
-  }, [movieId, cast]);
+    fetchMovieCredits();
+  }, [credits, movieId]);
 
   return (
     <>
       <Text>Cast</Text>
       <StyledPersonWrapper>
-        {cast.length > 0 ? (
-          cast.map((member) => (
+        {credits.cast.length > 0 ? (
+          credits.cast.map((member) => (
             <WrapperItem key={member.id}>
               <ImageWrapper
                 src={
                   member.profile_path
                     ? `https://image.tmdb.org/t/p/w500${member.profile_path}`
-                    : posterExample
+                    : "https://via.placeholder.com/200"
                 }
                 alt={member.name}
               />
               <WrapperActorName>{member.name}</WrapperActorName>
-              <WrapperRole>{member.character}</WrapperRole>
+              <WrapperRole>Role: {member.character}</WrapperRole>
             </WrapperItem>
           ))
         ) : (
@@ -83,19 +70,19 @@ export const CastAndCrew = () => {
       </StyledPersonWrapper>
       <Text>Crew</Text>
       <StyledPersonWrapper>
-        {crew.length > 0 ? (
-          crew.map((member) => (
+        {credits.crew.length > 0 ? (
+          credits.crew.map((member) => (
             <WrapperItem key={member.id}>
               <ImageWrapper
                 src={
                   member.profile_path
                     ? `https://image.tmdb.org/t/p/w500${member.profile_path}`
-                    : posterExample
+                    : "https://via.placeholder.com/200"
                 }
                 alt={member.name}
               />
               <WrapperActorName>{member.name}</WrapperActorName>
-              <WrapperRole>{member.job}</WrapperRole>
+              <WrapperRole>Job: {member.job}</WrapperRole>
             </WrapperItem>
           ))
         ) : (
