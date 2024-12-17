@@ -8,6 +8,7 @@ export function NaviRoutes() {
     <HashRouter>
       <Navigation />
       <Routes>
+        <Route path="/" element={<MovieList />} />
         <Route path="/movies" element={<MovieList />} />
         <Route path="/person" element={<Person />} />
       </Routes>
