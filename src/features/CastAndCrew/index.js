@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getMovieCredits } from "../movieDetailsAPI"; // Upewnij się, że import jest poprawny
+import { getMovieCredits } from "../movieDetailsAPI";
 import {
   Text,
   StyledPersonWrapper,
@@ -7,10 +7,7 @@ import {
   ImageWrapper,
   WrapperActorName,
   WrapperRole,
-} from "./styled"; // Upewnij się, że import jest poprawny
-import posterExample from "../../image/posterExample.png";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchMovies, selectMovies, selectStatus } from "../movieBrowserSlice";
+} from "./styled";
 
 export const CastAndCrew = ({ movieId }) => {
   // const dispatch = useDispatch();
@@ -23,19 +20,15 @@ export const CastAndCrew = ({ movieId }) => {
   // }, [dispatch]);
 
   const [credits, setCredits] = useState({ cast: [], crew: [] });
-  // const [cast, setCast] = useState([]);
-  // const [crew, setCrew] = useState([]);
-
-  // const movieId = 550;
 
   useEffect(() => {
     const fetchMovieCredits = async () => {
       try {
         const fetchedCredits = await getMovieCredits(movieId);
-        console.log("Raw API response:", credits); // Sprawdź surową odpowiedź
+        console.log("Raw API response:", credits);
 
         if (fetchedCredits) {
-          console.log("Cast before setState:", credits.cast); // Sprawdź dane przed setState
+          console.log("Cast before setState:", credits.cast);
           setCredits(fetchedCredits);
         }
       } catch (error) {

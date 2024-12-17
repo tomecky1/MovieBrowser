@@ -1,23 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { getPersonMovieCredits } from "../useApiKey"; // Import funkcji API
-import styled from "styled-components";
-const SectionTitle = styled.h2`
-  font-size: 24px;
-  margin: 20px 0 10px;
-`;
-const ListWrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-`;
-const ListItem = styled.div`
-  width: 150px;
-  text-align: center;
-`;
-const Image = styled.img`
-  width: 100%;
-  border-radius: 8px;
-`;
+import { getPersonMovieCredits } from "../useApiKey";
+import { Image, ListItem, ListWrapper, SectionTitle } from "./styled";
+
 export const PersonCredits = ({ personId }) => {
   const [credits, setCredits] = useState({ cast: [], crew: [] });
   const [error, setError] = useState(false);
