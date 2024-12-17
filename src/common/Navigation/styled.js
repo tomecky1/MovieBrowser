@@ -1,12 +1,15 @@
 import styled from "styled-components";
 import { ReactComponent as SearchIcon } from "../../icons/Search.svg";
+import { ReactComponent as VideoIcon } from "../../icons/Video.svg";
 
 export const NavigationWrapper = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
+  height: 94px;
   background-color: ${({ theme }) => theme.color.black};
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.iPadPro}) {
     font-size: 13px;
     flex-direction: column;
     height: 142px;
@@ -16,37 +19,96 @@ export const NavigationWrapper = styled.div`
 export const NavigationList = styled.ul`
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   align-items: center;
-  height: 94px;
+  padding: 0 16px;
   max-width: 1368px;
   width: 100%;
   list-style: none;
+  word-break: keep-all;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.iPadPro}) {
+    flex-direction: column;
+    align-items: unset;
+  }
+`;
+
+export const MobileContainer = styled.div`
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.iPadPro}) {
+    margin: 32px 0 24px 0;
+    justify-content: center;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.iphoneSE}) {
+    justify-content: space-around;
+  }
+`;
+
+export const StyledVideoIcon = styled(VideoIcon)`
+  width: 40px;
+  height: 40px;
+  margin-right: 12px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    flex-direction: column;
-    height: 142px;
+    width: 17px;
+    height: 17px;
   }
+`;
+
+export const NavigationTitleContainer = styled.div`
+  display: flex;
 `;
 
 export const NavigationTitle = styled.li`
-  font-size: 24px;
   font-weight: 500;
+  font-size: 24px;
+  line-height: 40px;
   color: ${({ theme }) => theme.color.white};
-  margin: 0;
-`;
+  margin-right: 80px;
+  white-space: nowrap;
 
-export const NavigationItem = styled.li`
-  font-size: 14px;
-  font-weight: 600;
-  color: ${({ theme }) => theme.color.white};
-  margin: 0;
-  &:hover {
-    cursor: pointer;
+  @media (max-width: ${({ theme }) => theme.breakpoints.iPadPro}) {
+    margin-right: 20px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    font-size: 13px;
+    line-height: 16.9px;
+    margin-right: unset;
   }
 `;
 
+export const NavigationItem = styled.li`
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  margin: 0 24px;
+  color: ${({ theme }) => theme.color.white};
 
-export const NavigationInput = styled.input`
+  &:hover {
+    cursor: pointer;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.iPadPro}) {
+    margin: 0 12px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.iphoneSE}) {
+    margin: unset;
+  }
+`;
+
+export const SearchIconWrapper = styled.input`
+  font-size: 16px;
   border: 0;
   border-radius: 33px;
   line-height: 24px;
@@ -56,21 +118,21 @@ export const NavigationInput = styled.input`
     outline: none;
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.tabletVertical}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     font-size: 13px;
-    width: auto;
-  }
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.biggerMobile}) {
-    margin-right: 36px;
   }
 `;
 
 export const StyledSearchIcon = styled(SearchIcon)`
   align-self: center;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    width: 16;
+    height: 16px;
+  }
 `;
 
-export const SearchIconWrapper = styled.div`
+export const NavigationInput = styled.div`
   display: flex;
   background-color: ${({ theme }) => theme.color.white};
   border-radius: 33px;
@@ -78,18 +140,17 @@ export const SearchIconWrapper = styled.div`
   height: 48px;
   max-width: 432px;
   width: 100%;
+  align-self: center;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    margin-right: 0;
+  @media (max-width: ${({ theme }) => theme.breakpoints.iPadPro}) {
+    height: 48px;
+    max-width: 476px;
+    margin-bottom: 24px;
   }
-`;
 
-export const VideoIcon = styled.img`
-  height: 40px;
-  aspect-ratio: 1;
-  margin-right: 12px;
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    height: 24px;
-    aspect-ratio: 1;
+    height: 44px;
+    max-width: 288px;
+    margin-bottom: 16px;
   }
 `;
