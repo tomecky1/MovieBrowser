@@ -12,6 +12,7 @@ export const FlexContainer = styled.div`
     border-radius: 5px;
     margin-left: 16px;
     margin-right: 16px;
+    margin-bottom: 88px;
   }
   @media (max-width: ${({ theme }) => theme.breakpoints.nextHubMax}) {
     margin-left: 16px;
@@ -20,36 +21,34 @@ export const FlexContainer = styled.div`
 `;
 
 export const StyledMovieDetailsTile = styled.div`
-  /* max-width: 1368px; */
   box-shadow: 4px 4px 10px #bac7d580;
   background-color: ${({ theme }) => theme.color.white};
   display: grid;
   grid-gap: 40px;
-  align-content: start;
   grid-template-columns: 352px 3fr;
   grid-template-rows: auto auto;
-  margin: 64px 56px 56px 56px;
+  margin-top: 64px;
   row-gap: 24px;
 
-  @media (max-width: 1080px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletVertical}) {
     grid-template-columns: auto auto;
     grid-gap: 20px;
     padding: 30px;
-    margin: 40px 50px 40px 50px;
+    margin-top: 40px;
   }
 
-  @media (max-width: 700px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.biggerMobile}) {
     grid-template-columns: auto auto;
     grid-gap: 18px;
     padding: 18px;
-    margin: 30px 30px 30px 30px;
+    margin-top: 30px;
   }
 
-  @media (max-width: 560px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     grid-template-columns: 114px;
     grid-gap: 16px;
     padding: 16px;
-    margin: 16px 16px 21px 16px;
+    margin-top: 16px;
   }
 `;
 
@@ -60,9 +59,9 @@ export const IconContainer = styled.div`
   border-radius: 5px;
   padding: 40px 0px 40px 40px;
   background-color: ${({ theme }) => theme.color.white};
-  grid-row: 1 / span2;
+  grid-row: 1 / span 2;
 
-  @media (max-width: 1080px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletVertical}) {
     grid-row: 1;
     padding: 0;
     height: auto;
@@ -85,12 +84,12 @@ export const Details = styled.div`
   padding-top: 40px;
   margin: 0;
 
-  @media (max-width: 1080px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletVertical}) {
     grid-gap: 16px;
     padding-top: 0px;
   }
 
-  @media (max-width: 700px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.biggerMobile}) {
     grid-gap: 12px;
   }
 
@@ -106,7 +105,7 @@ export const Header = styled.header`
   padding: 8px 0 0 0;
   margin: 0;
 
-  @media (max-width: 700px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.biggerMobile}) {
     font-size: 23px;
     line-height: 29px;
   }
@@ -139,7 +138,7 @@ export const DetailInfo = styled.div`
   font-weight: 400;
   color: ${({ theme }) => theme.color.black};
 
-  @media (max-width: 700px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.biggerMobile}) {
     font-size: 16px;
     line-height: 20px;
   }
@@ -149,9 +148,11 @@ export const DetailInfo = styled.div`
     line-height: 16px;
   }
 `;
+
 export const DetailInfoElement = styled.p`
   margin: 0;
 `;
+
 export const DetailInfoElementType = styled.span`
   margin: 0;
   color: ${({ theme }) => theme.color.stormGray};
@@ -182,12 +183,12 @@ export const Tag = styled.li`
   font-size: 10px;
   margin: 8px;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.tabletHorizontalS}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletVertical}) {
     font-size: 16px;
     line-height: 18px;
   }
 
-  @media (max-width: 700px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.biggerMobile}) {
     font-size: 14px;
     line-height: 16px;
   }
@@ -195,6 +196,7 @@ export const Tag = styled.li`
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     font-size: 10px;
     line-height: 11px;
+    padding: 4px 8px;
   }
 `;
 
@@ -207,9 +209,9 @@ export const Rate = styled.div`
   margin: 0;
   align-items: baseline;
 
-  @media (max-width: 560px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     flex-wrap: wrap;
-    align-items: flex-end;
+    align-items: center;
   }
 `;
 
@@ -219,7 +221,7 @@ export const RateGrade = styled.p`
   line-height: 29px;
   margin: 0;
 
-  @media (max-width: 560px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     font-size: 13px;
     line-height: 17px;
     margin: 0;
@@ -247,7 +249,7 @@ export const RateVotes = styled.p`
   margin: 0;
   padding-left: 12px;
 
-  @media (max-width: 560px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     font-size: 13px;
     line-height: 17px;
     color: ${({ theme }) => theme.color.waterloo};
@@ -263,18 +265,18 @@ export const MovieDescription = styled.div`
   margin: 0;
   padding-right: 25px;
 
-  @media (max-width: 1080px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletVertical}) {
     grid-row: 2;
     grid-column: 1 / span 2;
     padding: 0;
   }
 
-  @media (max-width: 700px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.biggerMobile}) {
     font-size: 16px;
     line-height: 23px;
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     font-size: 14px;
     line-height: 22px;
   }
@@ -284,7 +286,7 @@ export const StyledStarIcon = styled(StarIcon)`
   width: 24px;
   vertical-align: baseline;
   align-self: center;
-  @media (max-width: 560px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     width: 16px;
   }
 `;

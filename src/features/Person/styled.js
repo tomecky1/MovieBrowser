@@ -1,22 +1,10 @@
 import styled from "styled-components";
 
-export const Text = styled.header`
-  font-size: 36px;
-  font-weight: 600;
-  line-height: 43.2px;
-  margin: 56px 0 24px 0;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    font-size: 20px;
-    line-height: 24px;
-    margin: 24px 0 16px 0px;
-  }
-`;
-
 export const FlexContainer = styled.div`
+  max-width: 1368px;
   display: flex;
   flex-direction: column;
-  margin-left: 276px;
+  margin: 0 auto;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     border-radius: 5px;
@@ -30,17 +18,29 @@ export const FlexContainer = styled.div`
   }
 `;
 
+export const Text = styled.header`
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 43.2px;
+  margin: 56px 0 24px 0;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    font-size: 20px;
+    line-height: 24px;
+    margin: 24px 0 16px 0px;
+  }
+`;
+
 export const StyledPersonWrapper = styled.div`
-  max-width: 1368px;
   background-color: ${({ theme }) => theme.color.whisper};
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(208px, 1fr));
-  grid-template-rows: repeat(auto-fill, minmax(339px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(208px, 1fr));
+  grid-template-rows: repeat(auto-fit, minmax(339px, 1fr));
   gap: 24px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    grid-template-columns: repeat(auto-fill, minmax(136px, 1fr));
-    grid-template-rows: repeat(auto-fill, minmax(245px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(136px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(245px, 1fr));
     gap: 16px;
   }
 `;
