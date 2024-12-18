@@ -25,10 +25,7 @@ export const CastAndCrew = ({ movieId }) => {
     const fetchMovieCredits = async () => {
       try {
         const fetchedCredits = await getMovieCredits(movieId);
-        console.log("Raw API response:", credits);
-
         if (fetchedCredits) {
-          console.log("Cast before setState:", credits.cast);
           setCredits(fetchedCredits);
         }
       } catch (error) {
@@ -36,7 +33,7 @@ export const CastAndCrew = ({ movieId }) => {
       }
     };
     fetchMovieCredits();
-  }, [credits, movieId]);
+  }, [movieId]); // teraz efekt będzie wykonywany tylko przy zmianie movieId
 
   return (
     <>
@@ -44,7 +41,7 @@ export const CastAndCrew = ({ movieId }) => {
       <StyledPersonWrapper>
         {credits.cast.length > 0 ? (
           credits.cast.map((member) => (
-            <WrapperItem key={member.id}>
+            <WrapperItem key={`${member.id}-${member.credit_id}`}>
               <ImageWrapper
                 src={
                   member.profile_path
@@ -64,8 +61,8 @@ export const CastAndCrew = ({ movieId }) => {
       <Text>Crew</Text>
       <StyledPersonWrapper>
         {credits.crew.length > 0 ? (
-          credits.crew.map((member) => (
-            <WrapperItem key={member.id}>
+          credits.crew.map((member, index) => (
+            <WrapperItem key={`${member.id}-${member.credit_id}`}>
               <ImageWrapper
                 src={
                   member.profile_path
