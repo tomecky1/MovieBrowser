@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getMovieCredits } from "../movieDetailsAPI";
+
+import { ReactComponent as ProfileIcon } from "../../icons/Picture.svg";
 import {
   Text,
   StyledPersonWrapper,
@@ -7,6 +9,7 @@ import {
   ImageWrapper,
   WrapperActorName,
   WrapperRole,
+  StyledPlaceholder,
 } from "./styled";
 
 export const CastAndCrew = ({ movieId }) => {
@@ -42,14 +45,16 @@ export const CastAndCrew = ({ movieId }) => {
         {credits.cast.length > 0 ? (
           credits.cast.map((member) => (
             <WrapperItem key={`${member.id}-${member.credit_id}`}>
-              <ImageWrapper
-                src={
-                  member.profile_path
-                    ? `https://image.tmdb.org/t/p/w500${member.profile_path}`
-                    : "https://via.placeholder.com/200"
-                }
-                alt={member.name}
-              />
+              <ImageWrapper>
+                {member.profile_path ? (
+                  <img
+                    src={`https://image.tmdb.org/t/p/w500${member.profile_path}`}
+                    alt={member.name}
+                  />
+                ) : (
+                  <ProfileIcon />
+                )}
+              </ImageWrapper>
               <WrapperActorName>{member.name}</WrapperActorName>
               <WrapperRole>Role: {member.character}</WrapperRole>
             </WrapperItem>
@@ -63,14 +68,16 @@ export const CastAndCrew = ({ movieId }) => {
         {credits.crew.length > 0 ? (
           credits.crew.map((member, index) => (
             <WrapperItem key={`${member.id}-${member.credit_id}`}>
-              <ImageWrapper
-                src={
-                  member.profile_path
-                    ? `https://image.tmdb.org/t/p/w500${member.profile_path}`
-                    : "https://via.placeholder.com/200"
-                }
-                alt={member.name}
-              />
+              <ImageWrapper>
+                {member.profile_path ? (
+                  <img
+                    src={`https://image.tmdb.org/t/p/w500${member.profile_path}`}
+                    alt={member.name}
+                  />
+                ) : (
+                  <ProfileIcon />
+                )}
+              </ImageWrapper>
               <WrapperActorName>{member.name}</WrapperActorName>
               <WrapperRole>Job: {member.job}</WrapperRole>
             </WrapperItem>

@@ -11,7 +11,7 @@ function App() {
       <NaviRoutes />
       <MovieDetails />
       {/* <PersonCredits personId={personId} /> */}
-      <Pagination />
+      {/* <Pagination /> */}
     </Container>
   );
 }
