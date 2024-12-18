@@ -40,8 +40,8 @@ export const ButtonTile = styled.button`
   align-items: center;
   border-radius: 5px;
   border: none;
-  color: ${({ theme }) => theme.colors.scienceBlue};
-  background-color: ${({ theme }) => theme.colors.pattensBlue};
+  color: ${({ theme }) => theme.color.scienceBlue};
+  background-color: ${({ theme }) => theme.color.pattensBlue};
   cursor: pointer;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
@@ -50,8 +50,8 @@ export const ButtonTile = styled.button`
   }
 
   &:disabled {
-    color: ${({ theme }) => theme.colors.waterloo};
-    background-color: ${({ theme }) => theme.colors.mystic};
+    color: ${({ theme }) => theme.color.waterloo};
+    background-color: ${({ theme }) => theme.color.mystic};
     cursor: default;
   }
 `;
@@ -60,7 +60,7 @@ export const ButtonText = styled.span`
   font-size: 14px;
   line-height: 20px;
   font-weight: 400;
-  color: ${({ theme }) => theme.colors.mineShaft};
+  color: ${({ theme }) => theme.color.mineShaft};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     display: none;
@@ -77,7 +77,7 @@ export const PointerLeft = styled(Pointer)`
     }
 
   &:disabled {
-    color: ${({ theme }) => theme.colors.waterloo};
+    color: ${({ theme }) => theme.color.waterloo};
   }
 `;
 
@@ -95,7 +95,7 @@ export const Counter = styled.div`
 `;
 
 export const CounterText = styled.span`
-  color: ${({ theme }) => theme.colors.waterloo};
+  color: ${({ theme }) => theme.color.waterloo};
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
