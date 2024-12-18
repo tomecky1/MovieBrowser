@@ -15,6 +15,10 @@ import { useQueryParameter } from "../components/Search/useQueryParameter";
 import { useFetchSearchResult } from "../components/Search/useFetchSearchResult";
 import { usePopularMovies } from "../../features/hooks/usePopularMovies";
 import { usePopularActors } from "../../features/hooks/usePopularActors";
+import { useMediaQuery } from "react-responsive";
+import { useState } from "react";
+import { useEffect } from "react";
+import { useCallback } from "react";
 
 
 export const Pagination = (isMoviesPage) => {
@@ -27,10 +31,10 @@ export const Pagination = (isMoviesPage) => {
     const { totalPagesMovies } = usePopularMovies();
     const { totalPagesActor } = usePopularActors();
 
-    const generateURL = (page, query) => {
+    const generateURL = useCallback((page, query) => {
         const queryParam = query ? `&query=${query}` : "";
         return `${location.pathname}?page=${page}${queryParam}`;
-    };
+    }, [location.pathname]);
 
     const totalPages = query
         ? totalSearchPages
@@ -50,7 +54,7 @@ export const Pagination = (isMoviesPage) => {
         } else if (!location.pathname.includes("search") && currentPage === 1) {
             navigate(location.pathname, { replace: true });
         }
-    }, [query, previousQuery, currentPage, navigate, location.pathname]);
+    }, [query, previousQuery, currentPage, navigate, location.pathname, generateURL]);
 
     const changePage = (newPage) => {
         if (newPage >= 1 && newPage <= totalPages) {
