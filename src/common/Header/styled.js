@@ -17,7 +17,7 @@ export const StyledHeader = styled.header`
   display: flex;
   align-items: end;
   position: relative;
-  height: 770px;
+  min-height: 770px;
 
   &::before {
     content: "";
@@ -66,7 +66,7 @@ export const StyledHeader = styled.header`
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    height: 148px;
+    min-height: 148px;
   }
 `;
 
@@ -85,20 +85,23 @@ export const AdditionalInfo = styled.div`
   z-index: 2;
   margin-left: 276px;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.tabletHorizontal}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.nextHubMax}) {
     margin-left: 150px;
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    margin-left: 16px;
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletVertical}) {
+    margin-left: 75px;
   }
+
+@media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+  margin-left: 16px;
+}
 `;
 
 export const MovieName = styled.header`
   font-size: 64px;
   font-weight: 500;
   line-height: 76.8px;
-  margin: 0;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     font-size: 24px;
@@ -165,12 +168,10 @@ export const MovieVotes = styled.p`
 `;
 
 export const MobileWrapper = styled.div`
-@media screen {
   display: flex;
   flex-direction: column;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     flex-direction: row;
   }
-}
 `

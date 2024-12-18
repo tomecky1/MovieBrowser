@@ -1,22 +1,17 @@
-import {Container} from "./common/Container";
-import CastTile from "./features/CastTile";
-import { CrewTile } from "./features/CrewTile/index.js";
-import Header from "./common/Header/index.js";
+import { Container } from "./common/Container";
 import MovieDetails from "./features/MovieDetails/index.js";
-import {Navigation} from "./common/Navigation";
-import {MovieDetailsTile} from "./features/MovieListTile";
+import { NaviRoutes } from "./common/Navigation/index.js";
 import { Pagination } from "./common/Pagination/index.js";
 
 function App() {
+  const personId = 287;
+
   return (
     <Container>
-      <Navigation/>
-      <Header></Header>
-      <MovieDetails/>
-      <MovieDetailsTile/>
-      <CastTile/>
-      <CrewTile/>
-      <Pagination/>
+      <NaviRoutes />
+      <MovieDetails />
+      {/* <PersonCredits personId={personId} /> */}
+      <Pagination />
     </Container>
   );
 }
