@@ -25,10 +25,7 @@ export const CastAndCrew = ({ movieId }) => {
     const fetchMovieCredits = async () => {
       try {
         const fetchedCredits = await getMovieCredits(movieId);
-        console.log("Raw API response:", credits);
-
         if (fetchedCredits) {
-          console.log("Cast before setState:", credits.cast);
           setCredits(fetchedCredits);
         }
       } catch (error) {
