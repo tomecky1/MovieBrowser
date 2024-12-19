@@ -81,15 +81,3 @@ export const MovieList = ({ movieId }) => {
     </>
   );
 };
-
-{
-  /* <FlexContainer>
-<Text>Popular people</Text>
-<StyledPersonWrapper>
-  <WrapperItem>
-    <ImageWrapper src={posterExample} alt="pic" />
-    <WrapperActorName>Liu Yifei</WrapperActorName>
-  </WrapperItem>
-  </StyledPersonWrapper>
-  </FlexContainer> */
-}
