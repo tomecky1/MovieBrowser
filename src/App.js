@@ -9,7 +9,7 @@ function App() {
   return (
     <Container>
       <NaviRoutes />
-      <MovieDetails />
+      {/* <MovieDetails /> */}
       {/* <PersonCredits personId={personId} /> */}
       {/* <Pagination /> */}
     </Container>
