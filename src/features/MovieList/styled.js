@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { ReactComponent as StarIcon } from "../../icons/star.svg";
+import { Link } from "react-router-dom";
 
 export const FlexCont = styled.div`
   max-width: 1368px;
@@ -179,4 +180,9 @@ export const StyledStarIcon = styled(StarIcon)`
     height: 15.25px;
     align-self: normal;
   }
+`;
+
+export const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: inherit;
 `;

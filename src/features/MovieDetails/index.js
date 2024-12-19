@@ -24,9 +24,11 @@ import { useEffect, useState } from "react";
 import { getMovieOverview } from "../movieDetailsAPI";
 import { CastAndCrew } from "../CastAndCrew";
 import MainHeader from "../../common/MainHeader";
+import { useParams } from "react-router-dom";
 
 const MovieDetails = () => {
   const dispatch = useDispatch();
+  const { id } = useParams();
 
   const movies = useSelector(selectMovies);
   const status = useSelector(selectStatus);
@@ -44,12 +46,10 @@ const MovieDetails = () => {
   const [poster, setPoster] = useState(null);
   const [error, setError] = useState(false); // dodaj stan na błąd
 
-  const movieId = 550; // może być przekazany jako parametr jeśli komponent ma dynamiczne ID
-
   useEffect(() => {
     const fetchMovieDetails = async () => {
       try {
-        const fetchedData = await getMovieOverview(movieId);
+        const fetchedData = await getMovieOverview(id);
         if (fetchedData) {
           setOverview(fetchedData.overview);
           setTitle(fetchedData.title);
@@ -65,54 +65,58 @@ const MovieDetails = () => {
     };
 
     fetchMovieDetails();
-  }, [movieId]);
+  }, [id]);
 
   return (
     <>
-    <MainHeader/>
-    <FlexContainer>
-      <StyledMovieDetailsTile>
-        <IconContainer>
-          <Image
-            src={`https://image.tmdb.org/t/p/w500/${
-              poster ? poster : "nie ma plakatu"
-            }`}
-            alt="Movie poster"
-          />
-        </IconContainer>
-        <Details>
-          <Header>Movie Title: {title ? title : "Ładowanie tytułu..."}</Header>
+      <MainHeader />
+      <FlexContainer>
+        <StyledMovieDetailsTile>
+          <IconContainer>
+            <Image
+              src={`https://image.tmdb.org/t/p/w500/${
+                poster ? poster : "nie ma plakatu"
+              }`}
+              alt="Movie poster"
+            />
+          </IconContainer>
+          <Details>
+            <Header>
+              Movie Title: {title ? title : "Ładowanie tytułu..."}
+            </Header>
 
-          <Year></Year>
-          <DetailInfo>
-            <DetailInfoElement>
-              <DetailInfoElementType>Production:&nbsp;</DetailInfoElementType>
-              USA
-            </DetailInfoElement>
-            <DetailInfoElement>
-              <DetailInfoElementType>Release date:&nbsp;</DetailInfoElementType>
-              {date ? date : "release date unknown"}
-            </DetailInfoElement>
-          </DetailInfo>
-          <Tags>
-            <Tag>Action</Tag>
-            <Tag>Drama</Tag>
-          </Tags>
-          <Rate>
-            <StyledStarIcon />
-            <RateGrade>
-              {vote_average ? vote_average : "Ładuję ocenę filmu"}
-            </RateGrade>
-            <RateElement>/ 10</RateElement>
-            <RateVotes>{votes ? votes : "Liczba głosów"} votes</RateVotes>
-          </Rate>
-        </Details>
-        <MovieDescription>
-          {overview ? overview : "nie ma opisu filmu i uj"}
-        </MovieDescription>
-      </StyledMovieDetailsTile>
-      <CastAndCrew movieId={movieId} />
-    </FlexContainer>
+            <Year></Year>
+            <DetailInfo>
+              <DetailInfoElement>
+                <DetailInfoElementType>Production:&nbsp;</DetailInfoElementType>
+                USA
+              </DetailInfoElement>
+              <DetailInfoElement>
+                <DetailInfoElementType>
+                  Release date:&nbsp;
+                </DetailInfoElementType>
+                {date ? date : "release date unknown"}
+              </DetailInfoElement>
+            </DetailInfo>
+            <Tags>
+              <Tag>Action</Tag>
+              <Tag>Drama</Tag>
+            </Tags>
+            <Rate>
+              <StyledStarIcon />
+              <RateGrade>
+                {vote_average ? vote_average : "Ładuję ocenę filmu"}
+              </RateGrade>
+              <RateElement>/ 10</RateElement>
+              <RateVotes>{votes ? votes : "Liczba głosów"} votes</RateVotes>
+            </Rate>
+          </Details>
+          <MovieDescription>
+            {overview ? overview : "nie ma opisu filmu i uj"}
+          </MovieDescription>
+        </StyledMovieDetailsTile>
+        <CastAndCrew movieId={id} />
+      </FlexContainer>
     </>
   );
 };

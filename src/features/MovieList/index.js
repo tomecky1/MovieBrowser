@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import {
   StyledMovieDetailsTileList,
   IconContainerList,
@@ -14,6 +15,7 @@ import {
   ImageList,
   FlexCont,
   Text,
+  StyledLink,
 } from "./styled";
 
 const API_KEY = "1454980afff1c0ba9dce7e6202a9ecbf";
@@ -55,26 +57,32 @@ export const MovieList = ({ movieId }) => {
         <Text>Popular movies</Text>
         <StyledMovieDetailsTileList>
           {movies.results.map((list) => (
-            <IconContainerList key={list.id}>
-              <ImageList
-                src={`https://image.tmdb.org/t/p/w500/${list.poster_path}`}
-                alt={`${list.title} poster`}
-              />
-              <MobileDetailsList>
-                <HeaderList>{list.title}</HeaderList>
-                <YearList>{new Date(list.release_date).getFullYear()}</YearList>
-                <TagsList>
-                  {list.genres?.map((genre) => (
-                    <TagList key={genre.id}>{genre.name}</TagList>
-                  ))}
-                </TagsList>
-                <RateList>
-                  <StyledStarIcon />
-                  <RateGradeList>{list.vote_average.toFixed(2)}</RateGradeList>
-                  <RateVotesList>/{list.vote_count} votes</RateVotesList>
-                </RateList>
-              </MobileDetailsList>
-            </IconContainerList>
+            <StyledLink to={`/movie/${list.id}`} key={list.id}>
+              <IconContainerList>
+                <ImageList
+                  src={`https://image.tmdb.org/t/p/w500/${list.poster_path}`}
+                  alt={`${list.title} poster`}
+                />
+                <MobileDetailsList>
+                  <HeaderList>{list.title}</HeaderList>
+                  <YearList>
+                    {new Date(list.release_date).getFullYear()}
+                  </YearList>
+                  <TagsList>
+                    {list.genres?.map((genre) => (
+                      <TagList key={genre.id}>{genre.name}</TagList>
+                    ))}
+                  </TagsList>
+                  <RateList>
+                    <StyledStarIcon />
+                    <RateGradeList>
+                      {list.vote_average.toFixed(2)}
+                    </RateGradeList>
+                    <RateVotesList>/{list.vote_count} votes</RateVotesList>
+                  </RateList>
+                </MobileDetailsList>
+              </IconContainerList>
+            </StyledLink>
           ))}
         </StyledMovieDetailsTileList>
       </FlexCont>
