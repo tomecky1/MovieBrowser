@@ -9,6 +9,7 @@ import {
   StyledSearchIcon,
   StyledVideoIcon,
   NavigationTitleContainer,
+  StyledNavLinkIcon,
 } from "./styled";
 import { StyledNavLink } from "./StyledNavLink/styled";
 
@@ -18,7 +19,9 @@ export function Navigation() {
       <NavigationList>
         <MobileContainer>
           <NavigationTitleContainer>
-            <StyledVideoIcon />
+            <StyledNavLinkIcon to="/">
+              <StyledVideoIcon />
+            </StyledNavLinkIcon>
             <NavigationTitle>Movies Browser</NavigationTitle>
           </NavigationTitleContainer>
           <NavigationItem>
