@@ -13,12 +13,12 @@ export const StyledNavLink = styled(NavLink).attrs(() => ({
   font-weight: 600;
   font-size: 14px;
   padding: 8px 24px;
-  transition: transform ease 500ms, border 0.5s ease, margin 0.5s ease; 
+  transition: transform ease 500ms, border 0.5s ease, margin 0.5s ease;
 
   &:hover {
-        border: 1px solid ${({ theme }) => theme.color.white};
-        border-radius: 24px;
-    }
+    border: 1px solid ${({ theme }) => theme.color.white};
+    border-radius: 24px;
+  }
 
   &.${activeclassname} {
     color: ${({ theme }) => theme.color.white};
@@ -35,4 +35,8 @@ export const StyledNavLink = styled(NavLink).attrs(() => ({
     border-radius: 29px !important;
     margin: unset !important;
   }
+`;
+
+export const StyledNavLinkIcon = styled(NavLink)`
+  cursor: pointer;
 `;

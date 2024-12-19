@@ -9,9 +9,8 @@ import {
   StyledSearchIcon,
   StyledVideoIcon,
   NavigationTitleContainer,
-  StyledNavLinkIcon,
 } from "./styled";
-import { StyledNavLink } from "./StyledNavLink/styled";
+import { StyledNavLink, StyledNavLinkIcon } from "./StyledNavLink/styled";
 
 export function Navigation() {
   return (
