@@ -70,7 +70,7 @@ export const MovieList = ({ movieId }) => {
                 </TagsList>
                 <RateList>
                   <StyledStarIcon />
-                  <RateGradeList>{list.vote_average}</RateGradeList>
+                  <RateGradeList>{list.vote_average.toFixed(2)}</RateGradeList>
                   <RateVotesList>{list.vote_count} votes</RateVotesList>
                 </RateList>
               </MobileDetailsList>
