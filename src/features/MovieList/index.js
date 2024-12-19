@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import PopularMoviesPoster from "../../image/PopularMoviesPoster.png";
 import {
   StyledMovieDetailsTileList,
   IconContainerList,
@@ -71,8 +70,8 @@ export const MovieList = ({ movieId }) => {
                 </TagsList>
                 <RateList>
                   <StyledStarIcon />
-                  <RateGradeList>{list.vote_average}</RateGradeList>
-                  <RateVotesList>{list.vote_count} votes</RateVotesList>
+                  <RateGradeList>{list.vote_average.toFixed(2)}</RateGradeList>
+                  <RateVotesList>/{list.vote_count} votes</RateVotesList>
                 </RateList>
               </MobileDetailsList>
             </IconContainerList>
@@ -82,15 +81,3 @@ export const MovieList = ({ movieId }) => {
     </>
   );
 };
-
-{
-  /* <FlexContainer>
-<Text>Popular people</Text>
-<StyledPersonWrapper>
-  <WrapperItem>
-    <ImageWrapper src={posterExample} alt="pic" />
-    <WrapperActorName>Liu Yifei</WrapperActorName>
-  </WrapperItem>
-  </StyledPersonWrapper>
-  </FlexContainer> */
-}
