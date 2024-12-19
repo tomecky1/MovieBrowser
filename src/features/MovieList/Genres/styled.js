@@ -7,11 +7,11 @@ export const StyledGenresList = styled.ul`
     margin: 0px;
     padding-left: 0px;
     
-    @media (max-width: ${({ theme }) => theme.breakpoints.tabletS}) {
+    @media (max-width: ${({ theme }) => theme.breakpoints.biggerMobile}) {
         gap: ${({ extra }) => extra ? "12px" : "8px"};
     };
 
-    @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
         gap: 8px;
     };
 `;
@@ -27,12 +27,12 @@ export const Genre = styled.li`
     padding: 8px 16px;
     list-style-type: none;
 
-    @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {
+    @media (max-width: ${({ theme }) => theme.breakpoints.iPadPro}) {
         font-size: ${({ extra }) => extra ? "16px" : "10px"};
         padding: ${({ extra }) => extra ? "8px 16px" : "4px 8px"};
     };
 
-    @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
         font-size: 10px;
         padding: 4px 8px;
     };
