@@ -8,6 +8,8 @@ export const StyledNavLink = styled(NavLink).attrs(() => ({
 }))`
   text-decoration: none;
   color: ${({ theme }) => theme.color.white};
+  border-radius: 24px;
+  border: 1px transparent;
 
   &.${activeclassname} {
     color: ${({ theme }) => theme.color.white};
@@ -16,7 +18,6 @@ export const StyledNavLink = styled(NavLink).attrs(() => ({
     padding: 8px 24px;
     background-color: ${({ theme }) => theme.color.black};
     cursor: pointer;
-    border-radius: 24px;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
