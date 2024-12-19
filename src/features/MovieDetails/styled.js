@@ -220,6 +220,7 @@ export const RateGrade = styled.p`
   padding-left: 8px;
   line-height: 29px;
   margin: 0;
+  font-weight: 500;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     font-size: 13px;
