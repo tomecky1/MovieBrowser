@@ -45,6 +45,7 @@ export const ImageContainer = styled.div`
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.biggerMobile}) {
+    flex-direction: column;
     grid-row: 1;
     padding: 40px 0 0 40px;
   }
@@ -142,6 +143,10 @@ export const StyledLink = styled(Link)`
   display: flex;
   text-decoration: none;
   color: inherit;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.biggerMobile}) {
+    flex-direction: column;
+  }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     flex-direction: column;
