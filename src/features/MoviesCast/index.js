@@ -7,6 +7,13 @@ import {
   MovieRole,
   SectionTitle,
 } from "./styled";
+import {
+  Rate,
+  RateElement,
+  RateGrade,
+  RateVotes,
+  StyledStarIcon,
+} from "../MovieDetails/styled";
 
 export const MoviesCast = ({ personId }) => {
   const [movieCredits, setMovieCredits] = useState([]);
@@ -43,6 +50,18 @@ export const MoviesCast = ({ personId }) => {
               />
               <MovieTitle>{movie.title}</MovieTitle>
               <MovieRole>{movie.character}</MovieRole>
+              <Rate>
+                <StyledStarIcon />
+                <RateGrade>
+                  {movie.vote_average
+                    ? movie.vote_average.toFixed(2)
+                    : "Ładuję ocenę filmu"}
+                </RateGrade>
+                <RateElement> / 10</RateElement>
+                <RateVotes>
+                  {movie.vote_count ? movie.vote_count : "Liczba głosów"} votes
+                </RateVotes>
+              </Rate>
             </MovieItem>
           ))
         ) : (

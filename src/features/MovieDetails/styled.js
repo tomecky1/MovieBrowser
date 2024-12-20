@@ -231,9 +231,9 @@ export const RateGrade = styled.p`
 `;
 
 export const RateElement = styled.p`
-  font-size: 14px;
+  font-size: 16px;
   color: black;
-  line-height: 17px;
+  line-height: 24px;
   margin: 0;
   justify-content: end;
   padding-left: 8px;
@@ -244,9 +244,9 @@ export const RateElement = styled.p`
 `;
 
 export const RateVotes = styled.p`
-  font-size: 14px;
+  font-size: 16px;
   color: black;
-  line-height: 17px;
+  line-height: 24px;
   margin: 0;
   padding-left: 12px;
 

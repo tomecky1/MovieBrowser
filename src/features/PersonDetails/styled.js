@@ -77,6 +77,7 @@ export const Details = styled.div`
   grid-auto-rows: min-content;
   padding-top: 40px;
   padding-right: 17px;
+  margin-left: 40px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     grid-gap: 16px;

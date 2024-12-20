@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 export const StyledMoviesWrapper = styled.div`
+  margin: 0 auto;
+  max-width: fit-content;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 16px;
@@ -35,6 +37,7 @@ export const MovieRole = styled.p`
 `;
 
 export const SectionTitle = styled.h2`
+  max-width: fit-content;
   font-size: 24px;
   margin: 24px 16px;
   color: ${({ theme }) => theme.color.woodsmoke};
