@@ -10,14 +10,13 @@ import {
   MovieDescription,
 } from "./styled";
 import personDetails from "../../image/personDetails.png";
-import { ContainerExtra } from "../../common/Container";
+import { Container } from "../../common/Container";
 import { useEffect, useState } from "react";
 import { getPersonData } from "../usePersonDetailsAPI";
 import Loading from "../../common/Loading";
 import NotFound from "../../common/NotFound";
 import { StyledLink } from "../MovieList/styled";
 import { useParams } from "react-router-dom";
-import { PersonCredits } from "../PersonCredits";
 import { MoviesCast } from "../MoviesCast";
 
 export const PersonDetails = () => {
@@ -47,7 +46,7 @@ export const PersonDetails = () => {
 
   return (
     <>
-      <ContainerExtra>
+      <Container>
         <StyledMovieDetailsTile>
           {isLoading ? (
             <div>
@@ -65,24 +64,24 @@ export const PersonDetails = () => {
                     }
                     alt={person.name}
                   />
-                  <Details>
-                    <Header>{person.name}</Header>
-                    <DetailInfo>
-                      <DetailInfoElement>
-                        <DetailInfoElementType>
-                          Date of birth:
-                        </DetailInfoElementType>
-                        {person.birthday || "Unknown"}
-                        <br />
-                        <DetailInfoElementType>
-                          Place of birth:
-                        </DetailInfoElementType>
-                        {person.place_of_birth}
-                      </DetailInfoElement>
-                    </DetailInfo>
-                    <MovieDescription>{person.biography}</MovieDescription>
-                  </Details>
                 </ImageContainer>
+                <Details>
+                  <DetailInfo>
+                    <Header>{person.name}</Header>
+                    <DetailInfoElement>
+                      <DetailInfoElementType>
+                        Date of birth:
+                      </DetailInfoElementType>
+                      {person.birthday || "Unknown"}
+                      <br />
+                      <DetailInfoElementType>
+                        Place of birth:
+                      </DetailInfoElementType>
+                      {person.place_of_birth}
+                    </DetailInfoElement>
+                  </DetailInfo>
+                  <MovieDescription>{person.biography}</MovieDescription>
+                </Details>
               </StyledLink>
             </div>
           ) : (
@@ -91,8 +90,8 @@ export const PersonDetails = () => {
             </div>
           )}
         </StyledMovieDetailsTile>
-      </ContainerExtra>
-      <MoviesCast personId={id} />
+        <MoviesCast personId={id} />
+      </Container>
     </>
   );
 };

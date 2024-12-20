@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 export const StyledMovieDetailsTile = styled.div`
-  max-width: 1368px;
+  /* max-width: 1368px; */
   box-shadow: 4px 4px 10px #bac7d580;
   background-color: ${({ theme }) => theme.color.white};
   /* display: grid; */
@@ -139,11 +139,11 @@ export const MovieDescription = styled.div`
 `;
 
 export const StyledLink = styled(Link)`
+  display: flex;
   text-decoration: none;
   color: inherit;
-  display: block;
 
-  &:hover {
-    opacity: 0.8;
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    flex-direction: column;
   }
 `;
