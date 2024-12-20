@@ -45,6 +45,7 @@ export const ImageContainer = styled.div`
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.biggerMobile}) {
+    flex-direction: column;
     grid-row: 1;
     padding: 40px 0 0 40px;
   }
@@ -139,9 +140,13 @@ export const MovieDescription = styled.div`
 `;
 
 export const StyledLink = styled(Link)`
+  display: flex;
   text-decoration: none;
   color: inherit;
-  display: block;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.biggerMobile}) {
+    flex-direction: column;
+  }
 
   &:hover {
     opacity: 0.8;

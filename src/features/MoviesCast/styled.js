@@ -7,6 +7,14 @@ export const StyledMoviesWrapper = styled.div`
   grid-template-columns: repeat(4, 1fr);
   gap: 16px;
   padding: 16px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.biggerMobile}) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 export const MovieItem = styled.div`
