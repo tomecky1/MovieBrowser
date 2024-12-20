@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const StyledMovieDetailsTile = styled.div`
   max-width: 1368px;
@@ -134,5 +135,15 @@ export const MovieDescription = styled.div`
     font-size: 14px;
     line-height: 22px;
     padding-left: 16px;
+  }
+`;
+
+export const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: inherit;
+  display: block;
+
+  &:hover {
+    opacity: 0.8;
   }
 `;
