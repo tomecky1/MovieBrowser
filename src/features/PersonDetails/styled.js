@@ -1,10 +1,11 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const StyledMovieDetailsTile = styled.div`
   max-width: 1368px;
   box-shadow: 4px 4px 10px #bac7d580;
   background-color: ${({ theme }) => theme.color.white};
-  display: grid;
+  /* display: grid; */
   grid-gap: 40px;
   align-content: start;
   grid-template-columns: 1fr;
@@ -32,7 +33,7 @@ export const StyledMovieDetailsTile = styled.div`
 
 export const ImageContainer = styled.div`
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: left;
   border-radius: 5px;
   padding: 40px 0px 40px 40px;
@@ -76,6 +77,7 @@ export const Details = styled.div`
   grid-auto-rows: min-content;
   padding-top: 40px;
   padding-right: 17px;
+  margin-left: 40px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     grid-gap: 16px;
@@ -116,7 +118,6 @@ export const DetailInfoElementType = styled.span`
 `;
 
 export const MovieDescription = styled.div`
-  grid-column: 2;
   font-size: 20px;
   font-weight: 400;
   line-height: 32px;
@@ -134,5 +135,15 @@ export const MovieDescription = styled.div`
     font-size: 14px;
     line-height: 22px;
     padding-left: 16px;
+  }
+`;
+
+export const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: inherit;
+  display: block;
+
+  &:hover {
+    opacity: 0.8;
   }
 `;

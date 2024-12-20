@@ -4,41 +4,95 @@ import {
   Image,
   Details,
   Header,
-  MovieDescription,
   DetailInfo,
   DetailInfoElementType,
   DetailInfoElement,
+  MovieDescription,
 } from "./styled";
 import personDetails from "../../image/personDetails.png";
 import { ContainerExtra } from "../../common/Container";
+import { useEffect, useState } from "react";
+import { getPersonData } from "../usePersonDetailsAPI";
+import Loading from "../../common/Loading";
+import NotFound from "../../common/NotFound";
+import { StyledLink } from "../MovieList/styled";
+import { useParams } from "react-router-dom";
+import { PersonCredits } from "../PersonCredits";
+import { MoviesCast } from "../MoviesCast";
 
 export const PersonDetails = () => {
+  const { id } = useParams();
+  const [person, setPerson] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchPerson = async () => {
+      setIsLoading(true);
+      try {
+        const fetchedData = await getPersonData(id);
+        if (fetchedData) {
+          setPerson(fetchedData);
+        }
+      } catch (error) {
+        console.error("Error fetching person:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    if (id) {
+      fetchPerson();
+    }
+  }, [id]);
+
   return (
-    <ContainerExtra>
-      <StyledMovieDetailsTile>
-        <ImageContainer>
-          <Image src={personDetails} alt="Actor poster" />
-        </ImageContainer>
-        <Details>
-          <Header>Liu Yifei</Header>
-          <DetailInfo>
-            <DetailInfoElement>
-              <DetailInfoElementType>Date of birth: </DetailInfoElementType>{" "}
-              25.08.1987&nbsp;
-            </DetailInfoElement>
-            <DetailInfoElement>
-              <DetailInfoElementType>Place of birth: </DetailInfoElementType>{" "}
-              Wuhan, Hubei, China
-            </DetailInfoElement>
-          </DetailInfo>
-        </Details>
-        <MovieDescription>
-          Liu Yifei was born in Wuhan, Hubei, Province of China on August 25th,
-          1987. She began modeling at the age of 8 and was trained in singing,
-          dancing and the piano. Moving to the United States at 10 with her
-          mother, Liu lived there for four years.
-        </MovieDescription>
-      </StyledMovieDetailsTile>
-    </ContainerExtra>
+    <>
+      <ContainerExtra>
+        <StyledMovieDetailsTile>
+          {isLoading ? (
+            <div>
+              <Loading />
+            </div>
+          ) : person ? (
+            <div key={person.id}>
+              <StyledLink to={`/person/${person.id}`} key={person.id}>
+                <ImageContainer>
+                  <Image
+                    src={
+                      person.profile_path
+                        ? `https://image.tmdb.org/t/p/w500${person.profile_path}`
+                        : personDetails
+                    }
+                    alt={person.name}
+                  />
+                  <Details>
+                    <Header>{person.name}</Header>
+                    <DetailInfo>
+                      <DetailInfoElement>
+                        <DetailInfoElementType>
+                          Date of birth:
+                        </DetailInfoElementType>
+                        {person.birthday || "Unknown"}
+                        <br />
+                        <DetailInfoElementType>
+                          Place of birth:
+                        </DetailInfoElementType>
+                        {person.place_of_birth}
+                      </DetailInfoElement>
+                    </DetailInfo>
+                    <MovieDescription>{person.biography}</MovieDescription>
+                  </Details>
+                </ImageContainer>
+              </StyledLink>
+            </div>
+          ) : (
+            <div>
+              <NotFound />
+            </div>
+          )}
+        </StyledMovieDetailsTile>
+      </ContainerExtra>
+      <MoviesCast personId={id} />
+    </>
   );
 };
