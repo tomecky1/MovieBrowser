@@ -4,18 +4,17 @@ import {
   Image,
   Details,
   Header,
+  MovieDescription,
   DetailInfo,
   DetailInfoElementType,
   DetailInfoElement,
-  MovieDescription,
 } from "./styled";
 import personDetails from "../../image/personDetails.png";
-import { ContainerExtra } from "../../common/Container";
 import { useEffect, useState } from "react";
 import { getPersonData } from "../usePersonDetailsAPI";
 import Loading from "../../common/Loading";
 import NotFound from "../../common/NotFound";
-import { StyledLink } from "../MovieList/styled";
+import { FlexCont, StyledLink } from "../MovieList/styled";
 import { useParams } from "react-router-dom";
 import { PersonCredits } from "../PersonCredits";
 import { MoviesCast } from "../MoviesCast";
@@ -46,53 +45,52 @@ export const PersonDetails = () => {
   }, [id]);
 
   return (
-    <>
-      <ContainerExtra>
-        <StyledMovieDetailsTile>
-          {isLoading ? (
-            <div>
-              <Loading />
-            </div>
-          ) : person ? (
-            <div key={person.id}>
-              <StyledLink to={`/person/${person.id}`} key={person.id}>
-                <ImageContainer>
-                  <Image
-                    src={
-                      person.profile_path
-                        ? `https://image.tmdb.org/t/p/w500${person.profile_path}`
-                        : personDetails
-                    }
-                    alt={person.name}
-                  />
-                  <Details>
-                    <Header>{person.name}</Header>
-                    <DetailInfo>
-                      <DetailInfoElement>
-                        <DetailInfoElementType>
-                          Date of birth:
-                        </DetailInfoElementType>
-                        {person.birthday || "Unknown"}
-                        <br />
-                        <DetailInfoElementType>
-                          Place of birth:
-                        </DetailInfoElementType>
-                        {person.place_of_birth}
-                      </DetailInfoElement>
-                    </DetailInfo>
-                    <MovieDescription>{person.biography}</MovieDescription>
-                  </Details>
-                </ImageContainer>
-              </StyledLink>
-            </div>
-          ) : (
-            <div>
-              <NotFound />
-            </div>
-          )}
-        </StyledMovieDetailsTile>
-      </ContainerExtra>
+    <FlexCont>
+      <StyledMovieDetailsTile>
+        {isLoading ? (
+          <div>
+            <Loading />
+          </div>
+        ) : person ? (
+          <>
+            <StyledLink to={`/person/${person.id}`}>
+              <ImageContainer>
+                <Image
+                  src={
+                    person.profile_path
+                      ? `https://image.tmdb.org/t/p/w500${person.profile_path}`
+                      : personDetails
+                  }
+                  alt={person.name}
+                />
+              </ImageContainer>
+              <Details>
+                <Header>{person.name}</Header>
+                <DetailInfo>
+                  <DetailInfoElement>
+                    <DetailInfoElementType>
+                      Date of birth: {" "}
+                    </DetailInfoElementType>
+                    {person.birthday || "Unknown"}
+                  </DetailInfoElement>
+                  <DetailInfoElement>
+                    <DetailInfoElementType>
+                      Place of birth:{" "}
+                    </DetailInfoElementType>
+                    {person.place_of_birth}
+                  </DetailInfoElement>
+                </DetailInfo>
+              </Details>
+              <MovieDescription>{person.biography}</MovieDescription>
+            </StyledLink>
+          </>
+        ) : (
+          <>
+            <NotFound />
+          </>
+        )}
+      </StyledMovieDetailsTile>
       <MoviesCast personId={id} />
-    </>
+    </FlexCont>
   );
 };

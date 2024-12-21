@@ -1,24 +1,18 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 
 export const StyledMovieDetailsTile = styled.div`
   max-width: 1368px;
   box-shadow: 4px 4px 10px #bac7d580;
   background-color: ${({ theme }) => theme.color.white};
-  /* display: grid; */
+  display: grid;
   grid-gap: 40px;
   align-content: start;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 2fr;
-  margin: 64px 56px 56px 56px;
+  margin-top: 64px;
   row-gap: 24px;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.tabletHorizontal}) {
-    grid-template-columns: 352px 1fr;
-    grid-template-rows: 1fr 2fr;
-  }
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.biggerMobile}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.iPadPro}) {
     grid-template-columns: 285px 1fr;
     grid-template-rows: 1fr;
   }
@@ -27,24 +21,20 @@ export const StyledMovieDetailsTile = styled.div`
     grid-template-columns: 135px 1fr;
     grid-template-rows: 1fr;
     grid-gap: 16px;
-    margin: 23px 14px 24px 16px;
+    margin-top: 23px;
   }
 `;
 
 export const ImageContainer = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: left;
   border-radius: 5px;
   padding: 40px 0px 40px 40px;
   background-color: ${({ theme }) => theme.color.white};
   grid-row: 1 / span 2;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.tabletVertical}) {
-    padding: 40px 0 40px 40px;
-  }
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.biggerMobile}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.iPadPro}) {
     grid-row: 1;
     padding: 40px 0 0 40px;
   }
@@ -59,7 +49,7 @@ export const Image = styled.img`
   height: 464px;
   border-radius: 5px;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.biggerMobile}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.iPadPro}) {
     width: 255px;
     height: 350px;
   }
@@ -77,11 +67,10 @@ export const Details = styled.div`
   grid-auto-rows: min-content;
   padding-top: 40px;
   padding-right: 17px;
-  margin-left: 40px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     grid-gap: 16px;
-    padding: 16px 16px 16px 0;
+    padding: 16px 16px 0 0;
   }
 `;
 
@@ -93,8 +82,9 @@ export const Header = styled.header`
   margin: 0;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    font-size: 16px;
-    line-height: 21px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18.2px;
   }
 `;
 
@@ -106,7 +96,7 @@ export const DetailInfo = styled.div`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     font-size: 12px;
-    line-height: 16px;
+    line-height: 14.4px;
   }
 `;
 export const DetailInfoElement = styled.p`
@@ -118,32 +108,24 @@ export const DetailInfoElementType = styled.span`
 `;
 
 export const MovieDescription = styled.div`
+  grid-column: 2;
   font-size: 20px;
   font-weight: 400;
   line-height: 32px;
   margin: 0;
   padding-bottom: 16px;
-  padding-right: 17px;
+  padding-right: 40px;
+  text-align: justify;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.biggerMobile}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.iPadPro}) {
     grid-row: 2;
     grid-column: 1 / span 2;
-    padding-left: 40px;
+    padding: 0 40px 16px 40px;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     font-size: 14px;
-    line-height: 22px;
-    padding-left: 16px;
-  }
-`;
-
-export const StyledLink = styled(Link)`
-  text-decoration: none;
-  color: inherit;
-  display: block;
-
-  &:hover {
-    opacity: 0.8;
+    line-height: 22.4px;
+    padding: 0 16px 16px ;
   }
 `;

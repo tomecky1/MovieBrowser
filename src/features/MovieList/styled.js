@@ -8,7 +8,12 @@ export const FlexCont = styled.div`
   flex-direction: column;
   margin: 0 auto;
 
-  @media (max-width: 560px) {
+  @media (max-width: ${({theme}) => theme.breakpoints.nextHubMax}) {
+    margin-left: 36px;
+    margin-right: 36px;
+  }
+
+  @media (max-width: ${({theme}) => theme.breakpoints.mobile}) {
     margin-left: 16px;
     margin-right: 16px;
   }
@@ -135,7 +140,6 @@ export const RateList = styled.div`
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     font-size: 13px;
     line-height: 16.9px;
-    padding-left: 8px;
   }
 `;
 
@@ -185,4 +189,5 @@ export const StyledStarIcon = styled(StarIcon)`
 export const StyledLink = styled(Link)`
   text-decoration: none;
   color: inherit;
+  display: contents;
 `;

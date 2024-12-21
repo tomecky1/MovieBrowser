@@ -1,16 +1,16 @@
 import styled from "styled-components";
 
-export const FlexCont = styled.div`
-  max-width: 1368px;
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
+// export const FlexCont = styled.div`
+//   max-width: 1368px;
+//   display: flex;
+//   flex-direction: column;
+//   margin: 0 auto;
 
-  @media (max-width: 560px) {
-    margin-left: 16px;
-    margin-right: 16px;
-  }
-`;
+//   @media (max-width: 560px) {
+//     margin-left: 16px;
+//     margin-right: 16px;
+//   }
+// `;
 
 export const Text = styled.header`
   font-size: 36px;
