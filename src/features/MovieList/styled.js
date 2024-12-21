@@ -127,7 +127,7 @@ export const TagList = styled.li`
 
 export const RateList = styled.div`
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   color: black;
   margin: 0;
   align-items: flex-end;
@@ -135,7 +135,6 @@ export const RateList = styled.div`
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     font-size: 13px;
     line-height: 16.9px;
-    padding-left: 8px;
   }
 `;
 
@@ -150,6 +149,7 @@ export const RateGradeList = styled.p`
     font-size: 13px;
     line-height: 16.9px;
     padding-left: 8px;
+    word-break: keep-all;
   }
 `;
 
