@@ -112,6 +112,7 @@ export const NavigationItem = styled.li`
 
 export const SearchIconWrapper = styled.input`
   font-size: 16px;
+  font-weight: 400;
   border: 0;
   border-radius: 33px;
   line-height: 24px;

@@ -10,11 +10,11 @@ export function NaviRoutes() {
     <HashRouter>
       <Navigation />
       <Routes>
-        <Route path="/" element={<MovieList />} />
         <Route path="/movies" element={<MovieList />} />
         <Route path="/person" element={<Person />} />
         <Route path="/movie/:id" element={<MovieDetails />} />
         <Route path="/person/:id" element={<PersonDetails />} />
+        <Route path="/" element={<MovieList />} />
       </Routes>
     </HashRouter>
   );
