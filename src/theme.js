@@ -13,10 +13,10 @@ export const theme = {
   },
 
   breakpoints: {
-    iPhoneSE: "375px",
+    iPhoneSE: "383px",
     smallMobile: "400px",
     mobile: "560px",
-    biggerMobile: "767px",
+    biggerMobile: "768px",
     tabletVertical: "991px",
     iPadPro: "1080px",
     tabletHorizontal: "1199px",
