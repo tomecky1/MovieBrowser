@@ -17,6 +17,7 @@ import {
   Text,
   StyledLink,
 } from "./styled";
+import MovieDetails from "../MovieDetails";
 
 const API_KEY = "1454980afff1c0ba9dce7e6202a9ecbf";
 export const getPopularMovies = async () => {

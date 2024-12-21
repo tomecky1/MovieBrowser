@@ -285,9 +285,13 @@ export const MovieDescription = styled.div`
 
 export const StyledStarIcon = styled(StarIcon)`
   width: 24px;
+  height: 22.87px;
   vertical-align: baseline;
   align-self: center;
+
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     width: 16px;
+    height: 15.25px;
+    align-self: normal;
   }
 `;

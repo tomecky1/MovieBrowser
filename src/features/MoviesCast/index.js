@@ -1,11 +1,14 @@
 import { useState, useEffect } from "react";
 import { getPersonMovieCredits } from "../useApiKey";
 import {
-  StyledMoviesWrapper,
-  MovieItem,
+  StyledMovieDetailsTileList,
+  HeaderList,
   MovieTitle,
   MovieRole,
   SectionTitle,
+  Text,
+  FlexCont,
+  IconContainerList
 } from "./styled";
 import {
   Rate,
@@ -35,11 +38,11 @@ export const MoviesCast = ({ personId }) => {
 
   return (
     <>
-      <SectionTitle>Movies - cast</SectionTitle>
-      <StyledMoviesWrapper>
+      <Text>Movies - cast</Text>
+      <StyledMovieDetailsTileList>
         {movieCredits.length > 0 ? (
           movieCredits.map((movie) => (
-            <MovieItem key={`${movie.id}-${movie.credit_id}`}>
+            <IconContainerList key={`${movie.id}-${movie.credit_id}`}>
               <img
                 src={
                   movie.poster_path
@@ -48,7 +51,7 @@ export const MoviesCast = ({ personId }) => {
                 }
                 alt={`${movie.title} poster`}
               />
-              <MovieTitle>{movie.title}</MovieTitle>
+              <HeaderList>{movie.title}</HeaderList>
               <MovieRole>{movie.character}</MovieRole>
               <Rate>
                 <StyledStarIcon />
@@ -62,12 +65,12 @@ export const MoviesCast = ({ personId }) => {
                   {movie.vote_count ? movie.vote_count : "Liczba głosów"} votes
                 </RateVotes>
               </Rate>
-            </MovieItem>
+            </IconContainerList>
           ))
         ) : (
           <p>No movies available</p>
         )}
-      </StyledMoviesWrapper>
+      </StyledMovieDetailsTileList>
     </>
   );
 };
