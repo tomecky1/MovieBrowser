@@ -135,7 +135,7 @@ export const RateList = styled.div`
   flex-wrap: wrap;
   color: black;
   margin: 0;
-  align-items: flex-end;
+  align-items: baseline;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     font-size: 13px;
@@ -159,7 +159,7 @@ export const RateGradeList = styled.p`
 `;
 
 export const RateVotesList = styled.p`
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
   color: black;
   line-height: 24px;
@@ -178,7 +178,7 @@ export const StyledStarIcon = styled(StarIcon)`
   width: 24px;
   height: 22.87px;
   vertical-align: baseline;
-  align-self: center;
+  align-self: flex-start;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     width: 16px;
