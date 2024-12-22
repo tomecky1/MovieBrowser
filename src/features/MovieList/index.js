@@ -53,7 +53,6 @@ export const MovieList = ({ movieId }) => {
   }, []);
 
   return (
-    <>
       <FlexCont>
         <Text>Popular movies</Text>
         <StyledMovieDetailsTileList>
@@ -87,6 +86,5 @@ export const MovieList = ({ movieId }) => {
           ))}
         </StyledMovieDetailsTileList>
       </FlexCont>
-    </>
   );
 };

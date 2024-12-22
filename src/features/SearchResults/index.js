@@ -1,95 +1,133 @@
-import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useSearchParams } from "react-router-dom";
 import { useMovieSearch } from "../hooks/useMovieSearch";
-import { ReactComponent as PictureIcon } from "../../icons/Picture.svg";
+import { useEffect, useState } from "react";
+import {
+  StyledMovieDetailsTileList,
+  IconContainerList,
+  MobileDetailsList,
+  HeaderList,
+  YearList,
+  TagsList,
+  TagList,
+  RateList,
+  StyledStarIcon,
+  RateGradeList,
+  RateVotesList,
+  ImageList,
+  FlexCont,
+  Text,
+  StyledLink,
+} from "../MovieList/styled";
+import { ImageListBlank } from "./styled";
 
-const ResultsGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-  padding: 24px;
-
-  @media (max-width: 1200px) {
-    grid-template-columns: repeat(3, 1fr);
+const API_KEY = "1454980afff1c0ba9dce7e6202a9ecbf";
+export const getPopularMovies = async () => {
+  try {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`
+    );
+    if (!response.ok) {
+      throw new Error(`Error fetching popular movies: ${response.status}`);
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Błąd pobierania danych:", error);
+    return null;
   }
-
-  @media (max-width: 768px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  @media (max-width: 480px) {
-    grid-template-columns: 1fr;
-  }
-`;
-
-const MovieCard = styled.div`
-  background: white;
-  border-radius: 5px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s;
-
-  &:hover {
-    transform: scale(1.03);
-  }
-`;
-
-const MovieImage = styled.img`
-  width: 100%;
-  height: 400px;
-  object-fit: cover;
-  border-radius: 5px 5px 0 0;
-`;
-
-const MovieInfo = styled.div`
-  padding: 16px;
-`;
-
-const MovieTitle = styled.h2`
-  font-size: 18px;
-  margin: 0 0 8px;
-  text-decoration: none;
-`;
-
-const MovieYear = styled.div`
-  color: inherit;
-`;
-
-const ProfileIcon = styled(PictureIcon)`
-  width: 176px;
-  height: 231px;
-  border-radius: 5px;
-`;
+};
 
 export const SearchResults = () => {
+   const [movies, setMovies] = useState({ results: [] });
+    const [error, setError] = useState(false);
+  
+    useEffect(() => {
+      const fetchMovies = async () => {
+        const fetchedData = await getPopularMovies();
+        if (fetchedData) {
+          setMovies(fetchedData);
+        } else {
+          setError(true);
+        }
+      };
+      fetchMovies();
+    }, []);
+
   const [searchParams] = useSearchParams();
   const query = searchParams.get("query");
   const { searchResults } = useMovieSearch(query);
 
   return (
-    <>
-      <h1>Search Results for: {query}</h1>
-      <ResultsGrid>
-        {searchResults.data.map((movie) => (
-          <Link to={`/movies/${movie.id}`} key={movie.id}>
-            <MovieCard>
-              {movie.poster_path ? (
-                <MovieImage
-                  src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                  alt={movie.title}
-                />
-              ) : (
-                <ProfileIcon />
-              )}
-
-              <MovieInfo>
-                <MovieTitle>{movie.title}</MovieTitle>
-                <MovieYear>{movie.release_date?.split("-")[0]}</MovieYear>
-              </MovieInfo>
-            </MovieCard>
-          </Link>
-        ))}
-      </ResultsGrid>
-    </>
+    <FlexCont>
+    <Text>Search Results for: {query}</Text>
+    <StyledMovieDetailsTileList>
+    {searchResults.data.map((movie) => (
+    <StyledLink to={`/movies/${movie.id}`} key={movie.id}>
+      <IconContainerList>
+        {movie.poster_path ? (
+          <ImageList
+            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+            alt={movie.title}
+          />
+        ) : (
+          <ImageListBlank />
+        )}
+            <MobileDetailsList>
+              <HeaderList>{movie.title}</HeaderList>
+              <YearList>
+              {movie.release_date?.split("-")[0]}
+              </YearList>
+              <TagsList>
+                {movie.genres?.map((genre) => (
+                  <TagList key={genre.id}>{genre.name}</TagList>
+                ))}
+              </TagsList>
+              <RateList>
+                <StyledStarIcon />
+                <RateGradeList>
+                  {movie.vote_average.toFixed(2)}
+                </RateGradeList>
+                <RateVotesList>{movie.vote_count} votes</RateVotesList>
+              </RateList>
+            </MobileDetailsList>
+          </IconContainerList>
+        </StyledLink>
+      ))}
+    </StyledMovieDetailsTileList>
+  </FlexCont>
   );
 };
+
+{/* <FlexCont>
+<Text>Search Results for: {query}</Text>
+<StyledMovieDetailsTileList>
+  {searchResults.data.map((movie) => (
+    <StyledLink to={`/movies/${movie.id}`} key={movie.id}>
+      <IconContainerList>
+        {movie.poster_path ? (
+          <ImageList
+            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+            alt={movie.title}
+          />
+        ) : (
+          <ImageListBlank />
+        )}
+        <MobileDetailsList>
+          <HeaderList>{movie.title}</HeaderList>
+          <YearList>{movie.release_date?.split("-")[0]}</YearList>
+          <TagsList>
+            <TagList>Action</TagList>
+          </TagsList>
+          <RateList>
+            <StyledStarIcon />
+            <RateGradeList></RateGradeList>
+            <RateVotesList>/ votes</RateVotesList>
+          </RateList>
+        </MobileDetailsList>
+      </IconContainerList>
+    </StyledLink>
+  ))}
+</StyledMovieDetailsTileList>
+</FlexCont>
+); */}
