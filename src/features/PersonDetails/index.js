@@ -17,7 +17,7 @@ import Loading from "../../common/Loading";
 import NotFound from "../../common/NotFound";
 import { FlexCont, StyledLink } from "../MovieList/styled";
 import { useParams } from "react-router-dom";
-import { MoviesCast } from "../MoviesCast";
+import { MoviesCastAndCrew } from "../MoviesCastAndCrew";
 
 export const PersonDetails = () => {
   const { id } = useParams();
@@ -90,7 +90,7 @@ export const PersonDetails = () => {
           </>
         )}
       </StyledMovieDetailsTile>
-      <MoviesCast personId={id} />
+      <MoviesCastAndCrew personId={id} />
     </FlexCont>
   );
 };
