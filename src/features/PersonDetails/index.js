@@ -9,6 +9,7 @@ import {
   DetailInfoElementType,
   DetailInfoElement,
 } from "./styled";
+
 import personDetails from "../../image/personDetails.png";
 import { useEffect, useState } from "react";
 import { getPersonData } from "../usePersonDetailsAPI";
@@ -68,7 +69,7 @@ export const PersonDetails = () => {
                 <DetailInfo>
                   <DetailInfoElement>
                     <DetailInfoElementType>
-                      Date of birth: {" "}
+                      Date of birth:{" "}
                     </DetailInfoElementType>
                     {person.birthday || "Unknown"}
                   </DetailInfoElement>
