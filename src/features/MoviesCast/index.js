@@ -1,22 +1,20 @@
 import { useState, useEffect } from "react";
 import { getPersonMovieCredits } from "../useApiKey";
 import {
-  StyledMovieDetailsTileList,
-  HeaderList,
-  MovieTitle,
-  MovieRole,
-  SectionTitle,
   Text,
-  FlexCont,
-  IconContainerList
-} from "./styled";
-import {
-  Rate,
-  RateElement,
-  RateGrade,
-  RateVotes,
+  StyledMovieDetailsTileList,
+  IconContainerList,
+  ImageList,
+  MobileDetailsList,
+  HeaderList,
+  TagsList,
+  TagList,
+  RateList,
   StyledStarIcon,
-} from "../MovieDetails/styled";
+  RateGradeList,
+  RateVotesList,
+} from "../MovieList/styled";
+import { MovieRole } from "./styled";
 
 export const MoviesCast = ({ personId }) => {
   const [movieCredits, setMovieCredits] = useState([]);
@@ -43,28 +41,33 @@ export const MoviesCast = ({ personId }) => {
         {movieCredits.length > 0 ? (
           movieCredits.map((movie) => (
             <IconContainerList key={`${movie.id}-${movie.credit_id}`}>
-              <img
+              <ImageList
                 src={
                   movie.poster_path
                     ? `https://image.tmdb.org/t/p/w200${movie.poster_path}`
                     : "ścieżka/do/placeholder/image"
                 }
                 alt={`${movie.title} poster`}
-              />
-              <HeaderList>{movie.title}</HeaderList>
-              <MovieRole>{movie.character}</MovieRole>
-              <Rate>
-                <StyledStarIcon />
-                <RateGrade>
-                  {movie.vote_average
-                    ? movie.vote_average.toFixed(2)
-                    : "Ładuję ocenę filmu"}
-                </RateGrade>
-                <RateElement> / 10</RateElement>
-                <RateVotes>
-                  {movie.vote_count ? movie.vote_count : "Liczba głosów"} votes
-                </RateVotes>
-              </Rate>
+              ></ImageList>
+              <MobileDetailsList>
+                <HeaderList>{movie.title}</HeaderList>
+                <MovieRole>{movie.character}</MovieRole>
+                <TagsList>
+                  <TagList>Action</TagList>
+                </TagsList>
+                <RateList>
+                  <StyledStarIcon />
+                  <RateGradeList>
+                    {movie.vote_average
+                      ? movie.vote_average.toFixed(2)
+                      : "Ładuję ocenę filmu"}
+                  </RateGradeList>
+                  <RateVotesList>
+                    {movie.vote_count ? movie.vote_count : "Liczba głosów"}{" "}
+                    votes
+                  </RateVotesList>
+                </RateList>
+              </MobileDetailsList>
             </IconContainerList>
           ))
         ) : (
