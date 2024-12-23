@@ -9,6 +9,7 @@ import {
   DetailInfoElementType,
   DetailInfoElement,
 } from "./styled";
+
 import personDetails from "../../image/personDetails.png";
 import { useEffect, useState } from "react";
 import { getPersonData } from "../usePersonDetailsAPI";
@@ -16,7 +17,7 @@ import Loading from "../../common/Loading";
 import NotFound from "../../common/NotFound";
 import { FlexCont, StyledLink } from "../MovieList/styled";
 import { useParams } from "react-router-dom";
-import { MoviesCast } from "../MoviesCast";
+import { MoviesCastAndCrew } from "../MoviesCastAndCrew";
 
 export const PersonDetails = () => {
   const { id } = useParams();
@@ -68,7 +69,7 @@ export const PersonDetails = () => {
                 <DetailInfo>
                   <DetailInfoElement>
                     <DetailInfoElementType>
-                      Date of birth: {" "}
+                      Date of birth:{" "}
                     </DetailInfoElementType>
                     {person.birthday || "Unknown"}
                   </DetailInfoElement>
@@ -89,7 +90,7 @@ export const PersonDetails = () => {
           </>
         )}
       </StyledMovieDetailsTile>
-      <MoviesCast personId={id} />
+      <MoviesCastAndCrew personId={id} />
     </FlexCont>
   );
 };

@@ -1,19 +1,18 @@
 import styled from "styled-components";
 
 export const StyledMovieDetailsTile = styled.div`
-  /* max-width: 1368px; */
   box-shadow: 4px 4px 10px #bac7d580;
   background-color: ${({ theme }) => theme.color.white};
   display: grid;
   grid-gap: 40px;
   align-content: start;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr 2fr;
+  grid-template-columns: 348px 1fr;
+  grid-template-rows: 0fr 2fr;
   margin-top: 64px;
   row-gap: 24px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.iPadPro}) {
-    grid-template-columns: 285px 1fr;
+    grid-template-columns: 270px 1fr;
     grid-template-rows: 1fr;
   }
 
@@ -50,7 +49,7 @@ export const Image = styled.img`
   border-radius: 5px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.iPadPro}) {
-    width: 255px;
+    width: 230px;
     height: 350px;
   }
 
@@ -126,6 +125,6 @@ export const MovieDescription = styled.div`
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     font-size: 14px;
     line-height: 22.4px;
-    padding: 0 16px 16px ;
+    padding: 0 16px 16px;
   }
 `;
