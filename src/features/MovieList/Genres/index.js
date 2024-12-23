@@ -1,5 +1,5 @@
 import { useGenresList } from "../../hooks/useGenres";
-import { StyledGenresList } from "./styled";
+import { Genre, StyledGenresList } from "./styled";
 
 export const GenresList = ({ genresIds, extra }) => {
     const { genres } = useGenresList();
