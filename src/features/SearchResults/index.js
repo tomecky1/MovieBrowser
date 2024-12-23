@@ -98,36 +98,3 @@ export const SearchResults = () => {
   </FlexCont>
   );
 };
-
-{/* <FlexCont>
-<Text>Search Results for: {query}</Text>
-<StyledMovieDetailsTileList>
-  {searchResults.data.map((movie) => (
-    <StyledLink to={`/movies/${movie.id}`} key={movie.id}>
-      <IconContainerList>
-        {movie.poster_path ? (
-          <ImageList
-            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-            alt={movie.title}
-          />
-        ) : (
-          <ImageListBlank />
-        )}
-        <MobileDetailsList>
-          <HeaderList>{movie.title}</HeaderList>
-          <YearList>{movie.release_date?.split("-")[0]}</YearList>
-          <TagsList>
-            <TagList>Action</TagList>
-          </TagsList>
-          <RateList>
-            <StyledStarIcon />
-            <RateGradeList></RateGradeList>
-            <RateVotesList>/ votes</RateVotesList>
-          </RateList>
-        </MobileDetailsList>
-      </IconContainerList>
-    </StyledLink>
-  ))}
-</StyledMovieDetailsTileList>
-</FlexCont>
-); */}
