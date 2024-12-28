@@ -8,7 +8,7 @@ import {
   CounterText,
   PointerLeft,
   PointerRight,
-  Wrapper,,
+  Wrapper,
 } from "./styled";
 import { useLocation } from "react-router";
 import { useQueryParameter } from "../components/Search/useQueryParameter";
