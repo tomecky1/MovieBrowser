@@ -1,6 +1,5 @@
 import { Container } from "./common/Container";
 import { NaviRoutes } from "./common/Navigation/index.js";
-import { Pagination } from "./common/Pagination/index.js";
 
 function App() {
   const personId = 287;
@@ -10,7 +9,6 @@ function App() {
       <NaviRoutes />
       {/* <MovieDetails /> */}
       {/* <PersonCredits personId={personId} /> */}
-      {/* <Pagination /> */}
     </Container>
   );
 }
