@@ -1,5 +1,4 @@
 import { Container } from "./common/Container";
-import MovieDetails from "./features/MovieDetails/index.js";
 import { NaviRoutes } from "./common/Navigation/index.js";
 
 function App() {
@@ -8,7 +7,7 @@ function App() {
   return (
     <Container>
       <NaviRoutes />
-      <MovieDetails />
+      {/* <MovieDetails /> */}
       {/* <PersonCredits personId={personId} /> */}
     </Container>
   );

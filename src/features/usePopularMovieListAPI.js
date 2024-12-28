@@ -4,7 +4,7 @@ const BASE_URL =
 export const getPopularMovies = async (movieId) => {
   try {
     const response = await fetch(
-      `${BASE_URL}/popular/${movieId}/movie_credits?api_key=${API_KEY}&language=en-US`
+      `${BASE_URL}/${movieId}/movie_credits?api_key=${API_KEY}&language=en-US`
     );
     if (!response.ok) {
       throw new Error(`Error fetching movie credits: ${response.status}`);

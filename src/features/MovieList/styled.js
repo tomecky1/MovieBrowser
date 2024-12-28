@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { ReactComponent as StarIcon } from "../../icons/star.svg";
+import { Link } from "react-router-dom";
 
 export const FlexCont = styled.div`
   max-width: 1368px;
@@ -7,7 +8,12 @@ export const FlexCont = styled.div`
   flex-direction: column;
   margin: 0 auto;
 
-  @media (max-width: 560px) {
+  @media (max-width: ${({theme}) => theme.breakpoints.nextHubMax}) {
+    margin-left: 36px;
+    margin-right: 36px;
+  }
+
+  @media (max-width: ${({theme}) => theme.breakpoints.mobile}) {
     margin-left: 16px;
     margin-right: 16px;
   }
@@ -126,15 +132,14 @@ export const TagList = styled.li`
 
 export const RateList = styled.div`
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   color: black;
   margin: 0;
-  align-items: flex-end;
+  align-items: baseline;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     font-size: 13px;
     line-height: 16.9px;
-    padding-left: 8px;
   }
 `;
 
@@ -149,11 +154,12 @@ export const RateGradeList = styled.p`
     font-size: 13px;
     line-height: 16.9px;
     padding-left: 8px;
+    word-break: keep-all;
   }
 `;
 
 export const RateVotesList = styled.p`
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
   color: black;
   line-height: 24px;
@@ -172,11 +178,17 @@ export const StyledStarIcon = styled(StarIcon)`
   width: 24px;
   height: 22.87px;
   vertical-align: baseline;
-  align-self: center;
+  align-self: flex-start;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     width: 16px;
     height: 15.25px;
     align-self: normal;
   }
+`;
+
+export const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: inherit;
+  display: contents;
 `;

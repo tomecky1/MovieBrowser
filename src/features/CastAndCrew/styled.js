@@ -45,12 +45,17 @@ export const WrapperItem = styled.div`
   }
 `;
 
-export const ImageWrapper = styled.img`
+export const ImageWrapper = styled.div`
   width: 177px;
   height: 264px;
-  object-fit: cover;
-  border-radius: 5px;
 
+  img,
+  svg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+  }
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     width: 120px;
     height: 178px;
@@ -84,4 +89,9 @@ export const WrapperRole = styled.p`
     line-height: 16.9px;
     padding-bottom: 8px;
   }
+`;
+export const StyledPlaceholder = styled.img`
+  width: 176px;
+  height: 231px;
+  border-radius: 5px;
 `;

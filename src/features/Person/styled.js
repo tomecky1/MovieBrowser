@@ -74,7 +74,7 @@ export const ImageWrapper = styled.img`
 
 export const WrapperActorName = styled.p`
   text-align: center;
-  padding-bottom: 35px;
+  padding: 12px 0 35px 0;
   margin: 0;
   font-size: 22px;
   font-weight: 500;
@@ -83,6 +83,6 @@ export const WrapperActorName = styled.p`
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     font-size: 14px;
     line-height: 18.2px;
-    padding-bottom: 33px;
+    padding: 8px 0 33px 0;
   }
 `;

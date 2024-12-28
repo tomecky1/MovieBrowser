@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getMovieCredits } from "../movieDetailsAPI";
+
+import { ReactComponent as ProfileIcon } from "../../icons/Picture.svg";
 import {
   Text,
   StyledPersonWrapper,
@@ -7,6 +9,7 @@ import {
   ImageWrapper,
   WrapperActorName,
   WrapperRole,
+  StyledPlaceholder,
 } from "./styled";
 
 export const CastAndCrew = ({ movieId }) => {
@@ -25,10 +28,7 @@ export const CastAndCrew = ({ movieId }) => {
     const fetchMovieCredits = async () => {
       try {
         const fetchedCredits = await getMovieCredits(movieId);
-        console.log("Raw API response:", credits);
-
         if (fetchedCredits) {
-          console.log("Cast before setState:", credits.cast);
           setCredits(fetchedCredits);
         }
       } catch (error) {
@@ -36,7 +36,7 @@ export const CastAndCrew = ({ movieId }) => {
       }
     };
     fetchMovieCredits();
-  }, [credits, movieId]);
+  }, [movieId]); // teraz efekt będzie wykonywany tylko przy zmianie movieId
 
   return (
     <>
@@ -44,15 +44,17 @@ export const CastAndCrew = ({ movieId }) => {
       <StyledPersonWrapper>
         {credits.cast.length > 0 ? (
           credits.cast.map((member) => (
-            <WrapperItem key={member.id}>
-              <ImageWrapper
-                src={
-                  member.profile_path
-                    ? `https://image.tmdb.org/t/p/w500${member.profile_path}`
-                    : "https://via.placeholder.com/200"
-                }
-                alt={member.name}
-              />
+            <WrapperItem key={`${member.id}-${member.credit_id}`}>
+              <ImageWrapper>
+                {member.profile_path ? (
+                  <img
+                    src={`https://image.tmdb.org/t/p/w500${member.profile_path}`}
+                    alt={member.name}
+                  />
+                ) : (
+                  <ProfileIcon />
+                )}
+              </ImageWrapper>
               <WrapperActorName>{member.name}</WrapperActorName>
               <WrapperRole>Role: {member.character}</WrapperRole>
             </WrapperItem>
@@ -64,16 +66,18 @@ export const CastAndCrew = ({ movieId }) => {
       <Text>Crew</Text>
       <StyledPersonWrapper>
         {credits.crew.length > 0 ? (
-          credits.crew.map((member) => (
-            <WrapperItem key={member.id}>
-              <ImageWrapper
-                src={
-                  member.profile_path
-                    ? `https://image.tmdb.org/t/p/w500${member.profile_path}`
-                    : "https://via.placeholder.com/200"
-                }
-                alt={member.name}
-              />
+          credits.crew.map((member, index) => (
+            <WrapperItem key={`${member.id}-${member.credit_id}`}>
+              <ImageWrapper>
+                {member.profile_path ? (
+                  <img
+                    src={`https://image.tmdb.org/t/p/w500${member.profile_path}`}
+                    alt={member.name}
+                  />
+                ) : (
+                  <ProfileIcon />
+                )}
+              </ImageWrapper>
               <WrapperActorName>{member.name}</WrapperActorName>
               <WrapperRole>Job: {member.job}</WrapperRole>
             </WrapperItem>

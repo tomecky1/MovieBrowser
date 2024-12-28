@@ -1,24 +1,48 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useMovieSearch } from "../../features/hooks/useMovieSearch";
 import {
+  NavigationWrapper,
+  MobileContainer,
   NavigationInput,
   NavigationItem,
   NavigationList,
-  MobileContainer,
   NavigationTitle,
-  NavigationWrapper,
+  NavigationTitleContainer,
   SearchIconWrapper,
   StyledSearchIcon,
   StyledVideoIcon,
-  NavigationTitleContainer,
 } from "./styled";
+import { StyledNavLinkIcon } from "./StyledNavLink/styled";
 import { StyledNavLink } from "./StyledNavLink/styled";
+export const Navigation = () => {
+  const navigate = useNavigate();
+  const [searchQuery, setSearchQuery] = useState("");
+  const { searchResults } = useMovieSearch(searchQuery);
 
-export function Navigation() {
+  const handleSearchChange = (event) => {
+    const value = event.target.value;
+    setSearchQuery(value);
+
+    try {
+      if (value.trim()) {
+        navigate(`/search?query=${encodeURIComponent(value)}`);
+      } else {
+        navigate("/"); // Powrót do strony głównej gdy pole jest puste
+      }
+    } catch (error) {
+      console.error("Błąd podczas nawigacji:", error);
+    }
+  };
+
   return (
     <NavigationWrapper>
       <NavigationList>
         <MobileContainer>
           <NavigationTitleContainer>
-            <StyledVideoIcon />
+            <StyledNavLinkIcon to="/">
+              <StyledVideoIcon />
+            </StyledNavLinkIcon>
             <NavigationTitle>Movies Browser</NavigationTitle>
           </NavigationTitleContainer>
           <NavigationItem>
@@ -32,10 +56,12 @@ export function Navigation() {
           <StyledSearchIcon />
           <SearchIconWrapper
             type="text"
-            placeholder={"Search for movies..."}
-          ></SearchIconWrapper>
+            placeholder="Search for movies..."
+            value={searchQuery}
+            onChange={handleSearchChange}
+          />
         </NavigationInput>
       </NavigationList>
     </NavigationWrapper>
   );
-}
+};

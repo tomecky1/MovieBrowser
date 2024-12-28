@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { ReactComponent as SearchIcon } from "../../icons/Search.svg";
 import { ReactComponent as VideoIcon } from "../../icons/Video.svg";
+import { NavLink } from "react-router-dom";
 
 export const NavigationWrapper = styled.div`
   display: flex;
@@ -43,12 +44,13 @@ export const MobileContainer = styled.div`
     justify-content: center;
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.iphoneSE}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.iPhoneSE}) {
     justify-content: space-around;
   }
 `;
 
 export const StyledVideoIcon = styled(VideoIcon)`
+  display: flex;
   width: 40px;
   height: 40px;
   margin-right: 12px;
@@ -61,6 +63,7 @@ export const StyledVideoIcon = styled(VideoIcon)`
 
 export const NavigationTitleContainer = styled.div`
   display: flex;
+  align-items: center;
 `;
 
 export const NavigationTitle = styled.li`
@@ -68,7 +71,7 @@ export const NavigationTitle = styled.li`
   font-size: 24px;
   line-height: 40px;
   color: ${({ theme }) => theme.color.white};
-  margin-right: 80px;
+  margin-right: 56px;
   white-space: nowrap;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.iPadPro}) {
@@ -102,13 +105,14 @@ export const NavigationItem = styled.li`
     line-height: 18px;
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.iphoneSE}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.iPhoneSE}) {
     margin: unset;
   }
 `;
 
 export const SearchIconWrapper = styled.input`
   font-size: 16px;
+  font-weight: 400;
   border: 0;
   border-radius: 33px;
   line-height: 24px;
