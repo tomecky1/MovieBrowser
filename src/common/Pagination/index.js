@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router";
 import {
   ButtonsContainer,
   ButtonText,
@@ -10,7 +9,6 @@ import {
   PointerRight,
   Wrapper,
 } from "./styled";
-import { useLocation } from "react-router";
 import { useQueryParameter } from "../components/Search/useQueryParameter";
 import { useFetchSearchResult } from "../components/Search/useFetchSearchResult";
 import { usePopularMovies } from "../../features/hooks/usePopularMovies";
@@ -19,6 +17,7 @@ import { useMediaQuery } from "react-responsive";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useCallback } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export const Pagination = (isMoviesPage) => {
   const isMobile = useMediaQuery({ maxWidth: 560 });
@@ -31,21 +30,22 @@ export const Pagination = (isMoviesPage) => {
   const { totalPagesActor } = usePopularActors();
 
   const generateURL = useCallback(
-        
     (page, query) => {
-          const queryParam = query ? `&query=${query}` : "";
-          return `${location.pathname}?page=${page}${queryParam}`;
-        },
-       
+      const queryParam = query ? `&query=${query}` : "";
+      return `${location.pathname}?page=${page}${queryParam}`;
+    },
+
     [location.pathname]
-    
+
   );
+
+
 
   const totalPages = query
     ? totalSearchPages
     : isMoviesPage
-    ? totalPagesMovies || 1
-    : totalPagesActor || 1;
+      ? totalPagesMovies || 1
+      : totalPagesActor || 1;
 
   const searchParams = new URLSearchParams(location.search);
   const currentPage = parseInt(searchParams.get("page")) || 1;
@@ -95,30 +95,30 @@ export const Pagination = (isMoviesPage) => {
     <Wrapper>
       <ButtonsContainer>
         {renderButton(
-                    
+
           () => changePage(1),
-                   
+
           currentPage === 1,
-                   
+
           <PointerLeft />,
-                   
+
           <PointerLeft />,
-                   
+
           "First"
-                
+
         )}
         {renderButton(
-                    
+
           () => changePage(currentPage - 1),
-                   
+
           currentPage === 1,
-                   
+
           <PointerLeft />,
-                   
+
           null,
-                   
+
           "Previous"
-                
+
         )}
       </ButtonsContainer>
       <Counter>
@@ -129,30 +129,30 @@ export const Pagination = (isMoviesPage) => {
       </Counter>
       <ButtonsContainer>
         {renderButton(
-                    
+
           () => changePage(currentPage + 1),
-                   
+
           currentPage === totalPages,
-                   
+
           null,
-                   
+
           <PointerRight />,
-                   
+
           "Next"
-                
+
         )}
         {renderButton(
-                    
+
           () => changePage(totalPages),
-                   
+
           currentPage === totalPages,
-                   
+
           <PointerRight />,
-                   
+
           <PointerRight />,
-                   
+
           "Last"
-                
+
         )}
       </ButtonsContainer>
     </Wrapper>
