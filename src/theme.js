@@ -10,6 +10,7 @@ export const theme = {
     heather: "#BAC7D580",
     waterloo: "#7E839A",
     woodSmoke: "#18181B",
+    mineShaft: "#333333",
     black: "#000000",
   },
 
