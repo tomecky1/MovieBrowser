@@ -18,6 +18,7 @@ import NotFound from "../../common/NotFound";
 import { FlexCont, StyledLink } from "../MovieList/styled";
 import { useParams } from "react-router-dom";
 import { MoviesCastAndCrew } from "../MoviesCastAndCrew";
+import { Pagination } from "../../common/Pagination";
 
 export const PersonDetails = () => {
   const { id } = useParams();
@@ -91,6 +92,7 @@ export const PersonDetails = () => {
         )}
       </StyledMovieDetailsTile>
       <MoviesCastAndCrew personId={id} />
+      <Pagination />
     </FlexCont>
   );
 };
