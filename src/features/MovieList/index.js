@@ -52,38 +52,34 @@ export const MovieList = ({ movieId }) => {
   }, []);
 
   return (
-      <FlexCont>
-        <Text>Popular movies</Text>
-        <StyledMovieDetailsTileList>
-          {movies.results.map((list) => (
-            <StyledLink to={`/movie/${list.id}`} key={list.id}>
-              <IconContainerList>
-                <ImageList
-                  src={`https://image.tmdb.org/t/p/w500/${list.poster_path}`}
-                  alt={`${list.title} poster`}
-                />
-                <MobileDetailsList>
-                  <HeaderList>{list.title}</HeaderList>
-                  <YearList>
-                    {new Date(list.release_date).getFullYear()}
-                  </YearList>
-                  <TagsList>
-                    {list.genres?.map((genre) => (
-                      <TagList key={genre.id}>{genre.name}</TagList>
-                    ))}
-                  </TagsList>
-                  <RateList>
-                    <StyledStarIcon />
-                    <RateGradeList>
-                      {list.vote_average.toFixed(2)}
-                    </RateGradeList>
-                    <RateVotesList>{list.vote_count} votes</RateVotesList>
-                  </RateList>
-                </MobileDetailsList>
-              </IconContainerList>
-            </StyledLink>
-          ))}
-        </StyledMovieDetailsTileList>
-      </FlexCont>
+    <FlexCont>
+      <Text>Popular movies</Text>
+      <StyledMovieDetailsTileList>
+        {movies.results.map((list) => (
+          <StyledLink to={`/movie/${list.id}`} key={list.id}>
+            <IconContainerList>
+              <ImageList
+                src={`https://image.tmdb.org/t/p/w500/${list.poster_path}`}
+                alt={`${list.title} poster`}
+              />
+              <MobileDetailsList>
+                <HeaderList>{list.title}</HeaderList>
+                <YearList>{new Date(list.release_date).getFullYear()}</YearList>
+                <TagsList>
+                  <TagList>Action</TagList>
+                  <TagList>Action</TagList>
+                  <TagList>Action</TagList>
+                </TagsList>
+                <RateList>
+                  <StyledStarIcon />
+                  <RateGradeList>{list.vote_average.toFixed(2)}</RateGradeList>
+                  <RateVotesList>{list.vote_count} votes</RateVotesList>
+                </RateList>
+              </MobileDetailsList>
+            </IconContainerList>
+          </StyledLink>
+        ))}
+      </StyledMovieDetailsTileList>
+    </FlexCont>
   );
 };

@@ -60,7 +60,7 @@ export const IconContainerList = styled.div`
 
 export const ImageList = styled.img`
   border-radius: 5px;
-  height: 66%;
+  height: 434px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     width: 114px;
