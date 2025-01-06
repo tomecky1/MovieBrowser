@@ -34,6 +34,7 @@ export const StyledNavLink = styled(NavLink).attrs(() => ({
     padding: 8px 12px !important;
     border-radius: 29px !important;
     margin: unset !important;
+    font-size: 12px;
   }
 `;
 
