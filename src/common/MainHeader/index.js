@@ -1,31 +1,63 @@
 import {
-  StyledHeader,
-  Image,
   AdditionalInfo,
-  MovieName,
-  StyledStar,
-  MovieRating,
-  RatingOutOf,
-  RatingContainer,
-  MovieVotes,
+  Image,
   MobileWrapper,
+  MovieName,
+  MovieRating,
+  MovieVotes,
+  RatingContainer,
+  RatingOutOf,
+  StyledHeader,
+  StyledStar,
 } from "./styled.js";
-import poster3 from "../../image/poster3.jpg";
+import {useEffect, useState} from "react";
+import {getMovieOverview} from "../../features/movieDetailsAPI";
+import {useParams} from "react-router-dom";
 
 const MainHeader = ({children}) => {
+  const { id } = useParams();
+
+  const [title, setTitle] = useState(null);
+  const [backdrop, setBackdrop] = useState(null);
+  const [votes, setVotes] = useState(null);
+  const [vote_average, setVote_average] = useState(null);
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
+    const fetchMovieDetails = async () => {
+      try {
+        const fetchedData = await getMovieOverview(id);
+        if (fetchedData) {
+          setTitle(fetchedData.title);
+          setBackdrop(fetchedData.backdrop);
+          setVotes(fetchedData.votes);
+          setVote_average(fetchedData.vote_average);
+        }
+      } catch (err) {
+        console.error("Błąd podczas pobierania szczegółów filmu:", err);
+        setError(true);
+      }
+    };
+
+    fetchMovieDetails();
+  }, [id]);
   return (
     <StyledHeader>
-     <Image src={poster3} alt="" />
+     <Image src={`https://image.tmdb.org/t/p/original/${
+       backdrop ? backdrop : "no backdrop"
+     }`}
+            alt="Movie backdrop"
+            />
       {children}
       <AdditionalInfo>
-        <MovieName>Nazwa Filmu</MovieName>
+        <MovieName>{title ? title : "Ładowanie tytułu..."}</MovieName>
         <MobileWrapper>
         <RatingContainer>
         <StyledStar/>
-        <MovieRating>8</MovieRating>
+        <MovieRating>{vote_average ? vote_average.toFixed(2) : "Ładuję ocenę filmu"}</MovieRating>
         <RatingOutOf>/ 10</RatingOutOf>
         </RatingContainer>
-        <MovieVotes>335 votes</MovieVotes>
+        <MovieVotes>{votes ? votes : "Liczba głosów"} votes</MovieVotes>
         </MobileWrapper>
       </AdditionalInfo>
     </StyledHeader>

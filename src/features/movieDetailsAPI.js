@@ -38,6 +38,8 @@ export const getMovieOverview = async (movieId) => {
       votes: response.data.vote_count,
       vote_average: response.data.vote_average,
       poster: response.data.poster_path,
+      country: response.data.origin_country,
+      backdrop: response.data.backdrop_path,
     };
   } catch (err) {
     console.error("Błąd podczas pobierania danych filmu:", err);

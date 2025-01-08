@@ -3,28 +3,28 @@ import {
   DetailInfoElement,
   DetailInfoElementType,
   Details,
+  FlexContainer,
   Header,
   IconContainer,
   Image,
   MovieDescription,
-  FlexContainer,
-  StyledMovieDetailsTile,
-  Year,
-  Tags,
-  Tag,
   Rate,
   RateElement,
   RateGrade,
   RateVotes,
+  StyledMovieDetailsTile,
   StyledStarIcon,
+  Tag,
+  Tags,
+  Year,
 } from "./styled";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchMovies, selectMovies, selectStatus } from "../movieBrowserSlice";
-import { useEffect, useState } from "react";
-import { getMovieOverview } from "../movieDetailsAPI";
-import { CastAndCrew } from "../CastAndCrew";
+import {useDispatch, useSelector} from "react-redux";
+import {fetchMovies, selectMovies, selectStatus} from "../movieBrowserSlice";
+import {useEffect, useState} from "react";
+import {getMovieOverview} from "../movieDetailsAPI";
+import {CastAndCrew} from "../CastAndCrew";
 import MainHeader from "../../common/MainHeader";
-import { useParams } from "react-router-dom";
+import {useParams} from "react-router-dom";
 
 const MovieDetails = () => {
   const dispatch = useDispatch();
@@ -44,6 +44,7 @@ const MovieDetails = () => {
   const [votes, setVotes] = useState(null);
   const [vote_average, setVote_average] = useState(null);
   const [poster, setPoster] = useState(null);
+  const [country, setCountry] = useState(null);
   const [error, setError] = useState(false); // dodaj stan na błąd
 
   useEffect(() => {
@@ -57,6 +58,7 @@ const MovieDetails = () => {
           setVotes(fetchedData.votes);
           setVote_average(fetchedData.vote_average);
           setPoster(fetchedData.poster);
+          setCountry(fetchedData.country);
         }
       } catch (err) {
         console.error("Błąd podczas pobierania szczegółów filmu:", err);
@@ -75,7 +77,7 @@ const MovieDetails = () => {
           <IconContainer>
             <Image
               src={`https://image.tmdb.org/t/p/w500/${
-                poster ? poster : "nie ma plakatu"
+                poster ? poster : "no poster"
               }`}
               alt="Movie poster"
             />
@@ -89,7 +91,7 @@ const MovieDetails = () => {
             <DetailInfo>
               <DetailInfoElement>
                 <DetailInfoElementType>Production:&nbsp;</DetailInfoElementType>
-                USA
+                {country ? country : "Unknown origin country"}
               </DetailInfoElement>
               <DetailInfoElement>
                 <DetailInfoElementType>
@@ -105,14 +107,14 @@ const MovieDetails = () => {
             <Rate>
               <StyledStarIcon />
               <RateGrade>
-                {vote_average ? vote_average : "Ładuję ocenę filmu"}
+                {vote_average ? vote_average.toFixed(2) : "Ładuję ocenę filmu"}
               </RateGrade>
               <RateElement>/ 10</RateElement>
               <RateVotes>{votes ? votes : "Liczba głosów"} votes</RateVotes>
             </Rate>
           </Details>
           <MovieDescription>
-            {overview ? overview : "nie ma opisu filmu i uj"}
+            {overview ? overview : "opis filmu nie znaleziony"}
           </MovieDescription>
         </StyledMovieDetailsTile>
         <CastAndCrew movieId={id} />
