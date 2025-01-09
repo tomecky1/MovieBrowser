@@ -47,6 +47,15 @@ const MovieDetails = () => {
   const [country, setCountry] = useState(null);
   const [error, setError] = useState(false); // dodaj stan na błąd
 
+  const formatDateToPL = (dateString) => {
+    const date = new Date(dateString);
+    return new Intl.DateTimeFormat('pl-PL', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+    }).format(date);
+  };
+
   useEffect(() => {
     const fetchMovieDetails = async () => {
       try {
@@ -97,7 +106,7 @@ const MovieDetails = () => {
                 <DetailInfoElementType>
                   Release date:&nbsp;
                 </DetailInfoElementType>
-                {date ? date : "release date unknown"}
+                {date ? formatDateToPL(date) : "release date unknown"}
               </DetailInfoElement>
             </DetailInfo>
             <Tags>

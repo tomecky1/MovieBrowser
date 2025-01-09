@@ -50,11 +50,11 @@ const MainHeader = ({children}) => {
             />
       {children}
       <AdditionalInfo>
-        <MovieName>{title ? title : "Ładowanie tytułu..."}</MovieName>
+        <MovieName>{title ? title : "Loading movie title..."}</MovieName>
         <MobileWrapper>
         <RatingContainer>
         <StyledStar/>
-        <MovieRating>{vote_average ? vote_average.toFixed(2) : "Ładuję ocenę filmu"}</MovieRating>
+        <MovieRating>{vote_average ? vote_average.toFixed(2) : "Loading average votes"}</MovieRating>
         <RatingOutOf>/ 10</RatingOutOf>
         </RatingContainer>
         <MovieVotes>{votes ? votes : "Liczba głosów"} votes</MovieVotes>
