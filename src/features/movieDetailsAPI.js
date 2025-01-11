@@ -39,6 +39,7 @@ export const getMovieOverview = async (movieId) => {
       vote_average: response.data.vote_average,
       poster: response.data.poster_path,
       genres: response.data.genres.map((genre) => genre.id),
+      production_countries: response.data.production_countries,
     };
   } catch (err) {
     console.error("Błąd podczas pobierania danych filmu:", err);

@@ -10,8 +10,6 @@ import {
   FlexContainer,
   StyledMovieDetailsTile,
   Year,
-  Tags,
-  Tag,
   Rate,
   RateElement,
   RateGrade,
@@ -39,19 +37,21 @@ const MovieDetails = () => {
   }, [dispatch]);
   console.log(status);
   console.log(movies);
-  const [overview, setOverview] = useState(null); // dodaj stan na dane przeglądu
+  const [overview, setOverview] = useState(null);
   const [title, setTitle] = useState(null);
   const [date, setDate] = useState(null);
   const [votes, setVotes] = useState(null);
   const [vote_average, setVote_average] = useState(null);
   const [poster, setPoster] = useState(null);
-  const [error, setError] = useState(false); // dodaj stan na błąd
+  const [error, setError] = useState(false);
   const [genres, setGenres] = useState([]);
+  const [productionCountries, setProductionCountries] = useState([]);
 
   useEffect(() => {
     const fetchMovieDetails = async () => {
       try {
         const fetchedData = await getMovieOverview(id);
+        console.log("Fetched Data:", fetchedData); 
         if (fetchedData) {
           setOverview(fetchedData.overview);
           setTitle(fetchedData.title);
@@ -60,6 +60,9 @@ const MovieDetails = () => {
           setVote_average(fetchedData.vote_average);
           setPoster(fetchedData.poster);
           setGenres(fetchedData.genres);
+          setProductionCountries(
+            fetchedData.production_countries?.map((country) => country.name).join(", ") || "Unknown origin country"
+          );
         }
       } catch (err) {
         console.error("Błąd podczas pobierania szczegółów filmu:", err);
@@ -89,8 +92,8 @@ const MovieDetails = () => {
             <Year></Year>
             <DetailInfo>
               <DetailInfoElement>
-                <DetailInfoElementType>Production:&nbsp;</DetailInfoElementType>
-                USA
+              <DetailInfoElementType>Production:&nbsp;</DetailInfoElementType>
+              {productionCountries || "Unknown origin country"}
               </DetailInfoElement>
               <DetailInfoElement>
                 <DetailInfoElementType>
