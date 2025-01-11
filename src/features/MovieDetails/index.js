@@ -51,7 +51,7 @@ const MovieDetails = () => {
     const fetchMovieDetails = async () => {
       try {
         const fetchedData = await getMovieOverview(id);
-        console.log("Fetched Data:", fetchedData); 
+        console.log("Fetched Data:", fetchedData);
         if (fetchedData) {
           setOverview(fetchedData.overview);
           setTitle(fetchedData.title);
@@ -92,8 +92,8 @@ const MovieDetails = () => {
             <Year></Year>
             <DetailInfo>
               <DetailInfoElement>
-              <DetailInfoElementType>Production:&nbsp;</DetailInfoElementType>
-              {productionCountries || "Unknown origin country"}
+                <DetailInfoElementType>Production:&nbsp;</DetailInfoElementType>
+                {productionCountries || "Unknown origin country"}
               </DetailInfoElement>
               <DetailInfoElement>
                 <DetailInfoElementType>
@@ -106,7 +106,7 @@ const MovieDetails = () => {
             <Rate>
               <StyledStarIcon />
               <RateGrade>
-                {vote_average ? vote_average : "Ładuję ocenę filmu"}
+                {vote_average !== null ? vote_average.toFixed(2) : "Ładuję ocenę filmu"}
               </RateGrade>
               <RateElement>/ 10</RateElement>
               <RateVotes>{votes ? votes : "Liczba głosów"} votes</RateVotes>
