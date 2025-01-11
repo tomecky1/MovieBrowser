@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import {
   StyledMovieDetailsTileList,
   IconContainerList,
-  MobileDetailsList,
   HeaderList,
   YearList,
   RateList,
@@ -13,6 +12,7 @@ import {
   FlexCont,
   Text,
   StyledLink,
+  MovieDetailsList,
 } from "./styled";
 import { Pagination } from "../../common/Pagination";
 import { GenresList } from "../../common/components/GenresList";
@@ -72,7 +72,7 @@ export const MovieList = () => {
                 src={`https://image.tmdb.org/t/p/w500/${list.poster_path}`}
                 alt={`${list.title} poster`}
               />
-              <MobileDetailsList>
+              <MovieDetailsList>
                 <HeaderList>{list.title}</HeaderList>
                 <YearList>
                   {new Date(list.release_date).getFullYear()}
@@ -85,7 +85,7 @@ export const MovieList = () => {
                   </RateGradeList>
                   <RateVotesList>{list.vote_count} votes</RateVotesList>
                 </RateList>
-              </MobileDetailsList>
+              </MovieDetailsList>
             </IconContainerList>
           </StyledLink>
         ))}

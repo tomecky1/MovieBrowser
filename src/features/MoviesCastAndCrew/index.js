@@ -5,7 +5,7 @@ import {
   StyledMovieDetailsTileList,
   IconContainerList,
   ImageList,
-  MobileDetailsList,
+  MovieDetailsList,
   HeaderList,
   TagsList,
   TagList,
@@ -49,7 +49,7 @@ export const MoviesCastAndCrew = ({ personId }) => {
                 }
                 alt={`${movie.title} poster`}
               ></ImageList>
-              <MobileDetailsList>
+              <MovieDetailsList>
                 <HeaderList>{movie.title}</HeaderList>
                 <MovieRole>{movie.character}</MovieRole>
                 <TagsList>
@@ -67,7 +67,7 @@ export const MoviesCastAndCrew = ({ personId }) => {
                     votes
                   </RateVotesList>
                 </RateList>
-              </MobileDetailsList>
+              </MovieDetailsList>
             </IconContainerList>
           ))
         ) : (
@@ -87,7 +87,7 @@ export const MoviesCastAndCrew = ({ personId }) => {
                 }
                 alt={`${movie.title} poster`}
               ></ImageList>
-              <MobileDetailsList>
+              <MovieDetailsList>
                 <HeaderList>{movie.title}</HeaderList>
                 <MovieRole>{movie.character}</MovieRole>
                 <TagsList>
@@ -105,7 +105,7 @@ export const MoviesCastAndCrew = ({ personId }) => {
                     votes
                   </RateVotesList>
                 </RateList>
-              </MobileDetailsList>
+              </MovieDetailsList>
             </IconContainerList>
           ))
         ) : (
