@@ -25,6 +25,7 @@ import { getMovieOverview } from "../movieDetailsAPI";
 import { CastAndCrew } from "../CastAndCrew";
 import MainHeader from "../../common/MainHeader";
 import { useParams } from "react-router-dom";
+import { GenresList } from "../../common/components/GenresList";
 
 const MovieDetails = () => {
   const dispatch = useDispatch();
@@ -45,6 +46,7 @@ const MovieDetails = () => {
   const [vote_average, setVote_average] = useState(null);
   const [poster, setPoster] = useState(null);
   const [error, setError] = useState(false); // dodaj stan na błąd
+  const [genres, setGenres] = useState([]);
 
   useEffect(() => {
     const fetchMovieDetails = async () => {
@@ -57,6 +59,7 @@ const MovieDetails = () => {
           setVotes(fetchedData.votes);
           setVote_average(fetchedData.vote_average);
           setPoster(fetchedData.poster);
+          setGenres(fetchedData.genres);
         }
       } catch (err) {
         console.error("Błąd podczas pobierania szczegółów filmu:", err);
@@ -74,9 +77,8 @@ const MovieDetails = () => {
         <StyledMovieDetailsTile>
           <IconContainer>
             <Image
-              src={`https://image.tmdb.org/t/p/w500/${
-                poster ? poster : "nie ma plakatu"
-              }`}
+              src={`https://image.tmdb.org/t/p/w500/${poster ? poster : "nie ma plakatu"
+                }`}
               alt="Movie poster"
             />
           </IconContainer>
@@ -84,7 +86,6 @@ const MovieDetails = () => {
             <Header>
               Movie Title: {title ? title : "Ładowanie tytułu..."}
             </Header>
-
             <Year></Year>
             <DetailInfo>
               <DetailInfoElement>
@@ -98,10 +99,7 @@ const MovieDetails = () => {
                 {date ? date : "release date unknown"}
               </DetailInfoElement>
             </DetailInfo>
-            <Tags>
-              <Tag>Action</Tag>
-              <Tag>Drama</Tag>
-            </Tags>
+            <GenresList genresIds={genres} />
             <Rate>
               <StyledStarIcon />
               <RateGrade>

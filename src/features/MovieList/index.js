@@ -5,8 +5,6 @@ import {
   MobileDetailsList,
   HeaderList,
   YearList,
-  TagsList,
-  TagList,
   RateList,
   StyledStarIcon,
   RateGradeList,
@@ -17,6 +15,8 @@ import {
   StyledLink,
 } from "./styled";
 import { Pagination } from "../../common/Pagination";
+import { GenresList } from "../../common/components/GenresList";
+import { useGenresList } from "../../common/components/GenresList/useGenresList";
 
 const API_KEY = "1454980afff1c0ba9dce7e6202a9ecbf";
 export const getPopularMovies = async (page) => {
@@ -40,6 +40,7 @@ export const MovieList = () => {
   const [error, setError] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const { genres } = useGenresList();
 
 
   useEffect(() => {
@@ -76,11 +77,7 @@ export const MovieList = () => {
                 <YearList>
                   {new Date(list.release_date).getFullYear()}
                 </YearList>
-                <TagsList>
-                  {list.genres?.map((genre) => (
-                    <TagList key={genre.id}>{genre.name}</TagList>
-                  ))}
-                </TagsList>
+                <GenresList genresIds={list.genre_ids} />
                 <RateList>
                   <StyledStarIcon />
                   <RateGradeList>

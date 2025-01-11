@@ -1,5 +1,5 @@
-import { useGenresList } from "../../hooks/useGenres";
-import { Genre, StyledGenresList } from "./styled";
+import { Genre, TagsList } from "./styled";
+import { useGenresList } from "./useGenresList";
 
 export const GenresList = ({ genresIds, extra }) => {
     const { genres } = useGenresList();
@@ -7,7 +7,7 @@ export const GenresList = ({ genresIds, extra }) => {
     const genresFoundById = genres.data.filter(genre => genresIds.includes(genre.id));
 
     return (
-        <StyledGenresList extra={extra}>
+        <TagsList extra={extra}>
             {
                 genresFoundById.map(({ id, name }) => (
                     <Genre extra={extra} key={id}>
@@ -15,6 +15,6 @@ export const GenresList = ({ genresIds, extra }) => {
                     </Genre>
                 ))
             }
-        </StyledGenresList>
+        </TagsList>
     );
 };
