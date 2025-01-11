@@ -31,9 +31,11 @@ export const StyledNavLink = styled(NavLink).attrs(() => ({
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    padding: 8px 12px !important;
-    border-radius: 29px !important;
+    padding: 5px 8px !important;
+    border-radius: 20px !important;
     margin: unset !important;
+    font-size: 12px;
+    line-height: 18px;
   }
 `;
 
