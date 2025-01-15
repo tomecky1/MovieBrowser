@@ -74,8 +74,8 @@ export const MovieDetailsList = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
-  flex-grow: 1; /* Rozciąga zawartość */
-  justify-content: space-between; /* Rozdziela górne i dolne elementy */
+  flex-grow: 1;
+  justify-content: space-between;
 `;
 
 export const HeaderList = styled.header`
