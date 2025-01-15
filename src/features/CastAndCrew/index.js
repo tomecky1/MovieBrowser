@@ -1,27 +1,14 @@
-import React, { useState, useEffect } from "react";
-import { getMovieCredits } from "../movieDetailsAPI";
-
-import { ReactComponent as ProfileIcon } from "../../icons/Picture.svg";
-import {
-  Text,
-  StyledPersonWrapper,
-  WrapperItem,
-  ImageWrapper,
-  WrapperActorName,
-  WrapperRole,
-  StyledPlaceholder,
-} from "./styled";
+import React, {useEffect, useState} from "react";
+import {getMovieCredits} from "../movieDetailsAPI";
+import {ReactComponent as ProfileIcon} from "../../icons/Picture.svg";
+import {ImageWrapper, StyledPersonWrapper, Text, WrapperActorName, WrapperItem, WrapperRole,} from "./styled";
+import {useNavigate} from "react-router-dom";
 
 export const CastAndCrew = ({ movieId }) => {
-  // const dispatch = useDispatch();
-
-  // const movies = useSelector(selectMovies);
-  // const status = useSelector(selectStatus);
-
-  // useEffect(() => {
-  //   dispatch(fetchMovies());
-  // }, [dispatch]);
-
+  const navigate = useNavigate()
+  const handleActorClick = (actorId) => {
+    navigate(`/person/${actorId}`);
+  };
   const [credits, setCredits] = useState({ cast: [], crew: [] });
 
   useEffect(() => {
@@ -44,7 +31,8 @@ export const CastAndCrew = ({ movieId }) => {
       <StyledPersonWrapper>
         {credits.cast.length > 0 ? (
           credits.cast.map((member) => (
-            <WrapperItem key={`${member.id}-${member.credit_id}`}>
+            <WrapperItem key={`${member.id}-${member.credit_id}`} onClick={() => handleActorClick(member.id)}
+              style={{ cursor: "pointer" }}>
               <ImageWrapper>
                 {member.profile_path ? (
                   <img
@@ -67,7 +55,7 @@ export const CastAndCrew = ({ movieId }) => {
       <StyledPersonWrapper>
         {credits.crew.length > 0 ? (
           credits.crew.map((member, index) => (
-            <WrapperItem key={`${member.id}-${member.credit_id}`}>
+            <WrapperItem key={`${member.id}-${member.credit_id}`} onClick={() => handleActorClick(member.id)} style={{ cursor: "pointer" }}>
               <ImageWrapper>
                 {member.profile_path ? (
                   <img
