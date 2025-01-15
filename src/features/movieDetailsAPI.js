@@ -22,7 +22,7 @@ export const getMovieDetails = async () => {
 
 export const getMovieOverview = async (movieId) => {
   if (!movieId) {
-    console.error("movieId nie został dostarczony.");
+    console.error("movieId was not provided...");
     return null;
   }
 
@@ -42,14 +42,14 @@ export const getMovieOverview = async (movieId) => {
       production_countries: response.data.production_countries,
     };
   } catch (err) {
-    console.error("Błąd podczas pobierania danych filmu:", err);
+    console.error("Error while downloading movie data:", err);
     return null;
   }
 };
 
 export const getMovieCredits = async (movieId) => {
   if (!movieId) {
-    console.error("movieId nie został dostarczony.");
+    console.error("movieId was not provided...");
     return null;
   }
 
@@ -60,7 +60,7 @@ export const getMovieCredits = async (movieId) => {
     });
     return response.data;
   } catch (err) {
-    console.error("Błąd podczas pobierania danych obsady filmu:", err);
+    console.error("Error while downloading movie cast data:", err);
     return null;
   }
 };
