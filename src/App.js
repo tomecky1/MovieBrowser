@@ -9,8 +9,6 @@ function App() {
     <HashRouter>
       <Container>
         <NaviRoutes />
-        {/* <MovieDetails /> */}
-        {/* <PersonCredits personId={personId} /> */}
       </Container>
     </HashRouter>
 
