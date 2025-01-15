@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import {
   StyledMovieDetailsTileList,
   IconContainerList,
-  MobileDetailsList,
+  MovieDetailsList,
   HeaderList,
   YearList,
   TagsList,
@@ -73,7 +73,7 @@ export const SearchResults = () => {
         ) : (
           <ImageListBlank />
         )}
-            <MobileDetailsList>
+            <MovieDetailsList>
               <HeaderList>{movie.title}</HeaderList>
               <YearList>
               {movie.release_date?.split("-")[0]}
@@ -90,7 +90,7 @@ export const SearchResults = () => {
                 </RateGradeList>
                 <RateVotesList>{movie.vote_count} votes</RateVotesList>
               </RateList>
-            </MobileDetailsList>
+            </MovieDetailsList>
           </IconContainerList>
         </StyledLink>
       ))}

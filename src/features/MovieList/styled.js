@@ -70,10 +70,12 @@ export const ImageList = styled.img`
   }
 `;
 
-export const MobileDetailsList = styled.div`
+export const MovieDetailsList = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
+  flex-grow: 1;
+  justify-content: space-between;
 `;
 
 export const HeaderList = styled.header`
@@ -137,6 +139,7 @@ export const RateList = styled.div`
   color: black;
   margin: 0;
   align-items: baseline;
+  margin-top: auto;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     font-size: 13px;

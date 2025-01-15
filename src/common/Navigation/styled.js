@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { ReactComponent as SearchIcon } from "../../icons/Search.svg";
 import { ReactComponent as VideoIcon } from "../../icons/Video.svg";
-import { NavLink } from "react-router-dom";
 
 export const NavigationWrapper = styled.div`
   display: flex;
