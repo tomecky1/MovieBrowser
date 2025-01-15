@@ -7,6 +7,6 @@ export const useNavigation = () => {
     navigate(`/person/${id}`);
   };
 
-  // Możesz dodać inne funkcje np. goToHome, goToSearch itd.
+  // You can add other function ex. goToHome, goToSearch etc.
   return { goToActorDetails };
 };

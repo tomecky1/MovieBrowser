@@ -23,7 +23,7 @@ export const CastAndCrew = ({ movieId }) => {
       }
     };
     fetchMovieCredits();
-  }, [movieId]); // teraz efekt będzie wykonywany tylko przy zmianie movieId
+  }, [movieId]);
 
   return (
     <>
