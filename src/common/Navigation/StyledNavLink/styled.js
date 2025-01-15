@@ -12,6 +12,7 @@ export const StyledNavLink = styled(NavLink).attrs(() => ({
   border: 1px solid ${({ theme }) => theme.color.black};
   font-weight: 600;
   font-size: 14px;
+  line-height: 21px;
   padding: 8px 24px;
   transition: transform ease 500ms, border 0.5s ease, margin 0.5s ease;
 
@@ -31,8 +32,8 @@ export const StyledNavLink = styled(NavLink).attrs(() => ({
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    padding: 5px 8px !important;
-    border-radius: 20px !important;
+    padding: 8px 12px !important;
+    border-radius: 29px !important;
     margin: unset !important;
     font-size: 12px;
     line-height: 18px;
