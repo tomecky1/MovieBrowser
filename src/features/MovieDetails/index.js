@@ -65,7 +65,7 @@ const MovieDetails = () => {
           );
         }
       } catch (err) {
-        console.error("Błąd podczas pobierania szczegółów filmu:", err);
+        console.error("Error while downloading movie details: ", err);
         setError(true);
       }
     };
@@ -80,14 +80,14 @@ const MovieDetails = () => {
         <StyledMovieDetailsTile>
           <IconContainer>
             <Image
-              src={`https://image.tmdb.org/t/p/w500/${poster ? poster : "nie ma plakatu"
+              src={`https://image.tmdb.org/t/p/w500/${poster ? poster : "There is no poster"
                 }`}
               alt="Movie poster"
             />
           </IconContainer>
           <Details>
             <Header>
-              Movie Title: {title ? title : "Ładowanie tytułu..."}
+              Movie Title: {title ? title : "Loading title..."}
             </Header>
             <Year></Year>
             <DetailInfo>
@@ -99,21 +99,21 @@ const MovieDetails = () => {
                 <DetailInfoElementType>
                   Release date:&nbsp;
                 </DetailInfoElementType>
-                {date ? date : "release date unknown"}
+                {date ? date : "Release date unknown"}
               </DetailInfoElement>
             </DetailInfo>
             <GenresList genresIds={genres} />
             <Rate>
               <StyledStarIcon />
               <RateGrade>
-                {vote_average !== null ? vote_average.toFixed(2) : "Ładuję ocenę filmu"}
+                {vote_average !== null ? vote_average.toFixed(2) : "Loading the votes..."}
               </RateGrade>
               <RateElement>/ 10</RateElement>
-              <RateVotes>{votes ? votes : "Liczba głosów"} votes</RateVotes>
+              <RateVotes>{votes ? votes : "Number of votes..."} votes</RateVotes>
             </Rate>
           </Details>
           <MovieDescription>
-            {overview ? overview : "nie ma opisu filmu i uj"}
+            {overview ? overview : "No movie description founded..."}
           </MovieDescription>
         </StyledMovieDetailsTile>
         <CastAndCrew movieId={id} />
