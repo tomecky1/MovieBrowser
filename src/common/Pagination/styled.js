@@ -8,11 +8,6 @@ export const Wrapper = styled.section`
   justify-content: center;
   margin: 40px 0 47px;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.tabletHorizontal}) {
-    gap: 20px;
-    margin: 10px auto;
-  };
-
   @media (max-width: ${({ theme }) => theme.breakpoints.tabletHorizontalS}) {
     gap: 16px;
     margin: 10px auto;
@@ -20,7 +15,7 @@ export const Wrapper = styled.section`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     gap: 8px;
-    margin: 7px auto;
+    margin: 32px
   }
 `;
 
