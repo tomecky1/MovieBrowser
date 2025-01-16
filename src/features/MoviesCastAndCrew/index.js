@@ -31,7 +31,7 @@ export const MoviesCastAndCrew = ({ personId }) => {
           setMovieCredits(credits.cast);
         }
       } catch (error) {
-        console.error("Błąd podczas pobierania filmografii:", error);
+        console.error("An error occurred during loading filmography:", error);
       }
     };
 
@@ -64,10 +64,10 @@ export const MoviesCastAndCrew = ({ personId }) => {
                   <RateGradeList>
                     {movie.vote_average
                       ? movie.vote_average.toFixed(2)
-                      : "Ładuję ocenę filmu"}
+                      : "Loading movie score"}
                   </RateGradeList>
                   <RateVotesList>
-                    {movie.vote_count ? movie.vote_count : "Liczba głosów"}{" "}
+                    {movie.vote_count ? movie.vote_count : "Number of votes"}{" "}
                     votes
                   </RateVotesList>
                 </RateList>
@@ -102,10 +102,10 @@ export const MoviesCastAndCrew = ({ personId }) => {
                   <RateGradeList>
                     {movie.vote_average
                       ? movie.vote_average.toFixed(2)
-                      : "Ładuję ocenę filmu"}
+                      : "Loading movie score"}
                   </RateGradeList>
                   <RateVotesList>
-                    {movie.vote_count ? movie.vote_count : "Liczba głosów"}{" "}
+                    {movie.vote_count ? movie.vote_count : "Number of votes"}{" "}
                     votes
                   </RateVotesList>
                 </RateList>
