@@ -31,7 +31,6 @@ export const Text = styled.div`
 
 export const WrapperItem = styled.div`
   padding: 16px 16px 0 16px;
-  gap: 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -39,26 +38,27 @@ export const WrapperItem = styled.div`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     padding: 8px 8px 0 8px;
-    gap: 8px;
     border-radius: 5px;
     box-shadow: 0px 4px 12px 0px ${({ theme }) => theme.color.heather};
   }
 `;
 
 export const ImageWrapper = styled.div`
-  width: 177px;
-  height: 264px;
-
   img,
   svg {
-    width: 100%;
-    height: 100%;
+    width: 177px;
+    height: 231px;
     object-fit: cover;
     border-radius: 5px;
   }
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    width: 120px;
-    height: 178px;
+    img,
+    svg {
+      width: 120px;
+      height: 178px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
   }
 `;
 
@@ -68,10 +68,12 @@ export const WrapperActorName = styled.p`
   font-size: 22px;
   font-weight: 500;
   line-height: 28.6px;
+  padding: 12px 0 8px 0;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     font-size: 14px;
     line-height: 18.2px;
+    padding: 8px 0;
   }
 `;
 
@@ -89,9 +91,4 @@ export const WrapperRole = styled.p`
     line-height: 16.9px;
     padding-bottom: 8px;
   }
-`;
-export const StyledPlaceholder = styled.img`
-  width: 176px;
-  height: 231px;
-  border-radius: 5px;
 `;
