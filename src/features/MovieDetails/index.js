@@ -3,27 +3,27 @@ import {
   DetailInfoElement,
   DetailInfoElementType,
   Details,
+  FlexContainer,
   Header,
   IconContainer,
   Image,
   MovieDescription,
-  FlexContainer,
-  StyledMovieDetailsTile,
-  Year,
   Rate,
   RateElement,
   RateGrade,
   RateVotes,
+  StyledMovieDetailsTile,
   StyledStarIcon,
+  Year,
 } from "./styled";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchMovies, selectMovies, selectStatus } from "../movieBrowserSlice";
-import { useEffect, useState } from "react";
-import { getMovieOverview } from "../movieDetailsAPI";
-import { CastAndCrew } from "../CastAndCrew";
+import {useDispatch, useSelector} from "react-redux";
+import {fetchMovies, selectMovies, selectStatus} from "../movieBrowserSlice";
+import {useEffect, useState} from "react";
+import {getMovieOverview} from "../movieDetailsAPI";
+import {CastAndCrew} from "../CastAndCrew";
 import MainHeader from "../../common/MainHeader";
-import { useParams } from "react-router-dom";
-import { GenresList } from "../../common/components/GenresList";
+import {useParams} from "react-router-dom";
+import {GenresList} from "../../common/components/GenresList";
 
 const MovieDetails = () => {
   const dispatch = useDispatch();
@@ -64,8 +64,8 @@ const MovieDetails = () => {
             fetchedData.production_countries?.map((country) => country.name).join(", ") || "Unknown origin country"
           );
         }
-      } catch (err) {
-        console.error("Error while downloading movie details: ", err);
+      } catch (error) {
+        console.error("Error while downloading movie details: ", error);
         setError(true);
       }
     };

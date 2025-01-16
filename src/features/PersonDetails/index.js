@@ -18,7 +18,7 @@ import NotFound from "../../common/NotFound";
 import {FlexCont, StyledLink} from "../MovieList/styled";
 import {useParams} from "react-router-dom";
 import {MoviesCastAndCrew} from "../MoviesCastAndCrew";
-import { Pagination } from "../../common/Pagination";
+import {Pagination} from "../../common/Pagination";
 
 export const PersonDetails = () => {
   const { id } = useParams();
@@ -82,9 +82,7 @@ export const PersonDetails = () => {
                     {formatDateToPL(person.birthday) || "Unknown"}
                   </DetailInfoElement>
                   <DetailInfoElement>
-                    <DetailInfoElementType>
-                      Place of birth:
-                    </DetailInfoElementType>
+                    <DetailInfoElementType>Place of birth: </DetailInfoElementType>
                     {person.place_of_birth || "Unknown"}
                   </DetailInfoElement>
                 </DetailInfo>

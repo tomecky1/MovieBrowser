@@ -1,25 +1,24 @@
-import { Link } from "react-router-dom";
-import { useSearchParams } from "react-router-dom";
-import { useMovieSearch } from "../hooks/useMovieSearch";
-import { useEffect, useState } from "react";
+import {useSearchParams} from "react-router-dom";
+import {useMovieSearch} from "../hooks/useMovieSearch";
+import {useEffect, useState} from "react";
 import {
-  StyledMovieDetailsTileList,
-  IconContainerList,
-  MovieDetailsList,
-  HeaderList,
-  YearList,
-  TagsList,
-  TagList,
-  RateList,
-  StyledStarIcon,
-  RateGradeList,
-  RateVotesList,
-  ImageList,
   FlexCont,
-  Text,
+  HeaderList,
+  IconContainerList,
+  ImageList,
+  MovieDetailsList,
+  RateGradeList,
+  RateList,
+  RateVotesList,
   StyledLink,
+  StyledMovieDetailsTileList,
+  StyledStarIcon,
+  TagList,
+  TagsList,
+  Text,
+  YearList,
 } from "../MovieList/styled";
-import { ImageListBlank } from "./styled";
+import {ImageListBlank} from "./styled";
 
 const API_KEY = "1454980afff1c0ba9dce7e6202a9ecbf";
 export const getPopularMovies = async () => {

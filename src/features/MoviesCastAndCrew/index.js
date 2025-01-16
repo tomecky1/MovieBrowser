@@ -1,24 +1,28 @@
-import { useState, useEffect } from "react";
-import { getPersonMovieCredits } from "../useApiKey";
+import {useEffect, useState} from "react";
+import {getPersonMovieCredits} from "../useApiKey";
 import {
-  Text,
-  StyledMovieDetailsTileList,
+  HeaderList,
   IconContainerList,
   ImageList,
   MovieDetailsList,
-  HeaderList,
-  TagsList,
-  TagList,
-  RateList,
-  StyledStarIcon,
   RateGradeList,
+  RateList,
   RateVotesList,
+  StyledMovieDetailsTileList,
+  StyledStarIcon,
+  TagList,
+  TagsList,
+  Text,
 } from "../MovieList/styled";
-import { MovieRole } from "./styled";
+import {MovieRole} from "./styled";
+import {useNavigate} from "react-router-dom";
 
 export const MoviesCastAndCrew = ({ personId }) => {
   const [movieCredits, setMovieCredits] = useState([]);
-
+  const navigate = useNavigate()
+  const handleMovieClick = (movieId) => {
+    navigate(`/movie/${movieId}`);
+  }
   useEffect(() => {
     const fetchMovieCredits = async () => {
       try {
@@ -40,7 +44,7 @@ export const MoviesCastAndCrew = ({ personId }) => {
       <StyledMovieDetailsTileList>
         {movieCredits.length > 0 ? (
           movieCredits.map((movie) => (
-            <IconContainerList key={`${movie.id}-${movie.credit_id}`}>
+            <IconContainerList key={`${movie.id}-${movie.credit_id}`} onClick={() => handleMovieClick(movie.id)} style={{ cursor: "pointer" }}>
               <ImageList
                 src={
                   movie.poster_path
@@ -78,7 +82,7 @@ export const MoviesCastAndCrew = ({ personId }) => {
       <StyledMovieDetailsTileList>
         {movieCredits.length > 0 ? (
           movieCredits.map((movie) => (
-            <IconContainerList key={`${movie.id}-${movie.credit_id}`}>
+            <IconContainerList key={`${movie.id}-${movie.credit_id}`} onClick={() => handleMovieClick(movie.id)} style={{ cursor: "pointer" }}>
               <ImageList
                 src={
                   movie.poster_path

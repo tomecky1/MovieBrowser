@@ -1,20 +1,20 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useMovieSearch } from "../../features/hooks/useMovieSearch";
+import {useState} from "react";
+import {useNavigate} from "react-router-dom";
+import {useMovieSearch} from "../../features/hooks/useMovieSearch";
 import {
-  NavigationWrapper,
   MobileContainer,
   NavigationInput,
   NavigationItem,
   NavigationList,
   NavigationTitle,
   NavigationTitleContainer,
+  NavigationWrapper,
   SearchIconWrapper,
   StyledSearchIcon,
   StyledVideoIcon,
 } from "./styled";
-import { StyledNavLinkIcon } from "./StyledNavLink/styled";
-import { StyledNavLink } from "./StyledNavLink/styled";
+import {StyledNavLink, StyledNavLinkIcon} from "./StyledNavLink/styled";
+
 export const Navigation = () => {
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
@@ -28,10 +28,10 @@ export const Navigation = () => {
       if (value.trim()) {
         navigate(`/search?query=${encodeURIComponent(value)}`);
       } else {
-        navigate("/"); // Powrót do strony głównej gdy pole jest puste
+        navigate("/");
       }
     } catch (error) {
-      console.error("Błąd podczas nawigacji:", error);
+      console.error("An error occurred", error);
     }
   };
 
