@@ -35,12 +35,12 @@ export const StyledPersonWrapper = styled.div`
   background-color: ${({ theme }) => theme.color.whisper};
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(208px, 1fr));
-  grid-template-rows: repeat(auto-fit, minmax(339px, 1fr));
+  grid-template-rows: repeat(4, minmax(339px, 1fr));
   gap: 24px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     grid-template-columns: repeat(auto-fit, minmax(136px, 1fr));
-    grid-template-rows: repeat(auto-fit, minmax(245px, 1fr));
+    grid-template-rows: repeat(2, minmax(245px, 1fr));
     gap: 16px;
   }
 `;
