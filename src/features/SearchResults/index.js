@@ -62,7 +62,7 @@ export const SearchResults = () => {
     <Text>Search Results for: {query}</Text>
     <StyledMovieDetailsTileList>
     {searchResults.data.map((movie) => (
-    <StyledLink to={`/movies/${movie.id}`} key={movie.id}>
+    <StyledLink to={`/movie/${movie.id}`} key={movie.id}>
       <IconContainerList>
         {movie.poster_path ? (
           <ImageList
