@@ -6,6 +6,13 @@ export const TagsList = styled.ul`
   list-style: none;
   padding-left: 0;
   margin: -8px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    font-size: 10px;
+    line-height: 11px;
+    margin: 0;
+    gap: 8px;
+  }
 `;
 
 export const Genre = styled.li`
@@ -32,5 +39,6 @@ export const Genre = styled.li`
     font-size: 10px;
     line-height: 11px;
     padding: 4px 8px;
+    margin: 0;
   }
 `;
