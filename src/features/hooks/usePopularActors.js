@@ -15,50 +15,45 @@ export const usePopularActors = () => {
         data: [],
     });
 
-    const [error, setError] = useState(null); 
+    const [error, setError] = useState(null);
 
     const url = `${BASE_URL}/person/popular?api_key=${API_KEY}`;
 
     useEffect(() => {
-        const fetchTotalPagesActor = async () => {
+        const fetchPopularActors = async () => {
             setPopularActor({
                 status: loadingStatus,
                 data: [],
             });
-            setError(null); 
+            setError(null);
 
-            try {
-                const response = await axios.get(`${url}&page=1`);
-                if (response.data && response.data.total_pages) {
-                    setTotalPagesActor(Math.min(response.data.total_pages, 500));
-                }
-            } catch (error) {
-                console.log(error);
-                setError("Failed to fetch total pages");
-            }
-        };
-
-        fetchTotalPagesActor();
-
-        const fetchPopularActor = async () => {
             try {
                 const response = await axios.get(`${url}&page=${currentPage}`);
-                setPopularActor({
-                    status: successStatus,
-                    data: response.data.results,
-                });
+                if (response.data) {
+                    setPopularActor({
+                        status: successStatus,
+                        data: response.data.results,
+                    });
+                    setTotalPagesActor(Math.min(response.data.total_pages, 500)); // Limit pages to 500
+                } else {
+                    setPopularActor({
+                        status: errorStatus,
+                        data: [],
+                    });
+                    setError("No data found");
+                }
             } catch (error) {
+                console.error("Failed to fetch popular actors:", error.message);
                 setPopularActor({
                     status: errorStatus,
-                    data: [], 
+                    data: [],
                 });
                 setError("Failed to fetch popular actors");
-                console.error(error.message);
             }
         };
 
-        setTimeout(fetchPopularActor, 500);
+        fetchPopularActors();
     }, [url, currentPage]);
 
-    return { popularActor, totalPagesActor, error };
+    return { popularActor, totalPagesActor, error, currentPage };
 };

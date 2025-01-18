@@ -1,4 +1,12 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
+
+export const StyledPersonLink = styled(Link)`
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: transform 0.2s;
+`;
 
 export const FlexContainer = styled.div`
   max-width: 1368px;
@@ -57,6 +65,10 @@ export const WrapperItem = styled.div`
     padding: 8px;
     border-radius: 5px;
     box-shadow: 0px 4px 12px 0px ${({ theme }) => theme.color.heather};
+  }
+    
+  &:hover {
+    transform: scale(1.03);
   }
 `;
 

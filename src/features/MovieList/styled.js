@@ -73,6 +73,10 @@ export const IconContainerList = styled.div`
     flex-direction: row;
     align-items: flex-start;
   }
+    
+  &:hover {
+    transform: scale(1.03);
+  }
 `;
 
 export const ImageList = styled.img`

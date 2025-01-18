@@ -49,7 +49,7 @@ export const MovieList = () => {
         const fetchedData = await getPopularMovies(currentPage);
         if (fetchedData) {
           setMovies(fetchedData);
-          setTotalPages(fetchedData.total_pages);
+          setTotalPages(Math.min(fetchedData.total_pages, 500));
         } else {
           setError(true);
         }
@@ -65,30 +65,34 @@ export const MovieList = () => {
     <FlexCont>
       <Text>Popular movies</Text>
       <StyledMovieDetailsTileList>
-        {movies.results.map((list) => (
-          <StyledLink to={`/movie/${list.id}`} key={list.id}>
-            <IconContainerList>
-              <ImageList
-                src={`https://image.tmdb.org/t/p/w500/${list.poster_path}`}
-                alt={`${list.title} poster`}
-              />
-              <MovieDetailsList>
-                <HeaderList>{list.title}</HeaderList>
-                <YearList>
-                  {new Date(list.release_date).getFullYear()}
-                </YearList>
-                <GenresList genresIds={list.genre_ids} />
-                <RateList>
-                  <StyledStarIcon />
-                  <RateGradeList>
-                    {list.vote_average.toFixed(2)}
-                  </RateGradeList>
-                  <RateVotesList>{list.vote_count} votes</RateVotesList>
-                </RateList>
-              </MovieDetailsList>
-            </IconContainerList>
-          </StyledLink>
-        ))}
+        {movies.results.length > 0 ? (
+          movies.results.map((list) => (
+            <StyledLink to={`/movie/${list.id}`} key={list.id}>
+              <IconContainerList>
+                <ImageList
+                  src={`https://image.tmdb.org/t/p/w500/${list.poster_path}`}
+                  alt={`${list.title} poster`}
+                />
+                <MovieDetailsList>
+                  <HeaderList>{list.title}</HeaderList>
+                  <YearList>
+                    {new Date(list.release_date).getFullYear()}
+                  </YearList>
+                  <GenresList genresIds={list.genre_ids} />
+                  <RateList>
+                    <StyledStarIcon />
+                    <RateGradeList>
+                      {list.vote_average.toFixed(2)}
+                    </RateGradeList>
+                    <RateVotesList>{list.vote_count} votes</RateVotesList>
+                  </RateList>
+                </MovieDetailsList>
+              </IconContainerList>
+            </StyledLink>
+          ))
+        ) : (
+          <p>No movies found.</p>
+        )}
       </StyledMovieDetailsTileList>
       <Pagination
         currentPage={currentPage}
