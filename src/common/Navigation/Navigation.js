@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom"; // Dodano useLocation
 import {useMovieSearch} from "../../features/hooks/useMovieSearch";
 import {
   MobileContainer,
@@ -17,6 +17,7 @@ import {StyledNavLink, StyledNavLinkIcon} from "./StyledNavLink/styled";
 
 export const Navigation = () => {
   const navigate = useNavigate();
+  const location = useLocation(); // Hook do sprawdzania aktualnej ścieżki
   const [searchQuery, setSearchQuery] = useState("");
   const { searchResults } = useMovieSearch(searchQuery);
 
@@ -34,6 +35,11 @@ export const Navigation = () => {
       console.error("An error occurred", error);
     }
   };
+
+  // Określenie dynamicznego placeholdera na podstawie ścieżki URL
+  const currentPlaceholder = location.pathname === "/person"
+    ? "Search for people..."
+    : "Search for movies...";
 
   return (
     <NavigationWrapper>
@@ -56,7 +62,7 @@ export const Navigation = () => {
           <StyledSearchIcon />
           <SearchIconWrapper
             type="text"
-            placeholder="Search for movies..."
+            placeholder={currentPlaceholder} // Wykorzystanie dynamicznego placeholdera
             value={searchQuery}
             onChange={handleSearchChange}
           />
