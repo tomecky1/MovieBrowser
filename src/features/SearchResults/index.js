@@ -56,14 +56,14 @@ export const SearchResults = () => {
 
   const [searchParams] = useSearchParams();
   const query = searchParams.get("query");
-  // const { searchResults } = useMovieSearch(query);
+
   const location = useLocation()
 
-  // Wykrywanie aktualnej strony
+
   const isMoviesPage = location.pathname.startsWith("/movies");
   const isPeoplePage = location.pathname.startsWith("/people");
 
-  // Wyniki wyszukiwania: filmy lub osoby
+
   const { searchResults } = useMovieSearch(query);
   const { searchResults: peopleResults } = usePeopleSearch(query);
 
@@ -73,7 +73,6 @@ export const SearchResults = () => {
     <FlexCont>
     <Text>Search Results for: {query}</Text>
     <StyledMovieDetailsTileList>
-      {/* Renderowanie wyników dla filmów */}
       {Array.isArray(searchResults.data) && searchResults.data.map((movie) => (
 
         <StyledLink to={`/movie/${movie.id}`} key={movie.id}>
@@ -107,8 +106,6 @@ export const SearchResults = () => {
           </IconContainerList>
         </StyledLink>
       ))}
-
-
     </StyledMovieDetailsTileList>
   </FlexCont>
   );
