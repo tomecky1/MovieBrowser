@@ -1,5 +1,7 @@
-import { useSearchParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+
+import {useLocation, useSearchParams} from "react-router-dom";
+import {useMovieSearch} from "../hooks/useMovieSearch";
+import {useEffect, useState} from "react";
 import {
   FlexCont,
   HeaderList,
@@ -17,6 +19,8 @@ import {
   Text,
   YearList,
 } from "../MovieList/styled";
+
+import {usePeopleSearch} from "../hooks/usePeopleSearch";
 import { ImageListBlank } from "./styled";
 import { Pagination } from "../../common/Pagination";
 
@@ -70,6 +74,18 @@ export const SearchResults = () => {
     fetchMovies();
   }, [query, currentPage]);
 
+
+  const [searchParams] = useSearchParams();
+  const query = searchParams.get("query");
+
+  const location = useLocation()
+
+  const isMoviesPage = location.pathname.startsWith("/movies");
+  const isPeoplePage = location.pathname.startsWith("/people");
+
+  const { searchResults } = useMovieSearch(query);
+  const { searchResults: peopleResults } = usePeopleSearch(query); 
+
   const handlePageChange = (page) => {
     setCurrentPage(page);
     setSearchParams({ query, page });
@@ -112,6 +128,7 @@ export const SearchResults = () => {
               </IconContainerList>
             </StyledLink>
           ))
+
         ) : (
           <p>No results found</p>
         )}

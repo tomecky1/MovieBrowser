@@ -1,6 +1,7 @@
-import {useState} from "react";
-import {useNavigate} from "react-router-dom";
+import {useEffect, useState} from "react";
+import {useLocation, useNavigate} from "react-router-dom";
 import {useMovieSearch} from "../../features/hooks/useMovieSearch";
+import {usePeopleSearch} from "../../features/hooks/usePeopleSearch";
 import {
   MobileContainer,
   NavigationInput,
@@ -17,14 +18,21 @@ import {StyledNavLink, StyledNavLinkIcon} from "./StyledNavLink/styled";
 
 export const Navigation = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+
   const [searchQuery, setSearchQuery] = useState("");
+  
+  const { searchResults: peopleResults } = usePeopleSearch(searchQuery);
+
   const { searchResults } = useMovieSearch(searchQuery);
+
   const handleSearchChange = (event) => {
     const value = event.target.value;
     setSearchQuery(value);
 
     try {
       if (value.trim()) {
+
         navigate(`/search?query=${encodeURIComponent(value)}`);
       } else {
         navigate("/");
@@ -32,6 +40,23 @@ export const Navigation = () => {
     } catch (error) {
       console.error("An error occurred", error);
     }
+  };
+
+
+  const currentPlaceholder =
+    location.pathname === "/person"
+      ? "Search for people..."
+      : "Search for movies...";
+
+
+  useEffect(() => {
+    setSearchQuery("");
+  }, [location.pathname]);
+
+
+
+  const handlePersonClick = (personId) => {
+    navigate(`/person/${personId}`);
   };
 
   return (
@@ -55,12 +80,32 @@ export const Navigation = () => {
           <StyledSearchIcon />
           <SearchIconWrapper
             type="text"
-            placeholder="Search for movies..."
+            placeholder={currentPlaceholder}
             value={searchQuery}
             onChange={handleSearchChange}
           />
         </NavigationInput>
       </NavigationList>
+
+      {location.pathname === "/person" && peopleResults && Array.isArray(peopleResults) && (
+        <ul>
+          {peopleResults.map((person) => (
+            <li key={person.id} onClick={() => handlePersonClick(person.id)}>
+              {person.name}
+            </li>
+          ))}
+        </ul>
+      )}
+
+
+      {location.pathname === "/movies" && movieResults && Array.isArray(movieResults) && (
+        <ul>
+          {movieResults.map((movie) => (
+            <li key={movie.id}>{movie.title}</li>
+          ))}
+        </ul>
+      )}
+
     </NavigationWrapper>
   );
 };

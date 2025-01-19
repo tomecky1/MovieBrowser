@@ -3,7 +3,7 @@ import axios from "axios";
 import {API_KEY, BASE_URL} from "../../common/constants/config";
 import {errorStatus, loadingStatus, successStatus,} from "../../common/constants/resqestStatuses";
 
-export const useMovieSearch = (query) => {
+export const usePeopleSearch = (query) => {
   const [searchResults, setSearchResults] = useState({
     status: "",
     data: [],
@@ -18,17 +18,20 @@ export const useMovieSearch = (query) => {
       });
       return;
     }
-    const searchMovies = async () => {
+
+    const searchPeople = async () => {
       setSearchResults({
         status: loadingStatus,
         data: [],
       });
+
       try {
         const response = await axios.get(
-          `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(
+          `${BASE_URL}/search/person?api_key=${API_KEY}&query=${encodeURIComponent(
             query
           )}&language=en-US&page=1`
         );
+
         setSearchResults({
           status: successStatus,
           data: response.data.results,
@@ -39,13 +42,14 @@ export const useMovieSearch = (query) => {
           status: errorStatus,
           data: [],
         });
-        console.error("Błąd wyszukiwania:", error);
+        console.error("Searching error:", error);
       }
     };
 
-    const debounceTimeout = setTimeout(searchMovies, 300);
+    const debounceTimeout = setTimeout(searchPeople, 300);
 
     return () => clearTimeout(debounceTimeout);
   }, [query]);
-  return { searchResults, totalPages };
+
+  return { peopleResults: searchResults, totalPages };
 };
