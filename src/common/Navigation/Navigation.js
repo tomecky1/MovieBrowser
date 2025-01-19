@@ -1,6 +1,7 @@
 import {useState} from "react";
-import {useLocation, useNavigate} from "react-router-dom"; // Dodano useLocation
+import {useLocation, useNavigate} from "react-router-dom";
 import {useMovieSearch} from "../../features/hooks/useMovieSearch";
+import {usePeopleSearch} from "../../features/hooks/usePeopleSearch"; // Importowanie nowego hooka
 import {
   MobileContainer,
   NavigationInput,
@@ -17,16 +18,22 @@ import {StyledNavLink, StyledNavLinkIcon} from "./StyledNavLink/styled";
 
 export const Navigation = () => {
   const navigate = useNavigate();
-  const location = useLocation(); // Hook do sprawdzania aktualnej ścieżki
-  const [searchQuery, setSearchQuery] = useState("");
-  const { searchResults } = useMovieSearch(searchQuery);
+  const location = useLocation();
 
+  const [searchQuery, setSearchQuery] = useState("");
+
+  // Wyszukiwanie filmów i osób
+  const { searchResults: movieResults } = useMovieSearch(searchQuery);
+  const { searchResults: peopleResults } = usePeopleSearch(searchQuery); // Dodane wyszukiwanie osób
+
+  // Obsługa zmiany inputa wyszukiwania
   const handleSearchChange = (event) => {
     const value = event.target.value;
     setSearchQuery(value);
 
     try {
       if (value.trim()) {
+        // Nawigacja dynamiczna, np. do odpowiedniej kategorii wyników wyszukiwania
         navigate(`/search?query=${encodeURIComponent(value)}`);
       } else {
         navigate("/");
@@ -36,10 +43,16 @@ export const Navigation = () => {
     }
   };
 
-  // Określenie dynamicznego placeholdera na podstawie ścieżki URL
-  const currentPlaceholder = location.pathname === "/person"
-    ? "Search for people..."
-    : "Search for movies...";
+  // Dynamiczny placeholder w zależności od aktywnej strony
+  const currentPlaceholder =
+    location.pathname === "/person"
+      ? "Search for people..."
+      : "Search for movies...";
+
+  // Obsługa kliknięcia na wynik wyszukiwania osoby
+  const handlePersonClick = (personId) => {
+    navigate(`/person/${personId}`); // Przejście do szczegółów osoby
+  };
 
   return (
     <NavigationWrapper>
@@ -62,12 +75,32 @@ export const Navigation = () => {
           <StyledSearchIcon />
           <SearchIconWrapper
             type="text"
-            placeholder={currentPlaceholder} // Wykorzystanie dynamicznego placeholdera
+            placeholder={currentPlaceholder}
             value={searchQuery}
             onChange={handleSearchChange}
           />
         </NavigationInput>
       </NavigationList>
+      {/* Wyświetlenie wyników dla osób */}
+      {location.pathname === "/person" && peopleResults && Array.isArray(peopleResults) && (
+        <ul>
+          {peopleResults.map((person) => (
+            <li key={person.id} onClick={() => handlePersonClick(person.id)}>
+              {person.name}
+            </li>
+          ))}
+        </ul>
+      )}
+
+      {/* Wyświetlenie wyników dla filmów */}
+      {location.pathname === "/movies" && movieResults && Array.isArray(movieResults) && (
+        <ul>
+          {movieResults.map((movie) => (
+            <li key={movie.id}>{movie.title}</li>
+          ))}
+        </ul>
+      )}
+
     </NavigationWrapper>
   );
 };

@@ -1,4 +1,4 @@
-import {useSearchParams} from "react-router-dom";
+import {useLocation, useSearchParams} from "react-router-dom";
 import {useMovieSearch} from "../hooks/useMovieSearch";
 import {useEffect, useState} from "react";
 import {
@@ -19,6 +19,7 @@ import {
   YearList,
 } from "../MovieList/styled";
 import {ImageListBlank} from "./styled";
+import {usePeopleSearch} from "../hooks/usePeopleSearch";
 
 const API_KEY = "1454980afff1c0ba9dce7e6202a9ecbf";
 export const getPopularMovies = async () => {
@@ -55,14 +56,27 @@ export const SearchResults = () => {
 
   const [searchParams] = useSearchParams();
   const query = searchParams.get("query");
+  // const { searchResults } = useMovieSearch(query);
+  const location = useLocation()
+
+  // Wykrywanie aktualnej strony
+  const isMoviesPage = location.pathname.startsWith("/movies");
+  const isPeoplePage = location.pathname.startsWith("/people");
+
+  // Wyniki wyszukiwania: filmy lub osoby
   const { searchResults } = useMovieSearch(query);
+  const { searchResults: peopleResults } = usePeopleSearch(query);
+
+
 
   return (
     <FlexCont>
     <Text>Search Results for: {query}</Text>
     <StyledMovieDetailsTileList>
-    {searchResults.data.map((movie) => (
-    <StyledLink to={`/movie/${movie.id}`} key={movie.id}>
+      {/* Renderowanie wyników dla filmów */}
+      {Array.isArray(searchResults.data) && searchResults.data.map((movie) => (
+
+        <StyledLink to={`/movie/${movie.id}`} key={movie.id}>
       <IconContainerList>
         {movie.poster_path ? (
           <ImageList
@@ -93,6 +107,8 @@ export const SearchResults = () => {
           </IconContainerList>
         </StyledLink>
       ))}
+
+
     </StyledMovieDetailsTileList>
   </FlexCont>
   );
