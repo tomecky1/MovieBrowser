@@ -19,10 +19,7 @@ export const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const query = useQueryParameter("query");
-  const maxPages = Math.min(totalPages, 500);
 
-
-  // Funkcja generująca URL na podstawie numeru strony i query
   const generateURL = useCallback(
     (page) => {
       const queryParam = query ? `&query=${query}` : "";
@@ -31,15 +28,13 @@ export const Pagination = ({ currentPage, totalPages, onPageChange }) => {
     [location.pathname, query]
   );
 
-  // Funkcja zmieniająca stronę
   const changePage = (newPage) => {
     if (newPage >= 1 && newPage <= totalPages) {
-      onPageChange(newPage); // Wywołanie przekazanego callbacka
+      onPageChange(newPage);
       navigate(generateURL(newPage), { replace: true });
     }
   };
 
-  // Funkcja renderująca przycisk
   const renderButton = (onClick, disabled, iconLeft, iconRight, text) => (
     <ButtonTile onClick={onClick} disabled={disabled}>
       {isMobile ? (

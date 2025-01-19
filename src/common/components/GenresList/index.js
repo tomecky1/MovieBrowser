@@ -3,7 +3,6 @@ import { useGenresList } from "./useGenresList";
 
 export const GenresList = ({ genresIds, extra }) => {
     const { genres } = useGenresList();
-
     const genresFoundById = genres.data.filter(genre => genresIds.includes(genre.id));
 
     return (

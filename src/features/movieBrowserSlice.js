@@ -20,15 +20,10 @@ const movieBrowserSlice = createSlice({
     },
   },
 });
-export const { fetchMovies, fetchMoviesSuccess, fetchMoviesError } =
-  movieBrowserSlice.actions;
 
-const selectMovieBrowserState = (state) =>
-  state.movieBrowser || { movies: [], status: "initial" };
+export const { fetchMovies, fetchMoviesSuccess, fetchMoviesError } = movieBrowserSlice.actions;
+const selectMovieBrowserState = (state) => state.movieBrowser || { movies: [], status: "initial" };
 export const selectMovies = (state) => selectMovieBrowserState(state).movies;
 export const selectStatus = (state) => selectMovieBrowserState(state).status;
-
-export const getMovieById = (state, movieId) =>
-  selectMovies(state).find(({ id }) => id === movieId);
-
+export const getMovieById = (state, movieId) => selectMovies(state).find(({ id }) => id === movieId);
 export default movieBrowserSlice.reducer;

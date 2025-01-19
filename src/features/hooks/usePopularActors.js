@@ -8,15 +8,12 @@ export const usePopularActors = () => {
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
     const currentPage = parseInt(searchParams.get("page")) || 1;
-
     const [totalPagesActor, setTotalPagesActor] = useState(1);
     const [popularActor, setPopularActor] = useState({
         status: "",
         data: [],
     });
-
     const [error, setError] = useState(null);
-
     const url = `${BASE_URL}/person/popular?api_key=${API_KEY}`;
 
     useEffect(() => {
@@ -26,7 +23,6 @@ export const usePopularActors = () => {
                 data: [],
             });
             setError(null);
-
             try {
                 const response = await axios.get(`${url}&page=${currentPage}`);
                 if (response.data) {
@@ -34,7 +30,7 @@ export const usePopularActors = () => {
                         status: successStatus,
                         data: response.data.results,
                     });
-                    setTotalPagesActor(Math.min(response.data.total_pages, 500)); // Limit pages to 500
+                    setTotalPagesActor(Math.min(response.data.total_pages, 500));
                 } else {
                     setPopularActor({
                         status: errorStatus,
@@ -51,9 +47,7 @@ export const usePopularActors = () => {
                 setError("Failed to fetch popular actors");
             }
         };
-
         fetchPopularActors();
     }, [url, currentPage]);
-
     return { popularActor, totalPagesActor, error, currentPage };
 };

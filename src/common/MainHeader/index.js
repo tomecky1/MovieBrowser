@@ -10,13 +10,12 @@ import {
   StyledHeader,
   StyledStar,
 } from "./styled.js";
-import {useEffect, useState} from "react";
-import {getMovieOverview} from "../../features/movieDetailsAPI";
-import {useParams} from "react-router-dom";
+import { useEffect, useState } from "react";
+import { getMovieOverview } from "../../features/movieDetailsAPI";
+import { useParams } from "react-router-dom";
 
-const MainHeader = ({children}) => {
+const MainHeader = ({ children }) => {
   const { id } = useParams();
-
   const [title, setTitle] = useState(null);
   const [backdrop, setBackdrop] = useState(null);
   const [votes, setVotes] = useState(null);
@@ -43,21 +42,20 @@ const MainHeader = ({children}) => {
   }, [id]);
   return (
     <StyledHeader>
-     <Image src={`https://image.tmdb.org/t/p/original/${
-       backdrop ? backdrop : "no backdrop"
-     }`}
-            alt="Movie backdrop"
-            />
+      <Image src={`https://image.tmdb.org/t/p/original/${backdrop ? backdrop : "no backdrop"
+        }`}
+        alt="Movie backdrop"
+      />
       {children}
       <AdditionalInfo>
         <MovieName>{title ? title : "Loading movie title..."}</MovieName>
         <MobileWrapper>
-        <RatingContainer>
-        <StyledStar/>
-        <MovieRating>{vote_average ? vote_average.toFixed(2) : "Loading average votes"}</MovieRating>
-        <RatingOutOf>/ 10</RatingOutOf>
-        </RatingContainer>
-        <MovieVotes>{votes ? votes : "Liczba głosów"} votes</MovieVotes>
+          <RatingContainer>
+            <StyledStar />
+            <MovieRating>{vote_average ? vote_average.toFixed(2) : "Loading average votes"}</MovieRating>
+            <RatingOutOf>/ 10</RatingOutOf>
+          </RatingContainer>
+          <MovieVotes>{votes ? votes : "Liczba głosów"} votes</MovieVotes>
         </MobileWrapper>
       </AdditionalInfo>
     </StyledHeader>

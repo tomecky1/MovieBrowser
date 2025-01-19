@@ -19,7 +19,6 @@ export const Navigation = () => {
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
   const { searchResults } = useMovieSearch(searchQuery);
-
   const handleSearchChange = (event) => {
     const value = event.target.value;
     setSearchQuery(value);

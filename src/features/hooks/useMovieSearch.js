@@ -22,20 +22,17 @@ export const useMovieSearch = (query) => {
       });
       return;
     }
-
     const searchMovies = async () => {
       setSearchResults({
         status: loadingStatus,
         data: [],
       });
-
       try {
         const response = await axios.get(
           `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(
             query
           )}&language=en-US&page=1`
         );
-
         setSearchResults({
           status: successStatus,
           data: response.data.results,
@@ -49,11 +46,8 @@ export const useMovieSearch = (query) => {
         console.error("Błąd wyszukiwania:", error);
       }
     };
-
     const debounceTimeout = setTimeout(searchMovies, 500);
-
     return () => clearTimeout(debounceTimeout);
   }, [query]);
-
   return { searchResults, totalPages };
 };

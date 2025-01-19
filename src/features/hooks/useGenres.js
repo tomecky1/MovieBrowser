@@ -11,12 +11,11 @@ export const useGenresList = () => {
 
     useEffect(() => {
         const source = axios.CancelToken.source();
-
         const fetchGenres = async () => {
             try {
                 const response = await axios.get(`${BASE_URL}/genre/movie/list`, {
                     params: { api_key: API_KEY },
-                    cancelToken: source.token, 
+                    cancelToken: source.token,
                 });
                 if (response.data?.genres) {
                     setGenres({
@@ -38,13 +37,10 @@ export const useGenresList = () => {
                 }
             }
         };
-
         fetchGenres();
-
         return () => {
             source.cancel("Component unmounted.");
         };
     }, []);
-
     return { genres };
 };

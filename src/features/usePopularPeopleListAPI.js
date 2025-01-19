@@ -6,11 +6,9 @@ export const getPopularPersons = async () => {
     const response = await fetch(
       `${BASE_URL}?api_key=${API_KEY}&language=en-US&page=1`
     );
-
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
-
     const data = await response.json();
     return { peoples: data.results };
   } catch (error) {

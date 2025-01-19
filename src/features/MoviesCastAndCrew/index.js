@@ -1,5 +1,5 @@
-import {useEffect, useState} from "react";
-import {getPersonMovieCredits} from "../useApiKey";
+import { useEffect, useState } from "react";
+import { getPersonMovieCredits } from "../useApiKey";
 import {
   HeaderList,
   IconContainerList,
@@ -14,8 +14,8 @@ import {
   TagsList,
   Text,
 } from "../MovieList/styled";
-import {MovieRole} from "./styled";
-import {useNavigate} from "react-router-dom";
+import { MovieRole } from "./styled";
+import { useNavigate } from "react-router-dom";
 
 export const MoviesCastAndCrew = ({ personId }) => {
   const [movieCredits, setMovieCredits] = useState([]);
@@ -23,6 +23,7 @@ export const MoviesCastAndCrew = ({ personId }) => {
   const handleMovieClick = (movieId) => {
     navigate(`/movie/${movieId}`);
   }
+
   useEffect(() => {
     const fetchMovieCredits = async () => {
       try {
@@ -34,7 +35,6 @@ export const MoviesCastAndCrew = ({ personId }) => {
         console.error("An error occurred during loading filmography:", error);
       }
     };
-
     fetchMovieCredits();
   }, [personId]);
 

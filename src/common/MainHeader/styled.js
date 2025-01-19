@@ -13,6 +13,7 @@ const sharedStyles = css`
     line-height: 12px;
   }
 `;
+
 export const StyledHeader = styled.header`
   display: flex;
   align-items: end;
@@ -146,6 +147,7 @@ export const MovieRating = styled.p`
     line-height: 18.2px;
   }
 `;
+
 export const RatingOutOf = styled.p`
   ${sharedStyles}
   padding-top: 12px;

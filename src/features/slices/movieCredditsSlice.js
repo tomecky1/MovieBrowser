@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { loadingStatus, successStatus, errorStatus } from "../../common/constants/resqestStatuses/index";
 
-
 export const movieCreditsSlice = createSlice({
     name: "movieCredits",
     initialState: {
@@ -30,10 +29,7 @@ export const {
     fetchMovieCreditsError,
     resetMovieCredits
 } = movieCreditsSlice.actions;
-
 export const selectMovieCreditsState = state => state.movieCredits;
-
 export const selectMovieCreditsFetchStatus = state => selectMovieCreditsState(state).fetchMovieCreditsStatus;
 export const selectMovieCredits = state => selectMovieCreditsState(state).movieCredits;
-
 export const movieCreditsReducer = movieCreditsSlice.reducer;

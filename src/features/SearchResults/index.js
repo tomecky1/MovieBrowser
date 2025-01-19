@@ -43,7 +43,6 @@ export const SearchResults = () => {
   const [error, setError] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get("query");
 
@@ -54,7 +53,6 @@ export const SearchResults = () => {
         setTotalPages(1);
         return;
       }
-
       try {
         const fetchedData = await getMoviesByQuery(query, currentPage);
         if (fetchedData) {

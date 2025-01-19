@@ -38,14 +38,11 @@ export const useMovieDetailsPageLogic = () => {
     useEffect(() => {
         dispatch(resetMovieDetails());
         dispatch(resetMoviesCreditsList());
-
         const fetchDataDelayId = setTimeout(() => {
             dispatch(fetchMovieDetails(movieId));
             dispatch(fetchMoviesCreditsList(movieId));
         }, 500);
-
         return () => clearTimeout(fetchDataDelayId);
     }, [dispatch, movieId]);
-
     return [isLoading, isError, isSuccess];
 };

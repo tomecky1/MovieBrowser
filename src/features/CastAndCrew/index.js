@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from "react";
-import {getMovieCredits} from "../movieDetailsAPI";
-import {ReactComponent as ProfileIcon} from "../../icons/Picture.svg";
-import {ImageWrapper, StyledPersonWrapper, Text, WrapperActorName, WrapperItem, WrapperRole,} from "./styled";
-import {useNavigate} from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { getMovieCredits } from "../movieDetailsAPI";
+import { ReactComponent as ProfileIcon } from "../../icons/Picture.svg";
+import { ImageWrapper, StyledPersonWrapper, Text, WrapperActorName, WrapperItem, WrapperRole, } from "./styled";
+import { useNavigate } from "react-router-dom";
 
 export const CastAndCrew = ({ movieId }) => {
   const navigate = useNavigate()

@@ -13,12 +13,8 @@ import Loading from "../../common/Loading";
 import NotFound from "../../common/NotFound";
 import { Pagination } from "../../common/Pagination";
 
-
 export const Person = () => {
   const { popularActor, totalPagesActor, currentPage, error } = usePopularActors();
-
-  console.log("Current Page:", currentPage);
-  console.log("Total Pages:", totalPagesActor);
 
   return (
     <FlexContainer>
@@ -57,7 +53,7 @@ export const Person = () => {
       <Pagination
         currentPage={currentPage}
         totalPages={totalPagesActor}
-        onPageChange={(page) => console.log(`Navigate to page: ${page}`)} // Replace with navigation logic
+        onPageChange={(page) => console.log(`Navigate to page: ${page}`)}
       />
     </FlexContainer>
   );

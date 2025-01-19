@@ -16,27 +16,24 @@ import {
   StyledStarIcon,
   Year,
 } from "./styled";
-import {useDispatch, useSelector} from "react-redux";
-import {fetchMovies, selectMovies, selectStatus} from "../movieBrowserSlice";
-import {useEffect, useState} from "react";
-import {getMovieOverview} from "../movieDetailsAPI";
-import {CastAndCrew} from "../CastAndCrew";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchMovies, selectMovies, selectStatus } from "../movieBrowserSlice";
+import { useEffect, useState } from "react";
+import { getMovieOverview } from "../movieDetailsAPI";
+import { CastAndCrew } from "../CastAndCrew";
 import MainHeader from "../../common/MainHeader";
-import {useParams} from "react-router-dom";
-import {GenresList} from "../../common/components/GenresList";
+import { useParams } from "react-router-dom";
+import { GenresList } from "../../common/components/GenresList";
 
 const MovieDetails = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
-
   const movies = useSelector(selectMovies);
   const status = useSelector(selectStatus);
 
   useEffect(() => {
     dispatch(fetchMovies());
   }, [dispatch]);
-  console.log(status);
-  console.log(movies);
   const [overview, setOverview] = useState(null);
   const [title, setTitle] = useState(null);
   const [date, setDate] = useState(null);
@@ -51,7 +48,6 @@ const MovieDetails = () => {
     const fetchMovieDetails = async () => {
       try {
         const fetchedData = await getMovieOverview(id);
-        console.log("Fetched Data:", fetchedData);
         if (fetchedData) {
           setOverview(fetchedData.overview);
           setTitle(fetchedData.title);
@@ -69,10 +65,8 @@ const MovieDetails = () => {
         setError(true);
       }
     };
-
     fetchMovieDetails();
   }, [id]);
-  
   const formatDateToPL = (dateString) => {
     const date = new Date(dateString);
     return new Intl.DateTimeFormat('pl-PL', {
