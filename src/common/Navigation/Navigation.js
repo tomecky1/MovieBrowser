@@ -1,7 +1,7 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {useLocation, useNavigate} from "react-router-dom";
 import {useMovieSearch} from "../../features/hooks/useMovieSearch";
-import {usePeopleSearch} from "../../features/hooks/usePeopleSearch"; // Importowanie nowego hooka
+import {usePeopleSearch} from "../../features/hooks/usePeopleSearch";
 import {
   MobileContainer,
   NavigationInput,
@@ -24,7 +24,7 @@ export const Navigation = () => {
 
 
   const { searchResults: movieResults } = useMovieSearch(searchQuery);
-  const { searchResults: peopleResults } = usePeopleSearch(searchQuery); // Dodane wyszukiwanie osób
+  const { searchResults: peopleResults } = usePeopleSearch(searchQuery);
 
 
   const handleSearchChange = (event) => {
@@ -50,8 +50,14 @@ export const Navigation = () => {
       : "Search for movies...";
 
 
+  useEffect(() => {
+    setSearchQuery("");
+  }, [location.pathname]);
+
+
+
   const handlePersonClick = (personId) => {
-    navigate(`/person/${personId}`); // Przejście do szczegółów osoby
+    navigate(`/person/${personId}`);
   };
 
   return (

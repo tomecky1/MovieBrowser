@@ -33,7 +33,7 @@ export const getPopularMovies = async () => {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error("Błąd pobierania danych:", error);
+    console.error("Error occurred fetching data:", error);
     return null;
   }
 };
