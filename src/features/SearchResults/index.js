@@ -57,7 +57,7 @@ export const SearchResults = () => {
         const fetchedData = await getMoviesByQuery(query, currentPage);
         if (fetchedData) {
           setMovies(fetchedData);
-          setTotalPages(Math.min(fetchedData.total_pages, 500)); // Limit to max 500 pages
+          setTotalPages(Math.min(fetchedData.total_pages, 500));
         } else {
           setMovies({ results: [] });
           setTotalPages(1);
