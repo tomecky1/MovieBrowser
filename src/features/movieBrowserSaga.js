@@ -1,6 +1,6 @@
-import {getMovieDetails} from "./movieDetailsAPI";
-import {call, delay, put, takeLatest} from "redux-saga/effects";
-import {fetchMovies, fetchMoviesError, fetchMoviesSuccess} from "./movieBrowserSlice";
+import { getMovieDetails } from "./movieDetailsAPI";
+import { call, delay, put, takeLatest } from "redux-saga/effects";
+import { fetchMovies, fetchMoviesError, fetchMoviesSuccess } from "./movieBrowserSlice";
 
 const loadingDelay = 300;
 

@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import { errorStatus, loadingStatus, successStatus } from "../../constants/resqestStatuses/index";
 import { API_KEY, BASE_URL } from "../../constants/config/index";
 
-
 const url = `${BASE_URL}/genre/movie/list?api_key=${API_KEY}`;
 
 export const useGenresList = () => {
@@ -27,7 +26,6 @@ export const useGenresList = () => {
                 console.error(error.message);
             }
         };
-
         setTimeout(fetchGenres, 0);
     }, []);
 

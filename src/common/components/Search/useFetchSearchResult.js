@@ -11,20 +11,18 @@ export const useFetchSearchResult = () => {
     const searchParams = new URLSearchParams(location.search);
     const isMoviesPage = location.pathname.startsWith("/movies");
     const currentPage = parseInt(searchParams.get("page")) || 1;
-
     const [searchResults, setSearchResults] = useState({
         status: "",
         data: [],
     });
+
     useEffect(() => {
         setSearchResults({
             status: loadingStatus,
             data: [],
         });
-
         const fetchData = async () => {
             const url = `${BASE_URL}/search/${isMoviesPage ? "movie" : "person"}?api_key=${API_KEY}&query=${encodeURIComponent(query)}&page=${currentPage}`;
-
             try {
                 const response = await axios.get(url);
                 setSearchResults({ status: successStatus, data: response.data });
@@ -33,11 +31,8 @@ export const useFetchSearchResult = () => {
                 console.error("Error fetching search results:", error.message);
             }
         };
-
         const debounceTimeout = setTimeout(fetchData, 500);
-
         return () => clearTimeout(debounceTimeout);
     }, [query, isMoviesPage, currentPage]);
-
     return { searchResults };
 };

@@ -25,7 +25,6 @@ export const Text = styled.header`
 export const Loader = styled(Spinner)`
   align-self: center;
   margin-top: 100px;
-
   animation: spin;
   animation-duration: 1s;
   animation-timing-function: linear;

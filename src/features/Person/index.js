@@ -5,61 +5,31 @@ import {
   ImageWrapper,
   Text,
   WrapperActorName,
+  StyledPersonLink
 } from "./styled";
 import posterExample from "../../image/posterExample.png";
-import { getPopularPersons } from "../usePopularPeopleListAPI"; // Adjust the import path as necessary
-import { useEffect, useState } from "react";
+import { usePopularActors } from "../hooks/usePopularActors";
 import Loading from "../../common/Loading";
 import NotFound from "../../common/NotFound";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
-
-// Dodajemy styled component dla linku
-const StyledPersonLink = styled(Link)`
-  text-decoration: none;
-  color: inherit;
-  display: block;
-  transition: transform 0.2s;
-
-  &:hover {
-    transform: scale(1.03);
-  }
-`;
+import { Pagination } from "../../common/Pagination";
 
 export const Person = () => {
-  const [persons, setPersons] = useState({ peoples: [] });
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchPeople = async () => {
-      setIsLoading(true);
-      try {
-        const fetchedData = await getPopularPersons();
-        if (fetchedData && fetchedData.peoples) {
-          setPersons(fetchedData);
-        } else {
-          setPersons({ peoples: [] });
-        }
-      } catch (error) {
-        console.error("Error fetching people:", error);
-        setPersons({ peoples: [] });
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    fetchPeople();
-  }, []);
+  const { popularActor, totalPagesActor, currentPage, error } = usePopularActors();
 
   return (
     <FlexContainer>
       <Text>Popular people</Text>
       <StyledPersonWrapper>
-        {isLoading ? (
+        {error ? (
+          <div>
+            <NotFound />
+          </div>
+        ) : popularActor.status === "loading" ? (
           <div>
             <Loading />
           </div>
-        ) : persons?.peoples?.length > 0 ? (
-          persons.peoples.map((person) => (
+        ) : popularActor.data?.length > 0 ? (
+          popularActor.data.map((person) => (
             <WrapperItem key={person.id}>
               <StyledPersonLink to={`/person/${person.id}`}>
                 <ImageWrapper
@@ -80,6 +50,11 @@ export const Person = () => {
           </div>
         )}
       </StyledPersonWrapper>
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPagesActor}
+        onPageChange={(page) => console.log(`Navigate to page: ${page}`)}
+      />
     </FlexContainer>
   );
 };

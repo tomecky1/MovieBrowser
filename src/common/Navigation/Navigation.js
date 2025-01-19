@@ -21,11 +21,10 @@ export const Navigation = () => {
   const location = useLocation();
 
   const [searchQuery, setSearchQuery] = useState("");
-
-
-  const { searchResults: movieResults } = useMovieSearch(searchQuery);
+  
   const { searchResults: peopleResults } = usePeopleSearch(searchQuery);
 
+  const { searchResults } = useMovieSearch(searchQuery);
 
   const handleSearchChange = (event) => {
     const value = event.target.value;

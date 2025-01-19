@@ -35,9 +35,6 @@ export const {
 } = movieListSlice.actions;
 
 export const selectMovieListState = (state) => state.movieList;
-
 export const selectMovies = (state) => state.movieList.movies;
-export const selectFetchMoviesStatus = (state) =>
-    selectMovieListState(state).fetchMoviesStatus;
-
+export const selectFetchMoviesStatus = (state) => selectMovieListState(state).fetchMoviesStatus;
 export const movieListReducer = movieListSlice.reducer;

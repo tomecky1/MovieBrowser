@@ -23,18 +23,8 @@ export const movieDetailsSlice = createSlice({
     },
 });
 
-export const {
-    fetchMovieDetails,
-    fetchMovieDetailsSuccess,
-    fetchMovieDetailsError,
-    resetMovieDetails
-} = movieDetailsSlice.actions;
-
+export const { fetchMovieDetails, fetchMovieDetailsSuccess, fetchMovieDetailsError, resetMovieDetails } = movieDetailsSlice.actions;
 export const selectMovieDetailsState = state => state.movieDetails;
-
-export const selectFetchMovieDetailsStatus = state =>
-    selectMovieDetailsState(state).fetchMovieDetailsStatus;
-export const selectMovieDetails = state =>
-    selectMovieDetailsState(state).movieDetails;
-
+export const selectFetchMovieDetailsStatus = state => selectMovieDetailsState(state).fetchMovieDetailsStatus;
+export const selectMovieDetails = state => selectMovieDetailsState(state).movieDetails;
 export const movieDetailsReducer = movieDetailsSlice.reducer;

@@ -1,5 +1,6 @@
-const API_KEY = "1454980afff1c0ba9dce7e6202a9ecbf"; // Twój klucz API
+const API_KEY = "1454980afff1c0ba9dce7e6202a9ecbf";
 const BASE_URL = "https://api.themoviedb.org/3";
+
 export const getPersonMovieCredits = async (personId) => {
   try {
     const response = await fetch(

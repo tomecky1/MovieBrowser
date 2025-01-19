@@ -25,7 +25,6 @@ export const getMovieOverview = async (movieId) => {
     console.error("movieId was not provided...");
     return null;
   }
-
   try {
     const response = await axios.request({
       ...options,
@@ -54,7 +53,6 @@ export const getMovieCredits = async (movieId) => {
     console.error("movieId was not provided...");
     return null;
   }
-
   try {
     const response = await axios.request({
       ...options,

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-
 import { ReactComponent as PictureIcon } from "../../icons/Picture.svg";
 
 export const ImageListBlank = styled(PictureIcon)`

@@ -1,3 +1,4 @@
+
 import {useLocation, useSearchParams} from "react-router-dom";
 import {useMovieSearch} from "../hooks/useMovieSearch";
 import {useEffect, useState} from "react";
@@ -18,95 +19,125 @@ import {
   Text,
   YearList,
 } from "../MovieList/styled";
-import {ImageListBlank} from "./styled";
+
 import {usePeopleSearch} from "../hooks/usePeopleSearch";
+import { ImageListBlank } from "./styled";
+import { Pagination } from "../../common/Pagination";
 
 const API_KEY = "1454980afff1c0ba9dce7e6202a9ecbf";
-export const getPopularMovies = async () => {
+
+export const getMoviesByQuery = async (query, page) => {
   try {
     const response = await fetch(
-      `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`
+      `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${query}&page=${page}`
     );
     if (!response.ok) {
-      throw new Error(`Error fetching popular movies: ${response.status}`);
+      throw new Error(`Error fetching movies by query: ${response.status}`);
     }
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error("Error occurred fetching data:", error);
+    console.error("Error fetching search results:", error);
     return null;
   }
 };
 
 export const SearchResults = () => {
-   const [movies, setMovies] = useState({ results: [] });
-    const [error, setError] = useState(false);
-  
-    useEffect(() => {
-      const fetchMovies = async () => {
-        const fetchedData = await getPopularMovies();
+  const [movies, setMovies] = useState({ results: [] });
+  const [error, setError] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const query = searchParams.get("query");
+
+  useEffect(() => {
+    const fetchMovies = async () => {
+      if (!query) {
+        setMovies({ results: [] });
+        setTotalPages(1);
+        return;
+      }
+      try {
+        const fetchedData = await getMoviesByQuery(query, currentPage);
         if (fetchedData) {
           setMovies(fetchedData);
+          setTotalPages(Math.min(fetchedData.total_pages, 500));
         } else {
-          setError(true);
+          setMovies({ results: [] });
+          setTotalPages(1);
         }
-      };
-      fetchMovies();
-    }, []);
+      } catch (error) {
+        console.error("Error fetching search results:", error);
+        setError(true);
+      }
+    };
+    fetchMovies();
+  }, [query, currentPage]);
+
 
   const [searchParams] = useSearchParams();
   const query = searchParams.get("query");
 
   const location = useLocation()
 
-
   const isMoviesPage = location.pathname.startsWith("/movies");
   const isPeoplePage = location.pathname.startsWith("/people");
 
-
   const { searchResults } = useMovieSearch(query);
-  const { searchResults: peopleResults } = usePeopleSearch(query);
+  const { searchResults: peopleResults } = usePeopleSearch(query); 
 
-
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+    setSearchParams({ query, page });
+  };
 
   return (
     <FlexCont>
-    <Text>Search Results for: {query}</Text>
-    <StyledMovieDetailsTileList>
-      {Array.isArray(searchResults.data) && searchResults.data.map((movie) => (
+      <Text>Search Results for: {query}</Text>
+      <StyledMovieDetailsTileList>
+        {movies.results.length > 0 ? (
+          movies.results.map((movie) => (
+            <StyledLink to={`/movie/${movie.id}`} key={movie.id}>
+              <IconContainerList>
+                {movie.poster_path ? (
+                  <ImageList
+                    src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                    alt={movie.title}
+                  />
+                ) : (
+                  <ImageListBlank />
+                )}
+                <MovieDetailsList>
+                  <HeaderList>{movie.title}</HeaderList>
+                  <YearList>
+                    {movie.release_date?.split("-")[0]}
+                  </YearList>
+                  <TagsList>
+                    {movie.genres?.map((genre) => (
+                      <TagList key={genre.id}>{genre.name}</TagList>
+                    ))}
+                  </TagsList>
+                  <RateList>
+                    <StyledStarIcon />
+                    <RateGradeList>
+                      {movie.vote_average.toFixed(2)}
+                    </RateGradeList>
+                    <RateVotesList>{movie.vote_count} votes</RateVotesList>
+                  </RateList>
+                </MovieDetailsList>
+              </IconContainerList>
+            </StyledLink>
+          ))
 
-        <StyledLink to={`/movie/${movie.id}`} key={movie.id}>
-      <IconContainerList>
-        {movie.poster_path ? (
-          <ImageList
-            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-            alt={movie.title}
-          />
         ) : (
-          <ImageListBlank />
+          <p>No results found</p>
         )}
-            <MovieDetailsList>
-              <HeaderList>{movie.title}</HeaderList>
-              <YearList>
-              {movie.release_date?.split("-")[0]}
-              </YearList>
-              <TagsList>
-                {movie.genres?.map((genre) => (
-                  <TagList key={genre.id}>{genre.name}</TagList>
-                ))}
-              </TagsList>
-              <RateList>
-                <StyledStarIcon />
-                <RateGradeList>
-                  {movie.vote_average.toFixed(2)}
-                </RateGradeList>
-                <RateVotesList>{movie.vote_count} votes</RateVotesList>
-              </RateList>
-            </MovieDetailsList>
-          </IconContainerList>
-        </StyledLink>
-      ))}
-    </StyledMovieDetailsTileList>
-  </FlexCont>
+      </StyledMovieDetailsTileList>
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
+      />
+    </FlexCont>
   );
 };

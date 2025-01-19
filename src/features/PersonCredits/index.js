@@ -5,6 +5,7 @@ import { Image, ListItem, ListWrapper, SectionTitle } from "./styled";
 export const PersonCredits = ({ personId }) => {
   const [credits, setCredits] = useState({ cast: [], crew: [] });
   const [error, setError] = useState(false);
+  
   useEffect(() => {
     const fetchCredits = async () => {
       const fetchedData = await getPersonMovieCredits(personId);
@@ -16,6 +17,7 @@ export const PersonCredits = ({ personId }) => {
     };
     fetchCredits();
   }, [personId]);
+
   return (
     <div>
       <SectionTitle>Movies</SectionTitle>
