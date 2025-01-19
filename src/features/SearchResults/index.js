@@ -1,4 +1,3 @@
-
 import {useLocation, useSearchParams} from "react-router-dom";
 import {useMovieSearch} from "../hooks/useMovieSearch";
 import {useEffect, useState} from "react";
@@ -21,8 +20,8 @@ import {
 } from "../MovieList/styled";
 
 import {usePeopleSearch} from "../hooks/usePeopleSearch";
-import { ImageListBlank } from "./styled";
-import { Pagination } from "../../common/Pagination";
+import {ImageListBlank} from "./styled";
+import {Pagination} from "../../common/Pagination";
 
 const API_KEY = "1454980afff1c0ba9dce7e6202a9ecbf";
 
@@ -73,10 +72,6 @@ export const SearchResults = () => {
     };
     fetchMovies();
   }, [query, currentPage]);
-
-
-  const [searchParams] = useSearchParams();
-  const query = searchParams.get("query");
 
   const location = useLocation()
 

@@ -24,7 +24,7 @@ export const Navigation = () => {
   
   const { searchResults: peopleResults } = usePeopleSearch(searchQuery);
 
-  const { searchResults } = useMovieSearch(searchQuery);
+  const { searchResults: movieResults } = useMovieSearch(searchQuery);
 
   const handleSearchChange = (event) => {
     const value = event.target.value;
