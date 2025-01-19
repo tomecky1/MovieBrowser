@@ -46,7 +46,7 @@ export const usePeopleSearch = (query) => {
       }
     };
 
-    const debounceTimeout = setTimeout(searchPeople, 500);
+    const debounceTimeout = setTimeout(searchPeople, 300);
 
     return () => clearTimeout(debounceTimeout);
   }, [query]);
