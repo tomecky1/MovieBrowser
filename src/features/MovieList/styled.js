@@ -73,7 +73,7 @@ export const IconContainerList = styled.div`
     flex-direction: row;
     align-items: flex-start;
   }
-    
+
   &:hover {
     transform: scale(1.03);
   }
@@ -82,6 +82,7 @@ export const IconContainerList = styled.div`
 export const ImageList = styled.img`
   border-radius: 5px;
   height: 434px;
+  width: auto;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     width: 114px;

@@ -3,8 +3,7 @@ import { ReactComponent as PictureIcon } from "../../icons/Picture.svg";
 
 export const ImageListBlank = styled(PictureIcon)`
   border-radius: 5px;
-  height: 66%;
-  width: auto;
+  height: 434px;
   background-color: ${({ theme }) => theme.color.silver};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
