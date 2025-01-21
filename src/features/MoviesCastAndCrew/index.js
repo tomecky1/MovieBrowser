@@ -16,6 +16,7 @@ import {
 } from "../MovieList/styled";
 import { MovieRole } from "./styled";
 import { useNavigate } from "react-router-dom";
+import { ImageListBlank } from "../SearchResults/styled";
 
 export const MoviesCastAndCrew = ({ personId }) => {
   const [movieCredits, setMovieCredits] = useState([]);
@@ -49,7 +50,7 @@ export const MoviesCastAndCrew = ({ personId }) => {
                 src={
                   movie.poster_path
                     ? `https://image.tmdb.org/t/p/w200${movie.poster_path}`
-                    : "ścieżka/do/placeholder/image"
+                    : <ImageListBlank/>
                 }
                 alt={`${movie.title} poster`}
               ></ImageList>
@@ -67,7 +68,7 @@ export const MoviesCastAndCrew = ({ personId }) => {
                       : "0.0"}
                   </RateGradeList>
                   <RateVotesList>
-                    {movie.vote_count ? movie.vote_count : "0"}{" "}
+                    {movie.vote_count ? movie.vote_count : "0.0"}{" "}
                     votes
                   </RateVotesList>
                 </RateList>
@@ -87,7 +88,7 @@ export const MoviesCastAndCrew = ({ personId }) => {
                 src={
                   movie.poster_path
                     ? `https://image.tmdb.org/t/p/w200${movie.poster_path}`
-                    : "ścieżka/do/placeholder/image"
+                    : <ImageListBlank/>
                 }
                 alt={`${movie.title} poster`}
               ></ImageList>
@@ -105,7 +106,7 @@ export const MoviesCastAndCrew = ({ personId }) => {
                       : "Loading movie score"}
                   </RateGradeList>
                   <RateVotesList>
-                    {movie.vote_count ? movie.vote_count : "Number of votes"}{" "}
+                    {movie.vote_count ? movie.vote_count : "0"}{" "}
                     votes
                   </RateVotesList>
                 </RateList>
