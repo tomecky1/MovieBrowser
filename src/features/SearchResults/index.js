@@ -22,6 +22,7 @@ import {
 import {usePeopleSearch} from "../hooks/usePeopleSearch";
 import {ImageListBlank} from "./styled";
 import {Pagination} from "../../common/Pagination";
+import NotFound from "../../common/NotFound";
 
 const API_KEY = "1454980afff1c0ba9dce7e6202a9ecbf";
 
@@ -88,10 +89,12 @@ export const SearchResults = () => {
 
   return (
     <FlexCont>
-      <Text>Search Results for: {query}</Text>
-      <StyledMovieDetailsTileList>
-        {movies.results.length > 0 ? (
-          movies.results.map((movie) => (
+    <Text>Search Results for: {query}</Text>
+  
+    {movies.results.length > 0 ? (
+      <>
+        <StyledMovieDetailsTileList>
+          {movies.results.map((movie) => (
             <StyledLink to={`/movie/${movie.id}`} key={movie.id}>
               <IconContainerList>
                 {movie.poster_path ? (
@@ -104,9 +107,7 @@ export const SearchResults = () => {
                 )}
                 <MovieDetailsList>
                   <HeaderList>{movie.title}</HeaderList>
-                  <YearList>
-                    {movie.release_date?.split("-")[0]}
-                  </YearList>
+                  <YearList>{movie.release_date?.split("-")[0]}</YearList>
                   <TagsList>
                     {movie.genres?.map((genre) => (
                       <TagList key={genre.id}>{genre.name}</TagList>
@@ -114,25 +115,24 @@ export const SearchResults = () => {
                   </TagsList>
                   <RateList>
                     <StyledStarIcon />
-                    <RateGradeList>
-                      {movie.vote_average.toFixed(2)}
-                    </RateGradeList>
+                    <RateGradeList>{movie.vote_average.toFixed(2)}</RateGradeList>
                     <RateVotesList>{movie.vote_count} votes</RateVotesList>
                   </RateList>
                 </MovieDetailsList>
               </IconContainerList>
             </StyledLink>
-          ))
-
-        ) : (
-          <p>No results found</p>
-        )}
-      </StyledMovieDetailsTileList>
-      <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        onPageChange={handlePageChange}
-      />
-    </FlexCont>
+          ))}
+        </StyledMovieDetailsTileList>
+  
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={handlePageChange}
+        />
+      </>
+    ) : (
+      <NotFound />
+    )}
+  </FlexCont>  
   );
 };
