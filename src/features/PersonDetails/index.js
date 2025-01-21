@@ -89,7 +89,6 @@ export const PersonDetails = () => {
             </StyledLink>
           </StyledMovieDetailsTile>
           <MoviesCastAndCrew personId={id} />
-          <Pagination />
         </>
       ) : (
         <NotFound />

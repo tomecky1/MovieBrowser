@@ -8,6 +8,7 @@ export const FlexCont = styled.div`
   display: flex;
   flex-direction: column;
   margin: 0 auto;
+  padding-bottom:50px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.nextHubMax}) {
     margin-left: 36px;
