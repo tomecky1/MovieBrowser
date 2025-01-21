@@ -1,6 +1,6 @@
-import {useLocation, useSearchParams} from "react-router-dom";
-import {useMovieSearch} from "../hooks/useMovieSearch";
-import {useEffect, useState} from "react";
+import { useLocation, useSearchParams } from "react-router-dom";
+import { useMovieSearch } from "../hooks/useMovieSearch";
+import { useEffect, useState } from "react";
 import {
   FlexCont,
   HeaderList,
@@ -19,9 +19,9 @@ import {
   YearList,
 } from "../MovieList/styled";
 
-import {usePeopleSearch} from "../hooks/usePeopleSearch";
-import {ImageListBlank} from "./styled";
-import {Pagination} from "../../common/Pagination";
+import { usePeopleSearch } from "../hooks/usePeopleSearch";
+import { ImageListBlank } from "./styled";
+import { Pagination } from "../../common/Pagination";
 import NotFound from "../../common/NotFound";
 
 const API_KEY = "1454980afff1c0ba9dce7e6202a9ecbf";
@@ -74,13 +74,13 @@ export const SearchResults = () => {
     fetchMovies();
   }, [query, currentPage]);
 
-  const location = useLocation()
+  const location = useLocation();
 
   const isMoviesPage = location.pathname.startsWith("/movies");
   const isPeoplePage = location.pathname.startsWith("/people");
 
   const { searchResults } = useMovieSearch(query);
-  const { searchResults: peopleResults } = usePeopleSearch(query); 
+  const { searchResults: peopleResults } = usePeopleSearch(query);
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
@@ -89,50 +89,55 @@ export const SearchResults = () => {
 
   return (
     <FlexCont>
-    <Text>Search Results for: {query}</Text>
-  
-    {movies.results.length > 0 ? (
-      <>
-        <StyledMovieDetailsTileList>
-          {movies.results.map((movie) => (
-            <StyledLink to={`/movie/${movie.id}`} key={movie.id}>
-              <IconContainerList>
-                {movie.poster_path ? (
-                  <ImageList
-                    src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                    alt={movie.title}
-                  />
-                ) : (
-                  <ImageListBlank />
-                )}
-                <MovieDetailsList>
-                  <HeaderList>{movie.title}</HeaderList>
-                  <YearList>{movie.release_date?.split("-")[0]}</YearList>
-                  <TagsList>
-                    {movie.genres?.map((genre) => (
-                      <TagList key={genre.id}>{genre.name}</TagList>
-                    ))}
-                  </TagsList>
-                  <RateList>
-                    <StyledStarIcon />
-                    <RateGradeList>{movie.vote_average.toFixed(2)}</RateGradeList>
-                    <RateVotesList>{movie.vote_count} votes</RateVotesList>
-                  </RateList>
-                </MovieDetailsList>
-              </IconContainerList>
-            </StyledLink>
-          ))}
-        </StyledMovieDetailsTileList>
-  
-        <Pagination
-          currentPage={currentPage}
-          totalPages={totalPages}
-          onPageChange={handlePageChange}
-        />
-      </>
-    ) : (
-      <NotFound />
-    )}
-  </FlexCont>  
+      <Text>
+        {movies.results.length > 0
+          ? `Search Results for "${query}"`
+          : `Sorry, there are no results for "${query}"`}
+      </Text>
+      {movies.results.length > 0 ? (
+        <>
+          <StyledMovieDetailsTileList>
+            {movies.results.map((movie) => (
+              <StyledLink to={`/movie/${movie.id}`} key={movie.id}>
+                <IconContainerList>
+                  {movie.poster_path ? (
+                    <ImageList
+                      src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                      alt={movie.title}
+                    />
+                  ) : (
+                    <ImageListBlank />
+                  )}
+                  <MovieDetailsList>
+                    <HeaderList>{movie.title}</HeaderList>
+                    <YearList>{movie.release_date?.split("-")[0]}</YearList>
+                    <TagsList>
+                      {movie.genres?.map((genre) => (
+                        <TagList key={genre.id}>{genre.name}</TagList>
+                      ))}
+                    </TagsList>
+                    <RateList>
+                      <StyledStarIcon />
+                      <RateGradeList>
+                        {movie.vote_average.toFixed(2)}
+                      </RateGradeList>
+                      <RateVotesList>{movie.vote_count} votes</RateVotesList>
+                    </RateList>
+                  </MovieDetailsList>
+                </IconContainerList>
+              </StyledLink>
+            ))}
+          </StyledMovieDetailsTileList>
+
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={handlePageChange}
+          />
+        </>
+      ) : (
+        <NotFound />
+      )}
+    </FlexCont>
   );
 };
