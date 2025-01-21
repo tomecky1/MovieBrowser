@@ -65,7 +65,7 @@ export const MoviesCastAndCrew = ({ personId }) => {
                   <RateGradeList>
                     {movie.vote_average
                       ? movie.vote_average.toFixed(2)
-                      : "0.0"}
+                      : "0.00"}
                   </RateGradeList>
                   <RateVotesList>
                     {movie.vote_count ? movie.vote_count : "0"}{" "}
@@ -103,10 +103,10 @@ export const MoviesCastAndCrew = ({ personId }) => {
                   <RateGradeList>
                     {movie.vote_average
                       ? movie.vote_average.toFixed(2)
-                      : "Loading movie score"}
+                      : "0.00"}
                   </RateGradeList>
                   <RateVotesList>
-                    {movie.vote_count ? movie.vote_count : "Number of votes"}{" "}
+                    {movie.vote_count ? movie.vote_count : "0"}{" "}
                     votes
                   </RateVotesList>
                 </RateList>
