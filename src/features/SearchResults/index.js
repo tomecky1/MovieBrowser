@@ -114,7 +114,7 @@ export const SearchResults = () => {
                   <RateList>
                     <StyledStarIcon />
                     <RateGradeList>
-                      {movie.vote_average.toFixed(2)}
+                      {movie.vote_average.toFixed(1)}
                     </RateGradeList>
                     <RateVotesList>{movie.vote_count} votes</RateVotesList>
                   </RateList>

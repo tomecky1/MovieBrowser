@@ -42,7 +42,6 @@ export const MovieList = () => {
   const [totalPages, setTotalPages] = useState(1);
   const { genres } = useGenresList();
 
-
   useEffect(() => {
     const fetchMovies = async () => {
       try {
@@ -82,7 +81,7 @@ export const MovieList = () => {
                   <RateList>
                     <StyledStarIcon />
                     <RateGradeList>
-                      {list.vote_average.toFixed(2)}
+                      {list.vote_average.toFixed(1)}
                     </RateGradeList>
                     <RateVotesList>{list.vote_count} votes</RateVotesList>
                   </RateList>

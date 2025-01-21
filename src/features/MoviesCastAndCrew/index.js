@@ -68,7 +68,7 @@ export const MoviesCastAndCrew = ({ personId }) => {
                   <StyledStarIcon />
                   <RateGradeList>
                     {movie.vote_average
-                      ? movie.vote_average.toFixed(2)
+                      ? movie.vote_average.toFixed(1)
                       : "0.00"}
                   </RateGradeList>
                   <RateVotesList>
@@ -109,7 +109,7 @@ export const MoviesCastAndCrew = ({ personId }) => {
                   <StyledStarIcon />
                   <RateGradeList>
                     {movie.vote_average
-                      ? movie.vote_average.toFixed(2)
+                      ? movie.vote_average.toFixed(1)
                       : "Loading movie score"}
                   </RateGradeList>
                   <RateVotesList>

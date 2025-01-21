@@ -42,7 +42,9 @@ const MainHeader = ({ children }) => {
   }, [id]);
   return (
     <StyledHeader>
-      <Image src={`https://image.tmdb.org/t/p/original/${backdrop ? backdrop : "no backdrop"
+      <Image
+        src={`https://image.tmdb.org/t/p/original/${
+          backdrop ? backdrop : "no backdrop"
         }`}
         alt="Movie backdrop"
       />
@@ -52,7 +54,9 @@ const MainHeader = ({ children }) => {
         <MobileWrapper>
           <RatingContainer>
             <StyledStar />
-            <MovieRating>{vote_average ? vote_average.toFixed(2) : "Loading average votes"}</MovieRating>
+            <MovieRating>
+              {vote_average ? vote_average.toFixed(1) : "Loading average votes"}
+            </MovieRating>
             <RatingOutOf>/ 10</RatingOutOf>
           </RatingContainer>
           <MovieVotes>{votes ? votes : "Liczba głosów"} votes</MovieVotes>
