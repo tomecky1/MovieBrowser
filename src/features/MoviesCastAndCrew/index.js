@@ -20,10 +20,10 @@ import { ImageListBlank } from "../SearchResults/styled";
 
 export const MoviesCastAndCrew = ({ personId }) => {
   const [movieCredits, setMovieCredits] = useState([]);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const handleMovieClick = (movieId) => {
     navigate(`/movie/${movieId}`);
-  }
+  };
 
   useEffect(() => {
     const fetchMovieCredits = async () => {
@@ -45,15 +45,19 @@ export const MoviesCastAndCrew = ({ personId }) => {
       <StyledMovieDetailsTileList>
         {movieCredits.length > 0 ? (
           movieCredits.map((movie) => (
-            <IconContainerList key={`${movie.id}-${movie.credit_id}`} onClick={() => handleMovieClick(movie.id)} style={{ cursor: "pointer" }}>
+            <IconContainerList
+              key={`${movie.id}-${movie.credit_id}`}
+              onClick={() => handleMovieClick(movie.id)}
+              style={{ cursor: "pointer" }}
+            >
               {movie.poster_path ? (
-                  <ImageList
-                    src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                    alt={movie.title}
-                    />
-                  ) : (
-                    <ImageListBlank />
-                  )}
+                <ImageList
+                  src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                  alt={movie.title}
+                />
+              ) : (
+                <ImageListBlank />
+              )}
               <MovieDetailsList>
                 <HeaderList>{movie.title}</HeaderList>
                 <MovieRole>{movie.character}</MovieRole>
@@ -65,11 +69,10 @@ export const MoviesCastAndCrew = ({ personId }) => {
                   <RateGradeList>
                     {movie.vote_average
                       ? movie.vote_average.toFixed(2)
-                      : "0.0"}
+                      : "0.00"}
                   </RateGradeList>
                   <RateVotesList>
-                    {movie.vote_count ? movie.vote_count : "0.0"}{" "}
-                    votes
+                    {movie.vote_count ? movie.vote_count : "0.00"} votes
                   </RateVotesList>
                 </RateList>
               </MovieDetailsList>
@@ -83,15 +86,19 @@ export const MoviesCastAndCrew = ({ personId }) => {
       <StyledMovieDetailsTileList>
         {movieCredits.length > 0 ? (
           movieCredits.map((movie) => (
-            <IconContainerList key={`${movie.id}-${movie.credit_id}`} onClick={() => handleMovieClick(movie.id)} style={{ cursor: "pointer" }}>
-                {movie.poster_path ? (
-                  <ImageList
-                    src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
-                    alt={movie.title}
-                    />
-                  ) : (
-                    <ImageListBlank />
-                  )}
+            <IconContainerList
+              key={`${movie.id}-${movie.credit_id}`}
+              onClick={() => handleMovieClick(movie.id)}
+              style={{ cursor: "pointer" }}
+            >
+              {movie.poster_path ? (
+                <ImageList
+                  src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
+                  alt={movie.title}
+                />
+              ) : (
+                <ImageListBlank />
+              )}
               <MovieDetailsList>
                 <HeaderList>{movie.title}</HeaderList>
                 <MovieRole>{movie.character}</MovieRole>
@@ -106,8 +113,7 @@ export const MoviesCastAndCrew = ({ personId }) => {
                       : "Loading movie score"}
                   </RateGradeList>
                   <RateVotesList>
-                    {movie.vote_count ? movie.vote_count : "0"}{" "}
-                    votes
+                    {movie.vote_count ? movie.vote_count : "0"} votes
                   </RateVotesList>
                 </RateList>
               </MovieDetailsList>
