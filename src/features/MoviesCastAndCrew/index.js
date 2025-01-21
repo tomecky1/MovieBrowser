@@ -64,14 +64,18 @@ export const MoviesCastAndCrew = ({ personId }) => {
                 <TagsList>
                   <TagList>Action</TagList>
                 </TagsList>
-                <RateList>
+                <RateList >
                   <StyledStarIcon hidden={movie.vote_average === 0} />
-                  <RateGradeList>
+                  <RateGradeList style={{
+                    paddingLeft: movie.vote_average === 0 ? "0" : "12px",
+                  }}>
                     {movie.vote_average
                       ? movie.vote_average.toFixed(1)
                       : ""}
-                  </RateGradeList>
-                  <RateVotesList>
+                  </RateGradeList >
+                  <RateVotesList style={{
+                    paddingLeft: movie.vote_average === 0 ? "0" : "12px",
+                  }}>
                     {movie.vote_count
                       ? `${movie.vote_count} ${movie.vote_count === 1 ? "vote" : "votes"}`
                       : "no votes yet"
@@ -108,14 +112,18 @@ export const MoviesCastAndCrew = ({ personId }) => {
                 <TagsList>
                   <TagList>Action</TagList>
                 </TagsList>
-                <RateList>
-                  <StyledStarIcon />
-                  <RateGradeList>
+                <RateList  >
+                  <StyledStarIcon hidden={movie.vote_average === 0} />
+                  <RateGradeList style={{
+                    paddingLeft: movie.vote_average === 0 ? "0" : "12px",
+                  }}>
                     {movie.vote_average
                       ? movie.vote_average.toFixed(1)
                       : ""}
                   </RateGradeList>
-                  <RateVotesList>
+                  <RateVotesList style={{
+                    paddingLeft: movie.vote_average === 0 ? "0" : "12px",
+                  }}>
                     {movie.vote_count
                       ? `${movie.vote_count} ${movie.vote_count === 1 ? "vote" : "votes"}`
                       : "no votes yet"
