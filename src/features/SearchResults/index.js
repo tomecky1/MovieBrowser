@@ -90,7 +90,7 @@ export const SearchResults = () => {
 
   return (
     <FlexCont>
-      <Text>Search Results for: {query}</Text>
+      {movies.results.length > 0 && <Text>Search Results for: {query}</Text>}
       {movies.results.length > 0 ? (
         <>
           <StyledMovieDetailsTileList>
@@ -138,7 +138,7 @@ export const SearchResults = () => {
           />
         </>
       ) : (
-        <NotFound />
+        <NotFound query={query} />
       )}
     </FlexCont>
   );
