@@ -109,10 +109,10 @@ const MovieDetails = () => {
             <Rate>
               <StyledStarIcon />
               <RateGrade>
-                {vote_average !== null ? vote_average.toFixed(2) : "Loading the votes..."}
+                {vote_average !== null ? vote_average.toFixed(2) : "0.0"}
               </RateGrade>
               <RateElement>/ 10</RateElement>
-              <RateVotes>{votes ? votes : "Number of votes..."} votes</RateVotes>
+              <RateVotes>{votes ? votes : "0.0"} votes</RateVotes>
             </Rate>
           </Details>
           <MovieDescription>
