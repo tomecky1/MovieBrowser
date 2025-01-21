@@ -5,6 +5,7 @@ import { Navigation } from "./Navigation";
 import MovieDetails from "../../features/MovieDetails";
 import { PersonDetails } from "../../features/PersonDetails";
 import { SearchResults } from "../../features/SearchResults";
+import { SearchPeople } from "../../features/SearchPeople";
 
 export function NaviRoutes() {
   return (

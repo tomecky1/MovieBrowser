@@ -5,6 +5,7 @@ const NotFound = () => {
   return (
     <>
       <Wrapper>
+        <Text>Sorry, there are no results for popular people</Text>
         <ImageWrapper>
           <img src={Picture} alt="" />
         </ImageWrapper>

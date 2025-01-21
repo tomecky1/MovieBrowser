@@ -42,7 +42,9 @@ const MainHeader = ({ children }) => {
   }, [id]);
   return (
     <StyledHeader>
-      <Image src={`https://image.tmdb.org/t/p/original/${backdrop ? backdrop : "no backdrop"
+      <Image
+        src={`https://image.tmdb.org/t/p/original/${
+          backdrop ? backdrop : "no backdrop"
         }`}
         alt="Movie backdrop"
       />
@@ -51,9 +53,11 @@ const MainHeader = ({ children }) => {
         <MovieName>{title ? title : "Loading movie title..."}</MovieName>
         <MobileWrapper>
           <RatingContainer>
-            <StyledStar hidden={vote_average === 0} />
-            <MovieRating>{vote_average ? vote_average.toFixed(1) : "no votes yet"}</MovieRating>
-            <RatingOutOf hidden={vote_average === 0}>/ 10</RatingOutOf>
+            <StyledStar />
+            <MovieRating>
+              {vote_average ? vote_average.toFixed(1) : "Loading average votes"}
+            </MovieRating>
+            <RatingOutOf>/ 10</RatingOutOf>
           </RatingContainer>
           <MovieVotes>
             {votes

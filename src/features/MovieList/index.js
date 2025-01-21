@@ -42,7 +42,6 @@ export const MovieList = () => {
   const [totalPages, setTotalPages] = useState(1);
   const { genres } = useGenresList();
 
-
   useEffect(() => {
     const fetchMovies = async () => {
       try {
