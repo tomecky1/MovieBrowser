@@ -1,6 +1,6 @@
-import { useLocation, useSearchParams } from "react-router-dom";
-import { useMovieSearch } from "../hooks/useMovieSearch";
-import { useEffect, useState } from "react";
+import {useLocation, useSearchParams} from "react-router-dom";
+import {useMovieSearch} from "../hooks/useMovieSearch";
+import {useEffect, useState} from "react";
 import {
   FlexCont,
   HeaderList,
@@ -19,10 +19,11 @@ import {
   YearList,
 } from "../MovieList/styled";
 
-import { usePeopleSearch } from "../hooks/usePeopleSearch";
-import { ImageListBlank } from "./styled";
-import { Pagination } from "../../common/Pagination";
+import {usePeopleSearch} from "../hooks/usePeopleSearch";
+import {ImageListBlank} from "./styled";
+import {Pagination} from "../../common/Pagination";
 import Error from "../../common/Error";
+import NotFound from "../../common/NotFound";
 
 const API_KEY = "1454980afff1c0ba9dce7e6202a9ecbf";
 
@@ -123,7 +124,7 @@ export const SearchResults = () => {
             </StyledLink>
           ))
         ) : (
-          <Error />
+          <NotFound/>
         )}
       </StyledMovieDetailsTileList>
       <Pagination
