@@ -34,29 +34,26 @@ export const Text = styled.header`
 
 export const StyledMovieDetailsTileList = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(324px, 1fr));
-  grid-template-rows: repeat(5, minmax(650px, 1fr));
+  grid-template-columns: repeat(4, minmax(324px, 1fr));
+  grid-auto-rows: 1fr;
   gap: 24px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.nextHubMax}) {
-    grid-template-rows: repeat(7, minmax(650px, 1fr));
     gap: 16px;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tabletHorizontal}) {
-    grid-template-rows: repeat(7, minmax(650px, 1fr));
+    grid-template-columns: repeat(2, minmax(324px, 1fr));
     gap: 16px;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.biggerMobile}) {
     grid-template-columns: repeat(auto-fit, minmax(288px, 1fr));
-    grid-template-rows: repeat(10, minmax(650px, 1fr));
     gap: 16px;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     grid-template-columns: repeat(auto-fit, minmax(288px, 1fr));
-    grid-template-rows: auto;
     gap: 16px;
   }
 `;
