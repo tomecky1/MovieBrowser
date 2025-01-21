@@ -35,10 +35,11 @@ export const Text = styled.header`
 export const StyledMovieDetailsTileList = styled.div`
   display: grid;
   grid-template-columns: repeat(4, minmax(324px, 1fr));
-  grid-auto-rows: 1fr;
+  grid-auto-rows: minmax(680px, 1fr);
   gap: 24px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.nextHubMax}) {
+    grid-template-columns: repeat(3, minmax(324px, 1fr));
     gap: 16px;
   }
 
@@ -73,6 +74,7 @@ export const ImageList = styled.img`
   border-radius: 5px;
   height: 434px;
   width: auto;
+  object-fit: cover;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     width: 114px;
