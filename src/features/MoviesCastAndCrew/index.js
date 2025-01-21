@@ -64,10 +64,10 @@ export const MoviesCastAndCrew = ({ personId }) => {
                   <RateGradeList>
                     {movie.vote_average
                       ? movie.vote_average.toFixed(2)
-                      : "Loading movie score"}
+                      : "0.0"}
                   </RateGradeList>
                   <RateVotesList>
-                    {movie.vote_count ? movie.vote_count : "Number of votes"}{" "}
+                    {movie.vote_count ? movie.vote_count : "0"}{" "}
                     votes
                   </RateVotesList>
                 </RateList>
@@ -75,7 +75,7 @@ export const MoviesCastAndCrew = ({ personId }) => {
             </IconContainerList>
           ))
         ) : (
-          <p>No movies available</p>
+          <p>No movie cast available</p>
         )}
       </StyledMovieDetailsTileList>
       <Text>Movies - crew</Text>

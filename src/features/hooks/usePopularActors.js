@@ -24,13 +24,19 @@ export const usePopularActors = () => {
             });
             setError(null);
             try {
-                const response = await axios.get(`${url}&page=${currentPage}`);
-                if (response.data) {
+                const response1 = await axios.get(`${url}&page=${currentPage}`);
+                const response2 = await axios.get(`${url}&page=${currentPage + 1}`);
+
+                if (response1.data && response2.data) {
+                    const combinedResults = [
+                        ...response1.data.results,
+                        ...response2.data.results.slice(0, 4),
+                    ];
                     setPopularActor({
                         status: successStatus,
-                        data: response.data.results,
+                        data: combinedResults,
                     });
-                    setTotalPagesActor(Math.min(response.data.total_pages, 500));
+                    setTotalPagesActor(Math.min(response1.data.total_pages, 500));
                 } else {
                     setPopularActor({
                         status: errorStatus,
@@ -47,7 +53,8 @@ export const usePopularActors = () => {
                 setError("Failed to fetch popular actors");
             }
         };
+
         fetchPopularActors();
     }, [url, currentPage]);
     return { popularActor, totalPagesActor, error, currentPage };
-};
+}
