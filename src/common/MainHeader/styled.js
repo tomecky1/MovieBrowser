@@ -132,6 +132,10 @@ export const StyledStar = styled(StarIcon)`
     height: 15.25px;
     margin-right: 4px;
   }
+  ${({ hidden }) => hidden && css`
+    width: 0;
+    display: unset;
+  `}
 `;
 
 export const MovieRating = styled.p`

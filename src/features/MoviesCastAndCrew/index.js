@@ -65,14 +65,17 @@ export const MoviesCastAndCrew = ({ personId }) => {
                   <TagList>Action</TagList>
                 </TagsList>
                 <RateList>
-                  <StyledStarIcon />
+                  <StyledStarIcon hidden={movie.vote_average === 0} />
                   <RateGradeList>
                     {movie.vote_average
-                      ? movie.vote_average.toFixed(2)
-                      : "0.00"}
+                      ? movie.vote_average.toFixed(1)
+                      : ""}
                   </RateGradeList>
                   <RateVotesList>
-                    {movie.vote_count ? movie.vote_count : "0.00"} votes
+                    {movie.vote_count
+                      ? `${movie.vote_count} ${movie.vote_count === 1 ? "vote" : "votes"}`
+                      : "no votes yet"
+                    }
                   </RateVotesList>
                 </RateList>
               </MovieDetailsList>
@@ -109,11 +112,14 @@ export const MoviesCastAndCrew = ({ personId }) => {
                   <StyledStarIcon />
                   <RateGradeList>
                     {movie.vote_average
-                      ? movie.vote_average.toFixed(2)
-                      : "Loading movie score"}
+                      ? movie.vote_average.toFixed(1)
+                      : ""}
                   </RateGradeList>
                   <RateVotesList>
-                    {movie.vote_count ? movie.vote_count : "0"} votes
+                    {movie.vote_count
+                      ? `${movie.vote_count} ${movie.vote_count === 1 ? "vote" : "votes"}`
+                      : "no votes yet"
+                    }
                   </RateVotesList>
                 </RateList>
               </MovieDetailsList>

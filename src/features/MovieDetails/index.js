@@ -85,9 +85,8 @@ const MovieDetails = () => {
         <StyledMovieDetailsTile>
           <IconContainer>
             <Image
-              src={`https://image.tmdb.org/t/p/w500/${
-                poster ? poster : "There is no poster"
-              }`}
+              src={`https://image.tmdb.org/t/p/w500/${poster ? poster : "There is no poster"
+                }`}
               alt="Movie poster"
             />
           </IconContainer>
@@ -108,12 +107,22 @@ const MovieDetails = () => {
             </DetailInfo>
             <GenresList genresIds={genres} />
             <Rate>
-              <StyledStarIcon />
-              <RateGrade>
-                {vote_average !== null ? vote_average.toFixed(2) : "0.00"}
+              <StyledStarIcon hidden={vote_average === 0} />
+              <RateGrade style={{
+                paddingLeft: vote_average === 0 ? "0" : "12px",
+              }}>
+                {vote_average > 0 && vote_average !== null
+                  ? vote_average.toFixed(1)
+                  : ""}
               </RateGrade>
-              <RateElement>/ 10</RateElement>
-              <RateVotes>{votes ? votes : "0.00"} votes</RateVotes>
+              <RateElement hidden={vote_average === 0} >/ 10</RateElement>
+              <RateVotes style={{
+                paddingLeft: vote_average === 0 ? "0" : "12px",
+              }}>
+                {votes
+                  ? `${votes} ${votes === 1 ? "vote" : "votes"}`
+                  : "no votes yet"}
+              </RateVotes>
             </Rate>
           </Details>
           <MovieDescription>

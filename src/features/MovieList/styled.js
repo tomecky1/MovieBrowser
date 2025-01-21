@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { ReactComponent as StarIcon } from "../../icons/star.svg";
 import { Link } from "react-router-dom";
+import css from "styled-components";
 
 export const FlexCont = styled.div`
   max-width: 1368px;
@@ -182,6 +183,9 @@ export const RateGradeList = styled.p`
     padding-left: 8px;
     word-break: keep-all;
   }
+  ${({ votes }) => votes && css`
+      padding-left: 0;
+    `}
 `;
 
 export const RateVotesList = styled.p`
@@ -198,6 +202,9 @@ export const RateVotesList = styled.p`
     line-height: 16.9px;
     padding-left: 7px;
   }
+  ${({ votes }) => votes && css`
+      padding-left: 0;
+    `}
 `;
 
 export const StyledStarIcon = styled(StarIcon)`
@@ -211,6 +218,10 @@ export const StyledStarIcon = styled(StarIcon)`
     height: 15.25px;
     align-self: normal;
   }
+  ${({ hidden }) => hidden && css`
+    width: 0;
+    display: unset;
+  `}
 `;
 
 export const StyledLink = styled(Link)`

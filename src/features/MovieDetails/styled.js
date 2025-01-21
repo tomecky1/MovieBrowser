@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { ReactComponent as StarIcon } from "../../icons/star.svg";
+import css from "styled-components";
 
 export const FlexContainer = styled.div`
   display: flex;
@@ -259,4 +260,9 @@ export const StyledStarIcon = styled(StarIcon)`
     height: 15.25px;
     align-self: normal;
   }
+
+  ${({ hidden }) => hidden && css`
+    width: 0;
+    display: unset;
+  `}
 `;

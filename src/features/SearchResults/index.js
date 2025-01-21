@@ -117,11 +117,16 @@ export const SearchResults = () => {
                       ))}
                     </TagsList>
                     <RateList>
-                      <StyledStarIcon />
-                      <RateGradeList>
-                        {movie.vote_average.toFixed(2)}
+                      <StyledStarIcon hidden={movie.vote_average === 0} />
+                      <RateGradeList noVotes={movie.vote_count === 0}>
+                        {movie.vote_average
+                          ? movie.vote_average.toFixed(1)
+                          : ""}
                       </RateGradeList>
-                      <RateVotesList>{movie.vote_count} votes</RateVotesList>
+                      <RateVotesList noVotes={movie.vote_count === 0} >{movie.vote_count
+                        ? `${movie.vote_count} ${movie.vote_count === 1 ? "vote" : "votes"}`
+                        : "no votes yet"
+                      }</RateVotesList>
                     </RateList>
                   </MovieDetailsList>
                 </IconContainerList>
