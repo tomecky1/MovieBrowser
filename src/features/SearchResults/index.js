@@ -1,6 +1,6 @@
-import {useLocation, useSearchParams} from "react-router-dom";
-import {useMovieSearch} from "../hooks/useMovieSearch";
-import {useEffect, useState} from "react";
+import { useLocation, useSearchParams } from "react-router-dom";
+import { useMovieSearch } from "../hooks/useMovieSearch";
+import { useEffect, useState } from "react";
 import {
   FlexCont,
   HeaderList,
@@ -19,9 +19,10 @@ import {
   YearList,
 } from "../MovieList/styled";
 
-import {usePeopleSearch} from "../hooks/usePeopleSearch";
-import {ImageListBlank} from "./styled";
-import {Pagination} from "../../common/Pagination";
+import { usePeopleSearch } from "../hooks/usePeopleSearch";
+import { ImageListBlank } from "./styled";
+import { Pagination } from "../../common/Pagination";
+import Error from "../../common/Error";
 
 const API_KEY = "1454980afff1c0ba9dce7e6202a9ecbf";
 
@@ -73,13 +74,13 @@ export const SearchResults = () => {
     fetchMovies();
   }, [query, currentPage]);
 
-  const location = useLocation()
+  const location = useLocation();
 
   const isMoviesPage = location.pathname.startsWith("/movies");
   const isPeoplePage = location.pathname.startsWith("/people");
 
   const { searchResults } = useMovieSearch(query);
-  const { searchResults: peopleResults } = usePeopleSearch(query); 
+  const { searchResults: peopleResults } = usePeopleSearch(query);
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
@@ -104,9 +105,7 @@ export const SearchResults = () => {
                 )}
                 <MovieDetailsList>
                   <HeaderList>{movie.title}</HeaderList>
-                  <YearList>
-                    {movie.release_date?.split("-")[0]}
-                  </YearList>
+                  <YearList>{movie.release_date?.split("-")[0]}</YearList>
                   <TagsList>
                     {movie.genres?.map((genre) => (
                       <TagList key={genre.id}>{genre.name}</TagList>
@@ -123,9 +122,8 @@ export const SearchResults = () => {
               </IconContainerList>
             </StyledLink>
           ))
-
         ) : (
-          <p>No results found</p>
+          <Error />
         )}
       </StyledMovieDetailsTileList>
       <Pagination
