@@ -57,7 +57,9 @@ const MovieDetails = () => {
           setPoster(fetchedData.poster);
           setGenres(fetchedData.genres);
           setProductionCountries(
-            fetchedData.production_countries?.map((country) => country.name).join(", ") || "Unknown origin country"
+            fetchedData.production_countries
+              ?.map((country) => country.name)
+              .join(", ") || "Unknown origin country"
           );
         }
       } catch (error) {
@@ -69,10 +71,10 @@ const MovieDetails = () => {
   }, [id]);
   const formatDateToPL = (dateString) => {
     const date = new Date(dateString);
-    return new Intl.DateTimeFormat('pl-PL', {
-      day: '2-digit',
-      month: '2-digit',
-      year: 'numeric',
+    return new Intl.DateTimeFormat("pl-PL", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
     }).format(date);
   };
 
@@ -83,15 +85,14 @@ const MovieDetails = () => {
         <StyledMovieDetailsTile>
           <IconContainer>
             <Image
-              src={`https://image.tmdb.org/t/p/w500/${poster ? poster : "There is no poster"
-                }`}
+              src={`https://image.tmdb.org/t/p/w500/${
+                poster ? poster : "There is no poster"
+              }`}
               alt="Movie poster"
             />
           </IconContainer>
           <Details>
-            <Header>
-              Movie Title: {title ? title : "Loading title..."}
-            </Header>
+            <Header>Movie Title: {title ? title : "Loading title..."}</Header>
             <Year></Year>
             <DetailInfo>
               <DetailInfoElement>
@@ -109,10 +110,10 @@ const MovieDetails = () => {
             <Rate>
               <StyledStarIcon />
               <RateGrade>
-                {vote_average !== null ? vote_average.toFixed(2) : "0.0"}
+                {vote_average !== null ? vote_average.toFixed(2) : "0.00"}
               </RateGrade>
               <RateElement>/ 10</RateElement>
-              <RateVotes>{votes ? votes : "0.0"} votes</RateVotes>
+              <RateVotes>{votes ? votes : "0.00"} votes</RateVotes>
             </Rate>
           </Details>
           <MovieDescription>
