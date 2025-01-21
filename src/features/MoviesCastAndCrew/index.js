@@ -14,6 +14,7 @@ import {
   TagsList,
   Text,
 } from "../MovieList/styled";
+import PicturePlaceholder from "../../icons/Picture.svg";
 import { MovieRole } from "./styled";
 import { useNavigate } from "react-router-dom";
 
@@ -49,7 +50,7 @@ export const MoviesCastAndCrew = ({ personId }) => {
                 src={
                   movie.poster_path
                     ? `https://image.tmdb.org/t/p/w200${movie.poster_path}`
-                    : "ścieżka/do/placeholder/image"
+                    : PicturePlaceholder
                 }
                 alt={`${movie.title} poster`}
               ></ImageList>
@@ -87,7 +88,7 @@ export const MoviesCastAndCrew = ({ personId }) => {
                 src={
                   movie.poster_path
                     ? `https://image.tmdb.org/t/p/w200${movie.poster_path}`
-                    : "ścieżka/do/placeholder/image"
+                    : PicturePlaceholder
                 }
                 alt={`${movie.title} poster`}
               ></ImageList>
