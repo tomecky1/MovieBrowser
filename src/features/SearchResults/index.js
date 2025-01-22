@@ -49,7 +49,7 @@ export const SearchResults = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [searchParams, setSearchParams] = useSearchParams();
-  const query = searchParams.get("query");
+  const query = searchParams.get("query") || "";
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -87,6 +87,7 @@ export const SearchResults = () => {
     setCurrentPage(page);
     setSearchParams({ query, page });
   };
+  
 
   return (
     <FlexCont>

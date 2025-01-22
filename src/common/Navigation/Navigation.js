@@ -1,7 +1,7 @@
-import {useEffect, useState} from "react";
-import {useLocation, useNavigate} from "react-router-dom";
-import {useMovieSearch} from "../../features/hooks/useMovieSearch";
-import {usePeopleSearch} from "../../features/hooks/usePeopleSearch";
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useMovieSearch } from "../../features/hooks/useMovieSearch";
+import { usePeopleSearch } from "../../features/hooks/usePeopleSearch";
 import {
   MobileContainer,
   NavigationInput,
@@ -14,14 +14,14 @@ import {
   StyledSearchIcon,
   StyledVideoIcon,
 } from "./styled";
-import {StyledNavLink, StyledNavLinkIcon} from "./StyledNavLink/styled";
+import { StyledNavLink, StyledNavLinkIcon } from "./StyledNavLink/styled";
 
 export const Navigation = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
   const [searchQuery, setSearchQuery] = useState("");
-  
+
   const { searchResults: peopleResults } = usePeopleSearch(searchQuery);
 
   const { searchResults: movieResults } = useMovieSearch(searchQuery);
@@ -32,7 +32,6 @@ export const Navigation = () => {
 
     try {
       if (value.trim()) {
-
         navigate(`/search?query=${encodeURIComponent(value)}`);
       } else {
         navigate("/");
@@ -42,18 +41,16 @@ export const Navigation = () => {
     }
   };
 
-
   const currentPlaceholder =
     location.pathname === "/person"
       ? "Search for people..."
       : "Search for movies...";
 
-
   useEffect(() => {
-    setSearchQuery("");
+    if (!location.pathname.startsWith("/search")) {
+      setSearchQuery("");
+    }
   }, [location.pathname]);
-
-
 
   const handlePersonClick = (personId) => {
     navigate(`/person/${personId}`);
@@ -87,25 +84,27 @@ export const Navigation = () => {
         </NavigationInput>
       </NavigationList>
 
-      {location.pathname === "/person" && peopleResults && Array.isArray(peopleResults) && (
-        <ul>
-          {peopleResults.map((person) => (
-            <li key={person.id} onClick={() => handlePersonClick(person.id)}>
-              {person.name}
-            </li>
-          ))}
-        </ul>
-      )}
+      {location.pathname === "/person" &&
+        peopleResults &&
+        Array.isArray(peopleResults) && (
+          <ul>
+            {peopleResults.map((person) => (
+              <li key={person.id} onClick={() => handlePersonClick(person.id)}>
+                {person.name}
+              </li>
+            ))}
+          </ul>
+        )}
 
-
-      {location.pathname === "/movies" && movieResults && Array.isArray(movieResults) && (
-        <ul>
-          {movieResults.map((movie) => (
-            <li key={movie.id}>{movie.title}</li>
-          ))}
-        </ul>
-      )}
-
+      {location.pathname === "/movies" &&
+        movieResults &&
+        Array.isArray(movieResults) && (
+          <ul>
+            {movieResults.map((movie) => (
+              <li key={movie.id}>{movie.title}</li>
+            ))}
+          </ul>
+        )}
     </NavigationWrapper>
   );
 };
