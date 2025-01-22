@@ -46,11 +46,12 @@ export const StyledMovieDetailsTileList = styled.div`
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tabletHorizontal}) {
-    grid-template-columns: repeat(2, minmax(324px, 1fr));
+    grid-template-columns: repeat(3, minmax(268px, 1fr));
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.biggerMobile}) {
     grid-template-columns: repeat(auto-fit, minmax(288px, 1fr));
+    grid-auto-rows: minmax(auto, 1fr);
   }
 `;
 
