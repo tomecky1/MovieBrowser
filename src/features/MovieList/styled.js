@@ -58,6 +58,7 @@ export const StyledMovieDetailsTileList = styled.div`
     grid-template-columns: repeat(auto-fit, minmax(288px, 1fr));
     grid-auto-rows: minmax(auto, 1fr);
   }
+  
 `;
 
 export const IconContainerList = styled.div`
