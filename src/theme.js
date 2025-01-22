@@ -19,6 +19,7 @@ export const theme = {
     smallMobile: "400px",
     mobile: "560px",
     biggerMobile: "768px",
+    tabletVerticalS: "920px",
     tabletVertical: "991px",
     iPadPro: "1080px",
     tabletHorizontal: "1199px",

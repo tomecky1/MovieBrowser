@@ -39,7 +39,7 @@ export const StyledMovieDetailsTileList = styled.div`
   grid-template-columns: repeat(4, minmax(324px, 1fr));
   grid-auto-rows: minmax(680px, 1fr);
   gap: 24px;
-
+  
   @media (max-width: ${({ theme }) => theme.breakpoints.nextHubMax}) {
     grid-template-columns: repeat(3, minmax(324px, 1fr));
     gap: 16px;
@@ -47,6 +47,11 @@ export const StyledMovieDetailsTileList = styled.div`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tabletHorizontal}) {
     grid-template-columns: repeat(3, minmax(268px, 1fr));
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletVerticalS}) {
+    grid-template-columns: repeat(2, minmax(324px, 1fr));
+    gap: 16px;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.biggerMobile}) {
@@ -77,7 +82,6 @@ export const ImageList = styled.img`
   border-radius: 5px;
   height: 434px;
   width: auto;
-  object-fit: cover;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     width: 114px;
