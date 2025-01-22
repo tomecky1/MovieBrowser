@@ -1,6 +1,6 @@
-import {useLocation, useSearchParams} from "react-router-dom";
-import {useMovieSearch} from "../hooks/useMovieSearch";
-import {useEffect, useState} from "react";
+import { useLocation, useSearchParams } from "react-router-dom";
+import { useMovieSearch } from "../hooks/useMovieSearch";
+import { useEffect, useState } from "react";
 import {
   FlexCont,
   HeaderList,
@@ -19,9 +19,9 @@ import {
   YearList,
 } from "../MovieList/styled";
 
-import {usePeopleSearch} from "../hooks/usePeopleSearch";
-import {ImageListBlank} from "./styled";
-import {Pagination} from "../../common/Pagination";
+import { usePeopleSearch } from "../hooks/usePeopleSearch";
+import { ImageListBlank } from "./styled";
+import { Pagination } from "../../common/Pagination";
 import Error from "../../common/Error";
 import NotFound from "../../common/NotFound";
 
@@ -90,7 +90,11 @@ export const SearchResults = () => {
 
   return (
     <FlexCont>
-      {movies.results.length > 0 && <Text>Search Results for: {query}</Text>}
+      {movies.results.length > 0 && (
+        <Text>
+          Search Results for: {query} ({movies.results.length} results)
+        </Text>
+      )}
       {movies.results.length > 0 ? (
         <>
           <StyledMovieDetailsTileList>
@@ -120,10 +124,13 @@ export const SearchResults = () => {
                           ? movie.vote_average.toFixed(1)
                           : ""}
                       </RateGradeList>
-                      <RateVotesList noVotes={movie.vote_count === 0} >{movie.vote_count
-                        ? `${movie.vote_count} ${movie.vote_count === 1 ? "vote" : "votes"}`
-                        : "no votes yet"
-                      }</RateVotesList>
+                      <RateVotesList noVotes={movie.vote_count === 0}>
+                        {movie.vote_count
+                          ? `${movie.vote_count} ${
+                              movie.vote_count === 1 ? "vote" : "votes"
+                            }`
+                          : "no votes yet"}
+                      </RateVotesList>
                     </RateList>
                   </MovieDetailsList>
                 </IconContainerList>
