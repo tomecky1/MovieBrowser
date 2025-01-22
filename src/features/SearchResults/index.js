@@ -19,7 +19,6 @@ import {
   YearList,
 } from "../MovieList/styled";
 
-import { usePeopleSearch } from "../hooks/usePeopleSearch";
 import { ImageListBlank } from "./styled";
 import { Pagination } from "../../common/Pagination";
 import Error from "../../common/Error";
@@ -44,7 +43,7 @@ export const getMoviesByQuery = async (query, page) => {
 };
 
 export const SearchResults = () => {
-  const [movies, setMovies] = useState({ results: [] });
+  const [movies, setMovies] = useState({ results: [], total_results: 0 });
   const [error, setError] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
@@ -54,7 +53,7 @@ export const SearchResults = () => {
   useEffect(() => {
     const fetchMovies = async () => {
       if (!query) {
-        setMovies({ results: [] });
+        setMovies({ results: [], total_results: 0 });
         setTotalPages(1);
         return;
       }
@@ -64,7 +63,7 @@ export const SearchResults = () => {
           setMovies(fetchedData);
           setTotalPages(Math.min(fetchedData.total_pages, 500));
         } else {
-          setMovies({ results: [] });
+          setMovies({ results: [], total_results: 0 });
           setTotalPages(1);
         }
       } catch (error) {
@@ -77,23 +76,17 @@ export const SearchResults = () => {
 
   const location = useLocation();
 
-  const isMoviesPage = location.pathname.startsWith("/movies");
-  const isPeoplePage = location.pathname.startsWith("/people");
-
-  const { searchResults } = useMovieSearch(query);
-  const { searchResults: peopleResults } = usePeopleSearch(query);
-
   const handlePageChange = (page) => {
     setCurrentPage(page);
     setSearchParams({ query, page });
   };
-  
+
 
   return (
     <FlexCont>
-      {movies.results.length > 0 && (
+      {movies.total_results > 0 && (
         <Text>
-          Search Results for: {query} ({movies.results.length} results)
+          Search Results for "{query}"({movies.total_results})
         </Text>
       )}
       {movies.results.length > 0 ? (
