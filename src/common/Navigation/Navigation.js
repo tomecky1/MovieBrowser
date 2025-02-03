@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import { useMovieSearch } from "../../features/hooks/useMovieSearch";
-import { usePeopleSearch } from "../../features/hooks/usePeopleSearch";
+import {useEffect, useState} from "react";
+import {useLocation, useNavigate} from "react-router-dom";
+import {useMovieSearch} from "../../features/hooks/useMovieSearch";
+import {usePeopleSearch} from "../../features/hooks/usePeopleSearch";
 import {
   MobileContainer,
   NavigationInput,
@@ -14,7 +14,7 @@ import {
   StyledSearchIcon,
   StyledVideoIcon,
 } from "./styled";
-import { StyledNavLink, StyledNavLinkIcon } from "./StyledNavLink/styled";
+import {StyledNavLink, StyledNavLinkIcon} from "./StyledNavLink/styled";
 
 export const Navigation = () => {
   const navigate = useNavigate();
@@ -63,8 +63,8 @@ export const Navigation = () => {
           <NavigationTitleContainer>
             <StyledNavLinkIcon to="/">
               <StyledVideoIcon />
-            </StyledNavLinkIcon>
             <NavigationTitle>Movies Browser</NavigationTitle>
+            </StyledNavLinkIcon>
           </NavigationTitleContainer>
           <NavigationItem>
             <StyledNavLink to="/movies">MOVIES</StyledNavLink>
