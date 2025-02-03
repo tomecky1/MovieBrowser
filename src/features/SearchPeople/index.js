@@ -16,10 +16,10 @@ import posterExample from "../../image/posterExample.png";
 
 const API_KEY = "1454980afff1c0ba9dce7e6202a9ecbf";
 
-export const getPeopleByQuery = async (query, page) => {
+export const getPeopleByQuery = async (query, page, personId) => {
   try {
     const response = await fetch(
-      `https://api.themoviedb.org/3/search/person?api_key=${API_KEY}&language=en-US&query=${query}&page=${page}`
+      `https://api.themoviedb.org/3/search/person/${personId}?api_key=${API_KEY}&language=en-US&query=${query}&page=${page}`
     );
     if (!response.ok) {
       throw new Error(`Error fetching people by query: ${response.status}`);
@@ -41,14 +41,14 @@ export const SearchPeople = ({ query }) => {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    const fetchPeople = async () => {
+    const fetchPersonData = async () => {
       if (!query) {
         setPeople({ results: [] });
         setTotalPages(1);
         return;
       }
       try {
-        const fetchedData = await getPeopleByQuery(query, currentPage);
+        const fetchedData = await fetchPersonData(query, currentPage);
         if (fetchedData) {
           setPeople(fetchedData);
           setTotalPages(Math.min(fetchedData.total_pages, 500));
@@ -61,7 +61,7 @@ export const SearchPeople = ({ query }) => {
         setError(true);
       }
     };
-    fetchPeople();
+    fetchPersonData();
   }, [query, currentPage]);
 
   const handleActorClick = (personId) => {
@@ -70,7 +70,7 @@ export const SearchPeople = ({ query }) => {
 
   return (
     <FlexCont>
-      <Text>Wyniki wyszukiwania dla: {query}</Text>
+      <Text>Search people for: {query}</Text>
       <StyledPersonWrapper>
         {people.status === "loading" ? (
           <Loading />

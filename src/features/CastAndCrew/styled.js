@@ -36,9 +36,9 @@ export const WrapperItem = styled.div`
   align-items: center;
   background-color: ${({ theme }) => theme.color.white};
 
-&:hover {
-  transform: scale(1.03);
-}
+  &:hover {
+    transform: scale(1.03);
+  }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     padding: 8px 8px 0 8px;

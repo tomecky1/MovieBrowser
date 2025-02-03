@@ -20,7 +20,14 @@ import {
 } from "../MovieList/styled";
 
 import { usePeopleSearch } from "../hooks/usePeopleSearch";
-import { ImageListBlank } from "./styled";
+import {
+  ImageListBlank,
+  ImageWrapper,
+  StyledPersonLink,
+  StyledPersonWrapper,
+  WrapperActorName,
+  WrapperItem,
+} from "./styled";
 import { Pagination } from "../../common/Pagination";
 import Error from "../../common/Error";
 import NotFound from "../../common/NotFound";
@@ -76,6 +83,7 @@ export const SearchResults = () => {
   }, [query, currentPage]);
 
   const location = useLocation();
+  const isPersonPath = location.pathname.includes("/person");
 
   const isMoviesPage = location.pathname.startsWith("/movies");
   const isPeoplePage = location.pathname.startsWith("/people");
@@ -87,70 +95,109 @@ export const SearchResults = () => {
     setCurrentPage(page);
     setSearchParams({ query, page });
   };
-  
 
   return (
     <FlexCont>
-      {movies.results.length > 0 && (
-        <Text>
-          Search Results for: {query} ({movies.results.length} results)
-        </Text>
-      )}
-      {movies.results.length > 0 ? (
+      {isPersonPath ? (
+        // Sekcja wyszukiwania aktorów
         <>
-          <StyledMovieDetailsTileList>
-            {movies.results.map((movie) => (
-              <StyledLink to={`/movie/${movie.id}`} key={movie.id}>
-                <IconContainerList>
-                  {movie.poster_path ? (
-                    <ImageList
-                      src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                      alt={movie.title}
+          {peopleResults?.results?.length > 0 && (
+            <Text>
+              Wyniki wyszukiwania dla: {query} ({peopleResults.results.length}{" "}
+              aktorów)
+            </Text>
+          )}
+          <StyledPersonWrapper>
+            {peopleResults?.results?.map((person) => (
+              <WrapperItem key={person.id} style={{ cursor: "pointer" }}>
+                <StyledPersonLink to={`/person/${person.id}`}>
+                  <ImageWrapper>
+                    <img
+                      src={
+                        person.profile_path
+                          ? `https://image.tmdb.org/t/p/w500${person.profile_path}`
+                          : `${process.env.PUBLIC_URL}/no-person.png`
+                      }
+                      alt={person.name}
                     />
-                  ) : (
-                    <ImageListBlank />
-                  )}
-                  <MovieDetailsList>
-                    <HeaderList>{movie.title}</HeaderList>
-                    <YearList>{movie.release_date?.split("-")[0]}</YearList>
-                    <TagsList>
-                      {movie.genres?.map((genre) => (
-                        <TagList key={genre.id}>{genre.name}</TagList>
-                      ))}
-                    </TagsList>
-                    <RateList>
-                      <StyledStarIcon hidden={movie.vote_average === 0} />
-                      <RateGradeList style={{
-                        paddingLeft: movie.vote_average === 0 ? "0" : "12px",
-                      }}>
-                        {movie.vote_average
-                          ? movie.vote_average.toFixed(1)
-                          : ""}
-                      </RateGradeList>
-                      <RateVotesList style={{
-                        paddingLeft: movie.vote_average === 0 ? "0" : "12px",
-                      }}>
-                        {movie.vote_count
-                          ? `${movie.vote_count} ${movie.vote_count === 1 ? "vote" : "votes"
-                          }`
-                          : "no votes yet"}
-                      </RateVotesList>
-                    </RateList>
-                  </MovieDetailsList>
-                </IconContainerList>
-              </StyledLink>
+                  </ImageWrapper>
+                  <WrapperActorName>{person.name}</WrapperActorName>
+                </StyledPersonLink>
+              </WrapperItem>
             ))}
-          </StyledMovieDetailsTileList>
-
-          <Pagination
-            currentPage={currentPage}
-            totalPages={totalPages}
-            onPageChange={handlePageChange}
-          />
+          </StyledPersonWrapper>
         </>
       ) : (
-        <NotFound query={query} />
-      )}
+        <>
+          {movies.results.length > 0 && (
+            <Text>
+              Search Results for: {query} ({movies.results.length} results)
+            </Text>
+          )}
+          {movies.results.length > 0 ? (
+            <>
+              <StyledMovieDetailsTileList>
+                {movies.results.map((movie) => (
+                  <StyledLink to={`/movie/${movie.id}`} key={movie.id}>
+                    <IconContainerList>
+                      {movie.poster_path ? (
+                        <ImageList
+                          src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                          alt={movie.title}
+                        />
+                      ) : (
+                        <ImageListBlank />
+                      )}
+                      <MovieDetailsList>
+                        <HeaderList>{movie.title}</HeaderList>
+                        <YearList>{movie.release_date?.split("-")[0]}</YearList>
+                        <TagsList>
+                          {movie.genres?.map((genre) => (
+                            <TagList key={genre.id}>{genre.name}</TagList>
+                          ))}
+                        </TagsList>
+                        <RateList>
+                          <StyledStarIcon hidden={movie.vote_average === 0} />
+                          <RateGradeList
+                            style={{
+                              paddingLeft:
+                                movie.vote_average === 0 ? "0" : "12px",
+                            }}
+                          >
+                            {movie.vote_average
+                              ? movie.vote_average.toFixed(1)
+                              : ""}
+                          </RateGradeList>
+                          <RateVotesList
+                            style={{
+                              paddingLeft:
+                                movie.vote_average === 0 ? "0" : "12px",
+                            }}
+                          >
+                            {movie.vote_count
+                              ? `${movie.vote_count} ${
+                                  movie.vote_count === 1 ? "vote" : "votes"
+                                }`
+                              : "no votes yet"}
+                          </RateVotesList>
+                        </RateList>
+                      </MovieDetailsList>
+                    </IconContainerList>
+                  </StyledLink>
+                ))}
+              </StyledMovieDetailsTileList>
+
+              <Pagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange={handlePageChange}
+              />
+            </>
+          ) : (
+            <NotFound query={query} />
+          )}
+        </>
+      )}{" "}
     </FlexCont>
   );
 };

@@ -16,7 +16,8 @@ export const StyledNavLink = styled(NavLink).attrs(() => ({
   padding: 8px 24px;
   transition: transform ease 500ms, border 0.5s ease, margin 0.5s ease;
 
-  &:hover {
+  &:hover,
+  &:active {
     border: 1px solid ${({ theme }) => theme.color.white};
     border-radius: 24px;
   }
