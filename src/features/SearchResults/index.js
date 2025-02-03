@@ -70,7 +70,7 @@ export const SearchResults = () => {
           setMovies(fetchedData);
           setTotalPages(Math.min(fetchedData.total_pages, 500));
         } else {
-          setMovies({ results: [] });
+          setMovies({ results: [], total_results: 0 });
           setTotalPages(1);
         }
       } catch (error) {
@@ -142,17 +142,15 @@ export const SearchResults = () => {
             ))}
           </StyledMovieDetailsTileList>
 
-              <Pagination
-                currentPage={currentPage}
-                totalPages={totalPages}
-                onPageChange={handlePageChange}
-              />
-            </>
-          ) : (
-            <NotFound query={query} />
-          )}
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={handlePageChange}
+          />
         </>
-      )}{" "}
+      ) : (
+        <NotFound query={query} />
+      )}
     </FlexCont>
   );
 };
