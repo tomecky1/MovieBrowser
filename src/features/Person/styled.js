@@ -42,14 +42,31 @@ export const Text = styled.header`
 export const StyledPersonWrapper = styled.div`
   background-color: ${({ theme }) => theme.color.whisper};
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(208px, 1fr));
+  grid-template-columns: repeat(6, minmax(208px, 1fr));
   grid-template-rows: repeat(4, minmax(339px, 1fr));
   gap: 24px;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    grid-template-columns: repeat(auto-fit, minmax(136px, 1fr));
-    grid-template-rows: repeat(2, minmax(245px, 1fr));
+  @media (max-width: ${({ theme }) => theme.breakpoints.nextHubMax}) {
+    grid-template-columns: repeat(5, minmax(208px, 1fr));
     gap: 16px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletHorizontal}) {
+    grid-template-columns: repeat(4, minmax(208px, 1fr));
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletVerticalS}) {
+    grid-template-columns: repeat(3, minmax(208px, 1fr));
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.biggerMobile}) {
+    grid-template-columns: repeat(3, minmax(136px, 1fr));
+    grid-template-rows: repeat(2, minmax(245px, 1fr));
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.smallMobile}) {
+    grid-template-columns: repeat(2, minmax(136px, 1fr));
+    grid-template-rows: repeat(2, minmax(245px, 0fr));
   }
 `;
 
@@ -66,7 +83,7 @@ export const WrapperItem = styled.div`
     border-radius: 5px;
     box-shadow: 0px 4px 12px 0px ${({ theme }) => theme.color.heather};
   }
-    
+
   &:hover {
     transform: scale(1.03);
   }
