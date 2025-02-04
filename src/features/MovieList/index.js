@@ -17,6 +17,7 @@ import {
 import { Pagination } from "../../common/Pagination";
 import { GenresList } from "../../common/components/GenresList";
 import { useGenresList } from "../../common/components/GenresList/useGenresList";
+import Loading from "../../common/Loading";
 
 const API_KEY = "1454980afff1c0ba9dce7e6202a9ecbf";
 export const getPopularMovies = async (page) => {
@@ -41,6 +42,7 @@ export const MovieList = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const { genres } = useGenresList();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -55,10 +57,16 @@ export const MovieList = () => {
       } catch (err) {
         console.error("Error fetching movies:", err);
         setError(true);
+      } finally {
+        setIsLoading(false);
       }
     };
     fetchMovies();
   }, [currentPage]);
+
+  if (isLoading) {
+    return <Loading type="movies" />;
+  }
 
   return (
     <FlexCont>
