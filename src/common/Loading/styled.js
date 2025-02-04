@@ -26,7 +26,7 @@ export const Loader = styled(Spinner)`
   align-self: center;
   margin-top: 100px;
   animation: spin;
-  animation-duration: 1s;
+  animation-duration: 4s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 

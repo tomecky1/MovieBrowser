@@ -92,7 +92,7 @@ export const NavigationItem = styled.li`
     margin: 0 24px;
     color: ${({theme}) => theme.color.white};
 
-    &:hover {
+    &:hover, &:active {
         cursor: pointer;
     }
 

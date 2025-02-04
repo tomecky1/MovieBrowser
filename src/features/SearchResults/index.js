@@ -19,15 +19,7 @@ import {
   YearList,
 } from "../MovieList/styled";
 
-import { usePeopleSearch } from "../hooks/usePeopleSearch";
-import {
-  ImageListBlank,
-  ImageWrapper,
-  StyledPersonLink,
-  StyledPersonWrapper,
-  WrapperActorName,
-  WrapperItem,
-} from "./styled";
+import { ImageListBlank } from "./styled";
 import { Pagination } from "../../common/Pagination";
 import Error from "../../common/Error";
 import NotFound from "../../common/NotFound";
@@ -51,7 +43,7 @@ export const getMoviesByQuery = async (query, page) => {
 };
 
 export const SearchResults = () => {
-  const [movies, setMovies] = useState({ results: [] });
+  const [movies, setMovies] = useState({ results: [], total_results: 0 });
   const [error, setError] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
@@ -61,7 +53,7 @@ export const SearchResults = () => {
   useEffect(() => {
     const fetchMovies = async () => {
       if (!query) {
-        setMovies({ results: [] });
+        setMovies({ results: [], total_results: 0 });
         setTotalPages(1);
         return;
       }
@@ -71,7 +63,7 @@ export const SearchResults = () => {
           setMovies(fetchedData);
           setTotalPages(Math.min(fetchedData.total_pages, 500));
         } else {
-          setMovies({ results: [] });
+          setMovies({ results: [], total_results: 0 });
           setTotalPages(1);
         }
       } catch (error) {
@@ -83,13 +75,6 @@ export const SearchResults = () => {
   }, [query, currentPage]);
 
   const location = useLocation();
-  const isPersonPath = location.pathname.includes("/person");
-
-  const isMoviesPage = location.pathname.startsWith("/movies");
-  const isPeoplePage = location.pathname.startsWith("/people");
-
-  const { searchResults } = useMovieSearch(query);
-  const { searchResults: peopleResults } = usePeopleSearch(query);
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
@@ -98,106 +83,71 @@ export const SearchResults = () => {
 
   return (
     <FlexCont>
-      {isPersonPath ? (
-        // Sekcja wyszukiwania aktorów
+      {movies.total_results > 0 && (
+        <Text>
+          Search Results for "{query}"({movies.total_results})
+        </Text>
+      )}
+      {movies.results.length > 0 ? (
         <>
-          {peopleResults?.results?.length > 0 && (
-            <Text>
-              Wyniki wyszukiwania dla: {query} ({peopleResults.results.length}{" "}
-              aktorów)
-            </Text>
-          )}
-          <StyledPersonWrapper>
-            {peopleResults?.results?.map((person) => (
-              <WrapperItem key={person.id} style={{ cursor: "pointer" }}>
-                <StyledPersonLink to={`/person/${person.id}`}>
-                  <ImageWrapper>
-                    <img
-                      src={
-                        person.profile_path
-                          ? `https://image.tmdb.org/t/p/w500${person.profile_path}`
-                          : `${process.env.PUBLIC_URL}/no-person.png`
-                      }
-                      alt={person.name}
+          <StyledMovieDetailsTileList>
+            {movies.results.map((movie) => (
+              <StyledLink to={`/movie/${movie.id}`} key={movie.id}>
+                <IconContainerList>
+                  {movie.poster_path ? (
+                    <ImageList
+                      src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                      alt={movie.title}
                     />
-                  </ImageWrapper>
-                  <WrapperActorName>{person.name}</WrapperActorName>
-                </StyledPersonLink>
-              </WrapperItem>
+                  ) : (
+                    <ImageListBlank />
+                  )}
+                  <MovieDetailsList>
+                    <HeaderList>{movie.title}</HeaderList>
+                    <YearList>{movie.release_date?.split("-")[0]}</YearList>
+                    <TagsList>
+                      {movie.genres?.map((genre) => (
+                        <TagList key={genre.id}>{genre.name}</TagList>
+                      ))}
+                    </TagsList>
+                    <RateList>
+                      <StyledStarIcon hidden={movie.vote_average === 0} />
+                      <RateGradeList
+                        style={{
+                          paddingLeft: movie.vote_average === 0 ? "0" : "12px",
+                        }}
+                      >
+                        {movie.vote_average
+                          ? movie.vote_average.toFixed(1)
+                          : ""}
+                      </RateGradeList>
+                      <RateVotesList
+                        style={{
+                          paddingLeft: movie.vote_average === 0 ? "0" : "12px",
+                        }}
+                      >
+                        {movie.vote_count
+                          ? `${movie.vote_count} ${
+                              movie.vote_count === 1 ? "vote" : "votes"
+                            }`
+                          : "no votes yet"}
+                      </RateVotesList>
+                    </RateList>
+                  </MovieDetailsList>
+                </IconContainerList>
+              </StyledLink>
             ))}
-          </StyledPersonWrapper>
+          </StyledMovieDetailsTileList>
+
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={handlePageChange}
+          />
         </>
       ) : (
-        <>
-          {movies.results.length > 0 && (
-            <Text>
-              Search Results for: {query} ({movies.results.length} results)
-            </Text>
-          )}
-          {movies.results.length > 0 ? (
-            <>
-              <StyledMovieDetailsTileList>
-                {movies.results.map((movie) => (
-                  <StyledLink to={`/movie/${movie.id}`} key={movie.id}>
-                    <IconContainerList>
-                      {movie.poster_path ? (
-                        <ImageList
-                          src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                          alt={movie.title}
-                        />
-                      ) : (
-                        <ImageListBlank />
-                      )}
-                      <MovieDetailsList>
-                        <HeaderList>{movie.title}</HeaderList>
-                        <YearList>{movie.release_date?.split("-")[0]}</YearList>
-                        <TagsList>
-                          {movie.genres?.map((genre) => (
-                            <TagList key={genre.id}>{genre.name}</TagList>
-                          ))}
-                        </TagsList>
-                        <RateList>
-                          <StyledStarIcon hidden={movie.vote_average === 0} />
-                          <RateGradeList
-                            style={{
-                              paddingLeft:
-                                movie.vote_average === 0 ? "0" : "12px",
-                            }}
-                          >
-                            {movie.vote_average
-                              ? movie.vote_average.toFixed(1)
-                              : ""}
-                          </RateGradeList>
-                          <RateVotesList
-                            style={{
-                              paddingLeft:
-                                movie.vote_average === 0 ? "0" : "12px",
-                            }}
-                          >
-                            {movie.vote_count
-                              ? `${movie.vote_count} ${
-                                  movie.vote_count === 1 ? "vote" : "votes"
-                                }`
-                              : "no votes yet"}
-                          </RateVotesList>
-                        </RateList>
-                      </MovieDetailsList>
-                    </IconContainerList>
-                  </StyledLink>
-                ))}
-              </StyledMovieDetailsTileList>
-
-              <Pagination
-                currentPage={currentPage}
-                totalPages={totalPages}
-                onPageChange={handlePageChange}
-              />
-            </>
-          ) : (
-            <NotFound query={query} />
-          )}
-        </>
-      )}{" "}
+        <NotFound query={query} />
+      )}
     </FlexCont>
   );
 };

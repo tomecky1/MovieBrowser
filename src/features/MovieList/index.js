@@ -78,20 +78,26 @@ export const MovieList = () => {
                     {new Date(list.release_date).getFullYear()}
                   </YearList>
                   <GenresList genresIds={list.genre_ids} />
-                  <RateList >
+                  <RateList>
                     <StyledStarIcon hidden={list.vote_count === 0} />
-                    <RateGradeList style={{
-                      paddingLeft: list.vote_count === 0 ? "0" : "12px",
-                    }} >
+                    <RateGradeList
+                      style={{
+                        paddingLeft: list.vote_count === 0 ? "0" : "12px",
+                      }}
+                    >
                       {list.vote_count > 0 && list.vote_average !== null
                         ? list.vote_average.toFixed(1)
                         : ""}
                     </RateGradeList>
-                    <RateVotesList style={{
-                      paddingLeft: list.vote_count === 0 ? "0" : "12px",
-                    }} >
+                    <RateVotesList
+                      style={{
+                        paddingLeft: list.vote_count === 0 ? "0" : "12px",
+                      }}
+                    >
                       {list.vote_count
-                        ? `${list.vote_count} ${list.vote_count === 1 ? "vote" : "votes"}`
+                        ? `${list.vote_count} ${
+                            list.vote_count === 1 ? "vote" : "votes"
+                          }`
                         : "no votes yet"}
                     </RateVotesList>
                   </RateList>
