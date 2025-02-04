@@ -1,7 +1,11 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
-import {API_KEY, BASE_URL} from "../../common/constants/config";
-import {errorStatus, loadingStatus, successStatus,} from "../../common/constants/resqestStatuses";
+import { API_KEY, BASE_URL } from "../../common/constants/config";
+import {
+  errorStatus,
+  loadingStatus,
+  successStatus,
+} from "../../common/constants/resqestStatuses";
 
 export const usePeopleSearch = (query) => {
   const [searchResults, setSearchResults] = useState({
@@ -46,7 +50,7 @@ export const usePeopleSearch = (query) => {
       }
     };
 
-    const debounceTimeout = setTimeout(searchPeople, 300);
+    const debounceTimeout = setTimeout(searchPeople, 500);
 
     return () => clearTimeout(debounceTimeout);
   }, [query]);
