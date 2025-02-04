@@ -14,10 +14,36 @@ This is a project from Youcode programming bootcamp, still in development.
 
 **Things to do in nearby future:**
 
-- Implementing API from movies databases
-- Adding page pagination
-- Adding People's details
-- Adding dark theme to the page (later in future)
+- dodać loader przy długim ładowaniu bazy danych filmów
+- kolory strzałki pagi
+- całe klikalne logo "Movie Browser"
+- brakuje loadera przy przełączaniu każdej stron pagi
+- movies aktywny przy załadowaniu strony
+- nie działa wklejanie strony w query,
+- logika pagi powinna opierać się na query params i na jego podstawie ściągać dane z API
+- loader przy movie description
+- aktywny przycisk podstrony movie / people
+- ilość kafelków w movie cast and crew
+- debounce czyli nie wysyłać zapytania dla każdej literki
+- wyszukiwanie danego filmu w query i w inpucie jeśli wkleimy tylko do query
+- jeśli nie ma sekcji to jej nie wyświetlamy movie cast albo crew
+- github CoPilot do VSC
+- hooki generyczne które się powtarzają
+- reużywalne hooki na przyszłość
+- usuwanie return z funkcji jeśli nie ma warunku
+- usuwanie fragmentu jeśli nie trzeba
+- zamiast statów setDate, date, żeby nie pisać wielu stateów, pisać jak najmniej stateów
+- 0 w styled components bez "px"
+- warto nauczyć się TypeScrypt
+- dostaniemy kod do Webstorma
+- audytcv@youcode.pl (dostaniemy odpowiedź co zmienić poprawić)
+- wysyłać cv na mid lub senior
+- dołączyć nieformalny filmik z CV żeby się wyróżnić
+- Cv wysyłać na wszystkie oferty front end, inne biblioteki są nieważne można się ich douczyć
+- wysyłać cvki poza polske, soildjobs , theprotocol, pracuj.pl/it, grupki na fb, LinkedIn, dodać rekruterów z firm IT do znajomych na LindekIn
+- zrobić arkusz do rekrutacji jaki jest aktualny status i śledzić
+- audytcv zapytać co wpisać w historię zatrudnienia
+- grupa na slacku "ponadprogram" można pytać o jakieś nowe rzeczy lub zadania z rekrutacji
 
 _Technology used in this project includes:_
 
@@ -29,6 +55,8 @@ _Technology used in this project includes:_
 - Redux Saga
 - Babel
 - Webpack
+- Axios
+- styled components
 
 ## Available Scripts
 
