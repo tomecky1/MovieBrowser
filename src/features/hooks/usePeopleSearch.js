@@ -24,6 +24,7 @@ export const usePeopleSearch = (query) => {
     }
 
     const searchPeople = async () => {
+      console.log("Wywołanie searchPeople z query:", query); // dodaj logging
       setSearchResults({
         status: loadingStatus,
         data: [],
@@ -50,9 +51,13 @@ export const usePeopleSearch = (query) => {
       }
     };
 
+    console.log("Ustawiam debounce dla query:", query); // dodaj logging
     const debounceTimeout = setTimeout(searchPeople, 500);
 
-    return () => clearTimeout(debounceTimeout);
+    return () => {
+      console.log("Czyszczę timeout dla:", query); // dodaj logging
+      clearTimeout(debounceTimeout);
+    };
   }, [query]);
 
   return { peopleResults: searchResults, totalPages };
