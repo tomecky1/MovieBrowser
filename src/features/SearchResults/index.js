@@ -19,10 +19,8 @@ import {
   YearList,
 } from "../MovieList/styled";
 
-
 import { ImageListBlank } from "./styled";
 import {
-  ImageListBlank,
   ImageWrapper,
   StyledPersonLink,
   StyledPersonWrapper,
@@ -90,7 +88,6 @@ export const SearchResults = () => {
     setCurrentPage(page);
     setSearchParams({ query, page });
   };
-
 
   return (
     <FlexCont>
