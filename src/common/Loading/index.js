@@ -1,9 +1,14 @@
 import { Wrapper, Text, Loader } from "./styled";
 
-const Loading = () => {
+const Loading = ({ type }) => {
+  const loadingText =
+    type === "movies"
+      ? "Search results for popular movies"
+      : "Search results for popular people";
+
   return (
     <Wrapper>
-      <Text>Search results for popular people</Text>
+      <Text>{loadingText}</Text>
       <Loader />
     </Wrapper>
   );

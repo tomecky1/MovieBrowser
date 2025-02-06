@@ -24,6 +24,7 @@ import { CastAndCrew } from "../CastAndCrew";
 import MainHeader from "../../common/MainHeader";
 import { useParams } from "react-router-dom";
 import { GenresList } from "../../common/components/GenresList";
+import Loading from "../../common/Loading";
 
 const MovieDetails = () => {
   const dispatch = useDispatch();
@@ -34,6 +35,7 @@ const MovieDetails = () => {
   useEffect(() => {
     dispatch(fetchMovies());
   }, [dispatch]);
+  const [isLoading, setIsLoading] = useState(true);
   const [overview, setOverview] = useState(null);
   const [title, setTitle] = useState(null);
   const [date, setDate] = useState(null);
@@ -65,6 +67,8 @@ const MovieDetails = () => {
       } catch (error) {
         console.error("Error while downloading movie details: ", error);
         setError(true);
+      } finally {
+        setIsLoading(false);
       }
     };
     fetchMovieDetails();
@@ -78,6 +82,10 @@ const MovieDetails = () => {
     }).format(date);
   };
 
+  if (isLoading) {
+    return <Loading />;
+  }
+
   return (
     <>
       <MainHeader />
@@ -85,8 +93,9 @@ const MovieDetails = () => {
         <StyledMovieDetailsTile>
           <IconContainer>
             <Image
-              src={`https://image.tmdb.org/t/p/w500/${poster ? poster : "There is no poster"
-                }`}
+              src={`https://image.tmdb.org/t/p/w500/${
+                poster ? poster : "There is no poster"
+              }`}
               alt="Movie poster"
             />
           </IconContainer>
@@ -108,17 +117,21 @@ const MovieDetails = () => {
             <GenresList genresIds={genres} />
             <Rate>
               <StyledStarIcon hidden={vote_average === 0} />
-              <RateGrade style={{
-                paddingLeft: vote_average === 0 ? "0" : "12px",
-              }}>
+              <RateGrade
+                style={{
+                  paddingLeft: vote_average === 0 ? "0" : "12px",
+                }}
+              >
                 {vote_average > 0 && vote_average !== null
                   ? vote_average.toFixed(1)
                   : ""}
               </RateGrade>
-              <RateElement hidden={vote_average === 0} >/ 10</RateElement>
-              <RateVotes style={{
-                paddingLeft: vote_average === 0 ? "0" : "12px",
-              }}>
+              <RateElement hidden={vote_average === 0}>/ 10</RateElement>
+              <RateVotes
+                style={{
+                  paddingLeft: vote_average === 0 ? "0" : "12px",
+                }}
+              >
                 {votes
                   ? `${votes} ${votes === 1 ? "vote" : "votes"}`
                   : "no votes yet"}

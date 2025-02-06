@@ -1,7 +1,11 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
-import {API_KEY, BASE_URL} from "../../common/constants/config";
-import {errorStatus, loadingStatus, successStatus,} from "../../common/constants/resqestStatuses";
+import { API_KEY, BASE_URL } from "../../common/constants/config";
+import {
+  errorStatus,
+  loadingStatus,
+  successStatus,
+} from "../../common/constants/resqestStatuses";
 
 export const usePeopleSearch = (query) => {
   const [searchResults, setSearchResults] = useState({
@@ -20,6 +24,7 @@ export const usePeopleSearch = (query) => {
     }
 
     const searchPeople = async () => {
+      console.log("Wywołanie searchPeople z query:", query); // dodaj logging
       setSearchResults({
         status: loadingStatus,
         data: [],
@@ -46,9 +51,13 @@ export const usePeopleSearch = (query) => {
       }
     };
 
-    const debounceTimeout = setTimeout(searchPeople, 300);
+    console.log("Ustawiam debounce dla query:", query); // dodaj logging
+    const debounceTimeout = setTimeout(searchPeople, 500);
 
-    return () => clearTimeout(debounceTimeout);
+    return () => {
+      console.log("Czyszczę timeout dla:", query); // dodaj logging
+      clearTimeout(debounceTimeout);
+    };
   }, [query]);
 
   return { peopleResults: searchResults, totalPages };

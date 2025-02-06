@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 
 export const StyledPersonLink = styled(Link)`
   text-decoration: none;
@@ -35,7 +35,7 @@ export const Text = styled.header`
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     font-size: 20px;
     line-height: 24px;
-    margin: 24px 0 16px 0px;
+    margin: 24px 0 16px 0;
   }
 `;
 
@@ -81,7 +81,7 @@ export const WrapperItem = styled.div`
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     padding: 8px;
     border-radius: 5px;
-    box-shadow: 0px 4px 12px 0px ${({ theme }) => theme.color.heather};
+    box-shadow: 0 4px 12px 0 ${({ theme }) => theme.color.heather};
   }
 
   &:hover {

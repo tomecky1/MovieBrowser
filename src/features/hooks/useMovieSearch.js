@@ -1,7 +1,11 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
-import {API_KEY, BASE_URL} from "../../common/constants/config";
-import {errorStatus, loadingStatus, successStatus,} from "../../common/constants/resqestStatuses";
+import { API_KEY, BASE_URL } from "../../common/constants/config";
+import {
+  errorStatus,
+  loadingStatus,
+  successStatus,
+} from "../../common/constants/resqestStatuses";
 
 export const useMovieSearch = (query) => {
   const [searchResults, setSearchResults] = useState({
@@ -43,7 +47,7 @@ export const useMovieSearch = (query) => {
       }
     };
 
-    const debounceTimeout = setTimeout(searchMovies, 300);
+    const debounceTimeout = setTimeout(searchMovies, 500);
 
     return () => clearTimeout(debounceTimeout);
   }, [query]);

@@ -14,10 +14,27 @@ This is a project from Youcode programming bootcamp, still in development.
 
 **Things to do in nearby future:**
 
-- Implementing API from movies databases
-- Adding page pagination
-- Adding People's details
-- Adding dark theme to the page (later in future)
+- add loader while long loading movie details DONE
+- arrow colors pagi
+- clickable wgoe logo "Movie Browser" DONE
+- no loader when switching pages pagi DONE
+- movies active in strarting page DONE
+- pasting page in query does not work,
+- pagi logic should be based on query params and fetching data from API on it,
+- loader with movie description
+- active button on selectec subpage movie/people
+- amount of tiles in movie cast and crew
+- debounce means not to post every single letter to server
+- searching specific movie in query and in input when pasting only to query
+- if there is no section then we don't display movie cast albo crew
+- github CoPilot to VSC
+- generic hooks that repeat themselves
+- reusable hooks for the future
+- deleting return from a function without condition attribute
+- deletetin react fragment if not needed
+- instead of multiple states like setDate, date, minimize states usage to improve code efficiency
+- 0 in styled components without "px"
+- worth learning TypeScript
 
 _Technology used in this project includes:_
 
@@ -29,6 +46,8 @@ _Technology used in this project includes:_
 - Redux Saga
 - Babel
 - Webpack
+- Axios
+- styled components
 
 ## Available Scripts
 

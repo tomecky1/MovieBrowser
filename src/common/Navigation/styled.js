@@ -40,12 +40,15 @@ export const MobileContainer = styled.div`
 
     @media (max-width: ${({theme}) => theme.breakpoints.iPadPro}) {
         margin: 32px 0 24px 0;
-        justify-content: center;
+
+        justify-content: space-around;
     }
 
     @media (max-width: ${({theme}) => theme.breakpoints.iPhoneSE}) {
-        justify-content: space-around;
+        justify-content: space-between;
     }
+
+
 `;
 
 export const StyledVideoIcon = styled(VideoIcon)`
@@ -147,8 +150,9 @@ export const NavigationInput = styled.div`
 
     @media (max-width: ${({theme}) => theme.breakpoints.iPadPro}) {
         height: 48px;
-        max-width: 476px;
-        margin-bottom: 24px;
+        max-width: 95%;
+        margin-bottom: 24px
+
     }
 
     @media (max-width: ${({theme}) => theme.breakpoints.mobile}) {
@@ -156,4 +160,15 @@ export const NavigationInput = styled.div`
         max-width: 288px;
         margin-bottom: 16px;
     }
+
+
+    @media (max-width: ${({theme}) => theme.breakpoints.smallMobile}) {
+        min-width: 95%;
+    }
+
+    @media (max-width: ${({theme}) => theme.breakpoints.biggerMobile}) {
+        max-width: 95%;
+        justify-items: space-between;
+    }
+
 `;

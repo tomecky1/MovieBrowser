@@ -19,6 +19,8 @@ import {
   YearList,
 } from "../MovieList/styled";
 
+
+import { ImageListBlank } from "./styled";
 import {
   ImageListBlank,
   ImageWrapper,
@@ -27,6 +29,7 @@ import {
   WrapperActorName,
   WrapperItem,
 } from "./styled";
+
 import { Pagination } from "../../common/Pagination";
 import Error from "../../common/Error";
 import NotFound from "../../common/NotFound";
@@ -120,19 +123,25 @@ export const SearchResults = () => {
                     </TagsList>
                     <RateList>
                       <StyledStarIcon hidden={movie.vote_average === 0} />
-                      <RateGradeList style={{
-                        paddingLeft: movie.vote_average === 0 ? "0" : "12px",
-                      }}>
+
+                      <RateGradeList
+                        style={{
+                          paddingLeft: movie.vote_average === 0 ? "0" : "12px",
+                        }}
+                      >
                         {movie.vote_average
                           ? movie.vote_average.toFixed(1)
                           : ""}
                       </RateGradeList>
-                      <RateVotesList style={{
-                        paddingLeft: movie.vote_average === 0 ? "0" : "12px",
-                      }}>
+                      <RateVotesList
+                        style={{
+                          paddingLeft: movie.vote_average === 0 ? "0" : "12px",
+                        }}
+                      >
                         {movie.vote_count
-                          ? `${movie.vote_count} ${movie.vote_count === 1 ? "vote" : "votes"
-                          }`
+                          ? `${movie.vote_count} ${
+                              movie.vote_count === 1 ? "vote" : "votes"
+                            }`
                           : "no votes yet"}
                       </RateVotesList>
                     </RateList>

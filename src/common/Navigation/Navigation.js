@@ -63,11 +63,13 @@ export const Navigation = () => {
           <NavigationTitleContainer>
             <StyledNavLinkIcon to="/">
               <StyledVideoIcon />
+              <NavigationTitle>Movies Browser</NavigationTitle>
             </StyledNavLinkIcon>
-            <NavigationTitle>Movies Browser</NavigationTitle>
           </NavigationTitleContainer>
           <NavigationItem>
-            <StyledNavLink to="/movies">MOVIES</StyledNavLink>
+            <StyledNavLink to="/" end>
+              MOVIES
+            </StyledNavLink>
           </NavigationItem>
           <NavigationItem>
             <StyledNavLink to="/person">PEOPLE</StyledNavLink>
