@@ -14,36 +14,27 @@ This is a project from Youcode programming bootcamp, still in development.
 
 **Things to do in nearby future:**
 
-- dodać loader przy długim ładowaniu bazy danych filmów
-- kolory strzałki pagi
-- całe klikalne logo "Movie Browser"
-- brakuje loadera przy przełączaniu każdej stron pagi
-- movies aktywny przy załadowaniu strony
-- nie działa wklejanie strony w query,
-- logika pagi powinna opierać się na query params i na jego podstawie ściągać dane z API
-- loader przy movie description
-- aktywny przycisk podstrony movie / people
-- ilość kafelków w movie cast and crew
-- debounce czyli nie wysyłać zapytania dla każdej literki
-- wyszukiwanie danego filmu w query i w inpucie jeśli wkleimy tylko do query
-- jeśli nie ma sekcji to jej nie wyświetlamy movie cast albo crew
-- github CoPilot do VSC
-- hooki generyczne które się powtarzają
-- reużywalne hooki na przyszłość
-- usuwanie return z funkcji jeśli nie ma warunku
-- usuwanie fragmentu jeśli nie trzeba
-- zamiast statów setDate, date, żeby nie pisać wielu stateów, pisać jak najmniej stateów
-- 0 w styled components bez "px"
-- warto nauczyć się TypeScrypt
-- dostaniemy kod do Webstorma
-- audytcv@youcode.pl (dostaniemy odpowiedź co zmienić poprawić)
-- wysyłać cv na mid lub senior
-- dołączyć nieformalny filmik z CV żeby się wyróżnić
-- Cv wysyłać na wszystkie oferty front end, inne biblioteki są nieważne można się ich douczyć
-- wysyłać cvki poza polske, soildjobs , theprotocol, pracuj.pl/it, grupki na fb, LinkedIn, dodać rekruterów z firm IT do znajomych na LindekIn
-- zrobić arkusz do rekrutacji jaki jest aktualny status i śledzić
-- audytcv zapytać co wpisać w historię zatrudnienia
-- grupa na slacku "ponadprogram" można pytać o jakieś nowe rzeczy lub zadania z rekrutacji
+- add loader while long loading movie details DONE
+- arrow colors pagi
+- clickable wgoe logo "Movie Browser" DONE
+- no loader when switching pages pagi DONE
+- movies active in strarting page DONE
+- pasting page in query does not work,
+- pagi logic should be based on query params and fetching data from API on it,
+- loader with movie description
+- active button on selectec subpage movie/people
+- amount of tiles in movie cast and crew
+- debounce means not to post every single letter to server
+- searching specific movie in query and in input when pasting only to query
+- if there is no section then we don't display movie cast albo crew
+- github CoPilot to VSC
+- generic hooks that repeat themselves
+- reusable hooks for the future
+- deleting return from a function without condition attribute
+- deletetin react fragment if not needed
+- instead of multiple states like setDate, date, minimize states usage to improve code efficiency
+- 0 in styled components without "px"
+- worth learning TypeScript
 
 _Technology used in this project includes:_
 
