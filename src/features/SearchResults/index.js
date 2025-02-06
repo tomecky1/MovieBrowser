@@ -19,7 +19,17 @@ import {
   YearList,
 } from "../MovieList/styled";
 
+
 import { ImageListBlank } from "./styled";
+import {
+  ImageListBlank,
+  ImageWrapper,
+  StyledPersonLink,
+  StyledPersonWrapper,
+  WrapperActorName,
+  WrapperItem,
+} from "./styled";
+
 import { Pagination } from "../../common/Pagination";
 import Error from "../../common/Error";
 import NotFound from "../../common/NotFound";
@@ -81,6 +91,7 @@ export const SearchResults = () => {
     setSearchParams({ query, page });
   };
 
+
   return (
     <FlexCont>
       {movies.total_results > 0 && (
@@ -112,6 +123,7 @@ export const SearchResults = () => {
                     </TagsList>
                     <RateList>
                       <StyledStarIcon hidden={movie.vote_average === 0} />
+
                       <RateGradeList
                         style={{
                           paddingLeft: movie.vote_average === 0 ? "0" : "12px",

@@ -40,12 +40,14 @@ export const MobileContainer = styled.div`
 
     @media (max-width: ${({theme}) => theme.breakpoints.iPadPro}) {
         margin: 32px 0 24px 0;
+
         justify-content: space-around;
     }
 
     @media (max-width: ${({theme}) => theme.breakpoints.iPhoneSE}) {
         justify-content: space-between;
     }
+
 
 `;
 
@@ -150,6 +152,7 @@ export const NavigationInput = styled.div`
         height: 48px;
         max-width: 95%;
         margin-bottom: 24px
+
     }
 
     @media (max-width: ${({theme}) => theme.breakpoints.mobile}) {
@@ -157,6 +160,7 @@ export const NavigationInput = styled.div`
         max-width: 288px;
         margin-bottom: 16px;
     }
+
 
     @media (max-width: ${({theme}) => theme.breakpoints.smallMobile}) {
         min-width: 95%;
