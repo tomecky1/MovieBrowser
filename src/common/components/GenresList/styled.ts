@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import {ReactNode} from "react";
 
-export const TagsList = styled.ul`
+export const TagsList = styled.ul<{extra?: ReactNode }>`
   display: flex;
   flex-wrap: wrap;
   list-style: none;
@@ -14,7 +15,7 @@ export const TagsList = styled.ul`
   }
 `;
 
-export const Genre = styled.li`
+export const Genre = styled.li<{extra?: ReactNode}>`
   color: ${({ theme }) => theme.color.black};
   background-color: ${({ theme }) => theme.color.mystic};
   font-weight: 400;

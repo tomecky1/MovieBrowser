@@ -27,7 +27,7 @@ export const useGenresList = () => {
             }
         };
         setTimeout(fetchGenres, 0);
-    }, []);
+    }, [url]);
 
     return { genres };
 };

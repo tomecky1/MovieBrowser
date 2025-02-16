@@ -15,14 +15,14 @@ This is a project from Youcode programming bootcamp, still in development.
 **Things to do in nearby future:**
 
 - add loader while long loading movie details DONE
-- arrow colors pagi
+- arrow colors pagination
 - clickable wgoe logo "Movie Browser" DONE
-- no loader when switching pages pagi DONE
-- movies active in strarting page DONE
+- no loader when switching pages pagination DONE
+- movies active in starting page DONE
 - pasting page in query does not work,
-- pagi logic should be based on query params and fetching data from API on it,
+- pagination logic should be based on query params and fetching data from API on it,
 - loader with movie description
-- active button on selectec subpage movie/people
+- active button on selected subpage movie/people
 - amount of tiles in movie cast and crew
 - debounce means not to post every single letter to server
 - searching specific movie in query and in input when pasting only to query
@@ -31,7 +31,7 @@ This is a project from Youcode programming bootcamp, still in development.
 - generic hooks that repeat themselves
 - reusable hooks for the future
 - deleting return from a function without condition attribute
-- deletetin react fragment if not needed
+- delete react fragment if not needed
 - instead of multiple states like setDate, date, minimize states usage to improve code efficiency
 - 0 in styled components without "px"
 - worth learning TypeScript
@@ -84,10 +84,10 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will
 remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right
-into your project so you have full control over them. All of the commands except `eject` will still work, but they will
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc.) right
+into your project so you have full control over them. All the commands except `eject` will still work, but they will
 point to the copied scripts so you can tweak them. At this point you're on your own.
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you
-shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't
+shouldn't feel obligated to use this feature. However, we understand that this tool wouldn't be useful if you couldn't
 customize it when you are ready for it.
