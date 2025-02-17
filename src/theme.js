@@ -24,5 +24,6 @@ export const theme = {
     iPadPro: "1080px",
     tabletHorizontal: "1199px",
     nextHubMax: "1280px",
+    tabletHorizontalS: "1366px",
   },
 };

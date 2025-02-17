@@ -11,32 +11,46 @@ import {
 } from "./styled";
 import { useQueryParameter } from "../components/Search/useQueryParameter";
 import { useMediaQuery } from "react-responsive";
-import { useCallback } from "react";
+import {JSX, useCallback} from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
-export const Pagination = ({ currentPage, totalPages, onPageChange }) => {
+interface PaginationProps {
+    currentPage: number;
+    totalPages: number;
+    onPageChange: (page: number) => void;
+}
+
+export const Pagination = ({ currentPage, totalPages, onPageChange }:PaginationProps) => {
   const isMobile = useMediaQuery({ maxWidth: 560 });
   const location = useLocation();
   const navigate = useNavigate();
   const query = useQueryParameter("query");
 
   const generateURL = useCallback(
-    (page) => {
+    (page: number) => {
       const queryParam = query ? `&query=${query}` : "";
       return `${location.pathname}?page=${page}${queryParam}`;
     },
     [location.pathname, query]
   );
 
-  const changePage = (newPage) => {
+  const changePage = (newPage: number) => {
     if (newPage >= 1 && newPage <= totalPages) {
       onPageChange(newPage);
       navigate(generateURL(newPage), { replace: true });
     }
   };
 
-  const renderButton = (onClick, disabled, iconLeft, iconRight, text) => (
-    <ButtonTile onClick={onClick} disabled={disabled}>
+  interface renderButtonProps {
+      text: string;
+      iconLeft: JSX.Element;
+      iconRight: JSX.Element;
+      disabled: boolean;
+      onClick: () => void;
+  }
+
+  const renderButton = (onClick:()=>void, disabled:boolean, iconLeft:JSX.Element | null, iconRight:JSX.Element | null, text: string) => (
+      <ButtonTile onClick={onClick} disabled={disabled}>
       {isMobile ? (
         <>
           {iconLeft}

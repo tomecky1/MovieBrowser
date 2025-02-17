@@ -1,4 +1,5 @@
 import styled from "styled-components";
+// @ts-ignore
 import { ReactComponent as Pointer } from './Pointer.svg';
 
 export const Wrapper = styled.section`
@@ -36,7 +37,7 @@ export const ButtonTile = styled.button`
   border-radius: 5px;
   border: none;
   color: ${({ theme }) => theme.color.scienceBlue};
-  background-color: ${({ theme }) => theme.color.pattensBlue};
+  background-color: ${({ theme }) => theme.color.white};
   cursor: pointer;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
