@@ -6,7 +6,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## DEMO
 
-[SITE PREVIEW](https://krystian22frontend.github.io/movie-browser/)
+[SITE PREVIEW](https://tomecky1.github.io/MovieBrowser/)
 
 ## DESCRIPTION
 
