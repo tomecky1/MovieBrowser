@@ -1,3 +1,4 @@
+// @ts-ignore
 import { ReactComponent as Spinner } from "./icon-spinner.svg";
 import styled from "styled-components";
 

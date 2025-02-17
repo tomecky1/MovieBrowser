@@ -1,6 +1,6 @@
 import { HashRouter } from "react-router";
 import { Container } from "./common/Container";
-import { NaviRoutes } from "./common/Navigation/index.js";
+import { NaviRoutes } from "./common/Navigation";
 
 function App() {
   return (

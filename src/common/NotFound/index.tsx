@@ -1,7 +1,12 @@
 import { Wrapper, Text, ImageWrapper } from "./styled";
+// @ts-ignore
 import Picture from "../../image/Picture.png";
 
-const NotFound = ({ query }) => {
+interface Props {
+    query: string;
+}
+
+const NotFound = ({ query }:Props) => {
   return (
     <Wrapper>
       <Text>

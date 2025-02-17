@@ -22,11 +22,11 @@ export const Navigation = () => {
 
   const [searchQuery, setSearchQuery] = useState("");
 
-  const { searchResults: peopleResults } = usePeopleSearch(searchQuery);
+  const { peopleResults } = usePeopleSearch(searchQuery);
 
   const { searchResults: movieResults } = useMovieSearch(searchQuery);
 
-  const handleSearchChange = (event) => {
+  const handleSearchChange = (event:any) => {
     const value = event.target.value;
     setSearchQuery(value);
 
@@ -52,7 +52,7 @@ export const Navigation = () => {
     }
   }, [location.pathname]);
 
-  const handlePersonClick = (personId) => {
+  const handlePersonClick = (personId:number) => {
     navigate(`/person/${personId}`);
   };
 

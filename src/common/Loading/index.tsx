@@ -1,6 +1,10 @@
 import { Wrapper, Text, Loader } from "./styled";
 
-const Loading = ({ type }) => {
+interface Props {
+    type: string;
+}
+
+const Loading = ({ type }:Props) => {
   const loadingText =
     type === "movies"
       ? "Search results for popular movies"

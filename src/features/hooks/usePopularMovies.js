@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { BASE_URL, API_KEY } from '../../../src/common/constants/config/index';
+import { BASE_URL, API_KEY } from '../../common/constants/config';
 import { errorStatus, loadingStatus, successStatus } from "../../../src/common/constants/resqestStatuses/index";
 
 export const usePopularMovies = () => {

@@ -1,5 +1,7 @@
 import styled from "styled-components";
+// @ts-ignore
 import {ReactComponent as SearchIcon} from "../../icons/Search.svg";
+// @ts-ignore
 import {ReactComponent as VideoIcon} from "../../icons/Video.svg";
 
 export const NavigationWrapper = styled.div`

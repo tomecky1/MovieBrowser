@@ -3,7 +3,12 @@ import {NavLink} from "react-router-dom";
 
 const activeclassname = "active";
 
-export const StyledNavLink = styled(NavLink).attrs(() => ({
+interface StyledNavLinkProps {
+  "activeclassname"?: string;
+  "aria-current"?: "page"
+}
+
+export const StyledNavLink = styled(NavLink).attrs(():StyledNavLinkProps => ({
   activeclassname,
 }))`
     text-decoration: none;

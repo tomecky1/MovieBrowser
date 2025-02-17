@@ -9,17 +9,21 @@ import {
   RatingOutOf,
   StyledHeader,
   StyledStar,
-} from "./styled.js";
-import { useEffect, useState } from "react";
+} from "./styled";
+import {ReactNode, useEffect, useState} from "react";
 import { getMovieOverview } from "../../features/movieDetailsAPI";
 import { useParams } from "react-router-dom";
 
-const MainHeader = ({ children }) => {
+interface Props {
+  children: ReactNode;
+}
+
+const MainHeader = ({ children }:Props) => {
   const { id } = useParams();
   const [title, setTitle] = useState(null);
   const [backdrop, setBackdrop] = useState(null);
   const [votes, setVotes] = useState(null);
-  const [vote_average, setVote_average] = useState(null);
+  const [vote_average, setVote_average] = useState<number | null>(null);
   const [error, setError] = useState(false);
 
   useEffect(() => {
@@ -55,7 +59,7 @@ const MainHeader = ({ children }) => {
           <RatingContainer>
             <StyledStar hidden={vote_average === 0}/>
             <MovieRating>
-              {vote_average ? vote_average.toFixed(1) : "no votes yet"}
+              {vote_average !== null ? vote_average.toFixed(1) : "no votes yet"}
             </MovieRating>
             <RatingOutOf hidden={vote_average === 0}>/ 10</RatingOutOf>
           </RatingContainer>

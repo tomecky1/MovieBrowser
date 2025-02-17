@@ -1,7 +1,7 @@
 import { call, put, takeLatest } from "redux-saga/effects";
 import { fetchMovieCreditsError, fetchMovieCreditsSuccess, fetchMovieCredits } from "../slices/movieCredditsSlice";
-import { API_KEY } from "../../common/constants/config/index";
-import { BASE_URL } from "../../common/constants/config/index";
+import { API_KEY } from "../../common/constants/config";
+import { BASE_URL } from "../../common/constants/config";
 
 function* fetchMoviesCreditsListApiHandler(action) {
     try {

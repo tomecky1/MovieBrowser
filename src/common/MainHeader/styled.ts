@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { css } from "styled-components";
+// @ts-ignore
 import { ReactComponent as StarIcon } from "../../icons/star.svg";
 
 const sharedStyles = css`
@@ -153,7 +154,7 @@ export const MovieRating = styled.p`
 `;
 
 export const RatingOutOf = styled.p`
-  ${sharedStyles}
+  ${sharedStyles};
   padding-top: 12px;
   margin-left: 7px;
 
@@ -164,7 +165,7 @@ export const RatingOutOf = styled.p`
 `;
 
 export const MovieVotes = styled.p`
-  ${sharedStyles}
+  ${sharedStyles};
   margin: 16px 0 56px 0;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
