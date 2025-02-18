@@ -1,15 +1,44 @@
 import React, { useEffect, useState } from "react";
 import { getMovieCredits } from "../movieDetailsAPI";
+// @ts-ignore
 import { ReactComponent as ProfileIcon } from "../../icons/Picture.svg";
 import { ImageWrapper, StyledPersonWrapper, Text, WrapperActorName, WrapperItem, WrapperRole, } from "./styled";
 import { useNavigate } from "react-router-dom";
 
-export const CastAndCrew = ({ movieId }) => {
+interface CastAndCrewProps {
+    movieId: number;
+    personId: number;
+    role: string;
+    character: string;
+    actorId: number;
+    name: string;
+    job: string;
+    profilePath: string;
+    posterPath: string;
+    voteAverage: number;
+    voteCount: number;
+    releaseDate: string;
+    overview: string;
+    credit: string;
+    credit_id: string;
+
+}
+
+export const CastAndCrew = ({ movieId }:CastAndCrewProps) => {
   const navigate = useNavigate()
-  const handleActorClick = (actorId) => {
+  const handleActorClick = (actorId: number) => {
     navigate(`/person/${actorId}`);
   };
-  const [credits, setCredits] = useState({ cast: [], crew: [] });
+  interface Credit {
+      id: number;
+      credit_id: string;
+      name: string;
+      profile_path: string | null;
+      character?: string;
+      job?: string;
+  }
+
+  const [credits, setCredits] = useState<{ cast: Credit[]; crew: Credit[]; }>({ cast: [], crew: [] });
 
   useEffect(() => {
     const fetchMovieCredits = async () => {

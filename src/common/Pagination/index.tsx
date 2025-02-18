@@ -41,13 +41,6 @@ export const Pagination = ({ currentPage, totalPages, onPageChange }:PaginationP
     }
   };
 
-  interface renderButtonProps {
-      text: string;
-      iconLeft: JSX.Element;
-      iconRight: JSX.Element;
-      disabled: boolean;
-      onClick: () => void;
-  }
 
   const renderButton = (onClick:()=>void, disabled:boolean, iconLeft:JSX.Element | null, iconRight:JSX.Element | null, text: string) => (
       <ButtonTile onClick={onClick} disabled={disabled}>

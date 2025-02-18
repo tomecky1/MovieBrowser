@@ -36,8 +36,8 @@ const MainHeader = ({ children }:Props) => {
           setVotes(fetchedData.votes);
           setVote_average(fetchedData.vote_average);
         }
-      } catch (err) {
-        console.error("Błąd podczas pobierania szczegółów filmu:", err);
+      } catch (error) {
+        console.error("Błąd podczas pobierania szczegółów filmu:", error);
         setError(true);
       }
     };
