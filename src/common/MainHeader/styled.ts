@@ -123,7 +123,7 @@ export const RatingContainer = styled.div`
   }
 `;
 
-export const StyledStar = styled(StarIcon)`
+export const StyledStar = styled(StarIcon) <{hidden: boolean}>`
   width: 40px;
   height: 38.12px;
   margin-right: 8px;

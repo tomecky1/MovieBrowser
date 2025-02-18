@@ -6,7 +6,7 @@ import { ImageWrapper, StyledPersonWrapper, Text, WrapperActorName, WrapperItem,
 import { useNavigate } from "react-router-dom";
 
 interface CastAndCrewProps {
-    movieId: number;
+    movieId: number | string;
     personId: number;
     role: string;
     character: string;
@@ -21,6 +21,7 @@ interface CastAndCrewProps {
     overview: string;
     credit: string;
     credit_id: string;
+    id?: number;
 
 }
 

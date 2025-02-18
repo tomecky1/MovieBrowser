@@ -16,7 +16,7 @@ import {
   StyledStarIcon,
   Year,
 } from "./styled";
-import { useDispatch, useSelector } from "react-redux";
+
 import { fetchMovies, selectMovies, selectStatus } from "../movieBrowserSlice";
 import { useEffect, useState } from "react";
 import { getMovieOverview } from "../movieDetailsAPI";
@@ -25,12 +25,13 @@ import MainHeader from "../../common/MainHeader";
 import { useParams } from "react-router-dom";
 import { GenresList } from "../../common/components/GenresList";
 import Loading from "../../common/Loading";
+import {useAppDispatch, useAppSelector} from "../../core/hooks";
 
 const MovieDetails = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const { id } = useParams();
-  const movies = useSelector(selectMovies);
-  const status = useSelector(selectStatus);
+  const movies = useAppSelector(selectMovies);
+  const status = useAppSelector(selectStatus);
 
   useEffect(() => {
     dispatch(fetchMovies());
@@ -40,11 +41,30 @@ const MovieDetails = () => {
   const [title, setTitle] = useState(null);
   const [date, setDate] = useState(null);
   const [votes, setVotes] = useState(null);
-  const [vote_average, setVote_average] = useState(null);
+  const [vote_average, setVote_average] = useState<number | null>(null);
   const [poster, setPoster] = useState(null);
   const [error, setError] = useState(false);
   const [genres, setGenres] = useState([]);
   const [productionCountries, setProductionCountries] = useState([]);
+
+  interface CastAndCrewProps {
+    movieId: number;
+    personId: number;
+    role: string;
+    character: string;
+    actorId: number;
+    name: string;
+    job: string;
+    profilePath: string;
+    posterPath: string;
+    voteAverage: number;
+    voteCount: number;
+    releaseDate: string;
+    overview: string;
+    credit: string;
+    credit_id: string;
+    id: number;
+  }
 
   useEffect(() => {
     const fetchMovieDetails = async () => {
@@ -60,7 +80,7 @@ const MovieDetails = () => {
           setGenres(fetchedData.genres);
           setProductionCountries(
             fetchedData.production_countries
-              ?.map((country) => country.name)
+              ?.map((country: { name: string }) => country.name)
               .join(", ") || "Unknown origin country"
           );
         }
@@ -73,7 +93,7 @@ const MovieDetails = () => {
     };
     fetchMovieDetails();
   }, [id]);
-  const formatDateToPL = (dateString) => {
+  const formatDateToPL = (dateString: string | number | Date) => {
     const date = new Date(dateString);
     return new Intl.DateTimeFormat("pl-PL", {
       day: "2-digit",
@@ -83,12 +103,13 @@ const MovieDetails = () => {
   };
 
   if (isLoading) {
-    return <Loading />;
+    return <Loading type={""} />;
   }
 
+  // @ts-ignore
   return (
     <>
-      <MainHeader />
+      <MainHeader children={undefined}/>
       <FlexContainer>
         <StyledMovieDetailsTile>
           <IconContainer>
@@ -100,7 +121,7 @@ const MovieDetails = () => {
             />
           </IconContainer>
           <Details>
-            <Header>Movie Title: {title ? title : "Loading title..."}</Header>
+            <Header as="h1">Movie Title: {title ? title : "Loading title..."}</Header>
             <Year></Year>
             <DetailInfo>
               <DetailInfoElement>
@@ -116,15 +137,15 @@ const MovieDetails = () => {
             </DetailInfo>
             <GenresList genresIds={genres} />
             <Rate>
-              <StyledStarIcon hidden={vote_average === 0} />
+              <StyledStarIcon style={{ display: vote_average === 0 ? "none" : "inline" }} />
               <RateGrade
                 style={{
                   paddingLeft: vote_average === 0 ? "0" : "12px",
                 }}
               >
-                {vote_average > 0 && vote_average !== null
-                  ? vote_average.toFixed(1)
-                  : ""}
+                {vote_average && vote_average > 0
+                    ? vote_average.toFixed(1)
+                    : ""}
               </RateGrade>
               <RateElement hidden={vote_average === 0}>/ 10</RateElement>
               <RateVotes
@@ -139,10 +160,12 @@ const MovieDetails = () => {
             </Rate>
           </Details>
           <MovieDescription>
-            {overview ? overview : "No movie description founded..."}
+            {overview ? overview : "No movie description found..."}
           </MovieDescription>
         </StyledMovieDetailsTile>
-        <CastAndCrew movieId={id} />
+        <CastAndCrew movieId={id!} personId={0} role={""} character={""} actorId={0} name={""} job={""} profilePath={""}
+                     posterPath={""} voteAverage={0} voteCount={0} releaseDate={""} overview={""} credit={""}
+                     credit_id={""}/>
       </FlexContainer>
     </>
   );
